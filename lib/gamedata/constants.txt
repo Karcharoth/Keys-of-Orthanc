@@ -1,0 +1,182 @@
+# File: constants.txt
+
+
+# This file is used to initialize game constants for Sil.
+
+#---------------------------------------------------------------------
+# Level Maxima
+#---------------------------------------------------------------------
+
+# Maximum number of monsters on the level
+level-max:monsters:300
+
+#---------------------------------------------------------------------
+# Monster Generation
+#---------------------------------------------------------------------
+
+# 1/per-turn-chance of new monster generation
+mon-gen:chance:160
+
+# Minimum number of monsters generated on a level
+mon-gen:level-min:14
+
+# Maximum number of breeding monsters allowed on a level
+mon-gen:repro-max:100
+
+# Maximum out-of-depth amount for monster generation
+mon-gen:ood-amount:10
+
+# Maximum number of monsters in a group
+mon-gen:group-max:25
+
+# Maximum distance of a group of monsters from a related group
+mon-gen:group-dist:5
+
+#---------------------------------------------------------------------
+# Monster Gameplay
+#---------------------------------------------------------------------
+
+# Rune of protection resistance to monster breaking
+mon-play:break-glyph:550
+
+# High value slows multiplication
+mon-play:mult-rate:8
+
+# Number of speed 2 turns for complete health regeneration
+mon-play:regen-hp-period:150
+
+# Number of speed 2 turns for complete health regeneration
+mon-play:regen-sp-period:15
+
+# Amount of mana it costs a monster to cast a (non-free) spell
+mon-play:mana-cost:10
+
+# Maximum amount of mana a monster can have at once
+mon-play:mana-max:2
+
+# Monsters will run up to this many grids out of sight
+mon-play:flee-range:5
+
+# Terrified monsters will turn to fight if they are slower than the character,
+# and closer than this distance.
+mon-play:turn-range:5
+
+# Monsters will search up to this many grids for a hiding spot when fleeing
+mon-play:hide-range:15
+
+# Monsters can have a destination up to this many grids away
+mon-play:wander-range:50
+
+#---------------------------------------------------------------------
+# Dungeon Generation
+#---------------------------------------------------------------------
+
+# Number of possible room centres (and hence rooms) on a normal level
+dun-gen:room-max:50
+
+# Number of possible room centres (and hence rooms) on a normal level
+dun-gen:room-min:2
+
+# Dungeon block height
+dun-gen:block-hgt:11
+
+# Dungeon block width
+dun-gen:block-wid:33
+
+#---------------------------------------------------------------------
+# Game World
+#---------------------------------------------------------------------
+
+# Maximum dungeon level.
+world:dun-depth:20
+
+# Maximum level for calculations (can probably be reduced considerably).
+world:max-depth:128
+
+# Number of turns from dawn to dawn
+world:day-length:10000
+
+# Max number of grids in each dungeon level (vertically)
+world:dungeon-hgt:55
+
+# Max number of grids in each dungeon level (horizontally)
+world:dungeon-wid:165
+
+# Energy needed by player or monsters to move
+world:move-energy:100
+
+# Maximum measured distance in a flow
+world:flow-max:250
+
+#---------------------------------------------------------------------
+# Carrying Capacity
+#---------------------------------------------------------------------
+
+# Max number of pack slots for carrying inventory
+carry-cap:pack-size:23
+
+# Max number of quiver slots for carrying missiles
+carry-cap:quiver-size:10
+
+# Max number of missiles per quiver slot
+carry-cap:quiver-slot-size:40
+
+# For computing quiver capacity, is the multiplier for non-ammo thrown items
+carry-cap:thrown-quiver-mult:5
+
+# Maximum number of objects allowed in a single dungeon grid.
+#
+# The main screen originally had a minimum size of 24 rows, so it could always
+# display 23 objects + 1 header line.
+carry-cap:floor-size:23
+
+
+#---------------------------------------------------------------------
+# Object generation
+#---------------------------------------------------------------------
+
+# Maximum depth used in object allocation
+obj-make:max-depth:100
+
+# 1/chance of inflating the requested object level
+obj-make:great-obj:7
+
+# 1/chance of inflating the requested special item level
+obj-make:great-spec:7
+
+# Default amount of fuel in a torch
+obj-make:default-torch:2000
+
+# Maximum amount of fuel in a torch
+obj-make:fuel-torch:3000
+
+# Default amount of fuel in a lantern
+obj-make:default-lamp:3000
+
+# Maximum amount of fuel in a lantern
+obj-make:fuel-lamp:7000
+
+# Maximum number of self-made artefacts
+obj-make:self-arts:50
+
+#---------------------------------------------------------------------
+# Player constants
+#---------------------------------------------------------------------
+
+# Maximum visual range
+player:max-sight:20
+
+# Maximum missile and spell range
+player:max-range:20
+
+# Amount of experience the player starts with
+player:start-exp:5000
+
+# Base experience cost per ability
+player:ability-cost:500
+
+# Bonus to stealth in stealth mode
+player:stealth-bonus:5
+
+# Number of player turns for complete health or voice regeneration
+player:regen-period:150

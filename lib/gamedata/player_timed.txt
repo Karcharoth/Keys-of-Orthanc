@@ -1,0 +1,195 @@
+# File: player_timed.txt
+
+# Used in conjunction with list-player-timed.h
+# Timed player properties
+
+# Descriptions, messages and message types can be edited without bad effects.
+# Changing fail may have unpredictable results.
+# Changing the name, reordering, or adding whole new entries will severely
+# disrupt the game, and should only be done when list-player-timed.h
+# (and other code) is also  being changed, and the game recompiled.
+# Changing a resist line will have to match to one of the hard-coded elements
+# from list-elements.h; currently, those resist lines are used to filter out
+# unnecessary messages when timed effects lapse and to affect selection of
+# randart activations.
+# Changing a flag-synonym line will have to match to an entry, of type flag, in
+# object_property.txt; those lines are currently used to filter out unnecessary
+# messages when timed effects lapse and to affect selection of randart
+# activations.
+
+# Fields:
+# name - the effect name
+# desc - the effect description
+# este - 1 if recovery from the effect is affected by Song of Este
+# grade - the message on increasing a grade of the effect.  Note that most
+#         effects only have two grades (on and off); for these, the message
+#         is just the message on beginning the effect
+# change-grade - the message on increasing a grade of the effect where the
+#                message is based on the amount of change rather than the total
+#                of the counter
+# on-end - the message on ending the effect
+# on-increase - the message on the effect increasing
+# on-decrease - the message on the effect decreasing
+# msgt - the message type for this effect
+# fail - determines what makes the effect fail (after a skill check).
+# resist - (optional) when this timed property is active, the recipient gains
+#         a temporary resistance to the named element
+# flag-synonym - (optional) indicate that this timed property is (largely)
+#         synonymous to the object property of type flag in
+#         object_property.txt with the code given by the first parameter; if
+#         the second parameter is not zero, this timed property is an exact
+#         synonym, except for duration; if the second parameter is zero, the
+#         timed property has other effects that are not implied by the named
+#         object property
+
+name:FOOD
+desc:nourishment
+grade:R:1:Starving: :You are beginning to starve!
+grade:o:1000:Weak:You are still weak.:You are getting weak from hunger!
+grade:y:2000:Hungry:You are still hungry.:You are getting hungry.
+grade:u:5000:Fed:You are no longer hungry.:You are no longer full.
+grade:G:8000:Full:You are full!:You are no longer gorged.
+grade:g:20000:Gorged:You have gorged yourself!  You can't eat or drink any more until you recover.
+msgt:HUNGRY
+
+name:FAST
+desc:haste
+grade:G:10000:Hasted:You feel yourself moving faster!
+on-end:You feel yourself slow down.
+msgt:SPEED
+
+name:SLOW
+desc:slowness
+grade:U:10000:Slowed:You feel yourself moving slower!
+on-end:You feel yourself speed up.
+msgt:SLOW
+fail:FREE_ACT
+
+name:BLIND
+desc:blindness
+este:1
+grade:o:10000:Blind:You are blind.
+on-end:You can see again.
+msgt:BLIND
+fail:PROT_BLIND
+
+name:ENTRANCED
+desc:paralysis
+este:1
+grade:r:10000:Entranced!:You fall into a deep trance!
+on-end:The trance is broken!
+msgt:PARALYZED
+fail:FREE_ACT
+
+name:CONFUSED
+desc:confusion
+este:1
+grade:o:10000:Confused:You are confused!
+on-end:You feel less confused now.
+msgt:CONFUSED
+fail:PROT_CONF
+
+name:AFRAID
+desc:fear
+este:1
+grade:o:10000:Afraid:You are terrified!
+on-end:You feel bolder now.
+msgt:AFRAID
+fail:PROT_FEAR
+
+name:IMAGE
+desc:hallucination
+este:1
+grade:o:10000:Halluc:Fantastic visions appear before your eyes.
+on-end:You can see clearly again.
+msgt:DRUGGED
+fail:PROT_HALLU
+
+name:POISONED
+desc:poisoning
+change-grade:g:20:Poisoned
+change-grade:G:100:Poisoned
+change-inc:10:You have been poisoned.:You have been further poisoned.
+change-inc:20:You have been badly poisoned.
+change-inc:100:You have been severely poisoned.
+change-dec:5:You can feel the poison weakening.
+on-end:You recover from the poisoning.
+msgt:POISONED
+
+name:CUT
+desc:wounds
+change-grade:R:20:Bleeding
+change-grade:r:100:Bleeding
+change-inc:10:You have been given a cut.
+change-inc:20:You have been given a deep cut.
+change-inc:100:You have been given a severe cut.
+change-dec:5:The bleeding slows.
+on-end:The bleeding stops.
+msgt:CUT
+
+name:STUN
+desc:stunning
+este:1
+grade:o:50:Stun:You have been stunned.
+grade:o:100:Heavy Stun:You have been heavily stunned.:You wake up.
+grade:r:105:Knocked Out:You have been knocked out.
+on-end:You are no longer stunned.
+msgt:STUN
+fail:PROT_STUN
+
+name:DARKENED
+desc:darkened
+este:1
+grade:o:10000:Dark:Your light dims.
+on-end:Your light grows brighter again.
+
+name:RAGE
+grade:r:10000:Rage:You burst into a furious rage!
+on-end:Your rage subsides.
+
+name:STR
+grade:o:10000:STR:You feel stronger.
+on-end:Your strength returns to normal.
+
+name:DEX
+grade:o:10000:DEX:You feel more agile.
+on-end:Your dexterity returns to normal.
+
+name:CON
+grade:o:10000:CON:You feel more resilient.
+on-end:Your constitution returns to normal.
+
+name:GRA
+grade:o:10000:GRA:You feel more attuned to the world.
+on-end:Your grace returns to normal.
+
+name:SINVIS
+desc:see invisible
+grade:G:10000:SInvis:Your vision sharpens.
+on-end:Your eyes feel less sensitive.
+msgt:SEE_INVIS
+
+name:OPP_FIRE
+desc:fire resistance
+grade:r:10000:RFire:You feel resistant to fire!
+on-end:You feel less resistant to fire.
+on-increase:You feel more resistant to fire!
+msgt:RES_FIRE
+resist:FIRE
+
+name:OPP_COLD
+desc:cold resistance
+grade:w:10000:RCold:You feel resistant to cold!
+on-end:You feel less resistant to cold.
+on-increase:You feel more resistant to cold!
+msgt:RES_COLD
+resist:COLD
+
+name:OPP_POIS
+desc:poison resistance
+grade:g:10000:RPois:You feel resistant to poison!
+on-end:You feel less resistant to poison.
+on-increase:You feel more resistant to poison!
+msgt:RES_POIS
+resist:POIS
+

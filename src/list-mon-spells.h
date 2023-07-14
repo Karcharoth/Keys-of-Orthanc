@@ -1,0 +1,33 @@
+/**
+ * \file list-mon-spells.h
+ * \brief List of monster spell flags 
+ *
+ * Flags below start from 0 on line 13, so a flag's sequence number is its line
+ * number minus 13.
+ *
+ * Fields:
+ * name - spell name
+ * type - spell type
+ */
+/* 	name		type*/
+RSF(NONE,		0)
+RSF(ARROW1,		RST_INNATE | RST_ARCHERY | RST_DISTANT)
+RSF(ARROW2,		RST_INNATE | RST_ARCHERY | RST_DISTANT)
+RSF(BOULDER,	RST_INNATE | RST_ARCHERY | RST_DISTANT)
+RSF(BR_FIRE,	RST_BREATH)
+RSF(BR_COLD,	RST_BREATH)
+RSF(BR_POIS,	RST_BREATH)
+RSF(BR_DARK,	RST_BREATH)
+RSF(EARTHQUAKE,	RST_SPELL | RST_DISTANT)
+RSF(SHRIEK,		RST_SPELL)
+RSF(SCREECH,	RST_SPELL)
+RSF(DARKNESS,	RST_SPELL)
+RSF(FORGET,		RST_SPELL)
+RSF(SCARE,		RST_SPELL)
+RSF(CONF,		RST_SPELL)
+RSF(HOLD,		RST_SPELL)
+RSF(SLOW,		RST_SPELL)
+RSF(SNG_BIND,	RST_SONG)
+RSF(SNG_PIERCE,	RST_SONG)
+RSF(SNG_OATHS,	RST_SONG)
+RSF(MAX,		0)

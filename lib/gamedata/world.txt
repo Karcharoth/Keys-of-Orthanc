@@ -1,0 +1,25 @@
+# world.txt - list of dungeon levels and depths
+
+# records are
+# level:level name:level up:level down
+
+level:1:Angband 1:None:Angband 2
+level:2:Angband 2:Angband 1:Angband 3
+level:3:Angband 3:Angband 2:Angband 4
+level:4:Angband 4:Angband 3:Angband 5
+level:5:Angband 5:Angband 4:Angband 6
+level:6:Angband 6:Angband 5:Angband 7
+level:7:Angband 7:Angband 6:Angband 8
+level:8:Angband 8:Angband 7:Angband 9
+level:9:Angband 9:Angband 8:Angband 10
+level:10:Angband 10:Angband 9:Angband 11
+level:11:Angband 11:Angband 10:Angband 12
+level:12:Angband 12:Angband 11:Angband 13
+level:13:Angband 13:Angband 12:Angband 14
+level:14:Angband 14:Angband 13:Angband 15
+level:15:Angband 15:Angband 14:Angband 16
+level:16:Angband 16:Angband 15:Angband 17
+level:17:Angband 17:Angband 16:Angband 18
+level:18:Angband 18:Angband 17:Angband 19
+level:19:Angband 19:Angband 18:Angband 20
+level:20:Angband 20:Angband 19:None

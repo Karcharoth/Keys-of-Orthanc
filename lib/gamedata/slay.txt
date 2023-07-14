@@ -1,0 +1,59 @@
+# File: slay.txt
+
+# code: code for slay to use in object data files
+# name: name of slain creatures for use in object descriptions
+# race-flag: monster race flag which this slay affects
+# base: monster base which this flag affects
+# dice: number of bonus dice given by the slay
+# smith-difficulty: difficulty cost to smith an item with this slay
+
+# multiplier: slay multiplier applied to damage dice
+# o-multiplier: slay multiplier applied to damage dice (O-combat)
+# power: weighting in object power calculations (100 is neutral)
+# melee-verb: verb used when a susceptible monster is hit in melee
+# range-verb: verb used when a susceptible monster is hit at range
+
+# This file encodes the slays that can appear on object.  Each slay should
+# have exactly one of a race flag or a base.
+
+code:ORC_1
+name:orcs
+race-flag:ORC
+dice:1
+smith-difficulty:5
+
+code:WOLF_1
+name:wolves
+race-flag:WOLF
+dice:1
+smith-difficulty:6
+
+code:SPIDER_1
+name:spiders
+race-flag:SPIDER
+dice:1
+smith-difficulty:6
+
+code:UNDEAD_1
+name:undead
+race-flag:UNDEAD
+dice:1
+smith-difficulty:6
+
+code:RAUKO_1
+name:raukar
+race-flag:RAUKO
+dice:1
+smith-difficulty:7
+
+code:DRAGON_1
+name:dragons
+race-flag:DRAGON
+dice:1
+smith-difficulty:7
+
+code:TROLL_1
+name:trolls
+race-flag:TROLL
+dice:1
+smith-difficulty:5

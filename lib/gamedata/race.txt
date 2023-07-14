@@ -1,0 +1,132 @@
+# File: race.txt
+
+
+# This file is used to initialize the player race information for Sil.
+
+# Do not modify this file unless you know exactly what you are doing,
+# unless you wish to risk possible system crashes and broken savefiles.
+
+# === Understanding race.txt ===
+
+# Format:
+# name:race name
+# stats:str:dex:con:gra
+# skills:melee:archery:evasion:stealth:perception:will:smithing:song
+# history:history
+# age:agebase:agemod
+# height:hgt:modhgt
+# weight:wgt:modwgt
+# player-flags:player flags
+# equip:tval:sval:min:max
+# desc: description
+
+# 'name' indicates the beginning of an entry.
+
+# 'stats' is for the stat modifiers - strength, dexterity, constitution, grace.
+
+# 'skills' is for the skill modifiers - melee, archery, evasion, stealth,
+# perception, will, smithing, song.
+
+# 'history' is for starting point of the player history (see history.txt).
+
+# 'age' is age info - base age, random age modifier.
+
+# 'height' is height info - base height, random height modifier.
+
+# 'weight' is weight info - base weight, random weight modifier.
+
+# 'player-flags' is for player flags (as in src/list-player-flags.h) that
+# races possess innately.
+
+# 'equip' is for starting equipment - tval of the item, sval of the item,
+# minimum amount, maximum amount
+
+# 'desc' is for description. As many desc: lines may be used as are needed
+# to describe the race. Note that lines will need spaces at their
+# ends or the beginning of the next line to prevent words from running
+# together.
+
+
+name:High Elf
+stats:0:1:1:1
+skills:0:0:0:0:0:1:0:0
+history:1
+age:20:6459
+height:72:5
+weight:159:10
+player-flags:
+equip:food:Fragment of Lembas:3:3
+equip:light:Wooden Torch:3:4
+equip:sword:Sword:1:1
+desc:The High-Elves, or Noldor, are few in number but among the
+desc: greatest people in Middle-Earth. The eldest among them have
+desc: seen the light of the Land of the Blessed, and gained much
+desc: lore and skill there.
+
+name:Grey Elf
+stats:-1:1:1:1
+skills:0:0:0:0:1:0:0:0
+history:11
+age:20:6459
+height:68:3
+weight:156:10
+player-flags:
+equip:food:Fragment of Lembas:3:3
+equip:light:Wooden Torch:3:4
+equip:sword:Sword:1:1
+desc:The Grey-Elves, or Sindar, are lesser folk than their kin the High-Elves.
+desc: In ages past they stayed in Middle-Earth when the High-Elves
+desc: sailed to the Land of the Blessed. Their keenness of eye and 
+desc: knowledge of beast and herb are well-known, but they are for
+desc: the most part an insular people.
+
+name:Dwarf
+stats:0:-1:2:1
+skills:0:-1:0:0:0:0:1:0
+history:21
+age:35:180
+height:50:3
+weight:155:10
+player-flags:
+equip:food:Piece of Dark Bread:5:5
+equip:light:Wooden Torch:3:4
+equip:sword:Sword:1:1
+desc:The dwarves are stone-hard and stubborn, fast in friendship
+desc: and in enmity. They live long, far beyond the span of Men
+desc: but not for ever. They are short in stature, deep-breasted
+desc: and stout in the leg, and their beards are long.
+
+name:Hobbit
+stats:-1:1:1:0
+skills:-1:0:0:1:0:1:0:0
+history:31
+age:30:75
+height:40:10
+weight:90:10
+player-flags:
+equip:food:Piece of Dark Bread:5:5
+equip:light:Wooden Torch:3:4
+equip:sword:Sword:1:1
+desc:The Hobbits are a curious people, small and quiet.
+desc: They live in a far country known as the Shire, and have little contact with the Wider World.
+desc: While few of the Wise have taken notice of them, there is often more to them than meets the eye.
+desc: They often eschew shoes, choosing instead to walk quietly on their tough, furry feet.
+# okay this should say something better than "eschew shoes," even though it makes me giggle.
+# fit in the whole "bright colors, laughter, and food and drink" stuff?
+
+name:Man
+stats:0:0:0:0
+skills:0:0:0:0:0:0:0:0
+history:41
+age:15:45
+height:70:3
+weight:166:14
+equip:food:Piece of Dark Bread:5:5
+equip:light:Wooden Torch:3:4
+equip:sword:Sword:1:1
+desc:The elves are passing away; the dwarves and hobbits
+desc: become fewer and fewer. But Men only grow more numerous. Men come in many sorts,
+desc: good and evil, bold and cowardly, cheerful and dour. Some serve Saruman.
+desc: Many relax, safe in their homes and far from the Enemy. But some fight against Sauron
+desc: and Saruman.
+

@@ -1,0 +1,223 @@
+# This file provides information for monster "templates".
+# 
+# name : template name
+# glyph : default display character
+# pain : pain message index
+# flags : flag | flag | ...
+# desc : description
+#
+# 'name' indicates the beginning of an entry. The template name is used in 
+# monster.txt.
+#
+# 'glyph' indicates the default display character. This is used for displaying
+# the monster in ASCII mode, and also for determining which monsters are
+# of the same "type" for things like the ESCORT flag or the S_KIN summon.
+#
+# 'pain' indicates which set of "pain messages" (from pain.txt) is used.
+#
+# 'flags' indicates the flags that every monster inherits from this template.
+#
+# 'desc' indicates the textual description of this template that is used by
+# the '/' command in-game.
+#
+# Note that these templates have references in other data files. Changing
+# characteristics of monster bases is fine, but the names are referenced in
+# several other data files (notably monster.txt), so any name changes will
+# have to take this into account.
+
+##### Normal monster templates #####
+
+# - o   (orcs)
+#     - large groups
+#     - intelligent
+#     - light sensitive
+#     - drop items
+#
+name:orc
+glyph:o
+pain:6
+pursuit:1
+warning:1
+flags:MALE | OPEN_DOOR | ORC | HURT_LIGHT | SMART
+desc:Orc
+
+# - g   (goblins)
+#     - intelligent
+#     - light sensitive
+#     - drop items
+#
+name:goblin
+glyph:g
+pain:6
+pursuit:1
+warning:1
+flags:MALE | OPEN_DOOR | ORC | HURT_LIGHT | SMART
+desc:Goblin
+
+
+# - C   (wolves)
+#     - groups
+#     - quick
+#     - somewhat erratic
+#     - early wolves can't open doors
+#     - wargs+: smart
+#     - werewolves+: poison damage
+#
+name:wolf
+glyph:C
+pain:1
+pursuit:4
+warning:4
+flags:WOLF
+desc:Wolf
+
+# - b   (bats and birds)
+#     - very quick
+#     - very high melee
+#     - very high evasion
+#     - can't open doors
+#     - bats: territorial, solitary, erratic, 1d4 prot, 2d4 health
+#     - birds: come in groups, somewhat erratic, 0 prot, 1d4 health
+#
+name:flyer
+glyph:b
+pain:5
+pursuit:6
+warning:5
+flags:FLYING
+desc:Bat/Bird
+
+# - &   (thorns)
+#     - non moving
+#     - poor evasion
+name:thorn
+glyph:&
+flags:NEVER_MOVE | MINDLESS | HURT_FIRE
+flags:NO_FEAR | RES_POIS | NO_CONF | NO_SLEEP | NO_CRIT
+desc:Thorn
+
+# - M   (spiders)
+#     - territorial
+#     - can come in webs
+#     - early spiders can't open doors
+#     - often involve poison or other special damage type
+#
+name:spider
+glyph:M
+pain:4
+pursuit:6
+warning:5
+flags:SPIDER | TERRITORIAL
+desc:Spider
+
+# - I   (insects)
+#     - very quick
+#     - very erratic
+#     - territorial
+#     - can't open doors
+#     - very high evasion/melee
+#     - special damage types
+#     - 0 prot, 2d4 health
+#
+name:insect
+glyph:I
+pain:4
+pursuit:6
+warning:5
+flags:FLYING | RAND_25 | RAND_50 | FRIENDS | TERRITORIAL
+desc:Insect
+
+# - H   (horrors)
+#     - immune to fear
+#     - cause fear
+#     - nasty attacks
+#     - quite variable
+#
+name:horror
+glyph:H
+pain:7
+pursuit:6
+warning:5
+flags: DRAGON
+desc:Horror
+
+# - O   (Uruk-Hai)
+#     - groups
+#     - intelligent
+#     - drop items
+#     - not afraid of light
+#
+name:uruk-hai
+glyph:O
+pain:6
+pursuit:1
+warning:5
+flags:MALE | OPEN_DOOR | SMART | ORC
+desc:Uruk-Hai
+
+name:building
+glyph:#
+pain:8
+flags:NEVER_MOVE | MINDLESS | HURT_FIRE
+flags:NO_FEAR | RES_POIS | NO_CONF | NO_SLEEP | NO_CRIT
+desc:Construction
+
+# - @   (men and Saruman)
+#     - groups
+#     - intelligent
+#     - drop items
+#
+name:person
+glyph:@
+pain:6
+pursuit:1
+warning:1
+flags:OPEN_DOOR | SMART | RAUKO
+desc:Man
+
+# - W   (wights and wraiths)
+#     - intelligent
+#     - light sensitive
+#     - nasty attacks
+#     - immune to most things
+#     - resistant to criticals
+#     - wights: 3d4 prot, 4d4 health, cast darkness and slow, territorial, hoards
+#
+name:wraith
+glyph:W
+pursuit:6
+warning:5
+flags:UNDEAD | HURT_LIGHT | RES_COLD | SMART
+flags:NO_FEAR | RES_POIS | NO_CONF | NO_SLEEP | RES_CRIT
+desc:Wight/Wraith
+
+
+# - N   (nameless things)
+#     - slow
+#     - very erratic
+#     - mindless
+#     - tunnel
+#     - regenerates
+#     - 6d4 prot, very high health
+#
+name:nameless thing
+glyph:N
+pain:7
+pursuit:6
+warning:5
+flags:BASH_DOOR | KILL_WALL | REGENERATE | MINDLESS | TERRITORIAL
+flags:RAND_25 | RAND_50 | FORCE_DEPTH
+desc:Nameless Thing
+
+# - Hallucinatory
+#
+name:hallucinatory
+glyph:@
+desc:Hallucination
+
+
+##### Special templates #####
+
+name:player
+glyph:@
+desc:You

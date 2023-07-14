@@ -1,0 +1,256 @@
+# projection.txt
+
+# === Understanding projection.txt ===
+
+# Format:
+# code: code
+# name: name
+# type: element / environs / monster
+# desc: description
+# player-desc: player description
+# blind-desc: blind description
+# msgt: message type
+# damaging: 0/1
+# evade: 0/1
+# obvious: 0/1
+# wake: 0/1
+# color: color
+
+# 'code' is the computer code for this projection used by the game
+
+# 'name' is the human readable name for this projection
+
+# 'type' can be 'element' for an elemental attack type, 'environs' for
+# something that affects terrain or dungeon features, or 'monster' for
+# direct effects on monsters
+
+# 'desc' is the descriptive name for the projection, usually used in object
+# descriptions
+
+# 'player-desc' is similar to desc
+
+# 'blind-desc' is how the projection is described to the player when they
+# cannot see the monster using it
+
+# 'msgt' is the message type code used by the message system
+
+# 'obvious' is set to 1 if the nature of the projection effect is obvious to the
+# player, 0 otherwise
+
+# 'wake' is set to 1 if the projection effect will automatically wake monsters,
+# 0 otherwise
+
+# 'color' is the colour of the projection
+
+code:ACID
+name:acid
+type:element
+desc:acid
+player-desc:acid
+blind-desc:acid
+msgt:BR_ACID
+damaging:1
+obvious:1
+wake:1
+color:Slate
+
+code:FIRE
+name:fire
+type:element
+desc:fire
+player-desc:fire
+blind-desc:fire
+msgt:BR_FIRE
+damaging:1
+obvious:1
+wake:1
+color:Red
+
+code:COLD
+name:cold
+type:element
+desc:cold
+player-desc:frost
+blind-desc:cold
+msgt:BR_FROST
+damaging:1
+obvious:1
+wake:1
+color:White
+
+code:POIS
+name:poison
+type:element
+desc:poison
+player-desc:poison gas
+blind-desc:poison
+msgt:BR_GAS
+obvious:1
+wake:1
+color:Green
+
+code:DARK
+name:dark
+type:element
+desc:dark
+player-desc:dark
+blind-desc:something
+msgt:BR_DARK
+damaging:1
+obvious:1
+wake:1
+color:Light Dark
+
+code:ELEC
+name:lightning
+type:monster
+desc:lightning
+player-desc:lightning
+blind-desc:lightning
+msgt:BR_ELEC
+damaging:1
+obvious:1
+wake:1
+color:Blue
+
+code:HURT
+type:monster
+
+code:ARROW
+name:arrows
+type:monster
+desc:an arrow
+player-desc:arrows
+blind-desc:something sharp
+msgt:GENERIC
+damaging:1
+evade:1
+obvious:1
+wake:1
+color:White
+
+code:BOULDER
+name:boulders
+type:monster
+desc:a boulder
+player-desc:boulders
+blind-desc:something very heavy
+msgt:GENERIC
+damaging:1
+evade:1
+obvious:1
+wake:1
+color:White
+
+code:SOUND
+name:sound
+type:monster
+desc:sound
+player-desc:sound
+blind-desc:noise
+msgt:BR_SOUND
+obvious:1
+wake:1
+color:Yellow
+
+code:FORCE
+name:force
+type:monster
+desc:force
+player-desc:force
+blind-desc:something hard
+msgt:BR_FORCE
+obvious:1
+wake:1
+color:Umber
+
+code:LIGHT
+name:light
+type:monster
+desc:light
+player-desc:light
+blind-desc:something
+msgt:BR_LIGHT
+obvious:1
+wake:0
+color:Orange
+
+code:KILL_WALL
+type:monster
+desc:rock remover
+blind-desc:something
+obvious:1
+color:WHITE
+
+code:SLEEP
+type:monster
+desc:attempts to put all monsters to sleep
+blind-desc:something
+obvious:0
+color:White
+
+code:SPEED
+type:monster
+desc:hastes monsters
+blind-desc:something
+obvious:1
+wake:0
+color:White
+
+code:SLOW
+type:monster
+desc:attempts to slow monsters
+blind-desc:something
+obvious:1
+wake:0
+color:White
+
+code:CONFUSION
+type:monster
+desc:attempts to confuse monsters
+blind-desc:something
+obvious:0
+color:White
+
+code:FEAR
+type:monster
+desc:attempts to frighten monsters
+blind-desc:something
+obvious:0
+color:White
+
+code:EARTHQUAKE
+type:environs
+
+code:DARK_WEAK
+type:environs
+desc:darkness
+player-desc:darkness
+blind-desc:something
+obvious:0
+color:L_DARK
+
+code:KILL_DOOR
+type:environs
+desc:destroys doors
+blind-desc:something
+obvious:0
+color:WHITE
+
+code:KILL_TRAP
+type:environs
+desc:disables traps
+blind-desc:something
+obvious:0
+color:WHITE
+
+code:DISP_ALL
+type:monster
+desc:damages monsters
+blind-desc:something
+obvious:0
+color:WHITE
+
+code:NOTHING
+type:monster
+

@@ -1,0 +1,59 @@
+# File: pain.txt
+
+
+# This file is used to initialize the monster pain messages for Angband.
+
+# === Understanding pain.txt ===
+
+# type: serial number
+# message: message
+# message: message
+# etc.
+
+# 'type' indicates the beginning of an entry. The serial number must
+# increase for each new item.
+
+# 'message' is for the pain message. Each entry must have 3 messages,
+# corresponding to a monster having more than two thirds, between one and
+# two thirds, and less than one third of its health remaining.
+# Messages are only displayed when the monster is unseen.
+
+type:1
+message:You hear a snarl.
+message:You hear a yelp.
+message:You hear a feeble yelp.
+
+type:2
+message:You hear a hiss.
+message:You hear a furious hissing.
+message:You hear thrashing about.
+
+type:3
+message:You hear a feline snarl.
+message:You hear a mewling sound.
+message:You hear a pitiful mewling.
+
+type:4
+message:You hear an angry droning.
+message:You hear a scuttling sound.
+message:You hear a skittering sound.
+
+type:5
+message:You hear a squeal.
+message:You hear shrieks.
+message:You hear erratic fluttering.
+
+type:6
+message:You hear a grunt.
+message:You hear a cry of pain.
+message:You hear a feeble cry.
+
+type:7
+message:You hear a strange grunt.
+message:You hear a terrible cry.
+message:You hear an unnatural cry.
+
+type:8
+message:You hear a creak of timbers.
+message:You hear a rattling crunch.
+message:You hear an ominous clang.

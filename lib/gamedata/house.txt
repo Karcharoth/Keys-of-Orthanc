@@ -1,0 +1,182 @@
+# File: house.txt
+#
+# This file is used to initialize the "player house" information for Sil.
+#
+# Do not modify this file unless you know exactly what you are doing,
+# unless you wish to risk possible system crashes and broken savefiles.
+#
+#
+# === Understanding house.txt ===
+#
+# name: house name
+# alt-name: alternate house name
+# short-name: short house name
+# player-flags: house flag
+# stats: str : dex : con : gra
+# skills: melee: archery: evasion: stealth: perception: will: smithing: song
+# desc:description
+#
+# 'name' indicates the beginning of an entry. The serial number must
+#     increase for each new house.
+#
+# 'alt-name' is the alternate house name, so it can be used in the form:
+#     Caranthir of <house name>
+#
+# 'short-name' is the short house name when it needs to be displayed in
+#     a small space.
+#
+# 'stats' is for the stat modifiers - strength, dexterity, constitution, grace.
+#
+# 'skills' is for the skill modifiers: melee, archery, evasion, stealth,
+# perception, will, smithing, song.
+#
+# 'desc' is a text description of the house.
+
+
+name:Elves of Rivendell
+alt-name:Rivendell
+short-name:Rivendell
+race:High Elf
+stats:0:1:0:0
+skills:0:0:0:0:0:0:1:0
+desc:Merely to be in the Valley of Rivendell is a cure for
+desc: weariness, fear and sadness. It is guarded by the power
+desc: of Elrond Half-Elven, and the smiths of Rivendell are renowned
+desc: in song.
+
+
+name:Elves of Lothlorien
+alt-name:Lothlorien
+short-name:Lorien
+race:High Elf
+stats:0:0:0:1
+skills:0:0:0:0:1:0:0:0
+desc:Lorien is one of the last kingdoms of the High-Elves,
+desc: spoken of in whispers by Men. The power of Galadriel
+desc: preserves the Golden Wood as a memory of Elder Days, and
+desc: its flowers and mallorn trees are found nowhere else.
+
+# too long, but I wish I could use it.
+#desc:'In Dwimordene, in Lorien /
+#desc: Seldom have walked the feet of Men, /
+#desc: Few mortal eyes have seen the light /
+#desc: That lies there ever, long and bright.'
+#desc: 'Unmarred, unstained is leaf and land /
+#desc: In Dwimordene, in Lorien /
+#desc: More fair than thoughts of Mortal Men.'
+ 
+
+
+name:Elves of Mirkwood
+alt-name:Mirkwood
+short-name:Mirkwood
+race:Grey Elf
+stats:0:1:0:0
+skills:0:1:0:0:0:0:0:0
+desc:Long ago Mirkwood was called Greenwood the Great, before the Necromancer
+desc: came and darkened it, but it is no less great now. Under their lord 
+desc: Thranduil, the elves of Mirkwood hunt and feast in the forest.
+
+name:Elves of Mithlond
+alt-name:Mithlond
+short-name:Mithlond
+race:Grey Elf
+stats:0:1:0:0
+skills:0:0:0:0:1:0:0:0
+desc:Mithlond, the Grey Havens, is the start of the final journey, the port from which
+desc: the Elves sail along the Straight Road into Valinor.
+desc: Cirdan the Shipbuilder rules Mithlond in the west of Middle-Earth.
+
+
+name:Dwarves of the Blue Mountains
+alt-name:the Blue Mountains
+short-name:Blue Mountains
+race:Dwarf
+stats:0:0:1:0
+skills:0:0:0:0:0:1:0:0
+desc:Once the Blue Mountains held the greatest Dwarven cities in the world,
+desc: Nogrod and Belegost. Now the mines of the Blue Mountains are
+desc: a home of exile, founded after the destruction of Erebor.
+
+name:Dwarves of the Iron Hills
+alt-name:the Iron Hills
+short-name:Iron Hills
+race:Dwarf
+stats:1:0:0:0
+skills:1:0:0:0:0:0:0:0
+desc:The Iron Hills, one of the great bastions of the Dwarves, lies in
+desc: the far East. Their grim warriors are famed for martial prowess and 
+desc: strength, often carrying great two-handed mattocks to battle.
+
+name:Dwarves of Erebor
+alt-name:the Lonely Mountain
+short-name:Erebor
+race:Dwarf
+stats:0:0:0:1
+skills:0:0:0:0:0:0:1:0
+desc:The works of the Dwarves of the Lonely Mountain are many and beautiful, both magical
+desc: and mundane. They have recently reclaimed their home from a great dragon,
+desc: and begun to create wonderful things as of old.
+
+name:Harfoots
+alt-name:the Harfoots
+short-name:Harfoot
+race:Hobbit
+stats:0:0:1:0
+skills:0:0:0:0:0:1:0:0
+desc:The Harfoots are both the most numerous and smallest of Hobbits,
+desc: with nut-brown skin and hair. They often dwell in hill-country,
+desc: enjoying the company of Dwarves.
+
+name:Stoors
+alt-name:the Stoors
+short-name:Stoor
+race:Hobbit
+stats:1:0:0:0
+skills:0:0:0:0:0:0:0:1
+desc:Most Man-like of the hobbits, the Stoors are tallest and bulkiest,
+desc: some even able to grow beards. Alone of the hobbits they learn the
+desc: arts of boating, fishing and swimming, some even wearing boots in
+desc: muddy weather.
+
+name:Fallohides
+alt-name:the Fallohides
+short-name:Fallohide
+race:Hobbit
+stats:0:0:0:1
+skills:0:0:0:0:1:0:0:0
+desc:Least numerous of hobbits, the Fallohides are taller and fair-skinned,
+desc: enjoying hunting over ploughing. The most adventurous of hobbits,
+desc: they often enjoy the company of Elves and woodlands.
+
+name:Men of Rohan
+alt-name:the Mark
+short-name:Rohirrim
+race:Man
+stats:0:1:0:0
+skills:0:0:1:0:0:0:0:0
+desc:The men of Rohan are closest to the dark tower of Orthanc.
+desc: Some have been led astray by Saruman's cunning words, 
+desc: but they are a proud people. They love horses above all
+desc: else, but no horse will pass into the tunnels of Isengard.
+
+name:Men of Gondor
+alt-name:Gondor
+short-name:Gondor
+race:Man
+stats:1:0:0:0
+skills:1:0:0:0:0:0:0:0
+desc:Gondor guards against Mordor to the east, protecting
+desc: the Free Peoples from the armies of Sauron. Strong and fearless,
+desc: the Men of Gondor are one of the few peoples that descend
+desc: from the Numenorians of old.
+
+name:People of the Dunedain
+alt-name:the Dunedain
+short-name:Dunedain
+race:Man
+stats:0:0:0:1
+skills:0:0:0:0:1:0:0:0
+desc:The Dunedain are the counterpart to the men of Gondor, protecting the
+desc: Free Peoples from the terrors within their lands. 
+desc: In them the blood of Numenor runs truest, and they are wise and long-lived.

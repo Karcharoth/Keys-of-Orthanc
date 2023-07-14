@@ -1,0 +1,50 @@
+# file: dungeon_profile.txt
+
+# Contains information about how each type of dungeon level (and the town)
+# are generated.
+
+# name: The profile name.  This needs to match the corresponding entry in 
+# list-dun-profiles.h so the correct level-building function can be called
+
+# rooms: rooms
+# The number of rooms to aim for.
+
+# streamer: den : rng : qua
+# Streamers are drawn as a random walk which stops at the dungeon edge.
+# den is the number of grids near any walk grid to make streamer; rng is how
+# far from the walk those grids can be; qua is the numbers of quartz streamers
+# per level.
+
+# room: name : hardness : level : random
+# name is the room name, which must match the name in list-rooms.h so the 
+# correct room-building function can be called.
+# hardness is a rough measure of the depth that rooms appear.
+# level is the depth at which this room is forced to appear.
+# random (if not zero) gives the room a chance to appear if no earlier one has.
+
+## Sil
+name:cave
+rooms:50
+streamer:5:2:4
+alloc:100
+
+# Rooms
+room:simple room:5:1:2
+room:crossed room:8:0:0
+room:Interesting room:13:0:2
+room:Lesser vault:18:0:0
+room:Greater vault:0:0:0
+
+## Throne room
+name:throne
+#params:11:33:0
+alloc:-1
+
+room:Throne room:0:0:0
+
+## Gates of Angband
+name:gates
+#params:11:33:0
+alloc:-1
+
+room:Gates of Angband:0:0:0

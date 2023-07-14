@@ -1,0 +1,58 @@
+# File: chest_trap.txt
+
+# This file contains chest trap definitions
+
+### Understanding chest_trap.txt ###
+
+# name: name
+# effect: trap effect : ? subtype : ? radius : ? extra parameter
+# dice: dice string for effect
+# msg: activation message
+#    This is shown to the user when the trap is triggered.
+# msg-save: save message
+#    This is shown to the user if the trap triggers but the player avoids it.
+# msg-death: death message
+#    This is shown to the user if the trap kills the character.
+
+# The traps in this file should follow these rules:
+#  1. The first entry should be the "no trap";
+#  2. Traps need to correspond with the (currently 6) trap constants in
+#       obj-chest.h.
+
+name:locked
+
+name:gas trap
+effect:TIMED_INC:CONFUSED
+dice:4d4
+msg:A noxious vapour escapes from the chest!
+
+name:gas trap
+effect:DAMAGE
+dice:3d4
+effect:TIMED_INC:STUN
+dice:30d4
+msg:Acrid smoke pours from the chest!
+msg-bad:It fills your lungs and your mind reels.
+msg-death:a trapped chest
+
+name:gas trap
+effect:SPOT:POIS:0
+dice:10d4
+msg:A noxious vapour escapes from the chest!
+
+name:poison needle
+effect:TIMED_INC:IMAGE
+dice:80d4
+msg:A small needle has pricked you!
+msg-save:A small needle just misses you.
+
+name:poison needle
+effect:TIMED_SET:ENTRANCED
+dice:10d4
+msg:A small needle has pricked you!
+msg-save:A small needle just misses you.
+
+name:poison needle
+effect:DRAIN_STAT:STR
+msg:A small needle has pricked you!
+msg-save:A small needle just misses you.

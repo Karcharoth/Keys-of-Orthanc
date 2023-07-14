@@ -1,0 +1,111 @@
+# File blow_methods.txt
+
+# Methods for monster blows
+
+# name: blow method code
+# cut: 1 if the method can cut, 0 if not
+# stun: 1 if the method can stun, 0 if not
+# miss: 1 if the player is told when the blow misses, 0 if not
+# prt: 1 if the effect is stopped by armour, 0 if not
+# msg: message type to display
+# act: action string to append
+# desc: monster lore description
+
+name:HIT
+cut:1
+stun:1
+miss:1
+prt:1
+msg:MON_HIT
+act:hits {target}
+desc:hit
+
+name:TOUCH
+cut:0
+stun:0
+miss:1
+prt:0
+msg:MON_TOUCH
+act:touches {target}
+desc:touch
+
+name:CLAW
+cut:1
+stun:0
+miss:1
+prt:1
+msg:MON_CLAW
+act:claws {target}
+desc:claw
+
+name:BITE
+cut:1
+stun:0
+miss:1
+prt:1
+msg:MON_BITE
+act:bites {target}
+desc:bite
+
+name:PECK
+cut:1
+stun:0
+miss:1
+prt:1
+msg:MON_HIT
+act:pecks {target}
+desc:peck
+
+name:STING
+cut:0
+stun:0
+miss:1
+prt:1
+msg:MON_STING
+act:stings {target}
+desc:sting
+
+name:CRUSH
+cut:0
+stun:1
+miss:1
+prt:1
+msg:MON_CRUSH
+act:crushes {target}
+desc:crush
+
+name:ENGULF
+cut:0
+stun:0
+miss:0
+prt:1
+msg:MON_ENGULF
+act:engulfs {target}
+desc:engulf
+
+name:CRAWL
+cut:0
+stun:0
+miss:0
+prt:1
+msg:MON_CRAWL
+act:crawls on {target}
+desc:crawl on you
+
+name:THORN
+cut:0
+stun:0
+miss:0
+prt:1
+msg:MON_HIT
+act:tears at {target}
+desc:pierce you with thorns
+
+name:LASH
+cut:0
+stun:0
+miss:1
+prt:1
+msg:MON_HIT
+act:lashes {target}
+desc:lash

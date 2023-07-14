@@ -1,0 +1,282 @@
+# File: flavor.txt
+#
+# This file is used to create the "flavor" information for Sil.
+#
+# Do not modify this file unless you know exactly what you are doing,
+# unless you wish to risk possible system crashes and broken savefiles.
+#
+# === Understanding flavor.txt ===
+#
+# kind:<tval>:<char>
+# flavor:<index>:<attr>:<text>
+# fixed:<index>:<sval>:<attr>:<text>
+
+
+
+
+
+##### Rings #####
+
+kind:ring:=
+
+# Fixed: The Ring of Barahir
+fixed:1:Serpentine Ring:Teal:Serpentine
+
+flavor:2:Violet:Amethyst
+
+flavor:3:Light Green:Beryl
+
+flavor:4:Light Red:Bloodstone
+
+flavor:5:White:Adamant
+
+flavor:6:Green:Emerald
+
+flavor:7:Red:Garnet
+
+flavor:8:Light Green:Jade
+
+flavor:9:White:Marble
+
+flavor:10:Light Slate:Moonstone
+
+flavor:11:Light Dark:Onyx
+
+flavor:12:Light Slate:Chalcedony
+
+flavor:13:Light Red:Ruby
+
+flavor:14:Blue:Sapphire
+
+flavor:15:Yellow:Topaz
+
+flavor:16:Deep Light Blue:Turquoise
+
+flavor:17:Light Umber:Bronze
+
+flavor:18:Light Yellow:Golden
+
+flavor:19:Light Slate:Silver
+
+flavor:20:Light Dark:Jet
+
+flavor:21:White:Pearl
+
+#N:20:45
+#G:=:B
+#D:Mithril
+
+
+
+##### Amulets #####
+
+#kind:amulet:"
+
+# Fixed: The Pearl 'Nimphelos'
+#fixed:41:Pearl:White:Pearl
+
+# Fixed: The Jewel 'Elessar'
+#fixed:42:Jewel:Green:Emerald
+
+# Fixed: The Necklace of the Dwarves
+#fixed:43:Necklace:Yellow:Jewelled
+
+#flavor:44:Yellow:Amber
+
+#flavor:45:Mustard:Driftwood
+
+#flavor:46:Orange:Coral
+
+#flavor:47:White:Ivory
+
+#flavor:48:Light Dark:Obsidian
+
+#flavor:49:Light Umber:Bronze
+
+#flavor:50:Yellow:Golden
+
+#flavor:51:Light Blue:Crystal
+
+#flavor:52:Light Slate:Silver
+
+#flavor:53:Light Slate:Dragon Tooth
+
+#flavor:54:Red:Ruby
+
+#flavor:55:Light Teal:Sea Shell
+
+#N:56:40
+#G:":B
+#D:Mithril
+
+
+##### Staves #####
+
+kind:staff:_
+
+flavor:68:Light Umber:Aspen
+
+flavor:69:White:Birch
+
+flavor:70:Light Dark:Ebony
+
+flavor:71:Mustard:Elm
+
+flavor:72:Umber:Mahogany
+
+flavor:73:Light Umber:Maple
+
+flavor:74:Mud:Oak
+
+flavor:75:Red:Rosewood
+
+flavor:76:Mustard:Walnut
+
+flavor:77:Light Slate:Silver
+
+flavor:78:Umber:Runed
+
+flavor:79:Yellow:Golden
+
+flavor:80:Slate:Ashen
+
+flavor:81:Mustard:Gnarled
+
+flavor:82:White:Ivory
+
+flavor:83:Light Umber:Willow
+
+flavor:84:Umber:Yew
+
+flavor:85:Light Umber:Beech
+
+flavor:86:Mud:Twisted
+
+##### Horns #####
+
+kind:horn:?
+
+flavor:101:Light Slate:Silver
+
+flavor:102:Light Umber:Brazen
+
+flavor:103:White:Ivory
+
+flavor:104:Mud:Tapered
+
+flavor:105:Mustard:Engraved
+
+##### Herbs #####
+
+kind:herb:,
+
+flavor:121:Light Dark:Black
+
+flavor:122:Green:Dark Green
+
+flavor:123:Yellow:Yellow
+
+flavor:124:Light Slate:Grey
+
+flavor:125:Light Green:Pale Green
+
+flavor:126:Red:Russet
+
+flavor:127:Slate:Thorny
+
+flavor:128:Light Umber:Mottled
+
+flavor:129:Umber:Wrinkled
+
+flavor:130:White:Pale
+
+#N:131:80
+#G:,:g1
+#D:Leafy
+
+flavor:141:Light Red:Bright Red
+
+flavor:142:Light Green:Bright Green
+
+flavor:143:Light Yellow:Golden
+
+flavor:144:Light Blue:Sky Blue
+
+flavor:145:Light Umber:Copper
+
+flavor:146:Red:Ruby
+
+flavor:147:Light Purple:Pink
+
+flavor:148:Orange:Orange
+
+flavor:149:Violet:Violet
+
+flavor:150:Deep Light Blue:Bright Blue
+
+
+
+
+
+
+##### Potions #####
+
+kind:potion:!
+
+# Fixed: miruvor
+fixed:193:Miruvor:White:Clear
+
+# Fixed: orcish liquor
+fixed:195:Orcish Liquor:Umber:Murky Brown
+
+flavor:196:Light Blue:Azure
+
+flavor:197:Blue:Dark Blue
+
+flavor:198:Deep Light Blue:Brilliant Blue
+
+flavor:199:Light Dark:Black
+
+flavor:200:Umber:Brown
+
+flavor:201:Light Slate:Sparkling
+
+flavor:202:White:Milky White
+
+flavor:203:Light Umber:Copper Speckled
+
+flavor:204:Red:Crimson
+
+flavor:205:Green:Green
+
+flavor:206:Green:Dark Green
+
+flavor:207:Slate:Grey
+
+flavor:208:Light Green:Emerald
+
+flavor:209:Orange:Bright Orange
+
+flavor:210:Light Green:Pale Green
+
+flavor:211:Slate:Smoky
+
+flavor:212:Light Dark:Dark
+
+flavor:213:Violet:Violet
+
+flavor:214:Red:Vermilion
+
+flavor:215:Yellow:Yellow
+
+flavor:216:Light Blue:Sky Blue
+
+flavor:217:Light Purple:Shimmering
+
+flavor:218:White:Cloudy
+
+flavor:219:Yellow:Golden
+
+flavor:220:Blue:Sparkling Blue
+
+

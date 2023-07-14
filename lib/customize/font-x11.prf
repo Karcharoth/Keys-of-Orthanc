@@ -1,0 +1,6 @@
+# File: font-x11.prf
+
+# Terrain features
+
+# open floor
+feat:open floor:*:0x01:0x1F

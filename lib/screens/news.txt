@@ -1,0 +1,12 @@
+
+{light blue}                The world was young, the mountains green,{/}
+{light blue}                   No stain yet on the moon was seen...{/}
+
+
+              Welcome to Sil, a game of adventure set
+                in the First Age of Middle-earth,
+                  when the world still rang with elven song
+                    and gleamed with dwarven mail.
+              Walk the dark halls of Angband.
+                Slay creatures black and fell.
+                  Wrest a shining Silmaril from Morgoth's iron crown.

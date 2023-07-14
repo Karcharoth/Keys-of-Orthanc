@@ -1,0 +1,612 @@
+/**
+ * \file obj-ignore.c
+ * \brief Item ignoring
+ *
+ * Copyright (c) 2007 David T. Blackston, Iain McFall, DarkGod, Jeff Greene,
+ * David Vestal, Pete Mack, Andi Sidwell.
+ *
+ * This work is free software; you can redistribute it and/or modify it
+ * under the terms of either:
+ *
+ * a) the GNU General Public License as published by the Free Software
+ *    Foundation, version 2, or
+ *
+ * b) the "Angband licence":
+ *    This software may be copied and distributed for educational, research,
+ *    and not for profit purposes provided that this copyright and statement
+ *    are included in all such copies.  Other copyrights may also apply.
+ */
+#include "angband.h"
+#include "cmds.h"
+#include "init.h"
+#include "obj-desc.h"
+#include "obj-gear.h"
+#include "obj-ignore.h"
+#include "obj-knowledge.h"
+#include "obj-pile.h"
+#include "obj-tval.h"
+#include "obj-util.h"
+#include "object.h"
+#include "player-calcs.h"
+
+
+typedef struct
+{
+	ignore_type_t ignore_type;
+	int tval;
+	const char *identifier;
+} quality_ignore_struct;
+
+/**
+ * Any entry here with an identifier should appear above the entry with the
+ * same tval and no identifier
+ */
+static quality_ignore_struct quality_mapping[] =
+{
+	{ ITYPE_SHARP,					TV_SWORD,		"" },
+	{ ITYPE_SHARP,					TV_POLEARM,		"" },
+	{ ITYPE_BLUNT,					TV_HAFTED,		"" },
+	{ ITYPE_BOW,					TV_BOW,			"Bow" },
+	{ ITYPE_ARROW,					TV_ARROW,		"" },
+	{ ITYPE_ROBE,					TV_SOFT_ARMOR,	"Robe" },
+	{ ITYPE_BODY_ARMOR,				TV_MAIL,		"" },
+	{ ITYPE_BODY_ARMOR,				TV_SOFT_ARMOR,	"" },
+	{ ITYPE_CLOAK,					TV_CLOAK,		"" },
+	{ ITYPE_SHIELD,					TV_SHIELD,		"" },
+	{ ITYPE_HEADGEAR,				TV_HELM,		"" },
+	{ ITYPE_HANDGEAR,				TV_GLOVES,		"" },
+	{ ITYPE_FEET,					TV_BOOTS,		"" },
+	{ ITYPE_DIGGER,					TV_DIGGING,		"" },
+	{ ITYPE_RING,					TV_RING,		"" },
+	{ ITYPE_LIGHT, 					TV_LIGHT, 		"" },
+};
+
+
+
+quality_name_struct quality_choices[] =
+{
+	#define ITYPE(a, b) { ITYPE_##a, b },
+	#include "list-ignore-types.h"
+	#undef ITYPE
+};
+
+/**
+ * The names for the various kinds of quality
+ */
+quality_name_struct quality_values[IGNORE_MAX] =
+{
+	{ IGNORE_NONE,				"no ignore" },
+	{ IGNORE_BAD,				"bad" },
+	{ IGNORE_AVERAGE,			"average" },
+	{ IGNORE_GOOD,				"good" },
+	{ IGNORE_ALL,				"non-artifact" },
+};
+
+uint8_t ignore_level[ITYPE_MAX];
+const size_t ignore_size = ITYPE_MAX;
+bool **ego_ignore_types;
+/* Hackish - ego_ignore_types should be initialised with arrays */
+static int num_ego_types;
+
+
+/**
+ * Initialise the ignore package 
+ */
+static void init_ignore(void)
+{
+	int i;
+
+	num_ego_types = z_info->e_max;
+	ego_ignore_types = mem_zalloc(z_info->e_max * sizeof(bool*));
+	for (i = 0; i < z_info->e_max; i++)
+		ego_ignore_types[i] = mem_zalloc(ITYPE_MAX * sizeof(bool));
+}
+
+
+/**
+ * Clean up the ignore package
+ */
+static void cleanup_ignore(void)
+{
+	int i;
+	for (i = 0; i < num_ego_types; i++)
+		mem_free(ego_ignore_types[i]);
+	mem_free(ego_ignore_types);
+}
+
+
+/**
+ * Reset the player's ignore choices for a new game.
+ */
+void ignore_birth_init(void)
+{
+	int i, j;
+
+	/* Reset ignore bits */
+	for (i = 0; i < z_info->k_max; i++)
+		k_info[i].ignore = false;
+
+	/* Clear the ignore bytes */
+	for (i = ITYPE_NONE; i < ITYPE_MAX; i++)
+		ignore_level[i] = IGNORE_NONE;
+
+	/* Clear ego ignore */
+	for (i = 0; i < z_info->e_max; i++)
+		for (j = ITYPE_NONE; j < ITYPE_MAX; j++)
+			ego_ignore_types[i][j] = 0;
+}
+
+
+
+/**
+ * ------------------------------------------------------------------------
+ * Autoinscription stuff
+ * ------------------------------------------------------------------------ */
+
+
+/**
+ * Return an object kind autoinscription
+ */
+const char *get_autoinscription(struct object_kind *kind, bool aware)
+{
+	if (!kind)
+		return NULL;
+	else if (aware)
+		return quark_str(kind->note_aware);
+	else 
+		return quark_str(kind->note_unaware);
+}
+
+/**
+ * Put an autoinscription on an object
+ */
+int apply_autoinscription(struct player *p, struct object *obj)
+{
+	char o_name[80];
+	bool aware = obj->kind->aware;
+	const char *note = obj ? get_autoinscription(obj->kind, aware) : NULL;
+
+	/* Remove unaware inscription if aware */
+	if (aware && quark_str(obj->note) && quark_str(obj->kind->note_unaware) &&
+		streq(quark_str(obj->note), quark_str(obj->kind->note_unaware)))
+		obj->note = 0;
+
+	/* No note - don't inscribe */
+	if (!note)
+		return 0;
+
+	/* Don't re-inscribe if it's already inscribed */
+	if (obj->note)
+		return 0;
+
+	/* Don't inscribe unless the player is carrying it */
+	if (!object_is_carried(p, obj))
+		return 0;
+
+	/* Don't inscribe if ignored */
+	if (ignore_item_ok(p, obj))
+		return 0;
+
+	/* Get an object description */
+	object_desc(o_name, sizeof(o_name), obj, ODESC_PREFIX | ODESC_FULL, p);
+
+	if (note[0] != 0)
+		obj->note = quark_add(note);
+	else
+		obj->note = 0;
+
+	msg("You autoinscribe %s.", o_name);
+
+	return 1;
+}
+
+
+/**
+ * Deregister an object kind autoinscription
+ */
+int remove_autoinscription(int16_t kind)
+{
+	struct object_kind *k = objkind_byid(kind);
+	if (!k)
+		return 0;
+
+	/* Unaware */
+	if (!k->aware) {
+		if (!k->note_unaware) {
+			return 0;
+		} else {
+			k->note_unaware = 0;
+			return 1;
+		}
+	}
+
+	/* Aware */
+	if (!k->note_aware)
+		return 0;
+
+	k->note_aware = 0;
+	return 1;
+}
+
+
+/**
+ * Register an object kind autoinscription
+ */
+int add_autoinscription(int16_t kind, const char *inscription, bool aware)
+{
+	struct object_kind *k = objkind_byid(kind);
+	if (!k)
+		return 0;
+	if (!inscription)
+		return remove_autoinscription(kind);
+	if (aware)
+		k->note_aware = quark_add(inscription);
+	else
+		k->note_unaware = quark_add(inscription);
+	return 1;
+}
+
+
+/**
+ * Put an autoinscription on all objects on the floor beneath the player
+ */
+void autoinscribe_ground(struct player *p)
+{
+	struct object *obj;
+
+	/* Autoinscribe each object in the pile */
+	for (obj = square_object(cave, p->grid); obj; obj = obj->next)
+		apply_autoinscription(p, obj);
+}
+
+/**
+ * Put an autoinscription on all the player's carried objects
+ */
+void autoinscribe_pack(struct player *p)
+{
+	struct object *obj;
+
+	/* Autoinscribe each object in the inventory */
+	for (obj = p->gear; obj; obj = obj->next)
+		apply_autoinscription(p, obj);
+}
+
+/**
+ * ------------------------------------------------------------------------
+ * Ignore code
+ * ------------------------------------------------------------------------ */
+
+
+/**
+ * Ignore the flavor of an object
+ */
+void object_ignore_flavor_of(const struct object *obj)
+{
+	if (object_flavor_is_aware(obj))
+		obj->kind->ignore |= IGNORE_IF_AWARE;
+	else
+		obj->kind->ignore |= IGNORE_IF_UNAWARE;
+}
+
+
+/**
+ * Find the ignore type of the object, or ITYPE_MAX if none
+ */
+ignore_type_t ignore_type_of(const struct object *obj)
+{
+	size_t i;
+
+	/* Find the appropriate ignore group */
+	for (i = 0; i < N_ELEMENTS(quality_mapping); i++) {
+		if (quality_mapping[i].tval == obj->tval) {
+			/* If there's an identifier, it must match */
+			if (quality_mapping[i].identifier[0]) {
+				if (!strstr(obj->kind->name, quality_mapping[i].identifier))
+					continue;
+			}
+			/* Otherwise we're fine */
+			return quality_mapping[i].ignore_type;
+		}
+	}
+
+	return ITYPE_MAX;
+}
+
+/**
+ * Find whether an ignore type is valid for a given ego item
+ */
+bool ego_has_ignore_type(struct ego_item *ego, ignore_type_t itype)
+{
+	struct poss_item *poss;
+
+	/* Go through all the possible items */
+	for (poss = ego->poss_items; poss; poss = poss->next) {
+		size_t i;
+		struct object_kind *kind = &k_info[poss->kidx];
+
+		/* Check the appropriate ignore group */
+		for (i = 0; i < N_ELEMENTS(quality_mapping); i++)
+			if ((quality_mapping[i].tval == kind->tval) &&
+				(quality_mapping[i].ignore_type == itype) &&
+				strstr(kind->name, quality_mapping[i].identifier))
+				return true;
+	}
+
+	return false;
+}
+
+
+/**
+ * Small helper function to see how an object trait compares to the one
+ * in its base type.
+ *
+ * If the base type provides a positive bonus, we'll use that. Otherwise, we'll
+ * use zero (players don't consider an item with a positive bonus to be bad
+ * even if the base kind has a higher positive bonus).
+ */
+static int cmp_object_trait(int bonus, int base)
+{
+	int amt = base;
+	if (amt > 0) amt = 0;
+	return CMP(bonus, amt);
+}
+
+/**
+ * Small helper function to see if an item seems good, bad or average based on
+ * to_h, to_d and to_a.
+ *
+ * The sign of the return value announces if the object is bad (negative),
+ * good (positive) or average (zero).
+ */
+static int is_object_good(const struct object *obj)
+{
+	int good = 0;
+	good += cmp_object_trait(obj->att, obj->kind->att);
+	good += cmp_object_trait(obj->dd, obj->kind->dd);
+	good += cmp_object_trait(obj->ds, obj->kind->ds);
+	good += cmp_object_trait(obj->evn, obj->kind->evn);
+	good += cmp_object_trait(obj->pd, obj->kind->pd);
+	good += cmp_object_trait(obj->ps, obj->kind->ps);
+	return good;
+}
+
+
+/**
+ * Determine the ignore level of an object
+ *
+ * The main point is when the value is undetermined given current info,
+ * return the maximum possible value.
+ */
+uint8_t ignore_level_of(const struct object *obj)
+{
+	uint8_t value = 0;
+
+	/* Now just do bad, average, good, ego */
+	if (object_is_known(obj)) {
+		int isgood = is_object_good(obj);
+
+		/* Values for items not egos or artifacts, may be updated */
+		if (isgood > 0) {
+			value = IGNORE_GOOD;
+		} else if (isgood < 0) {
+			value = IGNORE_BAD;
+		} else {
+			value = IGNORE_AVERAGE;
+		}
+
+		if (obj->ego)
+			value = IGNORE_ALL;
+		else if (obj->artifact)
+			value = IGNORE_MAX;
+	} else {
+		if (object_is_known(obj) && !obj->artifact)
+			value = IGNORE_ALL;
+		else
+			value = IGNORE_MAX;
+	}
+
+	return value;
+}
+
+/**
+ * Remove any ignoring of a particular flavor
+ */
+void kind_ignore_clear(struct object_kind *kind)
+{
+	kind->ignore = 0;
+	player->upkeep->notice |= PN_IGNORE;
+}
+
+void ego_ignore(struct object *obj)
+{
+	assert(obj->ego);
+	ego_ignore_types[obj->ego->eidx][ignore_type_of(obj)] = true;
+	player->upkeep->notice |= PN_IGNORE;
+}
+
+void ego_ignore_clear(struct object *obj)
+{
+	assert(obj->ego);
+	ego_ignore_types[obj->ego->eidx][ignore_type_of(obj)] = false;
+	player->upkeep->notice |= PN_IGNORE;
+}
+
+void ego_ignore_toggle(int e_idx, int itype)
+{
+	ego_ignore_types[e_idx][itype] = !ego_ignore_types[e_idx][itype];
+	player->upkeep->notice |= PN_IGNORE;
+}
+
+bool ego_is_ignored(int e_idx, int itype)
+{
+	return ego_ignore_types[e_idx][itype];
+}
+
+bool kind_is_ignored_aware(const struct object_kind *kind)
+{
+	return (kind->ignore & IGNORE_IF_AWARE) ? true : false;
+}
+
+bool kind_is_ignored_unaware(const struct object_kind *kind)
+{
+	return (kind->ignore & IGNORE_IF_UNAWARE) ? true : false;
+}
+
+void kind_ignore_when_aware(struct object_kind *kind)
+{
+	kind->ignore |= IGNORE_IF_AWARE;
+	player->upkeep->notice |= PN_IGNORE;
+}
+
+void kind_ignore_when_unaware(struct object_kind *kind)
+{
+	kind->ignore |= IGNORE_IF_UNAWARE;
+	player->upkeep->notice |= PN_IGNORE;
+}
+
+
+/**
+ * Determines if an object is already ignored.
+ */
+bool object_is_ignored(const struct object *obj)
+{
+	uint8_t type;
+
+	/* Objects that aren't yet known can't be ignored */
+	if (!object_is_known(obj) && !(obj->notice & OBJ_NOTICE_SENSE))
+		return false;
+
+	/* Do ignore individual objects that marked ignore */
+	if (obj->notice & OBJ_NOTICE_IGNORE)
+		return true;
+
+	/* Don't ignore artifacts unless marked to be ignored */
+	if (obj->artifact ||
+		check_for_inscrip(obj, "!k") || check_for_inscrip(obj, "!*"))
+		return false;
+
+	/* Do ignoring by kind */
+	if (object_flavor_is_aware(obj) ?
+		 kind_is_ignored_aware(obj->kind) :
+		 kind_is_ignored_unaware(obj->kind))
+		return true;
+
+	type = ignore_type_of(obj);
+	if (type == ITYPE_MAX)
+		return false;
+
+	/* Ignore ego items if known */
+	if (obj->ego && object_is_known(obj) && ego_is_ignored(obj->ego->eidx,type))
+		return true;
+
+	/* Ignore items known not to be artifacts */
+	if (object_is_known(obj) && !obj->artifact &&
+		ignore_level[type] == IGNORE_ALL)
+		return true;
+
+	/* Get result based on the feeling and the ignore_level */
+	if (ignore_level_of(obj) <= ignore_level[type])
+		return true;
+	else
+		return false;
+}
+
+/**
+ * Determines if an object is eligible for ignoring.
+ */
+bool ignore_item_ok(const struct player *p, const struct object *obj)
+{
+	if (p->unignoring)
+		return false;
+
+	return object_is_ignored(obj);
+}
+
+/**
+ * Determines if the known version of an object is eligible for ignoring.
+ *
+ * This function should only be called on known version of items which have a
+ * (real or imaginary) listed base item in the current level
+ */
+bool ignore_known_item_ok(const struct player *p, const struct object *obj)
+{
+	struct object *base_obj = cave->objects[obj->oidx];
+
+	if (p->unignoring)
+		return false;
+
+	/* Get the real object and check its ignore properties */
+	assert(base_obj);
+	return object_is_ignored(base_obj);
+}
+
+/**
+ * Drop all {ignore}able items.
+ */
+void ignore_drop(struct player *p)
+{
+	struct object *obj;
+
+	/* Scan through the slots backwards */
+	for (obj = gear_last_item(p); obj; obj = obj->prev) {
+		/* Skip non-objects and unignoreable objects */
+		assert(obj->kind);
+		if (!ignore_item_ok(p, obj)) continue;
+
+		/* Check for !d (no drop) inscription */
+		if (!check_for_inscrip(obj, "!d") && !check_for_inscrip(obj, "!*")) {
+			/* Confirm the drop if the item is equipped. */
+			if (object_is_equipped(p->body, obj)) {
+				if (!verify_object("Really take off and drop", obj, p)) {
+					/* Hack - inscribe the item with !d to prevent repeated
+					 * confirmations. */
+					const char *inscription = quark_str(obj->note);
+
+					if (inscription == NULL) {
+						obj->note = quark_add("!d");
+					} else {
+						char buffer[1024];
+						my_strcpy(buffer, inscription, sizeof(buffer));
+						my_strcat(buffer, "!d", sizeof(buffer));
+						obj->note = quark_add(buffer);
+					}
+
+					continue;
+				}
+			}
+
+			/* We're allowed to drop it. */
+			p->upkeep->dropping = true;
+			cmdq_push(CMD_DROP);
+			cmd_set_arg_item(cmdq_peek(), "item", obj);
+			cmd_set_arg_number(cmdq_peek(), "quantity", obj->number);
+		}
+	}
+
+	/* Update the gear */
+	p->upkeep->update |= (PU_INVEN);
+
+	/* Combine/reorder the pack */
+	p->upkeep->notice |= (PN_COMBINE);
+}
+
+/**
+ * Return the name of an ignore type.
+ */
+const char *ignore_name_for_type(ignore_type_t type)
+{
+	size_t i;
+
+	for (i = ITYPE_NONE + 1; i < ITYPE_MAX; i++) {
+		if (quality_choices[i].enum_val == type)
+			return quality_choices[i].name;
+	}
+
+	return "unknown";
+}
+
+struct init_module ignore_module = {
+	.name = "ignore",
+	.init = init_ignore,
+	.cleanup = cleanup_ignore
+};

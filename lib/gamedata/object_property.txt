@@ -1,0 +1,549 @@
+# File: object_property.txt
+
+# name: the property name
+# type: the type of object property.  Each property needs one, and it must 
+#       appear before the code in this file 
+# subtype: subtype of object property, currently only used by flags
+# id-type: how a property is identified, currently only used by flags
+# code: a code for the object property, which is used to associate it with its
+#       index among the other properties of that type
+# adjective: adjective describing the property as a player attribute, currently
+#            only used by stats
+# neg-adjective: adjective describing the opposite of the property as a player
+#                attribute, currently only used by stats
+# msg: message printed on noticing a property, currently used for flags which
+#      are identified after time or on an effect
+# bindui: Binds the property to a user interface element in ui_entry.txt.
+#         Takes two additional integer parameters.  The first, if nonzero,
+#         specifies that the value bound be passed as an auxiliary value (a
+#         sustain for a stat, for instance).  The second is optional and is
+#         the value to pass when the object has the property (either on as a
+#         flag or a nonzero value for a modifier or resistance).  When not set,
+#         the value (0 for off flag, 1 for on flag, value for modifier,
+#         resistance level for a resistance) is sent.  bindui is currently only
+#         used for parts of the second character screen and the equippable
+#         comparison.  This field can appear multiple times to bind a property
+#         to more than one user interface element.
+# desc: an extra piece of descriptive text used in object information
+
+name:strength
+type:stat
+code:STR
+smith-cat:stat
+smith-difficulty:12
+smith-cost:STR:1
+adjective:strong
+neg-adjective:weak
+
+name:dexterity
+type:stat
+code:DEX
+smith-cat:stat
+smith-difficulty:12
+smith-cost:DEX:1
+adjective:dextrous
+neg-adjective:awkward
+
+name:constitution
+type:stat
+code:CON
+smith-cat:stat
+smith-difficulty:12
+smith-cost:CON:1
+adjective:healthy
+neg-adjective:sickly
+
+name:grace
+type:stat
+code:GRA
+smith-cat:stat
+smith-difficulty:12
+smith-cost:GRA:1
+adjective:attuned
+neg-adjective:drained
+
+name:melee
+type:skill
+code:MELEE
+smith-cat:skill
+smith-difficulty:4
+smith-cost:EXP:100
+
+name:archery
+type:skill
+code:ARCHERY
+smith-cat:skill
+smith-difficulty:4
+smith-cost:EXP:100
+
+name:evasion
+type:skill
+code:EVASION
+
+name:stealth
+type:skill
+code:STEALTH
+smith-cat:skill
+smith-difficulty:4
+smith-cost:EXP:100
+
+name:perception
+type:skill
+code:PERCEPTION
+smith-cat:skill
+smith-difficulty:4
+smith-cost:EXP:100
+
+name:will
+type:skill
+code:WILL
+smith-cat:skill
+smith-difficulty:4
+smith-cost:EXP:100
+
+name:smithing
+type:skill
+code:SMITHING
+smith-cat:skill
+smith-difficulty:4
+smith-cost:EXP:100
+
+name:song
+type:skill
+code:SONG
+smith-cat:skill
+smith-difficulty:4
+smith-cost:EXP:100
+
+name:damage sides
+type:mod
+code:DAMAGE_SIDES
+smith-cat:misc
+smith-difficulty:15
+smith-cost:STR:1
+
+name:tunneling
+type:mod
+code:TUNNEL
+smith-cat:melee
+smith-difficulty:10
+smith-cost:STR:1
+
+name:light
+type:flag
+code:LIGHT
+smith-cat:misc
+smith-difficulty:8
+smith-cost:GRA:1
+
+name:sustain strength
+type:flag
+subtype:sustain
+id-type:on effect
+code:SUST_STR
+smith-cat:sustain
+smith-difficulty:3
+smith-cost:STR:1
+msg:Your {name} glows.
+
+name:sustain dexterity
+type:flag
+subtype:sustain
+id-type:on effect
+code:SUST_DEX
+smith-cat:sustain
+smith-difficulty:3
+smith-cost:DEX:1
+msg:Your {name} glows.
+
+name:sustain constitution
+type:flag
+subtype:sustain
+id-type:on effect
+code:SUST_CON
+smith-cat:sustain
+smith-difficulty:3
+smith-cost:CON:1
+msg:Your {name} glows.
+
+name:sustain grace
+type:flag
+subtype:sustain
+id-type:on effect
+code:SUST_GRA
+smith-cat:sustain
+smith-difficulty:3
+smith-cost:GRA:1
+msg:Your {name} glows.
+
+name:protection from fear
+type:flag
+code:PROT_FEAR
+subtype:protection
+id-type:on effect
+smith-cat:resist
+smith-difficulty:3
+msg:Your {name} fills you with courage.
+desc:fear
+
+name:protection from blindness
+type:flag
+code:PROT_BLIND
+subtype:protection
+id-type:on effect
+smith-cat:resist
+smith-difficulty:6
+msg:Your {name} protects your sight.
+desc:blindness
+
+name:protection from confusion
+type:flag
+code:PROT_CONF
+subtype:protection
+id-type:on effect
+smith-cat:resist
+smith-difficulty:6
+msg:Your {name} fills you with calm.
+desc:confusion
+
+name:protection from stunning
+type:flag
+code:PROT_STUN
+subtype:protection
+id-type:on effect
+smith-cat:resist
+smith-difficulty:3
+msg:Your {name} fills you with calm.
+desc:stunning
+
+name:protection from hallucination
+type:flag
+code:PROT_HALLU
+subtype:protection
+id-type:on effect
+smith-cat:resist
+smith-difficulty:3
+msg:Your {name} protects your sight.
+desc:hallucination
+
+name:sustenance
+type:flag
+subtype:misc ability
+id-type:timed
+code:SLOW_DIGEST
+smith-cat:misc
+smith-difficulty:4
+msg:You realise your {name} is slowing your metabolism.
+desc:Reduces your need for food
+
+name:regeneration
+type:flag
+subtype:misc ability
+id-type:timed
+code:REGEN
+smith-cat:misc
+smith-difficulty:8
+smith-cost:CON:1
+msg:You note that your {name} is speeding up your recovery.
+desc:Speeds your regeneration (which also increases your hunger)
+
+name:see invisible
+type:flag
+subtype:misc ability
+id-type:on wield
+code:SEE_INVIS
+smith-cat:misc
+smith-difficulty:8
+desc:Grants the ability to see invisible things
+
+name:free action
+type:flag
+subtype:misc ability
+id-type:on effect
+code:FREE_ACT
+smith-cat:misc
+smith-difficulty:8
+msg:Your {name} glows softly.
+desc:Grants you freedom of movement
+
+name:speed
+type:flag
+subtype:misc ability
+id-type:on effect
+code:SPEED
+smith-cat:misc
+smith-difficulty:30
+smith-cost:CON:5
+msg:Your {name} quickens your steps.
+desc:Grants you great speed
+
+name:radiance
+type:flag
+subtype:misc ability
+id-type:on effect
+code:RADIANCE
+smith-cat:misc
+smith-difficulty:8
+smith-cost:GRA:1
+msg:Your {name} glows.
+desc:Creates a path of light
+
+name:sharpness
+type:flag
+subtype:melee
+id-type:on effect
+code:SHARPNESS
+smith-cat:melee
+smith-difficulty:20
+smith-cost:STR:2
+desc:Sharp
+slay-msg:cuts deeply
+
+name:extreme sharpness
+type:flag
+subtype:melee
+id-type:on effect
+code:SHARPNESS2
+desc:Very sharp
+slay-msg:cuts effortlessly
+
+name:vampiric
+type:flag
+subtype:melee
+id-type:on wield
+code:VAMPIRIC
+smith-cat:melee
+smith-difficulty:10
+smith-cost:STR:2
+desc:Vampiric
+slay-msg:drains life from {name}
+
+name:burns out
+type:flag
+subtype:light
+id-type:on wield
+code:BURNS_OUT
+
+name:takes fuel
+type:flag
+subtype:light
+id-type:on wield
+code:TAKES_FUEL
+
+name:no fuel
+type:flag
+subtype:light
+id-type:on wield
+code:NO_FUEL
+
+name:danger
+type:flag
+subtype:bad
+id-type:timed
+code:DANGER
+smith-cat:curse
+smith-difficulty:-5
+desc:Makes you encounter more dangerous creatures (even when not worn)
+
+name:darkness
+type:flag
+subtype:bad
+id-type:on wield
+code:DARKNESS
+smith-cat:curse
+smith-difficulty:-5
+desc:Creates an unnatural darkness
+
+name:cowardice
+type:flag
+subtype:bad
+id-type:on wield
+code:COWARDICE
+smith-cat:curse
+smith-difficulty:0
+desc:Causes you to panic in combat
+
+name:hunger
+type:flag
+subtype:bad
+id-type:on wield
+code:HUNGER
+smith-cat:curse
+smith-difficulty:0
+desc:Increases your hunger
+
+name:wrath
+type:flag
+subtype:bad
+id-type:timed
+code:AGGRAVATE
+smith-cat:curse
+smith-difficulty:0
+msg:You notice your {name} aggravating things around you.
+desc:Enrages nearby creatures
+
+name:haunted
+type:flag
+subtype:bad
+id-type:timed
+code:HAUNTED
+smith-cat:curse
+smith-difficulty:0
+msg:You sense your {name} is draining your life.
+desc:Draws wraiths to your level
+
+name:cursed
+type:flag
+subtype:bad
+id-type:on wield
+code:CURSED
+smith-cat:curse
+smith-difficulty:0
+desc:Is cursed
+
+name:power 1 digging
+type:flag
+subtype:dig
+id-type:on wield
+code:DIG_1
+
+name:power 2 digging
+type:flag
+subtype:dig
+id-type:on wield
+code:DIG_2
+
+name:throwing
+type:flag
+subtype:throw
+id-type:on wield
+code:THROWING
+
+name:ignore acid
+type:ignore
+code:ACID
+
+name:ignore fire
+type:ignore
+code:FIRE
+
+name:ignore cold
+type:ignore
+code:COLD
+
+name:fire resistance
+type:resistance
+code:FIRE
+msg:Your {name} partly protects you from the flame.
+smith-cat:resist
+smith-difficulty:8
+smith-cost:CON:1
+
+name:cold resistance
+type:resistance
+code:COLD
+msg:Your {name} partly protects you from the chill.
+smith-cat:resist
+smith-difficulty:8
+smith-cost:CON:1
+
+name:poison resistance
+type:resistance
+code:POIS
+msg:Your {name} partly protects you from the poison.
+smith-cat:resist
+smith-difficulty:8
+smith-cost:CON:1
+
+name:dark resistance
+type:resistance
+code:DARK
+
+name:poison vulnerability
+type:vulnerability
+code:POIS
+msg:Your {name} intensifies the poison.
+smith-cat:curse
+smith-difficulty:0
+
+name:fire vulnerability
+type:vulnerability
+code:FIRE
+msg:Your {name} intensifies the flame.
+smith-cat:curse
+smith-difficulty:0
+
+name:cold vulnerability
+type:vulnerability
+code:COLD
+msg:Your {name} intensifies the chill.
+smith-cat:curse
+smith-difficulty:0
+
+name:slay orc
+type:slay
+code:ORC_1
+smith-cat:slay
+smith-difficulty:5
+
+name:slay troll
+type:slay
+code:TROLL_1
+smith-cat:slay
+smith-difficulty:5
+
+name:slay wolf
+type:slay
+code:WOLF_1
+smith-cat:slay
+smith-difficulty:6
+
+name:slay spider
+type:slay
+code:SPIDER_1
+smith-cat:slay
+smith-difficulty:6
+
+name:slay undead
+type:slay
+code:UNDEAD_1
+smith-cat:slay
+smith-difficulty:6
+
+name:slay rauko
+type:slay
+code:RAUKO_1
+smith-cat:slay
+smith-difficulty:7
+
+name:slay dragon
+type:slay
+code:DRAGON_1
+smith-cat:slay
+smith-difficulty:7
+
+name:elec brand
+type:brand
+code:ELEC_1
+
+name:cold brand
+type:brand
+code:COLD_1
+smith-cat:slay
+smith-difficulty:24
+smith-cost:STR:2
+
+name:fire brand
+type:brand
+code:FIRE_1
+smith-cat:slay
+smith-difficulty:20
+smith-cost:STR:2
+
+name:poison brand
+type:brand
+code:POIS_1
+smith-cat:slay
+smith-difficulty:16
+smith-cost:STR:2
+

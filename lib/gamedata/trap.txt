@@ -1,0 +1,271 @@
+# File: trap.txt
+
+# This file contains rune and trap definitions
+
+### Understanding trap.txt ###
+
+# name: name: short description
+# graphics: ASCII char used to represent the feature: color symbol
+# rarity: rarity
+# min-depth: minimum depth
+# max-depth: maximum depth
+# desc: description
+# stealth: change to player's stealth score when hit
+
+# flags: trap flags
+#    These include:
+#    - DOWN: after running effects, drops the player down a dungeon level
+#    - ONEITME: after running effects, trap disappears
+#    - VISIBLE: trap will not be hidden when generated
+#    - FLOOR: * can be set on the floor
+#    - TRAP: * is a trap
+#
+#    Flags marked '*' must be set for a trap to be generated as part of
+#    normal dungeon generation.
+#
+#    See list-trap-flags.h for a full list.
+
+# msg: activation message
+#    This is shown to the user when the trap is triggered.
+# msg-vis: activation message, only when the player is not blind
+#    This is shown to the user when the trap is triggered.
+# msg-silence: activation message when the player is singing Song of Silence
+#    This is shown to the user when the trap is triggered.
+
+# msg-good: save message
+# msg-bad: fail to save message
+#    Traps can be saved against by passing a skill check of player perception
+#    against 10.
+#
+#    If the trap is avoided, the 'msg-good' line is printed instead.  If it
+#    isn't, 'msg-bad' is printed.
+
+# effect: trap effect : ? subtype : ? radius : ? extra parameter
+# dice: dice string for effect
+# expr: dice expression for effect
+#    If there is no saving throw, or it fails, then these effects are
+#    triggered.
+
+# msg-xtra: extra effect message
+# effect-xtra: extra effect : ? subtype : ? radius : ? extra parameter
+# dice-xtra: dice string for extra effect
+# expr-xtra: dice expression for extra effect
+#    These effects are triggered if the last of the previous effects completes
+#    successfully.  'msg-xtra' may be present with no 'effect-xtra'.
+
+name:no trap:no trap
+graphics: :w
+
+name:glyph of warding:glyph of warding
+graphics:;:y
+rarity:0
+power:0
+flags:GLYPH | VISIBLE | FLOOR
+desc:A magical rune which monsters cannot pass without difficulty.
+
+name:forge use:forge use
+graphics:0:s
+rarity:0
+flags:FORGE_USE | INVISIBLE
+desc:The usability power of a forge.
+
+name:door lock:door lock
+graphics: :w
+rarity:0
+flags:LOCK | INVISIBLE
+desc:A device which makes a closed door harder to open.
+
+name:door jam:door jam
+graphics: :w
+rarity:0
+flags:JAM | INVISIBLE
+desc:An obstruction which makes a closed door harder to open.
+
+## Player traps ###
+
+# false floor
+
+name:false floor:false floor
+graphics:^:w
+rarity:2
+min-depth:5
+max-depth:18
+power:6
+flags:TRAP | FLOOR | DOWN
+effect:DAMAGE
+dice:3d4
+desc:It looks like floor, but step incautiously and you will fall through.
+msg:The floor crumbles beneath you!
+msg2:You fall through...
+msg3:...and land somewhere deeper in the Iron Hells.
+
+# open pit
+
+name:pit:pit
+graphics:^:s
+rarity:1
+min-depth:5
+max-depth:10
+power:-1
+flags:TRAP | FLOOR | PIT
+effect:PIT:NORMAL
+desc:A hole dug to snare the unwary.
+
+# spiked pit
+
+name:pit:spiked pit
+graphics:^:s
+rarity:1
+min-depth:11
+max-depth:17
+power:-1
+flags:TRAP | FLOOR | PIT | SURFACE
+effect:PIT:SPIKED
+desc:A hole dug to snare the unwary, with spikes.
+
+# dart
+
+name:dart trap:dart
+graphics:^:r
+rarity:1
+min-depth:8
+max-depth:15
+power:3
+flags:TRAP | FLOOR
+effect:DART:STR:15:1
+dice:1d15
+effect:NOISE:PLAYER
+dice:5
+desc:A trap which shoots darts.
+
+# gas -- confuse
+
+name:gas trap:confusion gas trap
+graphics:^:g
+rarity:1
+min-depth:1
+max-depth:13
+power:5
+flags:TRAP | FLOOR
+effect:TIMED_INC:CONFUSED
+dice:4d4
+effect:SPHERE:CONFUSION:1
+dice:3d4m10
+effect:NOISE:PLAYER
+dice:10
+desc:A trap that releases gas to confuse you.
+msg:A vapor fills the air and you feel yourself becoming lightheaded.
+
+# alarm
+
+name:alarm:bell
+graphics:^:R
+rarity:1
+min-depth:0
+max-depth:20
+power:2
+flags:TRAP | FLOOR
+effect:NOISE:PLAYER
+dice:-20
+desc:A trap that wakes nearby monsters.
+msg:You hear a bell toll loudly above your head.
+msg-silence:You hear the muffled toll of a bell above your head.
+
+# flash
+
+name:flash trap:flash
+graphics:^:M
+rarity:1
+min-depth:1
+max-depth:20
+power:4
+flags:TRAP | FLOOR
+effect:TIMED_INC:BLIND
+dice:5d4
+effect:NOISE:PLAYER
+dice:5
+desc:A trap that can blind you.
+msg-vis:There is a searing flash of light!
+
+# caltrop
+
+name:caltrop trap:caltrops
+graphics:^:r
+rarity:1
+min-depth:0
+max-depth:20
+power:1
+flags:TRAP | FLOOR | SAVE_SKILL
+effect:DAMAGE
+dice:1d4
+effect:TIMED_INC_CHECK:SLOW
+effect-xtra:TIMED_INC_NO_RES:SLOW
+dice-xtra:4d4
+stealth:-10
+desc:A field of caltrops.
+msg-good:You step carefully amidst a field of caltrops.
+msg-bad:You step on a caltrop.
+msg-xtra:It pierces your foot.
+
+### 14
+
+# rune -- summon (OoD) monster
+
+name:monster nest:roost
+graphics:^:B
+rarity:1
+min-depth:3
+max-depth:6
+power:-1
+flags:TRAP | FLOOR | ONETIME | SURFACE
+effect:SUMMON:BIRD_BAT
+dice:2
+desc:A resting place for flying creatures.
+msg-xtra:There is a flutter of wings from high above.
+
+# rune -- summon monsters
+
+name:monster nest:web
+graphics:^:B
+rarity:1
+min-depth:8
+max-depth:20
+power:-1
+flags:TRAP | FLOOR
+effect:SUMMON:SPIDER
+dice:1
+desc:A web containing a spider.
+msg:You are caught in a vast black web.
+msg-xtra:A spider descends from the gloom.
+
+# dungeon alter -- rock fall
+
+name:ancient mechanism:deadfall trap
+graphics:^:U
+rarity:1
+min-depth:14
+max-depth:20
+power:7
+flags:TRAP | FLOOR | ONETIME | SURFACE
+effect:DEADFALL
+effect:NOISE:PLAYER
+dice:-20
+desc:A trap that drops a boulder on you.
+msg:The ceiling collapses!
+
+# spot -- acid
+
+name:discolored spot:acid trap
+graphics:^:u
+rarity:1
+min-depth:1
+max-depth:0
+power:5
+flags:TRAP | FLOOR
+effect:SPOT:ACID:0
+dice:4d4
+effect:NOISE:PLAYER
+dice:10
+desc:A strange coloured spot on the ground - beware its acidic attack.
+msg:You are splashed with acid!
+

@@ -1,0 +1,265 @@
+# File: terrain.txt
+#
+# This file is used to create the "terrain feature" information for Sil.
+#
+# Do not modify this file unless you know exactly what you are doing,
+# unless you wish to risk possible system crashes and broken savefiles.
+#
+# Note that, unlike other edit files, modifying this file casually is likely
+# to be a BAD IDEA (unless you intend to make actual programming changes)
+# for two reasons:
+
+#   1. Terrain features do not appear unless there is specific code in the
+#   level generation algorithms to include them, so adding new terrain
+#   features to this file will by itself have no effect.
+
+#   2. The game uses the names of the standard terrain features
+#   ("granite wall", etc) in terrain placement.  Changing the name of a terrain
+#   feature can thus stop the game from running; changing its properties will
+#   change game behaviour; and any changes during the playing of an individual
+#   game are likely to mess it up.
+
+#
+# === Understanding terrain.txt ===
+#
+# name : terrain name
+# graphics : symbol : color
+# mimic : feature to mimic
+# priority : display priority on mini-map
+# flags : terrain flags
+#
+# 'name' indicates the beginning of an entry. The serial number must
+#     increase for each new item.
+#
+# 'graphics' is for graphics - symbol and color. There are 27 colors:
+#
+# D - Dark Gray    w - White          s - Gray          o - Orange
+# r - Red          g - Green          b - Blue          u - Umber
+# W - Light Gray   P - Light Purple   y - Yellow        R - Light Red
+# G - Light Green  B - Light Blue     U - Light Umber   p - Purple
+# v - Violet       t - Teal           m - Mud           Y - Light Yellow
+# i - Magenta-Pink T - Light Teal     V - Light Violet  I - Light Pink
+# M - Mustard      z - Blue Slate     Z - Deep Light Blue
+#
+# 'mimic' is the index of a feature to mimic.
+#
+#
+# === Important notes ===
+#
+# Note that terrain feature zero contains the "darkness" picture.
+
+
+
+# 0x00 --> <darkness>
+
+name:unknown grid
+graphics: :w
+priority:2
+
+
+# 0x01 --> open floor
+
+name:open floor
+graphics:.:W
+priority:5
+flags:LOS | PROJECT | PASSABLE | FLOOR | OBJECT | EASY | TRAP | TORCH
+desc:An open floor or bare ground.  Can be walked across by anything, and can
+desc: hold traps or items.  Does not break line of sight.
+
+# # 0x20 --> locked door (power 0) -- aka a normal door
+
+name:closed door
+graphics:+:U
+priority:17
+flags:DOOR_ANY | DOOR_CLOSED | INTERESTING
+confused-msg:bangs into a door
+desc:Doors may be locked; getting through them may not be easy.  Your
+desc: disarming skill makes all the difference to your ability to handle locks,
+desc: but you can also take a pickaxe to them, or blast them open
+desc: with magic.  Monsters are also slowed down by doors; you can earn yourself
+desc: valuable time by locking them.
+
+# 0x04 --> open door
+
+name:open door
+graphics:':U
+priority:15
+flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | CLOSABLE | EASY
+look-in-preposition:in
+desc:A door that is already open.  Player, monster, spell and missile can pass
+desc: through as long as it stays open.
+
+# 0x05 --> broken door
+
+name:broken door
+graphics:.:U
+priority:15
+flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
+look-in-preposition:in
+desc:A door so broken that it cannot be shut.
+
+# 0x50 --> up stairs (perm)
+
+name:up staircase
+graphics:<:W
+priority:25
+flags:LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | STAIR | UPSTAIR
+flags:EASY | TORCH
+desc:A staircase up to a shallower part of the dungeon.
+
+# 0x51 --> down stairs (perm)
+
+name:down staircase
+graphics:>:W
+priority:25
+flags:LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | STAIR | DOWNSTAIR
+flags:EASY | TORCH
+desc:A staircase down to a deeper part of the dungeon.
+
+# 0x52 --> up shaft (perm)
+
+name:up shaft
+graphics:<:D
+priority:25
+flags:LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | SHAFT | UPSTAIR
+flags:EASY | TORCH
+desc:A shaft up to a shallower part of the dungeon.
+
+# 0x53 --> down shaft (perm)
+
+name:down shaft
+graphics:>:D
+priority:25
+flags:LOS | PROJECT | PASSABLE | PERMANENT | INTERESTING | SHAFT | DOWNSTAIR
+flags:EASY | TORCH
+desc:A shaft down to a deeper part of the dungeon.
+
+# 0x02 --> unused
+
+name:chasm
+graphics:%:D
+priority:20
+flags:LOS | PROJECT | PASSABLE | CHASM | INTERESTING
+desc:Empty space - only flying creatures can pass across without falling.  All 
+desc:spells and missiles can pass through.
+walk-msg:It's a cliff! Really step off it?
+run-msg:You have come to a cliff.  Step off it?
+hurt-msg:You fall into darkness!
+die-msg:falling off a precipice
+
+# 0x30 --> secret door
+
+name:secret door
+graphics:#:z
+mimic:granite wall
+priority:10
+info:0:3:0
+flags:ROCK | DOOR_ANY | DOOR_CLOSED | GRANITE | TORCH
+confused-msg:bashes into a wall
+dig-msg:You uncover a secret door.
+fail-msg:You are unable to break the granite with your {name}.
+str-msg:You are not strong enough to break the granite.
+desc:A door that appears like a granite wall to untrained eyes.
+
+# 0x31 --> pile of rubble
+
+name:pile of rubble
+graphics:::s
+priority:13
+flags:ROCK | NO_SCENT | NO_FLOW | INTERESTING | TORCH
+info:0:1:0
+confused-msg:bumps into some rocks
+dig-msg:You clear the rubble.
+fail-msg:You are unable to shift the rubble with your {name}.
+str-msg:You are not strong enough to shift the rubble.
+desc:Ends LOS, stops missiles, bolts, and beams.  May dissolve or be tunnelled
+desc: to normal floor.
+
+# 0x33 --> quartz vein
+
+name:quartz vein
+graphics:%:w
+priority:11
+flags:WALL | ROCK | NO_SCENT | NO_FLOW | QUARTZ | TORCH
+info:0:2:0
+confused-msg:bashes into a wall
+dig-msg:You shatter the quartz.
+fail-msg:You are unable to break the quartz with your {name}.
+str-msg:You are not strong enough to break the quartz.
+desc:A seam of hardish rock.  It can be removed by digging or magic, and passed
+desc: through by immaterial monsters.  It stops any spells, missiles or line of
+desc: sight.
+
+# 0x38 --> granite wall -- basic
+
+name:granite wall
+graphics:#:W
+priority:20
+flags:WALL | ROCK | GRANITE | NO_SCENT | NO_FLOW | TORCH
+info:0:3:0
+confused-msg:bashes into a wall
+dig-msg:You break through the granite.
+fail-msg:You are unable to break the granite with your {name}.
+str-msg:You are not strong enough to break the granite.
+desc:A seam of hard rock.  It can be removed by digging or magic, and passed
+desc: through by immaterial monsters.  It stops any spells, missiles or line of
+desc: sight.
+
+# 0x3F --> granite wall -- permanent
+
+name:permanent wall
+graphics:#:M
+mimic:granite wall
+priority:20
+flags:WALL | ROCK | GRANITE | PERMANENT | NO_SCENT | NO_FLOW | TORCH
+confused-msg:bashes into a wall
+desc:You can dig through most walls but these are impenetrable.  The dungeon is
+desc: surrounded by these kinds of walls and some special rooms are made of them.
+
+# 0x40 --> forge -- 0 uses
+
+name:forge
+graphics:0:s
+priority:20
+info:0:0:0
+flags:LOS | PROJECT | PASSABLE | FORGE | EASY | TORCH | INTERESTING
+desc:A forge for smithing objects.
+
+# 0x46 --> good forge -- 0 uses
+
+name:enchanted forge
+graphics:0:Y
+priority:20
+info:3:0:0
+flags:LOS | PROJECT | PASSABLE | FORGE | EASY | TORCH | INTERESTING
+desc:An enchanted forge for smithing objects.
+
+# 0x4C --> unique forge -- 0 uses
+
+name:forge 'Orodruth'
+graphics:0:D
+priority:20
+info:7:0:0
+flags:LOS | PROJECT | PASSABLE | FORGE | EASY | TORCH | INTERESTING
+desc:A uniquely enchanted forge for smithing objects.
+
+# # 0x11 --> visible trap -- open pit
+
+name:pit
+graphics:^:s
+priority:20
+flags:LOS | PROJECT | PASSABLE | PIT | EASY | TORCH | TRAP
+info:0:0:10
+walk-msg:Are you sure you want to step in the pit? 
+run-msg:A pit blocks your path.  Step into it? 
+
+# # 0x12 --> visible trap -- spiked pit
+
+name:spiked pit
+graphics:^:W
+priority:20
+flags:LOS | PROJECT | PASSABLE | PIT | EASY | TORCH | TRAP
+info:0:0:15
+walk-msg:Are you sure you want to step in the spiked pit? 
+run-msg:A spiked pit blocks your path.  Step into it? 
+

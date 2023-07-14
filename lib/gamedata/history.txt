@@ -1,0 +1,364 @@
+# File: history.txt
+#
+# This file is used to create the "player history" information for Sil.
+#
+# Do not modify this file unless you know exactly what you are doing,
+# unless you wish to risk possible system crashes and broken savefiles.
+#
+# === Understanding history.txt ===
+#
+# Pieces of player backstory are chosen from "charts", which are lists of
+# phrases or sentences with similar general meaning.
+
+# 'chart' lines give the number of the current chart, the number of the chart
+# that will be used next (or 0 if the last chart), a cutoff for choosing
+# the current line, and a 'house' field (only used for the Noldor).  If the
+# first field in two chart lines is the same, the second usually should be as
+# well, to maintain consistent choices and end up with something readable.
+
+# 'phrase' lines are the actual chart entries which make up the history.
+
+# Background information (see below)
+#
+# Chart progression by race:
+#
+#  Noldor         -->  1 -->  2 -->  3 --> 50 --> 51 --> 52
+#  Sindar         -->  4 -->  5 --> 54 --> 55 --> 56
+#  Edain          --> 21 --> 22 --> 23 --> 25 --> 26 --> 27 --> 28
+#  Naugrim        --> 16 --> 17 --> 18 --> 57 --> 58 --> 59 --> 60 --> 61
+#
+#
+# * Note that this table *must* be correct or drastic errors may occur!
+#
+# * Note that the "spacing" in the "description" lines is very important!
+
+
+# High-elven history
+
+chart:1:2:30
+phrase:You are one of several children
+chart:1:2:60
+phrase:You are one of two children
+chart:1:2:100
+phrase:You are the only child
+
+chart:2:3:20
+phrase: of an elven hunter
+chart:2:3:40
+phrase: of an elven warrior
+chart:2:3:50
+phrase: of an elven smith
+chart:2:3:65
+phrase: of an elven minstrel
+chart:2:3:100
+phrase: of an elven lord
+
+chart:3:4:100:1
+phrase: from the valley of Rivendell.
+chart:3:4:100:2
+phrase: from the forest of Lothlorien.
+
+
+chart:4:5:85
+phrase: You have light grey eyes and
+chart:4:5:95
+phrase: You have light blue eyes and
+chart:4:5:100
+phrase: You have light green eyes and
+
+chart:5:6:75
+phrase: straight
+chart:5:6:100
+phrase: wavy
+
+chart:6:0:70
+phrase: black hair.
+chart:6:0:80
+phrase: brown hair.
+chart:6:0:88
+phrase: auburn hair.
+chart:6:0:95
+phrase: golden hair.
+chart:6:0:100
+phrase: silver hair.
+
+
+
+# Grey-elven history
+
+chart:11:12:30
+phrase:You are one of several children
+chart:11:12:60
+phrase:You are one of two children
+chart:11:12:100
+phrase:You are the only child
+
+chart:12:13:60
+phrase: of an elven
+chart:12:14:70
+phrase: of an elven warrior.
+chart:12:14:75
+phrase: of an elven smith.
+chart:12:14:85
+phrase: of an elven minstrel.
+chart:12:14:100
+phrase: of an elven prince.
+
+chart:13:14:90
+phrase: hunter.
+chart:13:14:100
+phrase: guard.
+chart:13:14:90
+phrase: sailor.
+chart:13:14:100
+phrase: shipwright.
+
+
+chart:14:15:85
+phrase: You have light grey eyes and
+chart:14:15:95
+phrase: You have light blue eyes and
+chart:14:15:100
+phrase: You have light green eyes and
+
+chart:15:16:75
+phrase: straight
+chart:15:16:100
+phrase: wavy
+
+chart:16:0:70
+phrase: black hair.
+chart:16:0:80
+phrase: brown hair.
+chart:16:0:88
+phrase: auburn hair.
+chart:16:0:95
+phrase: golden hair.
+chart:16:0:100
+phrase: silver hair.
+
+
+
+# Dwarven History
+
+chart:21:22:25
+phrase:You are one of two children of a Dwarven
+chart:21:22:100
+phrase:You are the only child of a Dwarven
+
+chart:22:23:10
+phrase: Outcast.
+chart:22:23:30
+phrase: Craftsman.
+chart:22:23:35
+phrase: Miner.
+chart:22:23:60
+phrase: Warrior.
+chart:22:23:70
+phrase: Smith.
+chart:22:23:100
+phrase: Lord.
+
+chart:23:24:10
+phrase: Your house has fallen into disrepute.
+chart:23:24:85
+phrase: Your lineage is ancient and well-documented.
+chart:23:24:100
+phrase: Your forbears were mighty and honored.
+
+
+chart:24:25:100
+phrase: You have dark brown eyes,
+
+chart:25:26:90
+phrase: straight
+chart:25:26:100
+phrase: wavy
+
+chart:26:27:75
+phrase: black hair,
+chart:26:27:100
+phrase: brown hair,
+
+chart:27:28:40
+phrase: a one foot beard,
+chart:27:28:80
+phrase: a two foot beard,
+chart:27:28:98
+phrase: a three foot beard,
+chart:27:28:100
+phrase: a four foot beard,
+
+chart:28:0:70
+phrase: and a dark complexion.
+chart:28:0:100
+phrase: and a ruddy complexion.
+
+# Hobbit History
+
+chart:31:32:20
+phrase:You are one of many children
+chart:31:32:70
+phrase:You are one of several children
+chart:31:32:90
+phrase:You are the eldest child
+chart:31:32:100
+phrase:You are the only child
+
+# surely there could be more here. Some vague word for a hobbit
+# patriarch, like Old Took but not took-specific?
+
+chart:32:33:25
+phrase: of a hobbit farmer
+chart:32:33:30
+phrase: of a hobbit blacksmith
+chart:32:33:50
+phrase: of a hobbit craftsman
+chart:32:33:55
+phrase: of a hobbit gardener
+chart:32:33:60
+phrase: of a hobbit architect
+chart:32:33:65
+phrase: of a hobbit mailman
+chart:32:33:85
+phrase: of a disreputable hobbit
+chart:32:33:93
+phrase: of a Shirriff
+chart:32:33:98
+phrase: of a hobbit innkeeper
+chart:32:33:100
+phrase: of a hobbit Mayor
+
+# This could be made cooler and/or house-specific
+chart:33:34:20
+phrase: from the Northfarthing.
+chart:33:34:40
+phrase: from the Southfarthing.
+chart:33:34:60
+phrase: from the Eastfarthing.
+chart:33:34:80
+phrase: from the Westfarthing.
+chart:33:34:100
+phrase: from Bree.
+
+
+chart:34:35:60
+phrase: You have left your people, never to return.
+chart:34:35:75
+phrase: You have left your people, but hope to return one day.
+chart:34:35:90
+phrase: You are shunned by society, but admired by young hobbits.
+chart:34:35:100
+phrase: You maintain that you love a cozy life and detest adventure.
+
+chart:35:36:20
+phrase: You have dark brown eyes and
+chart:35:36:60
+phrase: You have brown eyes and
+chart:35:36:70
+phrase: You have hazel eyes and
+chart:35:36:80
+phrase: You have green eyes and
+chart:35:36:90
+phrase: You have blue eyes and
+chart:35:36:100
+phrase: You have blue-gray eyes and
+
+chart:36:37:70
+phrase: straight
+chart:36:37:85
+phrase: wavy
+chart:36:37:100
+phrase: curly
+
+chart:37:0:20:8
+phrase: dark brown hair.
+chart:37:0:40:8
+phrase: light brown hair.
+chart:37:0:100:8
+phrase: brown hair.
+chart:37:0:70:9
+phrase: brown hair.
+chart:37:0:100:9
+phrase: black hair.
+chart:37:0:70:10
+phrase: brown hair.
+chart:37:0:90:10
+phrase: golden hair.
+chart:37:0:100:10
+phrase: black hair.
+
+# Man History
+
+chart:41:42:5
+phrase:You are the illegitimate and unacknowledged child
+chart:41:42:7
+phrase:You are the illegitimate but acknowledged child
+chart:41:42:70
+phrase:You are one of several children
+chart:41:42:90
+phrase:You are the first child
+chart:41:42:100
+phrase:You are the only child
+
+
+chart:42:43:30:0
+phrase: of a farmer of
+chart:42:43:60:0
+phrase: of a craftsman of
+chart:42:43:80:0
+phrase: of a archer of
+chart:42:43:99:0
+phrase: of a warrior of
+chart:42:43:100:0
+phrase: of a prince of
+
+chart:43:44:100:11
+phrase: Rohan.
+chart:43:44:100:12
+phrase: Gondor.
+chart:43:44:100:13
+phrase: the Dunedain.
+
+# There's some stupid nonsense going on with space placement here so that I can put a 70% chance for nothing
+
+chart:44:45:25
+phrase: You are well-known and honored by your people. 
+chart:44:45:30
+phrase: You are derided and disliked by your people. 
+chart:44:45:100
+phrase: 
+
+
+chart:45:46:20
+phrase:You have dark brown eyes and
+chart:45:46:60
+phrase:You have brown eyes and
+chart:45:46:70
+phrase:You have hazel eyes and
+chart:45:46:80
+phrase:You have green eyes and
+chart:45:46:90
+phrase:You have blue eyes and
+chart:45:46:100
+phrase:You have blue-gray eyes and
+
+chart:46:47:70
+phrase: straight
+chart:46:47:90
+phrase: wavy
+chart:46:47:100
+phrase: curly
+
+chart:47:0:30
+phrase: black hair.
+chart:47:0:70
+phrase: brown hair.
+chart:47:0:80
+phrase: auburn hair.
+chart:47:0:90
+phrase: red hair.
+chart:47:0:100
+phrase: golden hair.
+
+

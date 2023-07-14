@@ -1,0 +1,2129 @@
+# File: object.txt
+#
+# This file is used to create the 'Object Kind' information for Sil.
+#
+# Do not modify this file unless you know exactly what you are doing,
+# unless you wish to risk possible system crashes and broken savefiles.
+#
+#
+# === Understanding object.txt ===
+#
+# name: & object name~
+# graphics: symbol : color
+# type: tval
+# pval : pval
+# depth: depth
+# weight : weight
+# cost : cost
+# attack: plus to-hit : damage dice
+# defence: plus to-evasion : protection dice
+# alloc: depth: rarity
+# flags: flag | flag | etc
+# desc: description
+#
+# 'name' indicates the beginning of an entry. The '&' and '~' symbols are used
+#     to include articles and pluralization as necessary to ensure
+#     grammatical correctness in object descriptions.
+#
+# 'graphics' is for symbol and color. There are 27 colors, as
+# follows:
+
+# D - Dark Gray    w - White          s - Gray          o - Orange
+# r - Red          g - Green          b - Blue          u - Umber
+# W - Light Gray   P - Light Purple   y - Yellow        R - Light Red
+# G - Light Green  B - Light Blue     U - Light Umber   p - Purple
+# v - Violet       t - Teal           m - Mud           Y - Light Yellow
+# i - Magenta-Pink T - Light Teal     V - Light Violet  I - Light Pink
+# M - Mustard      z - Blue Slate     Z - Deep Light Blue
+
+# Another color, "d", is used for "flavoured" items.
+#
+# 'type' is for the type of item (see lib/gamedata/object_base.txt).
+#
+# 'pval' indicates the amount of effect the item has, if applicable (a fixed
+#        value: variable pvals are currently hard-coded.) 
+#
+# 'depth' is the depth the object is normally found at (and defines what
+#     'level' the object is, when determining how easy it is to use an item).
+#
+# 'weight' is in tenth-pounds.
+#
+# 'cost' is the item's base value.
+#
+# 'attack' is for the item's bonus to attack and its damage dice.  Note that
+#          adding damage dice to armor won't aid your attacks, it will just set
+#          the damage done when it is thrown.
+#
+# 'defence' is for the item's bonus to evasion and its protection dice.
+#
+# 'alloc' is for allocation - depth and rarity, in pairs. This allows an
+#     item to have multiple natural depths and rarities. It is used to
+#     ensure that certain vital items such as food and identify scrolls
+#     are found throughout the dungeon. The 'allocation' depth need not
+#     match the depth as specified in the 'depth:' line.
+#
+# 'flags' is for flags. These are fairly self-explanatory. As many F:
+#     lines may be used as are needed to specify all the flags and flags
+#     are separated by the '|' symbol.
+#
+# 'desc' is for description. As many desc: lines may be used as are needed
+#     to describe the object. Note that lines will need spaces at their
+#     ends or the beginning of the next line to prevent words from running
+#     together.
+
+
+##### Non-kind (contains the 'pile' picture) #####
+
+# Index 0
+name:<pile>
+graphics:&:w
+
+
+
+##### The 'Special Artifacts' #####
+#
+# These objects do not specify 'full names' because the artifact name
+# is added in 'obj-desc.c' based on the artifact index ('i_ptr->name1').
+#
+# These objects do specify a 'base name, which is used when the object
+# is 'aware' (always true for lites)
+#
+# They specify 'physical colors', which
+# over-ride the 'flavor' colors, if any. 
+#
+# Note that ALL artifacts are given 'IGNORE_ALL',
+# so we do not need to specify that here.
+#
+# Note that the 'INSTA_ART' flag is used to prevent these objects from
+# being created without also turning them into artifacts.  This flag
+# must be specified both here and in the artifact template.
+#
+# The reason for having multiple 'ring' and
+# 'amulet' templates is to allow each 'special artifact' to
+# have a different 'color' and 'flavor', and also to allow the use of
+# special 'base names' (such as 'Necklace').
+
+
+# The Ring of Barahir
+#
+# The word 'Serpentine' should be just a flavor,
+# but I can get it to work like that yet.
+# Putting it here works almost as well.
+
+# Index 1
+name:& Serpentine Ring~
+#graphics:=:t
+#type:ring
+#depth:1
+#weight:1
+#cost:65000
+#attack:0:0d0
+#defence:0:0d0
+#flags:INSTA_ART
+
+
+# The Ring of Melian
+
+# Index 2
+#name:& Ring~
+#graphics:=:D
+#type:ring
+#depth:1
+#weight:1
+#cost:65000
+#attack:0:0d0
+#defence:0:0d0
+#flags:INSTA_ART
+
+
+# A base ring for self-made artifacts
+
+# Index 10
+name:& Ring~
+graphics:=:W
+type:ring
+depth:1
+weight:1
+cost:1000
+attack:0:0d0
+defence:0:0d0
+flags:INSTA_ART
+
+
+
+##### The Normal Item Types #####
+
+##### Armor #####
+
+# Index 21
+name:& Filthy Rag~
+graphics:(:D
+type:soft armor
+depth:1
+weight:20
+cost:1
+attack:0:0d0
+defence:0:1d0
+alloc:1:2
+
+
+# Index 22
+name:& Robe~
+graphics:(:b
+type:soft armor
+depth:5
+weight:30
+cost:4
+attack:0:0d0
+defence:0:1d0
+alloc:5:3
+alloc:10:10
+flags:ENCHANTABLE
+
+
+# Index 23
+name:Leather Armour~
+graphics:(:U
+type:soft armor
+depth:1
+weight:70
+cost:18
+attack:0:0d0
+defence:-1:1d4
+alloc:1:2
+
+
+# Index 26
+name:Studded Leather~
+graphics:(:M
+type:soft armor
+depth:2
+weight:130
+cost:200
+attack:0:0d0
+defence:-2:1d6
+alloc:2:2
+
+
+# Index 27
+name:Galvorn Armour~
+graphics:(:D
+type:soft armor
+depth:17
+weight:70
+cost:200
+attack:0:0d0
+defence:-1:1d8
+alloc:17:20
+alloc:22:4
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | NO_SMITHING
+desc:A suit of armour made of galvorn: a strange shining black metal 
+desc:so malleable that it is thin and supple, yet strong enough 
+desc:to stop blade and dart.
+
+
+# Index 30
+name:& Mail Corslet~
+graphics:[:W
+type:mail
+depth:5
+weight:270
+cost:750
+attack:-1:0d0
+defence:-3:2d4
+alloc:5:2
+alloc:12:1
+alloc:20:1
+desc:A shirt of armour formed from linked rings.
+desc: It comes down to the waist.
+
+
+# Index 31
+name:& Hauberk~
+graphics:[:s
+type:mail
+depth:7
+weight:350
+cost:900
+attack:-2:0d0
+defence:-4:2d5
+alloc:7:3
+alloc:17:2
+desc:A long-sleeved shirt of armour formed from linked rings.
+desc: It comes down to the thigh.
+
+
+# Index 38
+name:& Mithril Corslet~
+graphics:[:B
+type:mail
+depth:7
+weight:150
+cost:7000
+attack:0:0d0
+defence:-2:2d4
+alloc:7:80
+alloc:15:30
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | MITHRIL
+desc:A shirt of armour formed from linked rings.
+
+
+##### Shields #####
+
+# Index 43
+name:& Round Shield~
+graphics:):s
+type:shield
+depth:3
+weight:50
+cost:50
+attack:0:0d0
+defence:0:1d3
+alloc:3:2
+
+
+# Index 44
+name:& Kite Shield~
+graphics:):W
+type:shield
+depth:6
+weight:80
+cost:200
+attack:-2:0d0
+defence:0:1d6
+alloc:6:1
+
+
+# Index 46
+name:& Mithril Shield~
+graphics:):B
+type:shield
+depth:8
+weight:40
+cost:10000
+attack:-1:0d0
+defence:0:1d6
+alloc:8:80
+alloc:14:15
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | MITHRIL
+
+
+
+
+##### Edged Weapons #####
+
+
+# Index 51
+name:& Broken Sword~
+graphics:|:D
+type:sword
+depth:1
+weight:15
+cost:2
+attack:-2:1d5
+defence:0:0d0
+alloc:1:2
+
+
+# Index 52
+name:& Dagger~
+graphics:|:w
+type:sword
+depth:1
+weight:5
+cost:10
+attack:0:1d5
+defence:0:0d0
+alloc:1:2
+alloc:10:1
+flags:THROWING
+
+# Index 53
+name:& Sword~
+graphics:|:w
+type:sword
+depth:3
+weight:25
+cost:300
+attack:0:2d5
+defence:1:0d0
+alloc:3:1
+alloc:5:1
+alloc:10:1
+
+# Index 54
+name:& Longsword~
+graphics:|:W
+type:sword
+depth:4
+weight:40
+cost:350
+attack:-2:3d3
+defence:1:0d0
+alloc:4:2
+alloc:10:2
+flags:HAND_AND_A_HALF
+
+
+
+
+
+
+
+
+
+
+
+
+##### Axes & Polearms #####
+
+# Index 71
+name:& Spear~
+graphics:/:U
+type:polearm
+depth:2
+weight:30
+cost:36
+attack:-1:1d9
+defence:0:0d0
+alloc:2:1
+alloc:10:2
+flags:THROWING | HAND_AND_A_HALF | POLEARM
+
+
+# Index 72
+name:& Great Spear~
+graphics:/:u
+type:polearm
+depth:4
+weight:60
+cost:36
+attack:-1:1d13
+defence:1:0d0
+alloc:4:2
+alloc:12:2
+flags:TWO_HANDED | POLEARM
+
+
+# Index 74
+name:& Glaive~
+graphics:/:s
+type:polearm
+depth:9
+weight:70
+cost:363
+attack:-2:2d9
+defence:1:0d0
+alloc:9:2
+flags:TWO_HANDED | POLEARM
+
+
+# Index 76
+name:& Throwing Axe~
+graphics:/:s
+type:polearm
+depth:5
+weight:15
+cost:150
+attack:0:2d4
+defence:0:0d0
+alloc:5:1
+alloc:15:1
+flags:THROWING | AXE
+
+
+# Index 77
+name:& Battle Axe~
+graphics:/:s
+type:polearm
+depth:3
+weight:45
+cost:304
+attack:-3:3d4
+defence:0:0d0
+alloc:3:1
+alloc:10:1
+flags:HAND_AND_A_HALF | AXE
+
+
+# Index 81
+name:& Great Axe~
+graphics:/:s
+type:polearm
+depth:10
+weight:100
+cost:334
+attack:-4:4d4
+defence:0:0d0
+alloc:10:2
+alloc:15:1
+flags:TWO_HANDED | AXE
+
+
+##### Blunt Weapons #####
+
+# Index 89
+name:& Hammer~
+graphics:\:m
+type:hafted
+depth:5
+weight:50
+cost:225
+attack:-2:4d1
+defence:0:0d0
+alloc:5:3
+flags:HAND_AND_A_HALF
+
+
+##### Digging Tools #####
+
+
+# Index 96
+name:& Shovel~
+graphics:\:s
+type:digger
+depth:5
+weight:60
+cost:10
+attack:-3:2d2
+defence:0:0d0
+alloc:5:3
+alloc:12:3
+flags:DIG_1 | TWO_HANDED
+desc:It can be equipped as a weapon and allows you to dig through rubble.
+
+
+# Mattocks are canonically used as weapons by the dwarves
+
+# Index 98
+name:& Mattock~
+graphics:\:D
+type:digger
+depth:10
+weight:130
+cost:700
+attack:-5:5d2
+defence:0:0d0
+alloc:10:3
+flags:DIG_2 | TWO_HANDED
+desc:It can be equipped as a weapon and (usually) allows you to dig through
+desc: rubble or quartz.
+
+
+
+##### Helms/Crowns #####
+
+
+# Index 100
+name:& Helm~
+graphics:]:s
+type:helm
+depth:3
+weight:50
+cost:75
+attack:0:0d0
+defence:-1:1d2
+alloc:3:1
+
+
+# Index 101
+name:& Great Helm~
+graphics:]:W
+type:helm
+depth:5
+weight:80
+cost:200
+attack:0:0d0
+defence:-2:1d3
+alloc:5:1
+
+
+# Index 102
+name:& Dwarf Mask~
+graphics:]:s
+type:helm
+depth:10
+weight:80
+cost:300
+attack:0:0d0
+defence:-2:1d2
+alloc:10:8
+alloc:16:8
+values:RES_FIRE[1]
+desc:A full faced helm, wrought in a fearsome visage.
+
+
+# Index 103
+name:& Mithril Helm~
+graphics:]:B
+type:helm
+depth:7
+weight:35
+cost:500
+attack:0:0d0
+defence:-1:1d3
+alloc:7:80
+alloc:12:10
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | MITHRIL
+
+
+
+##### Cloaks #####
+
+# Index 106
+name:& Cloak~
+graphics:(:u
+type:cloak
+depth:2
+weight:20
+cost:3
+attack:0:0d0
+defence:1:1d0
+alloc:2:2
+alloc:10:1
+
+
+# Index 107
+name:& Elven Cloak~
+graphics:(:g
+type:cloak
+depth:12
+weight:10
+cost:4000
+attack:0:0d0
+defence:2:1d0
+alloc:12:3
+values:STEALTH[2]
+
+
+##### Bows #####
+
+# Index 110
+name:& Shortbow~
+graphics:}:u
+type:bow
+depth:1
+weight:15
+cost:50
+attack:0:1d7
+defence:0:0d0
+alloc:1:2
+alloc:11:2
+
+
+# Index 111
+name:& Longbow~
+graphics:}:U
+type:bow
+depth:3
+weight:30
+cost:120
+attack:0:2d5
+defence:0:0d0
+alloc:3:2
+alloc:13:2
+
+
+# Modelled on Earendil's bow
+
+# Index 112
+name:& Dragon-horn Bow~
+graphics:}:M
+type:bow
+depth:15
+weight:20
+cost:500
+attack:0:1d9
+defence:0:0d0
+alloc:15:8
+flags:NO_SMITHING
+
+
+##### Arrows #####
+
+# Index 116
+name:& Arrow~
+graphics:-:U
+type:arrow
+depth:2
+weight:1
+cost:1
+attack:0:0d0
+defence:0:0d0
+alloc:2:1
+alloc:6:1
+alloc:11:1
+alloc:17:1
+
+
+##### Boots #####
+
+# Index 122
+name:& Pair~ of Boots
+graphics:]:U
+type:boots
+depth:1
+weight:20
+cost:7
+attack:0:0d0
+defence:0:1d1
+alloc:1:2
+alloc:10:1
+
+
+# Index 123
+name:& Pair~ of Greaves
+graphics:]:s
+type:boots
+depth:4
+weight:80
+cost:19
+attack:0:0d0
+defence:-1:1d2
+alloc:4:1
+alloc:15:1
+flags:IGNORE_FIRE
+
+
+# Index 124
+name:& Pair~ of Mithril Greaves
+graphics:]:B
+type:boots
+depth:6
+weight:40
+cost:50
+attack:0:0d0
+defence:0:1d2
+alloc:6:80
+alloc:12:10
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | MITHRIL
+
+
+##### Gloves #####
+
+# Index 125
+name:& Set~ of Gloves
+graphics:]:U
+type:gloves
+depth:1
+weight:5
+cost:3
+attack:0:0d0
+defence:0:1d0
+alloc:1:4
+alloc:10:2
+
+
+# Index 126
+name:& Set~ of Gauntlets
+graphics:]:W
+type:gloves
+depth:3
+weight:30
+cost:35
+attack:-1:0d0
+defence:0:1d1
+alloc:3:1
+alloc:11:1
+flags:IGNORE_FIRE
+
+
+# Index 127
+name:& Set~ of Mithril Gauntlets
+graphics:]:B
+type:gloves
+depth:5
+weight:15
+cost:100
+defence:0:1d1
+alloc:5:80
+alloc:12:20
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | MITHRIL
+
+
+##### Light Sources #####
+
+# Index 128
+name:& Wooden Torch~
+graphics:~:u
+type:light
+pval:1
+depth:3
+weight:20
+cost:2
+attack:0:0d0
+defence:0:0d0
+alloc:3:1
+flags:NO_SMITHING | EASY_KNOW | BURNS_OUT
+desc:You can equip it as a light source with a radius of 1 square. It may
+desc: also be used to fuel another torch, up to a maximum of 3,000 turns of
+desc: light. 
+
+
+# Index 129
+name:& Brass Lantern~
+graphics:~:U
+type:light
+pval:2
+depth:5
+weight:30
+cost:35
+attack:0:0d0
+defence:0:0d0
+alloc:5:2
+alloc:9:1
+alloc:13:1
+flags:TAKES_FUEL
+desc:You can equip it as a light source with a radius of 2 squares.
+desc: It may also be used to fuel another lantern, up to a maximum of
+desc: 7,000 turns of light.
+
+
+# Lesser Jewel is at index 500
+# Index 500
+name:& Lesser Jewel~
+graphics:*:B
+type:light
+pval:1
+depth:3
+weight:1
+cost:1000
+attack:0:0d0
+defence:0:0d0
+alloc:3:20
+flags:NO_FUEL
+desc:An enchanted glowing jewel, akin to a Silmaril, but much less powerful.
+desc: You can equip it as a light source with a radius of 1 square.
+desc: It will shine forever.
+
+
+
+# Index 130
+name:& Feanorian Lamp~
+graphics:~:B
+type:light
+pval:3
+depth:12
+weight:10
+cost:1000
+attack:0:0d0
+defence:0:0d0
+alloc:12:10
+alloc:18:5
+flags:MITHRIL | NO_FUEL
+desc:An enchanted lamp, shining with the light of lesser jewels.
+desc: You can equip it as a light source with a radius of 3 squares.
+desc: It will shine forever.
+
+
+# Index 131
+name:& Silmaril~
+graphics:*:w
+type:light
+pval:7
+depth:25
+weight:1
+cost:100000
+attack:0:0d0
+defence:0:0d0
+flags:SEE_INVIS | SUST_GRA | EASY_KNOW
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | NO_SMITHING | NO_FUEL
+desc:You can equip it as a light source with a radius of 7 squares.
+desc: It will shine forever.
+##### Rings #####
+
+
+# Index 150
+name:Perception
+graphics:=:d
+type:ring
+depth:5
+weight:1
+cost:500
+attack:0:0d0
+defence:0:0d0
+alloc:5:3
+values:PERCEPTION[99]
+special:-1+m5:1
+
+
+# Index 151
+name:Sustenance
+graphics:=:d
+type:ring
+depth:7
+weight:1
+cost:150
+attack:0:0d0
+defence:0:0d0
+alloc:7:3
+flags:SLOW_DIGEST | EASY_KNOW
+
+
+# Index 152
+name:Evasion
+graphics:=:d
+type:ring
+depth:8
+weight:1
+cost:500
+attack:0:0d0
+defence:99:0d0
+alloc:8:3
+special:-1+m7:1
+desc:It helps you avoid your enemies' blows. 
+
+
+# Index 153
+name:Protection
+graphics:=:d
+type:ring
+depth:9
+weight:1
+cost:500
+attack:0:0d0
+defence:0:1d99
+alloc:9:3
+special:1+m14
+desc:It provides protection from damage. 
+
+
+# Index 154
+name:Strength
+graphics:=:d
+type:ring
+depth:9
+weight:1
+cost:500
+attack:0:0d0
+defence:0:0d0
+alloc:9:3
+flags:SUST_STR
+values:STR[-1+m10]
+
+
+# Index 155
+name:Dexterity
+graphics:=:d
+type:ring
+depth:10
+weight:1
+cost:500
+attack:0:0d0
+defence:0:0d0
+alloc:10:3
+flags:SUST_DEX
+values:DEX[-1+m10]
+
+
+# Index 156
+name:Frost
+graphics:=:d
+type:ring
+depth:11
+weight:1
+cost:250
+attack:0:0d0
+defence:0:0d0
+alloc:11:3
+flags:EASY_KNOW
+values:RES_FIRE[1]
+
+
+# Index 157
+name:Warmth
+graphics:=:d
+type:ring
+depth:12
+weight:1
+cost:250
+attack:0:0d0
+defence:0:0d0
+alloc:12:3
+flags:EASY_KNOW
+values:RES_COLD[1]
+
+
+# Index 158
+name:Accuracy
+graphics:=:d
+type:ring
+depth:12
+weight:1
+cost:500
+attack:99:0d0
+defence:0:0d0
+alloc:12:3
+special:-1+m7:1
+desc:It helps you hit your opponents. 
+
+
+# Index 159
+name:Free Action
+graphics:=:d
+type:ring
+depth:12
+weight:1
+cost:1500
+attack:0:0d0
+defence:0:0d0
+alloc:12:3
+flags:FREE_ACT | EASY_KNOW
+
+
+# Index 160
+name:Damage
+graphics:=:d
+type:ring
+depth:13
+weight:1
+cost:500
+attack:0:0d0
+defence:0:0d0
+alloc:13:3
+values:DAMAGE_SIDES[99]
+special:-1+m10:-1
+
+
+## Index 161
+#name:True Sight
+#G:=:d
+#type:ring
+#depth:13
+#weight:1
+#cost:340
+#attack:0:0d0
+#defence:0:0d0
+#alloc:13:3
+#F:SEE_INVIS | RES_BLIND | RES_HALLU | EASY_KNOW
+
+
+# Index 162
+name:Venom's End
+graphics:=:d
+type:ring
+depth:14
+weight:1
+cost:16000
+attack:0:0d0
+defence:0:0d0
+alloc:14:3
+flags:EASY_KNOW
+values:RES_POIS[1]
+
+
+##
+
+
+# Index 171
+name:Hunger
+graphics:=:d
+type:ring
+depth:6
+weight:1
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:6:2
+flags:HUNGER | EASY_KNOW
+
+
+
+##### Staves #####
+
+
+# Index 191
+name:Imprisonment
+graphics:_:d
+type:staff
+depth:6
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:6:3
+charges:4d2
+effect:PROJECT_LOS_GRIDS:LOCK_DOOR
+dice:$B
+expr:B:PLAYER_WILL: + 0
+desc:It may shut and lock all doors in line of sight.
+
+
+# Index 192
+name:Freedom
+graphics:_:d
+type:staff
+depth:9
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:9:3
+charges:4d2
+effect:DETECT_TRAPS
+effect:DETECT_DOORS
+effect:PROJECT_LOS_GRIDS:KILL_DOOR
+dice:$B
+expr:B:PLAYER_WILL: + 0
+effect:PROJECT_LOS_GRIDS:KILL_TRAP
+dice:$B
+expr:B:PLAYER_WILL: + 0
+effect:CLOSE_CHASMS:NONE:0:1
+dice:$B
+expr:B:PLAYER_WILL: + 0
+desc:It reveals doors and traps in line of sight and may
+desc: open or destroy them.
+
+
+# Index 193
+name:Light
+graphics:_:d
+type:staff
+depth:5
+weight:50
+cost:250
+attack:0:0d0
+defence:0:0d0
+alloc:5:2
+charges:4d2
+effect:LIGHT_AREA:LIGHT:7
+dice:4d4
+desc:It lights up an area with a radius of 7 squares, plus the entire room
+desc: if you are currently in one.  This stuns
+desc: any light-sensitive creatures within the area of effect.
+
+
+# Index 195
+name:Sanctity
+graphics:_:d
+type:staff
+depth:6
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:6:2
+alloc:14:4
+charges:2d2
+effect:REMOVE_CURSE
+desc:It removes curses from the items in your possession.
+
+
+# Index 196
+name:Understanding
+graphics:_:d
+type:staff
+depth:10
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:10:2
+alloc:15:1
+charges:2d2
+effect:IDENTIFY
+desc:It identifies an item. 
+desc: (This may be aborted without using up a charge.) 
+
+
+# Index 197
+name:Revelations
+graphics:_:d
+type:staff
+depth:13
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:13:3
+charges:4d2
+effect:MAP_AREA
+desc:It reveals your surroundings.
+
+
+# Index 198
+name:Treasures
+graphics:_:d
+type:staff
+depth:13
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:13:3
+charges:2d2
+effect:DETECT_OBJECTS
+desc:It shows you the whereabouts of all items on the level.
+
+
+# Index 199
+name:Foes
+graphics:_:d
+type:staff
+depth:13
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:13:3
+charges:4d2
+effect:DETECT_MONSTERS
+desc:It shows you the whereabouts of all monsters on the level.
+
+
+# Index 200
+name:Slumber
+graphics:_:d
+type:staff
+depth:11
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:11:3
+alloc:17:2
+charges:4d2
+effect:PROJECT_LOS:SLEEP
+dice:$B
+expr:B:PLAYER_WILL: + 0
+desc:It causes a great weariness in all monsters in line of sight.
+
+
+# Index 201
+name:Majesty
+graphics:_:d
+type:staff
+depth:9
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:9:3
+charges:4d2
+effect:PROJECT_LOS:FEAR
+dice:$B
+expr:B:PLAYER_WILL: + 0
+desc:It causes fear in all monsters in line of sight.
+
+
+# Index 202
+#name:Self Knowledge
+#graphics:_:d
+#type:staff
+#depth:7
+#weight:50
+#cost:400
+#attack:0:0d0
+#defence:0:0d0
+#alloc:7:2
+#charges:2d2
+#effect:SELF_KNOWLEDGE
+#desc:It lets you know all of your abilities.
+
+
+# Index 203
+name:Warding
+graphics:_:d
+type:staff
+depth:11
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:11:3
+charges:2d2
+effect:GLYPH:WARDING
+desc:It can be used to create glyphs of warding, which your opponents
+desc: have difficulty crossing.
+
+
+# Index 204
+name:Earthquakes
+graphics:_:d
+type:staff
+depth:13
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:13:3
+alloc:21:2
+charges:2d2
+effect:EARTHQUAKE
+dice:$B
+expr:B:PLAYER_WILL: / 5 + 3
+desc:It causes a small earthquake, crushing nearby areas with
+desc: stone and rubble. 
+
+
+# Index 206
+name:Recharging
+graphics:_:d
+type:staff
+depth:11
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:11:2
+charges:2d2
+effect:RECHARGE
+dice:1
+desc:It allows you to partially recharge another staff.
+
+
+# Index 210
+name:Summoning
+graphics:_:d
+type:staff
+depth:7
+weight:50
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:7:6
+charges:6d2
+effect:SUMMON:ANY:0:1
+dice:1d4
+desc:It summons 1d4 monsters out of sight on the current level. 
+
+
+# Index 211
+name:Entrapment
+graphics:_:d
+type:staff
+depth:9
+weight:50
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:9:6
+charges:6d2
+effect:CREATE_TRAPS
+dice:2d4
+desc:It produces 2d4 new traps on the current level. 
+
+
+##### Potions #####
+
+
+# Index 313
+name:Miruvor
+graphics:!:d
+type:potion
+depth:11
+weight:5
+cost:1000
+attack:0:0d0
+defence:0:0d0
+alloc:11:2
+alloc:17:2
+effect:CURE:STUN
+effect:CURE:CONFUSED
+effect:CURE:IMAGE
+effect:CURE:POISONED
+effect:CURE:BLIND
+effect:TIMED_SET:CUT
+dice:$B
+expr:B:PLAYER_CUT: / 2
+effect:CURE:AFRAID
+effect:HEAL_HP
+dice:m50
+effect:RESTORE_MANA
+effect:NOURISH:INC_BY
+dice:100
+flags:GOOD
+desc:It cures stunning, confusion, hallucination, poison,
+desc: blindness, cuts, and fear. It restores half your health, and
+desc: all your voice.
+
+
+# Index 315
+name:Orcish Liquor
+graphics:!:d
+type:potion
+depth:3
+weight:5
+cost:100
+attack:0:0d0
+defence:0:0d0
+alloc:3:1
+alloc:7:1
+msg:It burns your mouth and throat.
+effect:TIMED_INC:STUN
+dice:2d4
+effect:CURE:AFRAID
+effect:HEAL_HP
+dice:m25
+effect:NOURISH:INC_BY
+dice:100
+desc:It banishes all fear, cures a quarter of your health, and stuns you
+desc: (for 2d4 turns).
+
+
+# Index 317
+name:Clarity
+graphics:!:d
+type:potion
+depth:6
+weight:5
+cost:100
+attack:0:0d0
+defence:0:0d0
+alloc:6:2
+alloc:13:1
+effect:CURE:STUN
+effect:CURE:CONFUSED
+effect:CURE:IMAGE
+effect:CURE:RAGE
+effect:NOURISH:INC_BY
+dice:100
+desc:It cures stunning, confusion, and hallucination; and ends
+desc: your rage. 
+
+
+# Index 318
+name:Healing
+graphics:!:d
+type:potion
+depth:9
+weight:5
+cost:300
+attack:0:0d0
+defence:0:0d0
+alloc:9:1
+alloc:15:1
+effect:TIMED_SET:CUT
+dice:$B
+expr:B:PLAYER_CUT: / 2
+effect:HEAL_HP
+dice:m50
+effect:NOURISH:INC_BY
+dice:100
+flags:GOOD
+desc:It heals all cuts and restores half your health.
+
+
+# Index 319
+name:Voice
+graphics:!:d
+type:potion
+depth:13
+weight:5
+cost:300
+attack:0:0d0
+defence:0:0d0
+alloc:13:1
+effect:RESTORE_MANA
+effect:NOURISH:INC_BY
+dice:100
+desc:It renews your voice. 
+
+
+# Index 320
+name:True Sight
+graphics:!:d
+type:potion
+depth:7
+weight:5
+cost:100
+attack:0:0d0
+defence:0:0d0
+alloc:7:1
+effect:CURE:BLIND
+effect:CURE:IMAGE
+effect:TIMED_SET:SINVIS
+dice:10d4
+effect:NOURISH:INC_BY
+dice:100
+thrown-effect:REVEAL_MONSTER
+desc:It restores your sight and enables you to resist
+desc: blindness, resist hallucination, and see
+desc: invisible creatures for 10d4 turns. 
+
+
+# Index 321
+name:Slow Poison
+graphics:!:d
+type:potion
+depth:2
+weight:5
+cost:100
+attack:0:0d0
+defence:0:0d0
+alloc:2:1
+alloc:12:1
+effect:TIMED_SET:POISONED
+dice:$B
+expr:B:PLAYER_POIS: / 2
+effect:NOURISH:INC_BY
+dice:100
+desc:It halves the severity of any current poisoning.
+
+
+# Index 322
+name:Quickness
+graphics:!:d
+type:potion
+depth:5
+weight:5
+cost:200
+attack:0:0d0
+defence:0:0d0
+alloc:5:1
+alloc:15:1
+effect:TIMED_INC:FAST
+dice:10d4
+effect:NOURISH:INC_BY
+dice:100
+thrown-effect:EXPLOSION:SPEED
+thrown-dice:-1+1d4
+flags:GOOD
+desc:It makes you move more quickly (+1 to speed) for 10d4 turns.
+
+
+# Index 323
+name:Elemental Resistance
+graphics:!:d
+type:potion
+depth:12
+weight:5
+cost:100
+attack:0:0d0
+defence:0:0d0
+alloc:12:1
+effect:TIMED_INC:OPP_FIRE
+dice:20d4
+effect:TIMED_INC:OPP_COLD
+dice:20d4
+desc:It grants you temporary resistance to fire and cold for 20d4 turns.
+
+
+# Index 327
+name:Strength
+graphics:!:d
+type:potion
+depth:6
+weight:5
+cost:200
+attack:0:0d0
+defence:0:0d0
+alloc:6:2
+alloc:12:2
+effect:RESTORE_STAT:STR
+dice:3
+effect:TIMED_INC:STR
+dice:20d4
+effect:NOURISH:INC_BY
+dice:100
+desc:It grants a bonus of +3 to strength for 20d4 turns,
+desc: restoring strength in the process.
+
+
+# Index 328
+name:Dexterity
+graphics:!:d
+type:potion
+depth:7
+weight:5
+cost:200
+attack:0:0d0
+defence:0:0d0
+alloc:7:2
+alloc:13:2
+effect:RESTORE_STAT:DEX
+dice:3
+effect:TIMED_INC:DEX
+dice:20d4
+effect:NOURISH:INC_BY
+dice:100
+desc:It grants a bonus of +3 to dexterity for 20d4 turns,
+desc: restoring dexterity in the process.
+
+
+# Index 329
+name:Constitution
+graphics:!:d
+type:potion
+depth:8
+weight:5
+cost:200
+attack:0:0d0
+defence:0:0d0
+alloc:8:2
+alloc:14:2
+effect:RESTORE_STAT:CON
+dice:3
+effect:TIMED_INC:CON
+dice:20d4
+effect:NOURISH:INC_BY
+dice:100
+desc:It grants a bonus of +3 to constitution for 20d4 turns,
+desc: restoring constitution in the process.
+
+
+# Index 330
+name:Grace
+graphics:!:d
+type:potion
+depth:9
+weight:5
+cost:200
+attack:0:0d0
+defence:0:0d0
+alloc:9:2
+alloc:15:2
+effect:RESTORE_STAT:GRA
+dice:3
+effect:TIMED_INC:GRA
+dice:20d4
+effect:NOURISH:INC_BY
+dice:100
+desc:It grants a bonus of +3 to grace for 20d4 turns,
+desc: restoring grace in the process.
+
+
+##
+
+
+# Index 343
+name:Slowness
+graphics:!:d
+type:potion
+depth:2
+weight:5
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:2:3
+effect:TIMED_INC:SLOW
+dice:10d4
+effect:NOURISH:INC_BY
+dice:100
+thrown-effect:EXPLOSION:SLOW
+thrown-dice:10
+desc:It slows you down (-1 to speed) for 10d4 turns.
+
+
+# Index 344
+name:Poison
+graphics:!:d
+type:potion
+depth:3
+weight:5
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:3:3
+effect:SPOT:POIS:0
+dice:5d4
+effect:NOURISH:INC_BY
+dice:100
+desc:It causes 5d4 points of poison. 
+
+
+# Index 345
+name:Blindness
+graphics:!:d
+type:potion
+depth:4
+weight:5
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:4:3
+effect:TIMED_INC:BLIND
+dice:10d4
+effect:NOURISH:INC_BY
+dice:100
+desc:It induces blindness for 10d4 turns.
+
+
+# Index 346
+name:Confusion
+graphics:!:d
+type:potion
+depth:6
+weight:5
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:6:3
+effect:TIMED_INC:CONFUSED
+dice:10d4
+effect:NOURISH:INC_BY
+dice:100
+thrown-effect:EXPLOSION:CONFUSION
+thrown-dice:10
+desc:It induces confusion for 5d4 turns.
+
+
+# Index 348
+name:Awkwardness
+graphics:!:d
+type:potion
+depth:9
+weight:5
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:9:3
+effect:DRAIN_STAT:DEX
+effect:NOURISH:INC_BY
+dice:100
+desc:It reduces your dexterity by one point. 
+
+
+# Index 350
+name:Disconnection
+graphics:!:d
+type:potion
+depth:11
+weight:5
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:11:3
+effect:DRAIN_STAT:GRA
+effect:NOURISH:INC_BY
+dice:100
+desc:It reduces your grace by one point. 
+
+
+##### Chests #####
+
+# note that the steel and jewelled chests
+# give higher chances of good and great items
+
+# Index 372
+name:& Small wooden chest~
+graphics:~:m
+type:chest
+depth:5
+weight:200
+cost:20
+attack:0:0d0
+defence:0:0d0
+alloc:5:4
+
+
+# Index 373
+name:& Small steel chest~
+graphics:~:s
+type:chest
+depth:12
+weight:250
+cost:200
+attack:0:0d0
+defence:0:0d0
+alloc:12:4
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD
+
+
+# Index 374
+name:& Small jewelled chest~
+graphics:~:v
+type:chest
+depth:19
+weight:750
+cost:250
+attack:0:0d0
+defence:0:0d0
+alloc:19:8
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD
+
+
+# Index 375
+name:& Large wooden chest~
+graphics:~:u
+type:chest
+depth:10
+weight:500
+cost:60
+attack:0:0d0
+defence:0:0d0
+alloc:10:8
+
+
+# Index 376
+name:& Large steel chest~
+graphics:~:W
+type:chest
+depth:17
+weight:750
+cost:250
+attack:0:0d0
+defence:0:0d0
+alloc:17:8
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD
+
+
+# Index 377
+name:& Large jewelled chest~
+graphics:~:v
+type:chest
+depth:24
+weight:750
+cost:250
+attack:0:0d0
+defence:0:0d0
+alloc:24:8
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD
+
+
+# Index 378
+name:& Finely wrapped present~
+graphics:~:r
+type:chest
+depth:25
+weight:100
+cost:250
+attack:0:0d0
+defence:0:0d0
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | EASY_KNOW
+
+
+
+##### Herbs #####
+
+
+# Index 380
+name:Rage
+graphics:,:d
+type:herb
+depth:3
+weight:1
+cost:25
+attack:0:0d0
+defence:0:0d0
+alloc:3:2
+alloc:9:1
+alloc:15:4
+effect:CURE:AFRAID
+effect:TIMED_INC:RAGE
+dice:10d4
+effect:NOURISH:INC_BY
+dice:250
+desc:It sends you into a dark rage
+desc: (+1 Str/Con, -1 Dex/Gra, special melee attack, resistance to fear)
+desc: for 10d4 turns.
+desc: Herbs provide nourishment for about 250
+desc: turns under normal conditions. 
+
+
+# Index 381
+name:Sustenance
+graphics:,:d
+type:herb
+depth:5
+weight:1
+cost:50
+attack:0:0d0
+defence:0:0d0
+alloc:5:2
+alloc:15:1
+effect:NOURISH:INC_BY
+dice:2000
+desc:It provides nourishment for about 2000 turns
+desc: under normal conditions. 
+
+
+# Index 382
+name:Terror
+graphics:,:d
+type:herb
+depth:3
+weight:1
+cost:10
+attack:0:0d0
+defence:0:0d0
+alloc:3:2
+alloc:6:2
+effect:TIMED_INC:AFRAID
+dice:10d4
+effect:TIMED_INC:FAST
+dice:5d4
+effect:NOURISH:INC_BY
+dice:250
+desc:It induces fear that lasts
+desc: for 10d4 turns and a burst of speed that lasts 5d4 turns.
+desc: Herbs provide nourishment for about 250
+desc: turns under normal conditions.
+
+
+# Index 383
+name:Healing
+graphics:,:d
+type:herb
+depth:7
+weight:1
+cost:75
+attack:0:0d0
+defence:0:0d0
+alloc:7:2
+alloc:17:2
+effect:TIMED_SET:CUT
+dice:$B
+expr:B:PLAYER_CUT: / 2
+effect:HEAL_HP
+dice:m50
+effect:NOURISH:INC_BY
+dice:250
+desc:It cures all cuts and heals half of your health.
+desc:  Herbs provide nourishment for
+desc: about 250 turns under normal conditions. 
+
+
+# Index 384
+name:Restoration
+graphics:,:d
+type:herb
+depth:5
+weight:1
+cost:1000
+attack:0:0d0
+defence:0:0d0
+alloc:5:4
+alloc:9:2
+alloc:19:2
+effect:RESTORE_STAT:STR
+dice:3
+effect:RESTORE_STAT:DEX
+dice:3
+effect:RESTORE_STAT:CON
+dice:3
+effect:RESTORE_STAT:GRA
+dice:3
+effect:NOURISH:INC_BY
+dice:250
+desc:It restores all of your statistics by up to 3 points each. 
+desc: Herbs provide nourishment for about 250 turns under normal
+desc: conditions. 
+
+
+# Index 385
+name:Emptiness
+graphics:,:d
+type:herb
+depth:4
+weight:1
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:4:3
+effect:NOURISH:DEC_BY
+dice:1000
+desc:It makes you more hungry (by 1,000 turns under normal conditions). 
+
+
+# Index 386
+name:Visions
+graphics:,:d
+type:herb
+depth:8
+weight:1
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:8:3
+effect:CURE:BLIND
+effect:TIMED_INC:IMAGE
+dice:80d4
+effect:NOURISH:INC_BY
+dice:250
+desc:It causes you to hallucinate for 80d4 turns, but cures blindness in
+desc: the process.
+desc: Herbs provide nourishment for about 250
+desc: turns under normal conditions.
+
+
+# Index 387
+name:Entrancement
+graphics:,:d
+type:herb
+depth:8
+weight:1
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:8:3
+effect:TIMED_SET:ENTRANCED
+dice:10d4
+effect:NOURISH:INC_BY
+dice:250
+desc:It induces a trance that lasts for 10d4 turns.
+desc: Herbs provide nourishment for about 250 turns under
+desc: normal conditions. 
+
+
+# Index 388
+name:Weakness
+graphics:,:d
+type:herb
+depth:8
+weight:1
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:8:3
+effect:DRAIN_STAT:STR
+effect:NOURISH:INC_BY
+dice:250
+desc:It reduces your strength by one point.
+desc: Herbs provide nourishment for about 250
+desc: turns under normal conditions. 
+
+
+# Index 389
+name:Sickness
+graphics:,:d
+type:herb
+depth:8
+weight:1
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:8:3
+effect:DRAIN_STAT:CON
+effect:NOURISH:INC_BY
+dice:250
+desc:It reduces your constitution by one point.
+desc: Herbs provide nourishment for
+desc: about 250 turns under normal conditions. 
+
+
+# Index 399
+name:& Piece~ of Dark Bread
+graphics:,:s
+type:food
+depth:7
+weight:5
+cost:2
+attack:0:0d0
+defence:0:0d0
+alloc:7:2
+alloc:13:1
+effect:NOURISH:INC_BY
+dice:1500
+msg:It is hard and bitter.
+desc:It provides nourishment for about 1,500 turns under normal conditions. 
+
+
+# Index 400
+name:& Strip~ of Dried Meat
+graphics:,:u
+type:food
+depth:10
+weight:10
+cost:3
+attack:0:0d0
+defence:0:0d0
+alloc:10:4
+alloc:16:1
+effect:NOURISH:INC_BY
+dice:2000
+msg:It tastes foul.
+desc:It provides nourishment for about 2,000 turns under normal conditions. 
+
+
+# Index 401
+name:& Fragment~ of Lembas
+graphics:,:y
+type:food
+depth:7
+weight:1
+cost:10
+attack:0:0d0
+defence:0:0d0
+alloc:7:4
+alloc:18:2
+effect:NOURISH:INC_BY
+dice:3000
+effect:RESTORE_STAT:GRA
+dice:1
+desc:It restores a point of grace if it has been drained.  It provides
+desc: nourishment for about 3,000 turns under normal conditions. 
+
+
+##### Various #####
+
+
+# Index 402
+name:& Flask~ of oil
+graphics:!:Y
+type:flask
+pval:3000
+depth:7
+weight:10
+cost:3
+attack:0:0d0
+defence:0:0d0
+alloc:7:2
+alloc:13:1
+alloc:19:1
+desc:It can be used to fuel a brass lantern with 3,000 turns of light,
+desc: up to a maximum of 7,000 turns of light.
+
+
+# Index 410
+name:& Piece~ of Mithril
+graphics:~:B
+type:metal
+depth:15
+weight:1
+cost:100
+attack:0:0d0
+defence:0:0d0
+alloc:15:20
+desc:Small shining pieces of true silver. They can be used at a forge
+desc: to create mithril items.
+
+
+# Index 440
+name:& Orc Skeleton~
+graphics:~:w
+type:skeleton
+depth:1
+weight:130
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:1:5
+
+
+# Index 441
+name:& Human Skeleton~
+graphics:~:w
+type:skeleton
+depth:8
+weight:120
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:8:5
+
+
+# Index 442
+name:& Elf Skeleton~
+graphics:~:w
+type:skeleton
+depth:15
+weight:110
+cost:0
+attack:0:0d0
+defence:0:0d0
+alloc:15:5
+
+
+##### Notes #####
+
+# Only allocated in the tutorial; note contents are set from tutorial.txt.
+name:& Tutorial Note~
+graphics:~:W
+type:note
+depth:0
+weight:1
+cost:0
+attack:0:0d0
+defence:0:0d0
+flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | NO_SMITHING

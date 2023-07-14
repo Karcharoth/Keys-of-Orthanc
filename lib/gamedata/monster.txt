@@ -1,0 +1,1446 @@
+# File: monster.txt
+#
+# This file is used to create the monster race information for Sil.
+#
+# Do not modify this file unless you know exactly what you are doing,
+# unless you wish to risk possible system crashes and broken savefiles.
+#
+#
+# === Understanding monster.txt ===
+#
+# name: monster name
+# plural: monster name plural (if non-standard)
+# base: template name
+# depth: depth
+# rarity: rarity
+# glyph: symbol
+# color: color
+# speed: speed
+# health: health (dice)
+# light : light radius
+# sleep: sleepiness
+# percept: perception
+# stealth: stealth
+# will: will
+# prot: evasion bonus : protection dice
+# blow: attack method : attack effect : attack bonus : damage dice
+# ranged-freq: ranged attack frequency
+# spell-power: spell power
+# spells: spell type | spell type | etc
+# message-vis:spell type:message
+# message-invis:spell type:message
+# message-miss:spell type:message
+# flags: flag | flag | etc
+# drop: item type : item name : percent drop chance : min : max
+# drop-artifact: name
+# desc: Description
+#
+# 'name' indicates the beginning of an entry. Entry 0 is used for the player.
+#
+# 'plural' is for plurals to monster names that can't be handled by normal
+# pluralisation rules (see mon-desc.c for more detail).
+#
+# 'base' is for the monster base template (see monster_base.txt). This
+# provides the default display symbol, some default flags, and the monster's
+# pain messages.
+
+# 'depth' is for the depth the monster is found at.
+#
+# 'rarity' is their rarity (they have a 1 in rarity chance of being generated).
+#
+# 'glyph' is for the display symbol. If present, this overrides the default
+# display symbol from the base template.
+#
+# 'color' is for color. There are 28 colors, as follows:
+# d - 0  - Black
+# w - 1  - White
+# s - 2  - Slate
+# o - 3  - Orange
+# r - 4  - Red
+# g - 5  - Green
+# b - 6  - Blue
+# u - 7  - Umber
+# D - 8  - Light Dark
+# W - 9  - Light Slate
+# P - 10 - Light Purple
+# y - 11 - yellow
+# R - 12 - Light Red
+# G - 13 - Light Green
+# B - 14 - Light Blue
+# U - 15 - Light Umber
+# p - 16 - Purple
+# v - 17 - Violet
+# t - 18 - Teal
+# m - 19 - Mud
+# Y - 20 - Light Yellow
+# i - 21 - Magenta-Pink
+# T - 22 - Light Teal
+# V - 23 - Light Violet
+# I - 24 - Light Pink
+# M - 25 - Mustard
+# z - 26 - Blue Slate
+# Z - 27 - Deep Light Blue
+
+# (note that "black" is the same color as the screen background, and thus the
+# monster will appear to be an empty black space if its color is "d".)
+
+#
+# 'speed' is monster speed.
+#
+# 'health' is dice for the monster health.
+#
+# 'light' is light radius in squares.
+#
+# 'sleep' is for maximum sleep value.
+#
+# 'percept' is for perception score.
+#
+# 'stealth' is for stealth score.
+#
+# 'will' is for will score.
+#
+# 'prot' is protection - the evasion bonus and protection dice
+#
+# 'blows' is for blows - method of attack, effect of attack, and damage
+#     from attack. There may be up to four of these lines; effect and
+#     damage are optional.
+#
+# 'ranged-freq' is for ranged attack frequency. Every monster with spells must
+#     have a spell-power:X line with X the percentage chance of casting each
+#     turn. X must not be zero. If X is 100, the monster will never move while
+#     the player is in sight, and will thus never attack in melee, as it will
+#     cast spells every turn: if the monster is to use a melee attack, then X
+#     must be 2 or greater.
+#
+# 'spell-power' determines the damage and intensity of the attacks.
+#
+# 'spells' is a '|'-separated list of spells.
+#
+# 'flags' is for flags. These are fairly self-explanatory. As many flags:
+# lines may be used as are needed to specify all the flags and flags are
+# separated by the '|' symbol.
+
+# 'flags-off' is for flags to remove from the template. For example, in
+# monster_base.txt, molds are given HURT_FIRE. We don't want the red mold
+# to have that, so we add a 'flags-off:HURT_FIRE' line to subtract that flag.
+
+# 'message-vis', 'message-invis', and 'message-miss' allow overriding of the
+# default messages (see monster_spell.txt) displayed when a monster casts a
+# particular spell.  'message-vis' is for the message when the monster is
+# visible to the observer.  'message-invis' is for the message when the monster
+# is not seen by the observer.  'message-miss' is for the message if the spell
+# misses.  The first field, the spell type, should be one of the names listed
+# on the spells line.  The last field is the message to use; if that is omitted
+# or is all whitespace, no message will be displayed on casting.  Any brace
+# expressions, as described in monster_spell.txt, will be expanded in the
+# message before it is displayed.
+
+# 'desc' is for description. As many desc: lines may be used as are needed to
+# describe the monster. Note that lines will need spaces at their
+# ends or the beginning of the next line to prevent words from running
+# together.
+
+# 'drop' lines create possible drops for specific monsters.  Each item
+# has its percent chance rolled for individually.  Any specified drops are in
+# addition to those that are possible due to the flags set.  Specific drops
+# can be affected by the DROP_GREAT and DROP_GOOD flags.
+
+# 'drop-artifact' lines force a specific artifact to drop on death. Setting this
+# on a non-UNIQUE monster is dangerous.
+
+# 'friends' lines specify options for what monsters can appear with other
+# monster on creation.  The format is:
+# friends:Chance of friend appearing:number in xdy format:name of friend
+#
+# 'desc' is for description. As many desc: lines may be used as are needed
+#     to describe the monster.
+#
+#
+#
+# === Understanding monster.txt flags ===
+#
+# UNIQUE monsters are just special monster races, with the requirement
+# that only one monster of that race can exist at a time, and when it is
+# killed, it can never again be generated.
+#
+# ATTR_CLEAR monsters appear the same color as the floor, terrain feature or
+# object underneath them.
+#
+# ATTR_MULTI monsters are multi - hued - they change color, every player turn.
+#
+# CHAR_CLEAR monsters are totally invisible: the symbol shown on the screen
+# is the same as the floor (or other terrain feature) below it, or the item
+# that is lying on that floor. These monsters can currently be targetted as
+# normal monsters: perhaps this can be changed so that the player must KNOW
+# the monster is there (by bumping into it, or having the monster wake up
+# and attack the player?)
+#
+# CHAR_MULTI monsters are those which look like objects, and use the symbols
+# of objects. They are in plain sight, but the character should not know that
+# a monster is there. At the moment, such monsters can be targetted normally
+# (which means that this flag currently has no effect), but this may change
+# in the future, as with CHAR_CLEAR monsters.
+#
+# (Note that currently both CHAR_CLEAR and CHAR_MULTI monsters are treated
+# as normal monsters that are just a little hard to see... if you look
+# for them, you will find them unless they are invisible and you cannot
+# see invisible, and if you use the * command for targetting mode you
+# can pick them as a target.)
+#
+#
+# === Useful information ===
+#
+# Evasion/Attack
+#
+# Default value:   dungeon level
+# Unique:          +2
+# Unmoving:        evasion fixed at -5
+# Agile*:          +1 to +5
+# Armoured*:       -1 to -6 evasion
+# Heavy attack*:   -1 to -5 attack
+#
+# Hit points:
+#
+# Typical Bird:     1d4
+# Typical Insect:   2d4
+# Typical Orc:      8d4
+# Typical Man:      8d4
+# Typical Serpent:  9d4
+# Typical Noldo:   11d4 (up to 24d4)
+# Typical Troll:   18d4
+# Typical Giant:   30d4
+# Typical Dragon:  30d4 - 50d4
+# Unrelenting H:  100d4
+#       Morgoth:  200d4
+# 
+# Will:
+#
+# Typical value:  dungeon level * 2/3
+# Normally higher: horrors, people, dragons, raukar, uniques
+# Normally lower: cats, serpents, insects
+#
+# Letters:
+#
+
+# New Creatures:
+#
+# - elves (prisoners who have been driven mad or to evil)
+# - another, more powerful, giant type
+# - a unique wraith?
+# - an animated treasure chest
+#   - too out of theme, but would be great fun in crawl or NetHack...
+# - Isenguard pun
+#   - no, never
+
+##### Non-race (contains the player picture) #####
+
+# Index 0
+name:<player>
+glyph:@
+color:w
+
+##### Dungeon monsters #####
+
+# Must not have any level 0 creatures, as this is used to identify player
+
+
+##### 1 #####
+
+# Index 11
+name:Wolf
+plural:Wolves
+base:wolf
+depth:1
+rarity:1
+color:u
+speed:3
+health:6d4
+sleep:20
+percept:4
+stealth:3
+will:1
+prot:2:1d4
+blow:BITE:HURT:1:2d4
+flags:FRIENDS | RAND_25
+desc:This ragged wolf is part of the orcish packs.
+
+
+# Index 12
+name:Tanglethorn
+base:thorn
+depth:1
+rarity:1
+color:s
+speed:2
+health:8d4
+sleep:0
+percept:0
+stealth:0
+will:0
+prot:-5:2d4
+blow:THORN:WOUND:5:3d3
+flags:FRIEND
+desc:'... great writhing, tangled brambles sprawled. Some had long stabbing
+desc: thorns, some hooked barbs that rent like knives.'
+
+# Index 13
+name:Goblin scout
+base:goblin
+depth:1
+rarity:1
+color:s
+speed:2
+health:4d4
+sleep:12
+percept:7
+stealth:5
+will:0
+prot:6
+blow:HIT:HURT:3:1d5
+flags:UNLOCK_DOOR | DROP_33
+ranged-freq:20
+spells:SHRIEK
+drop:sword:Dagger:15:1d1
+desc:He is one of Saruman's slaves from the mountains.
+desc: The miserable creature tries to stay away from you and
+desc: attract attention. He has a crude knife.
+
+
+##### 2 #####
+# Index 21
+name:Orc
+base:orc
+depth:2
+rarity:1
+color:u
+speed:2
+health:7d4
+sleep:15
+percept:2
+stealth:1
+will:1
+prot:3:1d4
+blow:HIT:HURT:3:1d9
+flags:FRIEND | DROP_33
+drop:sword:Sword:15:1d1
+desc:He is one of Saruman's lesser servants.
+desc: He has little armour but carries a broad blade.
+
+# Index 22
+name:Grimhawk
+base:flyer
+depth:2
+rarity:2
+color:u
+speed:4
+health:1d4
+sleep:5
+percept:6
+stealth:4
+will:1
+prot:7
+blow:PECK:HURT:8:1d5
+flags:RAND_50 | TERRITORIAL
+desc:'I have also glimpsed many hawks flying
+desc: high up in the sky.' The birds of the air spy for
+desc: Saruman in the absence of Radagast.
+
+# Index 23
+name:Goblin miner
+base:goblin
+depth:2
+rarity:1
+color:W
+speed:2
+health:5d4
+sleep:15
+percept:5
+stealth:4
+will:0
+prot:5
+blow:HIT:HURT:2:2d2
+flags:DROP_33
+drop:digger:Shovel:24:1d1
+desc:He is one of Saruman's slaves from the mountains.
+desc: He carries a shovel and tries to stay out of sight.
+
+# Index 24
+name:Orc smith
+base:orc
+depth:2
+rarity:6
+color:D
+speed:2
+health:6d4
+sleep:15
+percept:2
+stealth:2
+will:1
+prot:3:1d4
+blow:HIT:HURT:0:4d4
+flags:DROP_100
+drop:hafted:Hammer:15:1d1
+desc:He is one of Saruman's lesser servants.
+desc: He knows little of combat, but his hammer can still kill.
+
+# Index 25
+name:Appledore
+base:person
+depth:2
+rarity:20
+color:U
+speed:2
+health:10d4
+sleep:15
+percept:4
+stealth:4
+will:2
+prot:7
+blow:HIT:HURT:4:1d6
+flags:DROP_1D2 | DROP_GOOD | UNIQUE | MALE 
+ranged-freq:20
+spells:SHRIEK
+desc:A small man in Breeland clothing steps nervously along a tunnel.
+desc: When he notices you, he flees, shrieking in terror.
+
+
+##### 3 #####
+
+# Index 31
+name:Grima Wormtongue
+base:person
+depth:3
+rarity:20
+color:y
+speed:2
+health:10d4
+sleep:12
+percept:10
+stealth:7
+will:5
+prot:5:1d4
+blow:HIT:HURT:8:1d7
+flags:MALE | DROP_100 | DROP_GREAT | UNLOCK_DOOR | UNIQUE
+ranged-freq:20
+spells:SHRIEK
+desc:Strange to see the most trusted advisor of the Lord of the Mark
+desc: in Isengard's caverns, yet undoubtedly true. His eyes sweep the ground
+desc: as if following a path.
+
+
+
+
+##### 4 #####
+
+# Index 41
+name:Orc soldier
+base:orc
+depth:4
+rarity:1
+color:s
+speed:2
+health:8d4
+sleep:15
+percept:3
+stealth:1
+will:2
+prot:3:2d4
+blow:HIT:HURT:3:2d7
+flags:FRIENDS | BASH_DOOR | DROP_33
+drop:sword:Sword:10:1d1
+drop:shield:Round Shield:10:1d1
+desc:He is one of Saruman's servants.
+desc: He is arrayed in black leathers with a short sword and
+desc: a shield painted with a crude white hand.
+
+
+# Index 42
+name:Venomthorn
+base:thorn
+depth:4
+rarity:1
+color:g
+speed:2
+health:8d4
+sleep:0
+percept:0
+stealth:0
+will:4
+prot:-5:2d4
+blow:THORN:POISON:5:4d3
+flags:FRIEND
+desc:Dark brambles and deadly vines infest Isengard,
+desc: and the poison on their thorns brings death.
+
+
+
+# Index 43
+name:Gorcrow
+base:flyer
+depth:4
+rarity:2
+color:D
+speed:4
+health:1d4
+sleep:15
+percept:4
+stealth:3
+will:1
+prot:9
+blow:PECK:BLIND:10:1d5
+flags:FRIEND | RAND_25
+desc:A dark creature, related to the crow. It pecks at any exposed flesh,
+desc: especially the face and eyes.
+
+# Index 44
+name:Goblin archer
+base:goblin
+depth:4
+rarity:4
+color:U
+speed:2
+health:5d4
+sleep:12
+percept:6
+stealth:6
+will:1
+prot:6:1d4
+blow:HIT:HURT:5:1d5
+flags:FRIENDS | DROP_33 | UNLOCK_DOOR
+ranged-freq:75
+spell-power:6
+spells:ARROW1
+drop:arrow:Arrow:37:2d8
+drop:bow:Shortbow:8:1d1
+desc:He is one of Saruman's slaves from the mountains.
+desc: He carries a small dagger and bow.
+
+
+##### 5 #####
+
+
+
+# Index 51
+name:Goblin footpad
+base:goblin
+depth:5
+rarity:5
+color:D
+speed:3
+health:5d4
+sleep:12
+percept:7
+stealth:9
+will:4
+prot:5
+blow:HIT:HURT:6:1d6
+flags:FRIEND | INVISIBLE | CRUEL_BLOW
+flags:DROP_33
+desc: '...they put out their torches and they slipped on soft shoes, and they chose
+desc: out their very quickest runners with the sharpest ears and eyes.'
+
+# Index 52
+name:Mauhur, the Trusted
+base:orc
+depth:5
+rarity:10
+color:G
+speed:2
+health:12d4
+sleep:15
+percept:4
+stealth:1
+will:5
+prot:4:3d4
+blow:HIT:HURT:6:2d9
+flags:UNIQUE | ESCORT
+flags:DROP_100 | DROP_GOOD | BASH_DOOR | UNLOCK_DOOR
+desc:While Mauhur is not one of Saruman's vaunted
+desc: Uruk-hai, he has achieved a high position beneath Ugluk.
+
+
+##### 6 #####
+
+
+# Index 61
+name:Crebain
+plural:Crebain
+base:flyer
+depth:6
+rarity:2
+color:s
+speed:4
+health:1d4
+sleep:15
+percept:10
+stealth:4
+will:2
+prot:11
+blow:PECK:WOUND:12:1d5
+flags:FRIENDS | RAND_25
+ranged-freq:15
+spells:SHRIEK
+desc:A type of crow, specially bred by the forces of evil as spies.
+
+# Index 62
+name:Warg
+base:wolf
+depth:6
+rarity:2
+color:s
+speed:3
+health:8d4
+sleep:20
+percept:6
+stealth:5
+will:5
+prot:7:1d4
+blow:BITE:WOUND:6:2d5
+flags:FRIENDS | RAND_25 | SMART
+desc:A large and fierce wolf with eyes full of cunning.
+
+# Index 63
+name:Orc captain
+base:orc
+depth:6
+rarity:3
+color:r
+speed:2
+health:8d4
+sleep:15
+percept:4
+stealth:1
+will:4
+prot:6:2d4
+blow:HIT:HURT:5:2d8
+blow:LASH:DISARM:3:2d4
+flags:ESCORT | DROP_1D2 | BASH_DOOR | UNLOCK_DOOR
+drop:sword:Sword:15:1d1
+desc:An armoured orc with sword and whip.
+desc: He leads a patrol of lesser orcs.
+
+# Index 64
+name:Dunlending warrior
+base:person
+depth:6
+rarity:1
+color:W
+speed:2
+health:7d4
+light:1
+sleep:15
+percept:4
+stealth:1
+will:5
+prot:3:3d4
+blow:HIT:HURT:3:2d6
+flags:FRIENDS | DROP_33 | SMART | FLANKING | MALE
+drop:sword:Sword:10:1d1
+drop:shield:Round Shield:10:1d1
+desc:'...and Saruman has armed the wild hillmen and herd-folk
+desc: of Dunland beyond the rivers, and these also he loosed upon us.'
+
+# Index 65
+name:Winged horror
+base:horror
+depth:6
+rarity:15
+color:p
+speed:3
+health:9d4
+light:-1
+sleep:15
+percept:5
+stealth:5
+will:8
+prot:11:2d4
+blow:BITE:WOUND:2d8
+blow:CLAW:BLIND:2d4
+flags:FLYING | SMART | BASH_DOOR
+ranged-freq:20
+spells:SHRIEK
+message-vis:SHRIEK:{name} shrieks in a dreadful rasp.
+message-invis:SHRIEK:A hideous sound echoes nearby.
+desc:Saruman, envying the mounts of the Nine,
+desc: tried to create their equal. He failed, but this horror is dreadful still.
+
+
+##### 7 #####
+
+# Index 71
+name:Half-orc spy
+plural:Half-orc spies
+base:person
+depth:7
+rarity:4
+color:g
+speed:2
+health:7d4
+sleep:10
+percept:6
+stealth:10
+will:4
+prot:10:1d4
+blow:HIT:HURT:10:1d8
+blow:TOUCH:EAT_ITEM:7
+flags:DROP_100 | BASH_DOOR | TAKE_ITEM | UNLOCK_DOOR | ORC
+desc:He is one of Saruman's trusted servants.
+desc: Recently returned from a mission in other lands,
+desc: he is hungry for plunder.
+
+
+# Index 72
+name:Nightthorn
+base:thorn
+depth:7
+rarity:15
+color:D
+speed:2
+health:8d4
+light:-2
+sleep:0
+percept:0
+stealth:0
+will:5
+prot:-5:2d4
+blow:THORN:HURT:5:5d3
+desc:This twisted plant drinks in the light from the air around.
+
+# Index 73
+name:Orc warg-rider
+base:orc
+depth:7
+rarity:4
+color:R
+speed:3
+health:10d4
+sleep:12
+percept:7
+stealth:4
+will:5
+prot:6:2d4
+blow:HIT:HURT:7:3d6
+#blow:BITE:WOUND:6:2d5
+flags:FRIEND | RAND_25 | DROP_100 | WOLF | CHARGE
+drop:sword:Longsword:15:1d1
+desc:One of Saruman's orcish marauders, borne by a warg.
+desc: His sword is long and sharp, and his steed licks its lips hungrily.
+
+# Index 74
+name:Uruk-hai warrior
+base:uruk-hai
+depth:7
+rarity:2
+color:W
+speed:2
+health:10d4
+sleep:15
+percept:5
+stealth:3
+will:6
+prot:4:3d4
+blow:HIT:HURT:6:2d8
+flags:FRIEND | DROP_100 | BASH_DOOR
+ranged-freq:20
+spell-power:3
+spells:ARROW2
+drop:sword:Sword:8:1d1
+drop:bow:Longbow:8:1d1
+drop:arrow:Arrow:37:2d8
+drop:shield:Round Shield:8:1d1
+desc:A horrible creation of Saruman, a blasphemous melding of Orc and Man.
+desc: He bears a short, broad sword and a shield blazoned with the White Hand.
+
+# Index 75
+name:Dunlending archer
+base:person
+depth:6
+rarity:3
+color:u
+speed:2
+health:7d4
+light:1
+sleep:15
+percept:6
+stealth:1
+will:5
+prot:5:2d4
+blow:HIT:HURT:3:1d6
+flags:FRIEND | DROP_33 | SMART | MALE
+ranged-freq:70
+spell-power:6
+spells:ARROW2
+drop:sword:Dagger:10:1d1
+drop:bow:Longbow:12:1d1
+drop:arrow:Arrow:37:2d8
+desc:'...and Saruman has armed the wild hillmen and herd-folk
+desc: of Dunland beyond the rivers, and these also he loosed upon us.'
+
+
+# Index 76
+name:Gorol, the Smith
+base:orc
+depth:7
+rarity:60
+color:y
+speed:2
+health:12d4
+sleep:15
+percept:5
+stealth:0
+will:8
+prot:5:2d4
+blow:HIT:BATTER:4:4d7
+flags:ESCORT | DROP_100 | DROP_GREAT
+desc:Chief of the orcish craftsmen, Gorol holds a hammer
+desc: forged by Saruman himself in a brawny grip, and his
+desc: bodyguards give him a wide berth.
+#give him the artifact
+
+# Index 77
+name:Dhovol, the Vengeful
+base:orc
+depth:7
+rarity:40
+color:P
+speed:2
+health:10d4
+sleep:15
+percept:8
+stealth:5
+will:9
+prot:6:3d4
+blow:HIT:HURT:2:5d6
+flags:UNIQUE | BASH_DOOR
+desc:Dhovol mean
+drop:digger:Mattock:100:1d1
+#add Vengeance!
+#add description once I find that notebook
+
+# Index 78
+name:Scuttling horror
+base:horror
+depth:7
+rarity:4
+color:D
+speed:3
+health:3d4
+sleep:10
+percept:2
+stealth:10
+will:3
+prot:10:1d4
+blow:BITE:ENTRANCE:8:1d10
+blow:BITE:LOSE_CON:8:1d10
+flags:RES_POIS | TERRITORIAL | FRIENDS | SMART
+desc:A spider as big as a dog, covered in thick bristles,
+desc: with the light reflecting off its pale bulbous eyes.
+
+
+
+##### 8 #####
+
+# Index 81
+name:Warg chief
+base:wolf
+depth:8
+rarity:5
+color:W
+speed:3
+health:10d4
+sleep:20
+percept:8
+stealth:4
+will:8
+prot:10:1d4
+blow:BITE:WOUND:10:2d8
+flags:ESCORT | RAND_25 | BASH_DOOR | SMART
+ranged-freq:20
+spells:SHRIEK
+message-vis:SHRIEK:{name} howls for your blood.
+message-invis:SHRIEK:A great voice howls for your blood.
+desc:A great grey wolf, eyes gleaming with wickedness.
+desc: His pack is in search of food.
+
+# Index 82
+name:Battering ram
+base:building
+depth:8
+rarity:15
+color:U
+speed:2
+health:12d4
+sleep:0
+percept:0
+stealth:0
+will:0
+prot:-5:4d4
+desc:One of the great war machines of Isengard,
+desc: this mighty log hangs suspended from a frame of metal.
+
+# Index 83
+name:Dunlending chieftain
+base:person
+depth:8
+rarity:3
+color:s
+speed:2
+health:11d4
+light:2
+sleep:15
+percept:4
+stealth:1
+will:5
+prot:6:3d4
+blow:HIT:HURT:6:2d7
+flags:ESCORT | DROP_1D2 | SMART | MALE
+drop:sword:Sword:10:1d1
+drop:shield:Round Shield:10:1d1
+desc:'Hark! They hate us, and they are glad; for our doom seems certain to them.
+desc: “The king, the king!” they cry. “We will take their king. Death to the Forgoil!
+desc: Death to the Strawheads! Death to the robbers of the North!”'
+#Opportunist?
+
+# Index 84
+name:Shadrach
+base:horror
+depth:8
+rarity:30
+color:R
+speed:4
+health:10d4
+light:2
+sleep:25
+percept:8
+stealth:0
+will:8
+prot:10:3d4
+blow:BITE:FIRE:13:2d7
+flags:RES_FIRE | MINDLESS | RAND_25 | RAND_50 | UNIQUE | FLYING
+ranged-freq:35
+spell-power:6
+spells:SHRIEK | BR_FIRE | CONF
+message-vis:CONF:{name} gibbers and squeals at you.
+message-invis:CONF:You hear a mad burbling.
+desc:Saruman attempted only once to create a dragon,
+desc: as Morgoth did in the First Age. The burbling horror
+desc: before you flaps crazily on dozens of mismatched wings,
+desc: a surging flame shining from its mouth.
+
+# Index 85
+name:Lugdush, Ugluk's Right Hand
+base:uruk-hai
+depth:8
+rarity:15
+color:v
+speed:2
+health:12d4
+sleep:12
+percept:7
+stealth:5
+will:8
+prot:6:4d4
+blow:HIT:HURT:9:2d9
+flags:UNIQUE | UNIQUE_FRIEND | KNOCK_BACK | DROP_GOOD | DROP_1D2
+desc:The most trusted of Ugluk's Uruk-hai,
+desc: his sword is festooned with grisly trophies.
+
+# Index 86
+name:Iron horror
+base:horror
+depth:8
+rarity:15
+color:z
+speed:1
+health:6d4
+sleep:0
+percept:8
+stealth:0
+will:5
+prot:-5:5d4
+blow:CLAW:BATTER:4:6d3
+flags:NEVER_MOVE | MINDLESS
+flags:NO_FEAR | RES_POIS | NO_CONF | NO_SLEEP | NO_CRIT | KNOCK_BACK
+ranged-freq:75
+spells:HOLD
+desc:Modeled on the Pukel-Men of the Druedain and
+desc: fearful tales of Sauron's Silent Watchers,
+desc: this statue's eyes shine with a dull grey light.
+
+# Index 87
+#name:Watcher in the Isen
+#base:horror
+#depth:8
+#rarity:25
+#color:b
+#speed:2
+#health:20d4
+#sleep:25
+#percept:6
+#stealth:5
+#will:9
+#prot:6:2d4
+#blow:LASH:BATTER:5:3d6
+#flags:SMART | NO_FEAR
+#ranged-freq:75
+#spell-power:5
+#spells:TENTACLE
+#desc:A slimy monstrosity, it seems composed
+#desc: of a hundred different nightmares of the ocean.
+#note:need to get AMPHIBIOUS working, and I suppose a tentacle lash spell with 3d6 dmg
+
+
+##### 9 #####
+
+# Index 91
+name:Seige Tower
+base:building
+depth:9
+rarity:15
+color:D
+speed:3
+health:18d4
+sleep:0
+percept:0
+stealth:0
+will:0
+prot:-5:4d4
+ranged-freq:75
+spell-power:3
+spells:ARROW1
+desc:One of the great war machines of Isengard,
+desc: this towering construction holds a few archers.
+
+# Index 92
+name:Ugluk, Uruk-leader
+base:uruk-hai
+depth:9
+rarity:15
+color:r
+speed:2
+health:15d4
+sleep:12
+percept:9
+stealth:5
+will:11
+prot:8:4d4
+blow:HIT:HURT:11:2d10
+flags:DROP_1D2 | DROP_GOOD | ESCORT | UNIQUE_FRIEND
+drop:sword:Sword:10:1d1
+drop:shield:Round Shield:10:1d1
+desc:'‘Aye, we must stick together,’ growled Ugluk. ‘I don’t trust you little swine.
+desc: You’ve no guts outside your own sties. But for us you’d all have run away.
+desc: We are the fighting Uruk-hai! We slew the great warrior. We took the prisoners.
+desc: We are the servants of Saruman the Wise, the White Hand:
+desc: the Hand that gives us man’s-flesh to eat. We came out of Isengard,
+desc: and led you here, and we shall lead you back by the way we choose. I am Ugluk. I have spoken.’'
+#1 ugluk artifact for the most trusted of Saruman's uruk-hai?
+
+# Index 93
+name:Uruk-hai captain
+base:uruk-hai
+depth:9
+rarity:5
+color:t
+speed:2
+health:11d4
+sleep:15
+percept:7
+stealth:5
+will:9
+prot:6:3d4
+blow:HIT:HURT:7:2d9
+flags:DROP_100 | ESCORT
+drop:sword:Sword:10:1d1
+drop:shield:Round Shield:10:1d1
+drop:helm:Great Helm:30:1d1
+desc:A horrible creation of Saruman, a blasphemous melding of Orc and Man.
+desc: His iron helm is marked with the White Hand.
+
+# Index 94
+name:Uruk-hai champion
+base:uruk-hai
+depth:9
+rarity:4
+color:s
+speed:2
+health:10d4
+sleep:15
+percept:6
+stealth:5
+will:8
+prot:6:3d4
+blow:HIT:HURT:8:2d9
+flags:DROP_100 | CHARGE
+drop:sword:Sword:10:1d1
+drop:shield:Round Shield:10:1d1
+desc:A horrible creation of Saruman, a blasphemous melding of Orc and Man.
+desc: Greatest of the uruk-hai, he brandishes his sword and sneers tauntingly.
+
+
+# Index 95
+name:Dunlending sorcerer
+base:person
+depth:9
+rarity:10
+color:o
+speed:2
+health:10d4
+light:2
+sleep:15
+percept:4
+stealth:3
+will:8
+prot:6:2d4
+blow:HIT:HURT:4:2d6
+flags:DROP_100 | ESCORT | DROP_GOOD | DROP_1D2 | MALE
+ranged-freq:20
+spells:HOLD | SCARE
+desc:A sorcerer of the Dunlendings, he is known for his fearful power.
+desc: His tribe follows close behind.
+
+# Index 96
+name:Dunlending slayer
+base:person
+depth:9
+rarity:5
+color:D
+speed:2
+health:8d4
+sleep:15
+percept:7
+stealth:8
+will:7
+prot:10:1d4
+blow:HIT:WOUND:10:1d8
+flags:MALE | DROP_33 | INVISIBLE | RIPOSTE
+drop:sword:Dagger:25:1d1
+desc:'They are fierce folk when roused. They will not give way now for dusk or dawn,
+desc: until Theoden is taken, or they themselves are slain.'
+
+
+##### 10 #####
+
+name:Catapult
+base:building
+depth:10
+rarity:15
+color:u
+speed:2
+health:20d4
+sleep:0
+percept:0
+stealth:0
+will:0
+prot:-5:4d4
+desc:One of the great war machines of Isengard,
+desc: this mighty wall-destroyer lies unmanned by a heap of boulders.
+
+name:Oakroot
+base:horror
+depth:10
+rarity:20
+color:g
+speed:1
+health:18d4
+sleep:25
+percept:3
+stealth:8
+will:10
+prot:8:4d4
+blow:HIT:BATTER:10:4d7
+flags:MALE | UNIQUE | REGENERATE | SMART | KNOCK_BACK | HURT_FIRE | BASH_DOOR | RES_POIS
+ranged-freq:20
+spells:SHRIEK
+message-vis:SHRIEK:{name} roars in despair.
+message-invis:SHRIEK:{name} roars in despair.
+desc:Once a proud shepherd of the trees, this misshapen,
+desc: stony mass cowers, lumbering away fearfully.
+
+
+
+
+
+
+##### 11 #####
+
+##### 12 #####
+
+##### 15 #####
+
+
+
+##### 20 #####
+
+# Saruman is a very special monster (thus the QUESTOR flag).
+
+# Index 201
+name:Saruman of Many Colours
+base:person
+depth:20
+rarity:1
+color:w
+speed:2
+health:60d4
+light:4
+sleep:10
+percept:10
+stealth:0
+will:12
+prot:14:4d4
+blow:HIT:SLOW:15:2d12
+flags:UNIQUE | QUESTOR | MALE | ATTR_MULTI
+flags:OPEN_DOOR | UNLOCK_DOOR
+flags:DROP_3D2 | DROP_GREAT
+flags:SMART | REGENERATE
+ranged-freq:75
+spells:HOLD | CONF
+desc:'And here you will stay, Gandalf the Grey, and rest from journeys.
+desc: For I am Saruman the Wise, Saruman Ring-Maker, Saruman of Many Colours!'
+desc: He is the master of Isengard. A ring gleams on his finger and his robes shimmer, amazing the eyes.
+desc: A great key ring rests on his belt. You need those keys.
+
+
+
+##### Hallucinatory #####
+
+
+# Index 301
+name:Feanor, High King of the Noldor
+base:hallucinatory
+depth:30
+rarity:5
+glyph:@
+color:Z
+flags:UNIQUE | MALE
+
+
+# Index 302
+name:Luthien Tinuviel
+base:hallucinatory
+depth:30
+rarity:5
+glyph:@
+color:b
+flags:UNIQUE | FEMALE
+
+
+# Index 303
+name:Thingol, the Hidden King
+base:hallucinatory
+depth:30
+rarity:5
+glyph:@
+color:s
+flags:UNIQUE | MALE
+
+
+# Index 304
+name:Beren, Son of Barahir
+base:hallucinatory
+depth:30
+rarity:5
+glyph:@
+color:u
+flags:UNIQUE | MALE
+
+
+# Index 305
+name:Huan, Hound of Valinor
+base:hallucinatory
+depth:30
+rarity:5
+glyph:C
+color:Y
+flags:UNIQUE | MALE
+
+
+# Index 306
+name:Eagle of Manwe
+plural:Eagles of Manwe
+base:hallucinatory
+depth:30
+rarity:5
+glyph:b
+color:y
+
+
+# Index 307
+name:Thorondor, King of Eagles
+base:hallucinatory
+depth:30
+rarity:10
+glyph:b
+color:w
+flags:UNIQUE | MALE
+
+
+# Index 308
+name:Ent
+base:hallucinatory
+depth:30
+rarity:10
+glyph:T
+color:g
+flags:MALE
+
+
+# Index 309
+name:Ent-wife
+plural:Ent-wives
+base:hallucinatory
+depth:30
+rarity:10
+glyph:T
+color:g
+flags:FEMALE
+
+flags:UNIQUE | MALE
+
+
+# Index 321
+name:Varda, Lady of the Stars
+base:hallucinatory
+depth:30
+rarity:10
+glyph:V
+color:w
+flags:UNIQUE | FEMALE
+
+
+# Index 322
+name:Ulmo, Lord of Waters
+base:hallucinatory
+depth:30
+rarity:20
+glyph:V
+color:b
+flags:UNIQUE | MALE
+
+
+# Index 324
+name:Yavanna, the Giver of Fruits
+base:hallucinatory
+depth:30
+rarity:30
+glyph:V
+color:G
+flags:UNIQUE | FEMALE
+
+
+# Index 325
+name:Mandos, Doomsman of the Valar
+base:hallucinatory
+depth:30
+rarity:10
+glyph:V
+color:D
+flags:UNIQUE | MALE
+
+
+# Index 326
+name:Vaire, the Weaver
+base:hallucinatory
+depth:30
+rarity:40
+glyph:V
+color:y
+flags:UNIQUE | FEMALE
+
+
+# Index 327
+name:Lorien, Master of Dreams
+base:hallucinatory
+depth:30
+rarity:40
+glyph:V
+color:r
+flags:UNIQUE | MALE
+
+
+# Index 328
+name:Este, the Healer
+base:hallucinatory
+depth:30
+rarity:40
+glyph:V
+color:s
+flags:UNIQUE | FEMALE
+
+
+# Index 329
+name:Nienna, Lady of Mourning
+base:hallucinatory
+depth:30
+rarity:40
+glyph:V
+color:v
+flags:UNIQUE | FEMALE
+
+
+# Index 330
+name:Tulkas, the Valiant
+base:hallucinatory
+depth:30
+rarity:10
+glyph:V
+color:o
+flags:UNIQUE | MALE
+
+
+# Index 331
+name:Nessa, the Dancer
+base:hallucinatory
+depth:30
+rarity:40
+glyph:V
+color:B
+flags:UNIQUE | FEMALE
+
+
+# Index 332
+name:Orome, Lord of Forests
+base:hallucinatory
+depth:30
+rarity:40
+glyph:V
+color:v
+flags:UNIQUE | MALE
+
+
+# Index 333
+name:Vana, the Ever Young
+base:hallucinatory
+depth:30
+rarity:40
+glyph:V
+color:W
+flags:UNIQUE | FEMALE
+
+
+
+# Further ideas...
+
+# A    white         Ilmare, Handmaid of Varda
+# A    yellow        Eonwe, Herald of Manwe
+# A    blue          Osse, Lord of Storms
+# A    light blue    Uinen, Lady of the Seas
+# A    dark grey     Melian, Lady of Nightingales
+# A    green         Iarwain Ben-adar, Oldest and Fatherless
+# A    orange        Arien, Keeper of the Heart of Fire
+# A    light grey    Tilion, Keeper of the Wayward
+# A    grey          Olorin, the Wise Dreamer
+# A    ***           Salmar, Horn-Maker
+
+
+# Index 401
+name:Curunir, God-King
+base:hallucinatory
+depth:40
+rarity:0
+glyph:A
+color:w
+flags:UNIQUE | MALE
+desc:Clothed in shining white, he appears as a beacon of
+desc: hope and strength in this fallen world.
+

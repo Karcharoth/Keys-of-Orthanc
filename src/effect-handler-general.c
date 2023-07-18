@@ -184,7 +184,6 @@ bool effect_handler_NOURISH(effect_handler_context_t *context)
 	} else {
 		context->ident = true;
 	}
->>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 	return true;
 }
 

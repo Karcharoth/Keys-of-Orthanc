@@ -297,12 +297,21 @@ void ego_apply_magic(struct object *obj, bool smithing)
 	/* Bonuses apply differently for smithed objects */
 	if (smithing) {
 		/* Apply extra ego bonuses */
+<<<<<<< HEAD
 		if (ego->att) obj->att = 1;
 		if (ego->evn) obj->evn = 1;
 		if (ego->dd) obj->dd = 1;
 		if (ego->ds) obj->ds = 1;
 		if (ego->pd) obj->pd = 1;
 		if (ego->ps) obj->ps = 1;
+=======
+		if (ego->att) obj->att += 1;
+		if (ego->evn) obj->evn += 1;
+		if (ego->dd) obj->dd += 1;
+		if (ego->ds) obj->ds += 1;
+		if (ego->pd) obj->pd += 1;
+		if (ego->ps) obj->ps += 1;
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 
 		if (of_has(obj->flags, OF_CURSED)) {
 			obj->pval = -1;
@@ -811,7 +820,6 @@ void apply_magic(struct object *obj, int lev, bool allow_artifacts, bool good,
 
 	/* Apply magic */
 	if (tval_is_held_weapon(obj)) {
-		       
 			/* Deal with special items */
 			if (special && !make_special_item(obj, lev, good || great)) {
 				fine = true;
@@ -830,7 +838,7 @@ void apply_magic(struct object *obj, int lev, bool allow_artifacts, bool good,
 				/* And often come in multiples */
 				if (one_in_(2)) {
 					obj->number = rand_range(2, 5);
-				
+				}
 			}
 		}
 	} else if (tval_is_ammo(obj)) {

@@ -235,13 +235,14 @@ static int square_flow_cost(struct chunk *c, struct loc grid,
 
 			/* Add an extra turn for unlocking/opening doors as
 			 * this action doesn't move the monster */
-			if (square_iscloseddoor(c, grid) && !bash) {
-				if (!(rf_has(mon->race->flags, RF_PASS_DOOR) ||
-					  rf_has(mon->race->flags, RF_PASS_WALL))) {
+			if (square_iscloseddoor(c, grid)) {
+				if (!(bash ||
+						rf_has(mon->race->flags, RF_PASS_DOOR) ||
+						rf_has(mon->race->flags, RF_PASS_WALL))) {
 					cost += 1;
 				}
-			} else if (!square_isprojectable(c, grid) &&
-					   rf_has(mon->race->flags, RF_TUNNEL_WALL)) {
+			} else if (square_isdiggable(c, grid) &&
+					rf_has(mon->race->flags, RF_TUNNEL_WALL)) {
 				/* Add extra turn(s) for tunneling through rubble/walls as
 				 * this action doesn't move the monster */
 				if (square_isrubble(c, grid)) {
@@ -251,7 +252,7 @@ static int square_flow_cost(struct chunk *c, struct loc grid,
 					/* Two extra turns to dig through granite/quartz */
 					cost += 2;
 				}
-			} else if (!square_isprojectable(c, grid) &&
+			} else if (square_iswall(c, grid) &&
 					   rf_has(mon->race->flags, RF_KILL_WALL)) {
 				/* Pretend it would take an extra turn (to prefer routes
 				 * with less wall destruction */
@@ -264,7 +265,8 @@ static int square_flow_cost(struct chunk *c, struct loc grid,
 	} else {
 		/* Deal with noise flows */
 		/* Ignore walls */
-		if (square_iswall(c, grid)) {
+		if (square_iswall(c, grid) && !square_isdoor(c, grid)) {
+
 			return -1;
 		}
  
@@ -358,18 +360,16 @@ void update_flow(struct chunk *c, struct flow *flow, struct monster *mon)
 			for (d = 0; d < 8; d++)	{
 				/* Child location */
 				struct loc grid = loc_sum(next, ddgrid_ddd[d]);
-
-				/* Extra cost of the grid */
-				int cost = square_flow_cost(c, grid, mon);
-
-				/* Monster on this grid */
-				struct monster *grid_mon = square_monster(c, grid);
+				struct monster *grid_mon;
+				int cost;
 
 				/* Legal grids only */
 				if (!square_in_bounds(c, grid)) continue;
 
 				/* Skip grids that have already been processed */
 				if (flow->grids[grid.y][grid.x] < z_info->flow_max) continue;
+				/* Extra cost of the grid */
+				cost = square_flow_cost(c, grid, mon);
 
 				/* Ignore features that block flow */
 				if (cost < 0) continue;
@@ -379,6 +379,8 @@ void update_flow(struct chunk *c, struct flow *flow, struct monster *mon)
 
 				/* Enqueue that child */
 				q_push_int(queue, grid_to_i(grid, c->width));
+				/* Monster on this grid */
+				grid_mon = square_monster(c, grid);
 
 				/* Monsters at this site need to re-consider their targets */
 				if (grid_mon) {

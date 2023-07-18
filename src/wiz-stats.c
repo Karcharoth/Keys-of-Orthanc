@@ -470,6 +470,7 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 
 	/* has free action (hack: don't include Inertia)*/
 	if (of_has(obj->flags, OF_FREE_ACT) && 
+		!((obj->tval == TV_AMULET) &&
 		  (!strstr(obj->kind->name, "Inertia")))) {
 
 			/* add the stats */

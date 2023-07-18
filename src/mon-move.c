@@ -263,22 +263,22 @@ int monster_entry_chance(struct chunk *c, struct monster *mon, struct loc grid,
 		return move_chance;
 	} else {
 		/* Granite, Quartz, Rubble */
-		if (square_iswall(c, grid)) {
+		if (square_iswall(c, grid) && !square_isdoor(c, grid)) {
 			/* Impassible except for monsters that move through walls */
 			if (rf_has(mon->race->flags, RF_PASS_WALL) ||
 				rf_has(mon->race->flags, RF_KILL_WALL)) {
 				return move_chance;
-            } else if (rf_has(mon->race->flags, RF_TUNNEL_WALL) &&
-					   (mon->alertness >= ALERTNESS_ALERT)) {
+			} else if (rf_has(mon->race->flags, RF_TUNNEL_WALL) &&
+					(mon->alertness >= ALERTNESS_ALERT)) {
 				/* Alert monsters can slowly tunnel through walls */
 				return move_chance;
-            }
+			}
 			return 0;
 		}
 
 		/* Doors */
 		if (square_isdoor(c, grid)) {
-            int unlock_chance = 0;
+			int unlock_chance = 0;
 			int bash_chance = 0;
 
 			/* Some monsters can simply pass through doors */
@@ -3423,7 +3423,7 @@ static void monster_turn(struct monster *mon)
 		}
 
 		/* No passable grids found */
-		if (loc_eq(mon->target.grid, loc(0, 0))) return;
+		if (loc_eq(tgrid, loc(0, 0))) return;
 
 		/* Cannot move, target grid does not contain the character */
 		if (no_move && !square_isplayer(cave, tgrid)) return;

@@ -100,13 +100,11 @@ static const grouper group_item[] =
 	{ TV_HELM,		  NULL },
 	{ TV_GLOVES,	  NULL },
 	{ TV_BOOTS,		  NULL },
-
 	{ TV_RING,		"Rings" },
 
 	{ TV_POTION,	"Potions" },
 	{ TV_FOOD,		"Food" },
 	{ TV_HERB,		"Herbs" },
-
 
 	{ TV_CHEST,		"Chests" },
 

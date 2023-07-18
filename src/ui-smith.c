@@ -1007,7 +1007,7 @@ struct numbers_menu_entry numbers_menu_info[SMITH_NUM_MAX] =
 	{ SMITH_NUM_INC_EVN,	"increase evasion bonus" },
 	{ SMITH_NUM_DEC_EVN,	"decrease evasion bonus" },
 	{ SMITH_NUM_INC_PS,		"increase protection sides" },
-	{ SMITH_NUM_DEC_PS,		"protection sides" },
+	{ SMITH_NUM_DEC_PS,		"decrease protection sides" },
 	{ SMITH_NUM_INC_PVAL,	"increase special bonus" },
 	{ SMITH_NUM_DEC_PVAL,	"decrease special bonus" },
 	{ SMITH_NUM_INC_WGT,	"increase weight" },
@@ -1286,6 +1286,7 @@ static void check_smithing_menu_row_colors(void)
 		}
 		if (i == 2) {
 			if (!smith_obj->kind || smith_obj->ego ||
+
 				(player->self_made_arts >= z_info->self_arts_max)) {
 				smithing_actions[i].flags = MN_ACT_GRAYED;
 			} else if (player_active_ability(player, "Artifice")) {

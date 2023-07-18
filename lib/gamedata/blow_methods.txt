@@ -109,3 +109,4 @@ prt:1
 msg:MON_HIT
 act:lashes {target}
 desc:lash
+

@@ -162,4 +162,3 @@ eval:40
 desc:slow
 effect-type:flag
 resist:FREE_ACT
-

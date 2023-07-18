@@ -162,6 +162,7 @@ static bool item_tester_unknown(const struct object *obj)
  */
 bool effect_handler_NOURISH(effect_handler_context_t *context)
 {
+	const char *old_grade = player_get_timed_grade(player, TMD_FOOD);
 	int amount = effect_calculate_value(context);
 	if (context->subtype == 0) {
 		/* Increase food level by amount */
@@ -172,7 +173,18 @@ bool effect_handler_NOURISH(effect_handler_context_t *context)
 	} else {
 		return false;
 	}
-	context->ident = true;
+	/*
+	 * If the effect's other parameter is nonzero, only identify if the
+	 * timed grade changed.  Otherwise, always identify.
+	 */
+	if (context->other) {
+		if (old_grade != player_get_timed_grade(player, TMD_FOOD)) {
+			context->ident = true;
+		}
+	} else {
+		context->ident = true;
+	}
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 	return true;
 }
 
@@ -241,7 +253,7 @@ bool effect_handler_GLYPH(effect_handler_context_t *context)
 
 	/* See if the effect works */
 	if (!square_istrappable(cave, player->grid)) {
-		msg("There is no clear floor on which to cast the spell.");
+		msg("You cannot draw a glyph without a clean expanse of floor.");
 		return false;
 	}
 
@@ -250,6 +262,7 @@ bool effect_handler_GLYPH(effect_handler_context_t *context)
 		push_object(player->grid);
 
 	/* Create a glyph */
+	msg("You trace out a glyph of warding upon the floor.");
 	square_add_glyph(cave, player->grid, context->subtype);
 
 	return true;
@@ -332,7 +345,7 @@ bool effect_handler_RESTORE_MANA(effect_handler_context_t *context)
 }
 
 /**
- * Attempt to uncurse an object
+ * Uncurse all equipped objects
  */
 bool effect_handler_REMOVE_CURSE(effect_handler_context_t *context)
 {
@@ -349,14 +362,14 @@ bool effect_handler_REMOVE_CURSE(effect_handler_context_t *context)
 		/* Uncurse the object */
 		uncurse_object(obj);
 		removed = true;
-		context->ident = true;
 	}
 
 	if (removed) {
+		context->ident = true;
 		msg("You feel sanctified.");
 	}
 
-	return context->ident;
+	return true;
 }
 
 /**

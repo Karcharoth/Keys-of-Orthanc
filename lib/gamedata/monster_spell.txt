@@ -4,7 +4,8 @@
 # msgt - message type
 # mana - mana cost for the spell
 # best-range - best range for the spell
-# max-range - maximum range for the spell
+# max-range - maximum range for the spell; if not specified, the maximum
+#             is the same as player:max-range from constants.txt.
 # desire - base spell desirability
 # disturb - positive value means the spell cancels player stealth mode
 # use-past-range - percentage usefulness per grid past range
@@ -287,6 +288,7 @@ effect:TIMED_INC_NO_RES:SLOW
 dice:2d4
 lore:slow
 message-vis:{name} whispers of fading and decay.
+message-invis:{name} whispers of fading and decay.
 message-save:You resist.
 
 name:SNG_BIND

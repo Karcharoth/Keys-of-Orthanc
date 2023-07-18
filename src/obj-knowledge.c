@@ -1144,7 +1144,6 @@ static int object_value_base(const struct object *obj)
 
 			/* Un-aware Rings */
 			case TV_RING: return 45;
-
 		}
 	}
 

@@ -40,6 +40,10 @@
 #include "player-quest.h"
 #include "player-timed.h"
 #include "player-util.h"
+<<<<<<< HEAD
+=======
+#include "songs.h"
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 #include "target.h"
 #include "trap.h"
 
@@ -204,10 +208,13 @@ void do_cmd_takeoff(struct command *cmd)
 void do_cmd_wield(struct command *cmd)
 {
 	struct object *equip_obj;
+<<<<<<< HEAD
 	struct object *quiver1_obj =
 		equipped_item_by_slot_name(player, "first quiver");
 	struct object *quiver2_obj =
 		equipped_item_by_slot_name(player, "second quiver");
+=======
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 	struct object *weapon = equipped_item_by_slot_name(player, "weapon");
 	int shield_slot = slot_by_name(player, "arm");
 	char o_name[80];
@@ -218,6 +225,10 @@ void do_cmd_wield(struct command *cmd)
 	struct object *obj;
 	struct ability *ability;
 	bool two_weapon = false;
+<<<<<<< HEAD
+=======
+	bool combine = false;
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 
 	/* Get arguments */
 	if (cmd_get_item(cmd, "item", &obj,
@@ -240,9 +251,58 @@ void do_cmd_wield(struct command *cmd)
 		return;
 	}
 
+<<<<<<< HEAD
 	/* Get the slot the object wants to go in, and the item currently there */
 	slot = wield_slot(obj);
 	equip_obj = slot_object(player, slot);
+=======
+	/*
+	 * Get the slot the object wants to go in, and the item currently
+	 * there.  Treat arrows specially to ease merging with what is in
+	 * the quiver.
+	 */
+	if (tval_is_ammo(obj)) {
+		int quiver1_slot = slot_by_name(player, "first quiver");
+		struct object *quiver1_obj =
+			equipped_item_by_slot_name(player, "first quiver");
+		int quiver2_slot = slot_by_name(player, "second quiver");
+		struct object *quiver2_obj =
+			equipped_item_by_slot_name(player, "second quiver");
+
+		if (quiver1_obj
+				&& object_similar(quiver1_obj, obj, OSTACK_PACK)
+				&& quiver1_obj->number
+				< quiver1_obj->kind->base->max_stack) {
+			slot = quiver1_slot;
+			equip_obj = quiver1_obj;
+			combine = true;
+		} else if (quiver2_obj
+				&& object_similar(quiver2_obj, obj, OSTACK_PACK)
+				&& quiver2_obj->number
+				< quiver2_obj->kind->base->max_stack) {
+			slot = quiver2_slot;
+			equip_obj = quiver2_obj;
+			combine = true;
+		} else if (quiver1_obj && quiver2_obj) {
+			/* Ask for arrow set to replace */
+			if (cmd_get_item(cmd, "replace", &equip_obj,
+					/* Prompt */ "Replace which set of arrows? ",
+					/* Error  */ "Error in do_cmd_wield(), please report.",
+					/* Filter */ tval_is_ammo,
+					/* Choice */ USE_EQUIP) != CMD_OK) {
+				return;
+			}
+			slot = equipped_item_slot(player->body, equip_obj);
+		} else {
+			slot = (quiver1_obj) ? quiver2_slot : quiver1_slot;
+			equip_obj = NULL;
+			assert(!slot_object(player, slot));
+		}
+	} else {
+		slot = wield_slot(obj);
+		equip_obj = slot_object(player, slot);
+	}
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 
 	/* Deal with wielding of two-handed weapons when already using a shield */
 	if (of_has(obj->flags, OF_TWO_HANDED) && slot_object(player, shield_slot)) {
@@ -313,6 +373,7 @@ void do_cmd_wield(struct command *cmd)
 		slot = equipped_item_slot(player->body, equip_obj);
 	}
 
+<<<<<<< HEAD
 	/* Special cases for merging arrows */
 	if (object_similar(quiver1_obj, obj, OSTACK_PACK)) {
 		slot = slot_by_name(player, "first quiver");
@@ -328,6 +389,8 @@ void do_cmd_wield(struct command *cmd)
 			return;
 	}
 
+=======
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 	/* Ask about two weapon fighting if necessary */
 	for (ability = obj->abilities; ability; ability = ability->next) {
 		if (streq(ability->name, "Two Weapon Fighting") &&
@@ -371,8 +434,57 @@ void do_cmd_wield(struct command *cmd)
 		return;
 	}
 
+<<<<<<< HEAD
 	inven_takeoff(equip_obj);
 	inven_wield(obj, slot);
+=======
+	if (combine) {
+		/*
+		 * At most, only want as many as can be merged into the wielded
+		 * stack.
+		 */
+		int quantity = MIN(obj->number, equip_obj->kind->base->max_stack
+			- equip_obj->number);
+		struct object *wielded;
+		bool dummy = false;
+
+		/*
+		 * By the tests that set combine earlier, should have at least
+		 * one to merge.
+		 */
+		assert(quantity);
+		if (object_is_carried(player, obj)) {
+			wielded = gear_object_for_use(player, obj, quantity,
+				false, &dummy);
+			object_absorb(equip_obj, wielded);
+		} else {
+			/*
+			 * Limit the quantity by the player's weight limit.
+			 * By the prior check on the weight limit, the quantity
+			 * will be at least one.
+			 */
+			quantity = MIN(quantity, inven_carry_num(player, obj));
+			assert(quantity);
+
+			wielded = floor_object_for_use(player, obj, quantity,
+				false, &dummy);
+			inven_carry(player, wielded, true, true);
+		}
+	} else {
+		inven_takeoff(equip_obj);
+		/*
+		 * Need to handle possible pack overflow if wielding from the
+		 * floor.  Do not want to call combine_pack() if wielding from
+		 * the pack because that could leave obj dangling if it combined
+		 * with the taken off item.
+		 */
+		if (!object_is_carried(player, obj)) {
+			combine_pack(player);
+			pack_overflow(equip_obj);
+		}
+		inven_wield(obj, slot);
+	}
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 }
 
 /**
@@ -437,6 +549,14 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 
 	was_aware = object_flavor_is_aware(obj);
 
+<<<<<<< HEAD
+=======
+	/* Determine whether we know an item needs to be be aimed */
+	if (tval_is_horn(obj) || was_aware) {
+		known_aim = true;
+	}
+
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 	if (obj_needs_aim(obj)) {
 		/* Unknown things with no obvious aim get a random direction */
 		if (!known_aim) {
@@ -456,6 +576,24 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 	/* Verify effect */
 	assert(effect);
 
+<<<<<<< HEAD
+=======
+	/* Check voice */
+	if (use == USE_VOICE) {
+		int voice_cost = player_active_ability(player, "Channeling") ? 10 : 20;
+
+		if (player->csp < voice_cost) {
+			event_signal(EVENT_INPUT_FLUSH);
+			msg("You are out of breath.");
+			return;
+		}
+
+		msg("You sound a loud note on the horn.");
+		player->csp -= voice_cost;
+		player->upkeep->redraw |= PR_MANA;
+	}
+
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 	/* Check for use if necessary */
 	if (use == USE_CHARGE) {
 		can_use = check_devices(obj);
@@ -624,22 +762,35 @@ void do_cmd_use_staff(struct command *cmd)
 /**
  * Blow a horn 
  */
+<<<<<<< HEAD
 /*
 void do_cmd_blow_horn(struct command *cmd)
 {
 	struct object *obj;
 	bool blasting;
 
+=======
+void do_cmd_blow_horn(struct command *cmd)
+{
+	struct object *obj;
+
+	/* Get an item */
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 	if (cmd_get_item(cmd, "item", &obj,
 			"Blow which horn? ",
 			"You have no horns to blow.",
 			tval_is_horn,
 			USE_INVEN | USE_FLOOR | SHOW_FAIL) != CMD_OK) return;
 
+<<<<<<< HEAD
 	blasting = streq(obj->kind->name, "Blasting");
 
 	use_aux(cmd, obj, USE_VOICE, MSG_ZAP_ROD, blasting);
 }*/
+=======
+	use_aux(cmd, obj, USE_VOICE, MSG_ZAP_ROD, obj_allows_vertical_aim(obj));
+}
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 
 /**
  * Eat some food 
@@ -705,6 +856,10 @@ void do_cmd_use(struct command *cmd)
 	if (tval_is_ammo(obj))				do_cmd_fire(cmd);
 	else if (tval_is_potion(obj))		do_cmd_quaff_potion(cmd);
 	else if (tval_is_edible(obj))		do_cmd_eat_food(cmd);
+<<<<<<< HEAD
+=======
+	else if (tval_is_horn(obj))			do_cmd_blow_horn(cmd);
+>>>>>>> 95a4e2882ee4b7c8c73b51fbec4bd3b1bbe50e44
 	else if (tval_is_staff(obj))		do_cmd_use_staff(cmd);
 	else if (obj_can_refuel(obj))		do_cmd_refuel(cmd);
 	else

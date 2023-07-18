@@ -486,28 +486,31 @@ static void player_timed_end_effect(int idx)
 			player->upkeep->redraw |= PR_MAP;
 			break;
 		}
-		case TMD_STR: {
-			effect_simple(EF_DRAIN_STAT, source_none(), "3", STAT_STR, 0, 0,
-						  NULL);
-			break;
-		}
-		case TMD_DEX: {
-			effect_simple(EF_DRAIN_STAT, source_none(), "3", STAT_DEX, 0, 0,
-						  NULL);
-			break;
-		}
-		case TMD_CON: {
-			effect_simple(EF_DRAIN_STAT, source_none(), "3", STAT_CON, 0, 0,
-						  NULL);
-			break;
-		}
-		case TMD_GRA: {
-			effect_simple(EF_DRAIN_STAT, source_none(), "3", STAT_GRA, 0, 0,
-						  NULL);
-			break;
-		}
 		default: break;
 	}
+}
+
+/**
+ * Return the name of the current grade of a timed effect on a player.
+ *
+ * \param p is the player to query.
+ * \param idx is the index of the timed effect.
+ * \return NULL if the timed effect is not currently active; otherwise return
+ * the name of the currently active grade for the timed effect.  The returned
+ * string should not be freed.
+ */
+const char *player_get_timed_grade(const struct player *p, int idx)
+{
+	const struct timed_grade *grade;
+
+	if (!p->timed[idx]) {
+		return NULL;
+	}
+	grade = timed_effects[idx].grade;
+	while (p->timed[idx] > grade->max) {
+		grade = grade->next;
+	}
+	return grade->name;
 }
 
 /**

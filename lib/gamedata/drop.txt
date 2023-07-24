@@ -121,10 +121,5 @@ name:headgear
 chest:1
 base:helm
 
-name:jewellery
-chest:1
-item:ring:Serpentine Ring
-item:ring:Filigree Ring
-
 name:chest
 base:chest

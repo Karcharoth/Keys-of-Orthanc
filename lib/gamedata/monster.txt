@@ -1025,7 +1025,7 @@ stealth:5
 will:11
 prot:8:4d4
 blow:HIT:HURT:11:2d10
-flags:DROP_1D2 | DROP_GOOD | ESCORT | UNIQUE_FRIEND
+flags:DROP_1D2 | DROP_GOOD | ESCORT | UNIQUE_FRIEND | UNIQUE
 drop:sword:Sword:10:1d1
 drop:shield:Round Shield:10:1d1
 desc:'‘Aye, we must stick together,’ growled Ugluk. ‘I don’t trust you little swine.

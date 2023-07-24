@@ -448,7 +448,7 @@ static void tval_display(struct menu *menu, int oid, bool cursor, int row,
 	if (((smithing_tvals[oid].category == SMITH_TYPE_WEAPON) &&
 		 player_active_ability(player, "Weaponsmith")) ||
 		((smithing_tvals[oid].category == SMITH_TYPE_JEWELRY) &&
-		 player_active_ability(player, "Jeweller")) ||
+		 player_active_ability(player, "Ringlore")) ||
 		((smithing_tvals[oid].category == SMITH_TYPE_ARMOUR) &&
 		 player_active_ability(player, "Armoursmith"))) {
 		attr = COLOUR_WHITE;

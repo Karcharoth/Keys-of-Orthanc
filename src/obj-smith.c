@@ -841,7 +841,7 @@ int object_difficulty(struct object *obj, struct smithing_cost *smithing_cost)
 		smithing_cost->armoursmith = 1;
     }
     if ((cat == SMITH_TYPE_JEWELRY)
-		&& !player_active_ability(player, "Jeweller")) {
+		&& !player_active_ability(player, "Ringlore")) {
 		smithing_cost->jeweller = 1;
     }
     if (obj->artifact && !player_active_ability(player, "Artifice")) {

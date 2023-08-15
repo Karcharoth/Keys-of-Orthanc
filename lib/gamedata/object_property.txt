@@ -506,9 +506,9 @@ smith-difficulty:6
 
 name:slay undead
 type:slay
-code:UNDEAD_1
+code:UNDEAD_2
 smith-cat:slay
-smith-difficulty:6
+smith-difficulty:15
 
 name:slay rauko
 type:slay

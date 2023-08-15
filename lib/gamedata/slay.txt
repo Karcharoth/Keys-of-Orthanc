@@ -34,11 +34,11 @@ race-flag:SPIDER
 dice:1
 smith-difficulty:6
 
-code:UNDEAD_1
+code:UNDEAD_2
 name:undead
 race-flag:UNDEAD
-dice:1
-smith-difficulty:6
+dice:2
+smith-difficulty:15
 
 code:RAUKO_1
 name:raukar
@@ -57,3 +57,4 @@ name:trolls
 race-flag:TROLL
 dice:1
 smith-difficulty:5
+

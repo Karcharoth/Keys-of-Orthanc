@@ -747,7 +747,7 @@ desc: most trusted Uruk-hai captain.
 ## TODO: add alchemy and uncomment that line
 
 name:of Kwalinorn
-base-object:Set of Gloves
+base-object:gloves:Set of Gloves
 pval:0
 depth:1
 rarity:45

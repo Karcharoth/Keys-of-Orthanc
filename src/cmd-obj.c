@@ -230,7 +230,8 @@ void do_cmd_wield(struct command *cmd)
 		(player->upkeep->total_weight + obj->weight >
 		 weight_limit(player->state)* 3 / 2)) {
 		/* Describe it */
-		object_desc(o_name, sizeof(o_name), obj, ODESC_FULL, player);
+    	object_desc(o_name, sizeof(o_name), obj,
+	    		ODESC_PREFIX | ODESC_FULL, player);
 
 		if (obj->kind) msg("You cannot lift %s.", o_name);
 
@@ -791,6 +792,7 @@ void do_cmd_use(struct command *cmd)
 	else if (tval_is_edible(obj))		do_cmd_eat_food(cmd);
 	else if (tval_is_staff(obj))		do_cmd_use_staff(cmd);
 	else if (obj_can_refuel(obj))		do_cmd_refuel(cmd);
+	else if (tval_is_wearable(obj))		do_cmd_wield(cmd);
 	else
 		msg("The item cannot be used at the moment");
 }
@@ -804,7 +806,7 @@ void do_cmd_use(struct command *cmd)
 
 static void refill_lamp(struct object *lamp, struct object *obj)
 {
-	int timeout = obj->timeout ? obj->timeout : obj->pval;
+	int timeout = lamp->timeout + (obj->timeout ? obj->timeout : obj->pval);
 
 	/* Message */
 	if (timeout > z_info->fuel_lamp) {
@@ -812,8 +814,7 @@ static void refill_lamp(struct object *lamp, struct object *obj)
 			if (!get_check("Refueling from this lantern will waste some fuel. Proceed? ")) {
 				return;
 			}
-		} else if (get_check("Refueling from this flask will waste some fuel. Proceed? ")) {
-			return;
+		} else if (!get_check("Refueling from this flask will waste some fuel. Proceed? ")) {			return;
 		}
 	} else {
 		msg("You fuel your lamp.");

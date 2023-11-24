@@ -145,7 +145,6 @@
 name:of Barahir
 base-object:ring:Serpentine Ring
 graphics:=:t
-pval:0
 depth:10
 rarity:20
 weight:1
@@ -168,7 +167,6 @@ desc: faithfulness.
 name:of Melian
 base-object:ring:Filigree Ring
 graphics:=:D
-pval:7
 depth:14
 rarity:30
 weight:1
@@ -187,7 +185,6 @@ desc: Above all else, she is famed for her insight.
 name:of Moria
 color:y
 base-object:light:Lesser Jewel
-pval:1
 depth:5
 rarity:30
 weight:30
@@ -215,7 +212,6 @@ desc: but this one still gleams brightly in Isengard's tunnels.
 name:of Helm
 color:W
 base-object:soft armor:Filthy Rag
-pval:0
 depth:1
 rarity:20
 weight:40
@@ -239,7 +235,6 @@ desc: cloth is a symbol of terror for the enemies of Rohan.
 name:'Vaimarua'
 color:B
 base-object:soft armor:Robe
-pval:2
 depth:8
 rarity:20
 weight:30
@@ -262,7 +257,6 @@ desc: golden thread.
 # Index 22
 name:of Theoden
 base-object:soft armor:Leather Armour
-pval:0
 depth:3
 rarity:30
 weight:70
@@ -289,7 +283,6 @@ desc: gathering dust in Edoras, not Isengard.
 # Index 31
 name:'Ragnakh'
 base-object:mail:Mail Corslet
-pval:0
 depth:4
 rarity:40
 weight:360
@@ -309,7 +302,6 @@ desc: this armor is filled with a lust for battle.
 # Index 36
 name:of the Were-worms
 base-object:mail:Hauberk
-pval:0
 depth:5
 rarity:20
 weight:330
@@ -337,7 +329,6 @@ desc: vaults.
 name:'Talachdol'
 color:g
 base-object:shield:Round Shield
-pval:1
 depth:5
 rarity:40
 weight:50
@@ -366,7 +357,6 @@ desc: fierce strength and bitter pride.
 # Index 51
 name:'Narthanc'
 base-object:sword:Dagger
-pval:0
 depth:3
 rarity:30
 weight:5
@@ -384,7 +374,6 @@ desc: this dagger's hilt.
 
 name:'Gnerkol'
 base-object:sword:Dagger
-pval:2
 depth:1
 rarity:35
 weight:5
@@ -410,7 +399,6 @@ desc: Blood does not remain on the blade for long.
 name:of Arthedain
 color:R
 base-object:sword:Sword
-pval:1
 depth:3
 rarity:25
 weight:15
@@ -438,7 +426,6 @@ desc: and damasked with serpent-forms in red and gold.
 # Index 61
 name:of Gondolin
 base-object:sword:Longsword
-pval:2
 depth:5
 rarity:25
 weight:30
@@ -465,7 +452,6 @@ desc: "Slicer" by orcs who came to know its power all too well.
 name:of Eorl
 color:s
 base-object:polearm:Spear
-pval:0
 depth:5
 rarity:30
 weight:50
@@ -487,7 +473,6 @@ desc: the renowned Eorl, and bring it to Isengard?
 # Index 87
 name:'Aeglos'
 base-object:polearm:Spear
-pval:0
 depth:8
 rarity:20
 weight:30
@@ -508,7 +493,6 @@ desc: Elves.
 name:of Angobar
 color:D
 base-object:polearm:Throwing Axe
-pval:0
 depth:4
 rarity:30
 weight:20
@@ -531,7 +515,6 @@ desc: bore it, and his fury lives on.
 # Index 107
 name:of Gorol
 base-object:hafted:Hammer
-pval:3
 depth:8
 rarity:1
 weight:45
@@ -555,7 +538,6 @@ desc: orcish smiths.
 # Index 114
 name:of Winding Ways
 base-object:digger:Shovel
-pval:1
 depth:2
 rarity:30
 weight:50
@@ -582,7 +564,6 @@ desc: in the deep places of the earth.
 name:'Elendilmir'
 color:w
 base-object:helm:Helm
-pval:3
 depth:8
 rarity:10
 weight:10
@@ -606,7 +587,6 @@ desc: and is filled with a matchless splendor.
 name:of Gil-Galad
 color:T
 base-object:helm:Great Helm
-pval:2
 depth:8
 rarity:10
 weight:45
@@ -633,7 +613,6 @@ desc: A beacon to friend and foe, it is a relic of ages past.
 name:of Wulf
 color:D
 base-object:cloak:Cloak
-pval:1
 depth:13
 rarity:10
 weight:20
@@ -655,7 +634,6 @@ desc: against Rohan when Helm Hammerhand slew his father.
 # Index 134
 name:of Thranduil
 base-object:cloak:Elven Cloak
-pval:2
 depth:13
 rarity:10
 weight:10
@@ -665,7 +643,7 @@ defence:3:0d0
 flags:SUST_DEX
 values:STEALTH[2]
 ability:Perception:Master Hunter
-desc:A mottled green cloak, worn by Thranduil in
+desc:A mottled green cloak, worn by an elven-king in
 desc: the days of his youth. 
 
 
@@ -679,7 +657,6 @@ desc: the days of his youth.
 # Index 141
 name:'Zoiyiver'
 base-object:bow:Shortbow
-pval:0
 depth:1
 rarity:40
 weight:10
@@ -689,7 +666,7 @@ defence:0:0d0
 ability:Archery:Crippling Shot
 desc:An unassuming if well-fashioned goblin bow, but when you take
 desc: aim with it you find your eye drawn particularly to
-desc: vulnerable places in your foe's armour.
+desc: vulnerable places in your foe's flesh.
 
 
 ## The Longbow of Doriath
@@ -700,7 +677,6 @@ desc: vulnerable places in your foe's armour.
 name:of Doriath
 color:m
 base-object:bow:Longbow
-pval:2
 depth:7
 rarity:20
 weight:30
@@ -725,7 +701,6 @@ desc: its fall.
 
 name:of Ugluk
 base-object:boots:Pair of Greaves
-pval:0
 depth:6
 rarity:1
 weight:55
@@ -748,7 +723,6 @@ desc: most trusted Uruk-hai captain.
 
 name:of Kwalinorn
 base-object:gloves:Set of Gloves
-pval:0
 depth:1
 rarity:45
 weight:20
@@ -775,7 +749,6 @@ desc: devilish cunning and ingenuity.
 # Index 175
 #name:of Morgoth
 #base-object:crown:Massive Iron Crown
-#pval:0
 #depth:20
 #rarity:1
 #weight:4000
@@ -795,7 +768,6 @@ desc: devilish cunning and ingenuity.
 # Index 176
 #name:of Morgoth
 #base-object:crown:Massive Iron Crown
-#pval:1
 #depth:20
 #rarity:1
 #weight:4000
@@ -816,7 +788,6 @@ desc: devilish cunning and ingenuity.
 # Index 177
 #name:of Morgoth
 #base-object:crown:Massive Iron Crown
-#pval:2
 #depth:20
 #rarity:1
 #weight:4000
@@ -837,7 +808,6 @@ desc: devilish cunning and ingenuity.
 # Index 178
 name:of Morgoth
 base-object:helm:Great Helm
-pval:3
 depth:20
 rarity:1
 weight:4000
@@ -858,7 +828,6 @@ desc: a Silmaril from the crown, stand over it and press (k).
 # Index 179
 name:'Grond'
 base-object:hafted:Hammer
-pval:3
 depth:20
 rarity:1
 weight:1000

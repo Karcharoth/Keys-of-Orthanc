@@ -76,7 +76,7 @@
 
 # Index 0
 name:<pile>
-graphics:&:w
+graphics:$:w
 
 
 
@@ -1285,7 +1285,7 @@ alloc:7:6
 charges:6d2
 effect:SUMMON:ANY:0:1
 dice:1d4
-desc:It summons 1d4 monsters out of sight on the current level. 
+desc:It summons 1d4 monsters to the stairs on the current level. 
 
 
 # Index 211
@@ -1517,7 +1517,7 @@ dice:20d4
 effect:NOURISH:INC_BY
 dice:100
 desc:It grants a bonus of +3 to strength for 20d4 turns,
-desc: restoring strength in the process.
+desc: restoring strength by up to 3 in the process.
 
 
 # Index 328
@@ -1538,7 +1538,7 @@ dice:20d4
 effect:NOURISH:INC_BY
 dice:100
 desc:It grants a bonus of +3 to dexterity for 20d4 turns,
-desc: restoring dexterity in the process.
+desc: restoring dexterity by up to 3 in the process.
 
 
 # Index 329
@@ -1559,7 +1559,7 @@ dice:20d4
 effect:NOURISH:INC_BY
 dice:100
 desc:It grants a bonus of +3 to constitution for 20d4 turns,
-desc: restoring constitution in the process.
+desc: restoring constitution by up to 3 in the process.
 
 
 # Index 330
@@ -1580,7 +1580,7 @@ dice:20d4
 effect:NOURISH:INC_BY
 dice:100
 desc:It grants a bonus of +3 to grace for 20d4 turns,
-desc: restoring grace in the process.
+desc: restoring grace by up to 3 in the process.
 
 
 ##
@@ -1839,10 +1839,8 @@ attack:0:0d0
 defence:0:0d0
 alloc:3:2
 alloc:6:2
-effect:TIMED_INC:AFRAID
+effect:TERROR
 dice:10d4
-effect:TIMED_INC:FAST
-dice:5d4
 effect:NOURISH:INC_BY
 dice:250
 desc:It induces fear that lasts
@@ -2041,6 +2039,7 @@ effect:NOURISH:INC_BY
 dice:3000
 effect:RESTORE_STAT:GRA
 dice:1
+msg:It fills you with renewed energy and spirit.
 desc:It restores a point of grace if it has been drained.  It provides
 desc: nourishment for about 3,000 turns under normal conditions. 
 

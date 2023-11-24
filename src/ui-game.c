@@ -27,6 +27,7 @@
 #include "init.h"
 #include "mon-lore.h"
 #include "mon-make.h"
+#include "obj-gear.h"
 #include "obj-knowledge.h"
 #include "obj-util.h"
 #include "player-attack.h"
@@ -119,14 +120,15 @@ struct cmd_info cmd_item[] =
 	{ "Examine an item", { 'x', 'x', 'I', 'I' }, CMD_NULL, textui_obj_examine, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Drop an item", { 'd' }, CMD_DROP, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Destroy an item", { 'k', KTRL('K'),  'k', KTRL('K') }, CMD_DESTROY, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Fire your missile weapon", { 'f' }, CMD_FIRE, NULL, player_can_fire_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "Fire from quiver 1", { 'f' }, CMD_NULL, do_cmd_fire_quiver1, player_can_fire_quiver1_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "Fire from quiver 2", { 'F' }, CMD_NULL, do_cmd_fire_quiver2, player_can_fire_quiver2_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "Use a staff", { 'a', 'a', 'u', 'u' }, CMD_USE_STAFF, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Blow a horn", { 'p' }, CMD_BLOW_HORN, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Eat some food", { 'E' }, CMD_EAT, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Quaff a potion", { 'q' }, CMD_QUAFF, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Fuel your light source", { 'F' }, CMD_REFUEL, NULL, player_can_refuel_prereq, 0, NULL, NULL, NULL, 0 },
+	{ "Fuel your light source", { KTRL('F') }, CMD_REFUEL, NULL, player_can_refuel_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "Use an item", { 'u', KTRL('U'), 'U', KTRL('U') }, CMD_USE, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Smith an item", { '0' }, CMD_SMITH, NULL, NULL, 0, NULL, NULL, NULL, 0 }
+	{ "Smith an item", { '0', '0', KTRL('D'), KTRL('D') }, CMD_SMITH, NULL, NULL, 0, NULL, NULL, NULL, 0 }
 };
 
 /**
@@ -139,14 +141,15 @@ struct cmd_info cmd_action[] =
 	{ "Look around", { 'l', KTRL('L'),  'l', KTRL('L') }, CMD_NULL, do_cmd_look, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Target monster or location", { '*' }, CMD_NULL, textui_target, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Target closest monster", { '\'' }, CMD_NULL, textui_target_closest, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Dig a tunnel", { 'T', KTRL('T'), 'T', KTRL('T') }, CMD_TUNNEL, NULL, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Dig a tunnel", { 'T' }, CMD_TUNNEL, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Go up staircase", {'<' }, CMD_GO_UP, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Go down staircase", { '>' }, CMD_GO_DOWN, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Open a door or a chest", { 'o' }, CMD_OPEN, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Close a door", { 'c' }, CMD_CLOSE, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Bash a door", { 'b', KTRL('B'), 'B', KTRL('B') }, CMD_BASH, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Fire at nearest target", { 'h' }, CMD_NULL, do_cmd_fire_at_nearest, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Fire at nearest target", { 'm' }, CMD_NULL, do_cmd_fire_at_nearest, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Throw an item", { 't', 't', 'v', 'v' }, CMD_THROW, NULL, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Throw automatically", { KTRL('T') }, CMD_NULL, do_cmd_automatic_throw, player_has_throwable_prereq, 0, NULL, NULL, NULL, 0 },
 	{ "Change song", { 's', 's', 'a', 'a' }, CMD_SING, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Toggle stealth mode", { 'S' }, CMD_TOGGLE_STEALTH, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Walk into a trap", { '_' }, CMD_JUMP, NULL, NULL, 0, NULL, NULL, NULL, 0 },
@@ -161,7 +164,7 @@ struct cmd_info cmd_item_manage[] =
 	{ "Display equipment listing", { 'e' }, CMD_NULL, do_cmd_equip, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Display inventory listing", { 'i' }, CMD_NULL, do_cmd_inven, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Pick up objects", { 'g' }, CMD_PICKUP, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Ignore an item", { KTRL('D') }, CMD_IGNORE, textui_cmd_ignore, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Ignore an item", { 'G' }, CMD_IGNORE, textui_cmd_ignore, NULL, 0, NULL, NULL, NULL, 0 },
 };
 
 /**
@@ -170,11 +173,12 @@ struct cmd_info cmd_item_manage[] =
 struct cmd_info cmd_info[] =
 {
 	{ "Full dungeon map", { 'M' }, CMD_NULL, do_cmd_view_map, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Toggle ignoring of items", { 'K' }, CMD_NULL, textui_cmd_toggle_ignore, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Toggle ignoring of items", { 'P' }, CMD_NULL, textui_cmd_toggle_ignore, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Display visible item list", { ']' }, CMD_NULL, do_cmd_itemlist, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Display visible monster list", { '[' }, CMD_NULL, do_cmd_monlist, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Locate player on map", { 'L', 'W', 'L', 'W' }, CMD_NULL, do_cmd_locate, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Help", { '?' }, CMD_NULL, do_cmd_help, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Identify symbol", { '|', '|', '/', '/',}, CMD_NULL, do_cmd_query_symbol, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Character description", { '@', '@', 'C', 'C' }, CMD_NULL, do_cmd_change_name, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Abilities list", { KC_TAB, KC_TAB, KC_TAB, KC_TAB }, CMD_NULL, do_cmd_abilities, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Check knowledge", { '~' }, CMD_NULL, textui_browse_knowledge, NULL, 0, NULL, NULL, NULL, 0 },
@@ -208,9 +212,9 @@ struct cmd_info cmd_hidden[] =
 	{ "Toggle windows", { KTRL('E') }, CMD_NULL, toggle_inven_equip, NULL, 0, NULL, NULL, NULL, 0 }, /* XXX */
 	{ "Alter a grid", { '/', '/', '+', '+' }, CMD_ALTER, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Walk", { ';' }, CMD_WALK, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Start running", { '.', ',', '.', ',' }, CMD_RUN, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Stand still", { 'z' }, CMD_HOLD, NULL, NULL, 0, NULL, NULL, NULL, 0 },
-	{ "Center map", { KTRL('L') }, CMD_NULL, do_cmd_center_map, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Start running", { '.' }, CMD_RUN, NULL, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Stand still", { 'z', 'z', 's', 's' }, CMD_HOLD, NULL, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Center map", { 'C', 'C', '@', '@' }, CMD_NULL, do_cmd_center_map, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Toggle wizard mode", { KTRL('W') }, CMD_NULL, do_cmd_wizard, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Repeat previous command", { 'n', KTRL('N'), 'n', KTRL('N') }, CMD_REPEAT, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Do autopickup", { KTRL('G') }, CMD_AUTOPICKUP, NULL, NULL, 0, NULL, NULL, NULL, 0 },
@@ -876,8 +880,6 @@ static enum game_mode_type select_savefile(bool retry)
 void play_game(enum game_mode_type mode)
 {
 	while (1) {
-		enum game_mode_type next_mode = GAME_NEW;
-
 		play_again = false;
 
 		/* Load a savefile or birth a character, or both */
@@ -893,7 +895,6 @@ void play_game(enum game_mode_type mode)
 			{
 				bool retry = false;
 
-				next_mode = GAME_SELECT;
 				while (1) {
 					mode = select_savefile(retry);
 					if (mode == GAME_LOAD
@@ -913,7 +914,6 @@ void play_game(enum game_mode_type mode)
 			break;
 
 		case GAME_TUTORIAL:
-			next_mode = GAME_SELECT;
 			play_again = true;
 			start_tutorial();
 			break;
@@ -944,7 +944,7 @@ void play_game(enum game_mode_type mode)
 		if (reinit_hook != NULL) {
 			(*reinit_hook)();
 		}
-		mode = next_mode;
+		mode = GAME_SELECT;
 	}
 }
 
@@ -1106,9 +1106,10 @@ void close_game(bool prompt_failed_save)
 	screen_save_depth++;
 
 	/* Deal with the randarts file */
-	write_self_made_artefacts();
-	deactivate_randart_file();
-
+	if (player->self_made_arts > 0) {
+		write_self_made_artefacts();
+		deactivate_randart_file();
+	}
 	/* Handle death or life */
 	if (!in_tutorial()) {
 		if (player->is_dead) {

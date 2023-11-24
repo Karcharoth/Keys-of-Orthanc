@@ -995,7 +995,7 @@ desc: this statue's eyes shine with a dull grey light.
 ##### 9 #####
 
 # Index 91
-name:Seige Tower
+name:Siege Tower
 base:building
 depth:9
 rarity:15

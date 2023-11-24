@@ -171,7 +171,7 @@ desc: the Free Peoples from the armies of Sauron. Strong and fearless,
 desc: the Men of Gondor are one of the few peoples that descend
 desc: from the Numenorians of old.
 
-name:People of the Dunedain
+name:Men of Arnor
 alt-name:the Dunedain
 short-name:Dunedain
 race:Man

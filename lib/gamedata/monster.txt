@@ -1001,13 +1001,13 @@ depth:9
 rarity:15
 color:D
 speed:3
-health:18d4
+health:10d4
 sleep:0
 percept:0
 stealth:0
 will:0
-prot:-5:4d4
-ranged-freq:75
+prot:-5:3d4
+ranged-freq:100
 spell-power:3
 spells:ARROW1
 desc:One of the great war machines of Isengard,
@@ -1031,12 +1031,12 @@ flags:DROP_1D2 | DROP_GOOD | ESCORT | UNIQUE_FRIEND | UNIQUE
 drop:sword:Sword:10:1d1
 drop:shield:Round Shield:10:1d1
 drop-artifact:Ugluk
-desc:'‘Aye, we must stick together,’ growled Ugluk. ‘I don’t trust you little swine.
-desc: You’ve no guts outside your own sties. But for us you’d all have run away.
+desc:''Aye, we must stick together,' growled Ugluk. 'I don't trust you little swine.
+desc: You've no guts outside your own sties. But for us you'd all have run away.
 desc: We are the fighting Uruk-hai! We slew the great warrior. We took the prisoners.
 desc: We are the servants of Saruman the Wise, the White Hand:
-desc: the Hand that gives us man’s-flesh to eat. We came out of Isengard,
-desc: and led you here, and we shall lead you back by the way we choose. I am Ugluk. I have spoken.’'
+desc: the Hand that gives us man's-flesh to eat. We came out of Isengard,
+desc: and led you here, and we shall lead you back by the way we choose. I am Ugluk. I have spoken.''
 
 
 # Index 93
@@ -1130,12 +1130,12 @@ depth:10
 rarity:15
 color:u
 speed:2
-health:20d4
+health:15d4
 sleep:0
 percept:0
 stealth:0
 will:0
-prot:-5:4d4
+prot:-5:3d4
 desc:One of the great war machines of Isengard,
 desc: this mighty wall-destroyer lies unmanned by a heap of boulders.
 
@@ -1184,12 +1184,12 @@ depth:20
 rarity:1
 color:w
 speed:2
-health:60d4
+health:40d4
 light:4
 sleep:10
 percept:10
 stealth:0
-will:12
+will:15
 prot:14:4d4
 blow:HIT:SLOW:15:2d12
 flags:UNIQUE | QUESTOR | MALE | ATTR_MULTI

@@ -104,7 +104,7 @@
 #
 
 
-
+# TODO: make parser errors not call this "ego_item.txt" as it's confusing
 
 ##### Armor #####
 
@@ -126,7 +126,6 @@ prot-sides:1
 max-pval:0
 type:shield
 item:soft armor:Leather Armour
-item:soft armor:Studded Leather
 type:mail
 item:boots:Pair of Greaves
 item:gloves:Set of Gauntlets
@@ -148,7 +147,6 @@ prot-dice:0
 prot-sides:0
 max-pval:0
 item:soft armor:Leather Armour
-item:soft armor:Studded Leather
 item:gloves:Set of Gloves
 flags:IGNORE_FIRE
 values:RES_FIRE[1]
@@ -168,7 +166,6 @@ prot-dice:0
 prot-sides:0
 max-pval:1
 item:soft armor:Leather Armour
-item:soft armor:Studded Leather
 values:TUNNEL[1]
 
 # Rare; one of the few sources of free action
@@ -186,7 +183,6 @@ prot-sides:0
 max-pval:0
 item:boots:Pair of Boots
 item:soft armor:Leather Armour
-item:soft armor:Studded Leather
 item:gloves:Set of Gloves
 flags:FREE_ACT
 

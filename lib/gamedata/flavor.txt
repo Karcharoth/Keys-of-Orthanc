@@ -19,8 +19,7 @@
 
 kind:ring:=
 
-# Fixed: The Ring of Barahir
-fixed:1:Serpentine Ring:Teal:Serpentine
+flavor:1:Teal:Serpentine
 
 flavor:2:Violet:Amethyst
 

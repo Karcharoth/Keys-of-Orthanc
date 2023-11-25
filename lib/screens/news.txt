@@ -1,12 +1,12 @@
 
-{light blue}                The world was young, the mountains green,{/}
-{light blue}                   No stain yet on the moon was seen...{/}
+{light blue}                The world is grey, the mountains old,{/}
+{light blue}                   The forge's fire is ashen cold...{/}
 
 
-              Welcome to Sil, a game of adventure set
-                in the First Age of Middle-earth,
+              Welcome to Keys of Orthanc, a game of adventure set
+                in the Third Age of Middle-earth,
                   when the world still rang with elven song
                     and gleamed with dwarven mail.
-              Walk the dark halls of Angband.
+              Walk the dark pits of Isengard.
                 Slay creatures black and fell.
-                  Wrest a shining Silmaril from Morgoth's iron crown.
+                  Wrest the Keys from Saruman in his domain.

@@ -138,46 +138,6 @@
 # Artefacts from index number 20 onwards must be Armour or Weapons.
 
 
-## The Ring of Barahir
-## 1st age
-
-# Index 1
-name:of Barahir
-base-object:ring:Serpentine Ring
-graphics:=:t
-depth:10
-rarity:20
-weight:1
-cost:5000
-attack:0:0d0
-defence:0:0d0
-flags:FREE_ACT
-values:RES_POIS[1]
-ability:Song:Song of Este
-desc:A ring shaped into twinned serpents with eyes of emerald meeting
-desc: beneath a crown of flowers. It was given to Barahir of Beor's House
-desc: by Finrod Felagund the Noldorin Prince. It is a symbol of loyalty and
-desc: faithfulness.
-
-
-## The Ring of Melian
-## 1st age namesake
-
-# Index 2
-name:of Melian
-base-object:ring:Filigree Ring
-graphics:=:D
-depth:14
-rarity:30
-weight:1
-cost:50000
-attack:0:0d0
-defence:0:0d0
-values:PERCEPTION[7]
-ability:Will:Channeling
-desc:A ring that once graced the hand of Melian, Queen
-desc: of Doriath and one of the Powers of the World.
-desc: Above all else, she is famed for her insight.
 
 ## The Lesser Jewel of Moria
 ## 2nd age namesake
@@ -561,10 +521,9 @@ desc: in the deep places of the earth.
 ## Notably very powerful
 ## Should I make an extra type for it, similar to ring types? "Fillet" or "Circlet" or something?
 
-name:'Elendilmir'
-color:w
-base-object:helm:Helm
-depth:8
+name:'The Elendilmir'
+base-object:helm:Star
+depth:10
 rarity:10
 weight:10
 cost:60000

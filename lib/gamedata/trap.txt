@@ -119,7 +119,7 @@ rarity:1
 min-depth:11
 max-depth:17
 power:-1
-flags:TRAP | FLOOR | PIT | SURFACE
+flags:TRAP | FLOOR | PIT | SURFACE | DELAY
 effect:PIT:SPIKED
 desc:A hole dug to snare the unwary, with spikes.
 

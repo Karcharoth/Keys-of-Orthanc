@@ -596,13 +596,6 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 					break;
 				}
 				
-				/* dragon */
-				case 'd': {
-					place_monster_by_flag(c, grid, RF_DRAGON, -1, true,
-										  c->depth + 4, false);
-					break;
-				}
-
 				/* young cold drake */
 				case 'y': {
 					place_new_monster_one(c, grid,
@@ -619,14 +612,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 									  true, false, info, ORIGIN_DROP_VAULT);
 					break;
 				}
-					
-				/* Spider */
-				case 'M': {
-					place_monster_by_flag(c, grid, RF_SPIDER, -1, true,
-										  c->depth + rand_range(1, 4), false);
-					break;
-				}
-				
+									
 				/* Vampire */
 				case 'v': {
 					place_monster_by_letter(c, grid, 'v', true,
@@ -654,14 +640,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 										  c->depth + rand_range(1, 4), false);
 					break;
 				}
-					
-				/* Rauko */
-				case 'r': {
-					place_monster_by_flag(c, grid, RF_RAUKO, -1, true,
-										  c->depth + rand_range(1, 4), false);
-					break;
-				}
-					
+										
                 /* Aldor */
 				case 'A': {
 					place_new_monster_one(c, grid, lookup_monster("Aldor"),

@@ -486,39 +486,27 @@ code:ORC_1
 smith-cat:slay
 smith-difficulty:5
 
-name:slay troll
-type:slay
-code:TROLL_1
-smith-cat:slay
-smith-difficulty:5
-
 name:slay wolf
 type:slay
 code:WOLF_1
 smith-cat:slay
 smith-difficulty:6
 
-name:slay spider
-type:slay
-code:SPIDER_1
-smith-cat:slay
-smith-difficulty:6
-
 name:slay undead
 type:slay
-code:UNDEAD_2
-smith-cat:slay
-smith-difficulty:15
-
-name:slay rauko
-type:slay
-code:RAUKO_1
+code:UNDEAD_1
 smith-cat:slay
 smith-difficulty:7
 
-name:slay dragon
+name:slay man
 type:slay
-code:DRAGON_1
+code:MAN_1
+smith-cat:slay
+smith-difficulty:7
+
+name:slay horror
+type:slay
+code:HORROR_1
 smith-cat:slay
 smith-difficulty:7
 

@@ -28,33 +28,26 @@ race-flag:WOLF
 dice:1
 smith-difficulty:6
 
-code:SPIDER_1
-name:spiders
-race-flag:SPIDER
-dice:1
-smith-difficulty:6
-
-code:UNDEAD_2
+code:UNDEAD_1
 name:undead
 race-flag:UNDEAD
+dice:1
+smith-difficulty:7
+
+code:UNDEAD_2
+name:undead mightily
+race-flag:UNDEAD
 dice:2
-smith-difficulty:15
+smith-difficulty:16
 
-code:RAUKO_1
-name:raukar
-race-flag:RAUKO
+code:MAN_1
+name:men
+race-flag:MAN
 dice:1
 smith-difficulty:7
 
-code:DRAGON_1
-name:dragons
-race-flag:DRAGON
+code:HORROR_1
+name:horrors
+race-flag:HORROR
 dice:1
 smith-difficulty:7
-
-code:TROLL_1
-name:trolls
-race-flag:TROLL
-dice:1
-smith-difficulty:5
-

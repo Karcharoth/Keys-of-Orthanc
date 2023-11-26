@@ -395,7 +395,7 @@ defence:2:0d0
 flags:LIGHT
 values:PERCEPTION[2]
 slay:ORC_1
-slay:DRAGON_1
+slay:HORROR_1
 ability:Melee:Momentum
 desc:This gleaming blade of ancient Gondolin is called simply
 desc: "Slicer" by orcs who came to know its power all too well.
@@ -419,7 +419,7 @@ cost:30000
 attack:0:1d10
 defence:0:0d0
 flags:PROT_FEAR | AGGRAVATE
-slay:RAUKO_1
+slay:MAN_1
 ability:Melee:Charge
 desc:The mighty spear of Eorl, polished of rust and fitted
 desc: with a new haft. Who would dare plunder the grave of
@@ -819,8 +819,8 @@ desc: in his hand.
 #flags:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
 #flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
 #flags:TUNNEL | SHARPNESS | VAMPIRIC
-#flags:SLAY_ORC | SLAY_TROLL | SLAY_WOLF | SLAY_SPIDER
-#flags:SLAY_UNDEAD | SLAY_RAUKO | SLAY_DRAGON
+#flags:SLAY_ORC | SLAY_WOLF
+#flags:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
 #flags:BRAND_ELEC | BRAND_FIRE | BRAND_COLD | BRAND_POIS
 #flags:SUST_STR | SUST_DEX | SUST_CON | SUST_GRA
 #flags:RES_FIRE | RES_COLD | RES_POIS
@@ -840,8 +840,8 @@ desc: in his hand.
 #flags:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
 #flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
 #flags:TUNNEL | SHARPNESS | VAMPIRIC
-#flags:SLAY_ORC | SLAY_TROLL | SLAY_WOLF | SLAY_SPIDER
-#flags:SLAY_UNDEAD | SLAY_RAUKO | SLAY_DRAGON
+#flags:SLAY_ORC | SLAY_WOLF
+#flags:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
 #flags:BRAND_ELEC | BRAND_FIRE | BRAND_COLD | BRAND_POIS
 #flags:SUST_STR | SUST_DEX | SUST_CON | SUST_GRA
 #flags:RES_FIRE | RES_COLD | RES_POIS
@@ -861,8 +861,8 @@ desc: in his hand.
 #flags:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
 #flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
 #flags:TUNNEL
-#flags:SLAY_ORC | SLAY_TROLL | SLAY_WOLF | SLAY_SPIDER
-#flags:SLAY_UNDEAD | SLAY_RAUKO | SLAY_DRAGON
+#flags:SLAY_ORC | SLAY_WOLF
+#flags:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
 #flags:BRAND_ELEC | BRAND_FIRE | BRAND_COLD | BRAND_POIS
 #flags:SUST_STR | SUST_DEX | SUST_CON | SUST_GRA
 #flags:RES_FIRE | RES_COLD | RES_POIS
@@ -882,8 +882,8 @@ desc: in his hand.
 #flags:STR | DEX | CON | NEG_STR | NEG_DEX | NEG_CON
 #flags:WILL
 #flags:VAMPIRIC
-#flags:SLAY_ORC | SLAY_TROLL | SLAY_WOLF | SLAY_SPIDER
-#flags:SLAY_UNDEAD | SLAY_RAUKO | SLAY_DRAGON
+#flags:SLAY_ORC | SLAY_WOLF
+#flags:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
 #flags:BRAND_ELEC | BRAND_FIRE | BRAND_COLD | BRAND_POIS
 #flags:SUST_STR | SUST_DEX | SUST_CON
 #flags:RES_FIRE | RES_COLD | RES_POIS
@@ -900,8 +900,8 @@ desc: in his hand.
 #name:'Ultimate'
 #base-object:bow
 #pval:0
-#flags:SLAY_ORC | SLAY_TROLL | SLAY_WOLF | SLAY_SPIDER
-#flags:SLAY_UNDEAD | SLAY_RAUKO | SLAY_DRAGON
+#flags:SLAY_ORC | SLAY_WOLF
+#flags:SLAY_UNDEAD | SLAY_HORROR | SLAY_MAN
 #flags:RADIANCE
 #flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | LIGHT_CURSE
 #flags:HAUNTED | FEAR | VUL_FIRE | VUL_COLD | VUL_POIS
@@ -915,8 +915,8 @@ desc: in his hand.
 #base-object:arrow
 #pval:0
 #flags:SHARPNESS
-#flags:SLAY_ORC | SLAY_TROLL | SLAY_WOLF | SLAY_SPIDER
-#flags:SLAY_UNDEAD | SLAY_RAUKO | SLAY_DRAGON
+#flags:SLAY_ORC | SLAY_WOLF
+#flags:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
 #flags:BRAND_ELEC | BRAND_FIRE | BRAND_COLD | BRAND_POIS
 #flags:HAUNTED | FEAR | VUL_FIRE | VUL_COLD | VUL_POIS
 #flags:INSTA_ART 
@@ -1114,8 +1114,8 @@ desc: in his hand.
 #F:ARCHERY | STEALTH | PERCEPTION | WILL | SMITHING | SONG
 #F:DAMAGE_SIDES
 #F:TUNNEL | SHARPNESS | VAMPIRIC
-#F:SLAY_ORC | SLAY_TROLL | SLAY_WOLF | SLAY_SPIDER
-#F:SLAY_UNDEAD | SLAY_RAUKO | SLAY_DRAGON
+#F:SLAY_ORC | SLAY_WOLF
+#F:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
 #F:BRAND_ELEC | BRAND_FIRE | BRAND_COLD | BRAND_POIS
 #F:SUST_STR | SUST_DEX | SUST_CON | SUST_GRA
 #F:RES_FIRE | RES_COLD | RES_POIS

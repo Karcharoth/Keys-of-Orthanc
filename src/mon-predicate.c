@@ -40,10 +40,9 @@ bool monster_is_undead(const struct monster *mon)
  */
 bool monster_is_nonliving(const struct monster *mon)
 {
-	return (monster_is_undead(mon) || rf_has(mon->race->flags, RF_RAUKO) ||
-			rf_has(mon->race->flags, RF_STONE) ||
-			(mon->race->base == lookup_monster_base("deathblade")));
+	return (monster_is_undead(mon) || rf_has(mon->race->flags, RF_STONE));
 }
+/* Note: mon->race->base == lookup_monster_base("deathblade") used to be here - useful phrase*/
 
 /**
  * Living monsters

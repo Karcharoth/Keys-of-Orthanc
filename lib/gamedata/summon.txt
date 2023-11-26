@@ -43,12 +43,6 @@ msgt:SUM_MONSTER
 uniques:1
 desc:a monster
 
-name:SPIDER
-msgt:SUM_SPIDER
-uniques:0
-base:spider
-desc:spiders
-
 name:BIRD_BAT
 msgt:SUM_ANIMAL
 uniques:0

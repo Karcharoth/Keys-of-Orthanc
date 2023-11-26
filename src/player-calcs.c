@@ -590,11 +590,6 @@ bool weapon_glows(struct object *obj)
 		/* Add up the 'hate' */
 		total_hate += hate_level(mon->grid, multiplier);
 	}
-
-	/* Add a similar effect for very nearby webs for spider slaying weapons */
-	for (i = 0; i < z_info->slay_max; i++) {
-		if (slays[i].race_flag == RF_SPIDER) break;
-	}
 	if (obj->slays && obj->slays[i]) {
 		for (grid.y = obj_grid.y - 2; grid.y <= obj_grid.y + 2; grid.y++) {
 			for (grid.x = obj_grid.x - 2; grid.x <= obj_grid.x + 2; grid.x++) {

@@ -268,11 +268,6 @@ void calc_stance(struct monster *mon)
 		stances[1] = STANCE_AGGRESSIVE;
 	}
 
-	/* Trolls are aggressive rather than confident */
-	if (rf_has(race->flags, RF_TROLL)) {
-		stances[1] = STANCE_AGGRESSIVE;
-	}
-
 	/* Aggravation makes non-mindless things much more hostile */
 	if (player->state.flags[OF_AGGRAVATE] && !rf_has(race->flags, RF_MINDLESS)){
 		stances[1] = STANCE_AGGRESSIVE;

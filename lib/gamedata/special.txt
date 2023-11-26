@@ -451,7 +451,7 @@ max-pval:0
 type:bow
 item:polearm:Spear
 type:sword
-slay:DRAGON_1
+slay:HORROR_1
 flags:FREE_ACT
 
 # Angmar, home of the witch king: Saruman has been
@@ -473,7 +473,7 @@ item:hafted:Hammer
 type:polearm
 type:sword
 flags:CURSED
-slay:RAUKO_1
+slay:MAN_1
 
 # The most overtly sorcerous item here. It's on fire.
 # Axes, spears, swords. Should spears work? Wouldn't they

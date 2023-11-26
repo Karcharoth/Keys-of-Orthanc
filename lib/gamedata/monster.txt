@@ -960,11 +960,11 @@ sleep:0
 percept:8
 stealth:0
 will:5
-prot:-5:5d4
+prot:-5:4d4
 blow:CLAW:BATTER:4:6d3
 flags:NEVER_MOVE | MINDLESS
 flags:NO_FEAR | RES_POIS | NO_CONF | NO_SLEEP | NO_CRIT | KNOCK_BACK
-ranged-freq:75
+ranged-freq:50
 spells:HOLD
 desc:Modeled on the Pukel-Men of the Druedain and
 desc: fearful tales of Sauron's Silent Watchers,
@@ -1038,7 +1038,8 @@ desc: You've no guts outside your own sties. But for us you'd all have run away.
 desc: We are the fighting Uruk-hai! We slew the great warrior. We took the prisoners.
 desc: We are the servants of Saruman the Wise, the White Hand:
 desc: the Hand that gives us man's-flesh to eat. We came out of Isengard,
-desc: and led you here, and we shall lead you back by the way we choose. I am Ugluk. I have spoken.''
+desc: and led you here, and we shall lead you back by the way we choose. 
+desc: I am Ugluk. I have spoken.''
 
 
 # Index 93

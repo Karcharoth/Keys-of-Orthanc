@@ -691,9 +691,6 @@ bool player_break_web(struct player *p)
 	/* Free action helps a lot */
 	difficulty -= 10 * p->state.flags[OF_FREE_ACT];
 
-	/* Spider bane bonus helps */
-	difficulty -= player_spider_bane_bonus(p);
-
 	if (skill_check(source_player(), score, difficulty, source_none()) <= 0) {	
 		msg("You fail to break free of the web.");
 
@@ -948,11 +945,6 @@ int player_bane_bonus(struct player *p, struct monster *mon)
 	}
 
 	return bonus;
-}
-
-int player_spider_bane_bonus(struct player *p)
-{
-	return (bane_flag[p->bane_type] == RF_SPIDER) ? calc_bane_bonus(p) : 0;
 }
 
 /**
@@ -1502,11 +1494,6 @@ static void search_square(struct player *p, struct loc grid, int dist,
 		if (obj) {
 			/* Chest trap */
 			difficulty += 15;
-		}
-
-		/* Spider bane bonus helps to find webs */
-		if (square_iswebbed(cave, grid)) {
-			difficulty -= player_spider_bane_bonus(p);
 		}
 
 		/* Sometimes, notice things */

@@ -211,7 +211,7 @@ msg-xtra:It pierces your foot.
 
 # rune -- summon (OoD) monster
 
-name:monster nest:roost
+name:roost:roost
 graphics:^:B
 rarity:1
 min-depth:3
@@ -223,20 +223,21 @@ dice:2
 desc:A resting place for flying creatures.
 msg-xtra:There is a flutter of wings from high above.
 
-# rune -- summon monsters
 
-name:monster nest:web
+# TODO: make web/nets happen properly. Why does the code care so much about webs?!
+
+name:net:web
 graphics:^:B
 rarity:1
 min-depth:8
 max-depth:20
-power:-1
+power:5
 flags:TRAP | FLOOR
-effect:SUMMON:SPIDER
-dice:1
-desc:A web containing a spider.
-msg:You are caught in a vast black web.
-msg-xtra:A spider descends from the gloom.
+effect:NOISE:PLAYER
+dice:-10
+desc:A sturdy net of cords.
+msg:You are caught in a great net.
+msg-xtra:A harsh bell rings.
 
 # dungeon alter -- rock fall
 
@@ -255,7 +256,7 @@ msg:The ceiling collapses!
 
 # spot -- acid
 
-name:discolored spot:acid trap
+name:discoloured spot:acid trap
 graphics:^:u
 rarity:1
 min-depth:1

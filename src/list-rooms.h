@@ -16,5 +16,5 @@ ROOM("Interesting room",	22,		33,		interesting)
 ROOM("Lesser vault",		22,		33,		lesser_vault)
 ROOM("Greater vault",		44,		66,		greater_vault)
 ROOM("Throne room",			30,		35,		throne)
-ROOM("Gates of Angband",	32,		64,		gates)
+ROOM("Surface of Isengard",	100,	100,	gates)
 

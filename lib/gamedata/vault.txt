@@ -2893,8 +2893,8 @@ D:###################################
 
 ### The Gates of Angband (type 10) -- maximum size 64x32 ###
 
-name:The Gates of Angband
-type:Gates of Angband
+name:Surface of Isengard
+type:Surface of Isengard
 depth:0
 rarity:1
 flags:NO_ROTATION 
@@ -2930,4 +2930,6 @@ D:####################.:......................#:##################
 D:##################:.:.........................##################
 D:#################...............................################
 D:#################..................................#############
+
+##exit area should have: big metal gate guarded by Dunlendings, with little side passages. Not the actual exit. Metal pillars (special wall type) for no reason. Big circle of black orthanc stone at the center. Path that Gandalf took to go into Orthanc, from the gate. Chasms everywhere. Traps everywhere. Stairs everywhere - fountaining enemies of course. And Saruman at the other side of the level? It should work even if he's dead, just not placing him. Thus I need to create: traps, smoke, mud, two gateguard dunlendings with escorts (so that killing them makes the real ascent easier)  - tanglethorns; actual doors in the northern mountainside leading to troop houses.
 

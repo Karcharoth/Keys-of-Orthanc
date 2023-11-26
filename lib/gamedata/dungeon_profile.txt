@@ -47,4 +47,4 @@ name:gates
 #params:11:33:0
 alloc:-1
 
-room:Gates of Angband:0:0:0
+room:Surface of Isengard:0:0:0

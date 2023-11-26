@@ -348,6 +348,10 @@ static void cruel_blow(struct monster *mon, struct player *p, int dice)
  */
 bool make_attack_normal(struct monster *mon, struct player *p)
 {
+    /* Hack: before loading anything, cancel if it never attacks.*/
+    if (rf_has(mon->race->flags, RF_NEVER_ATTACK)) {
+    return true;
+    }
 	struct monster_lore *lore = get_lore(mon->race);
 	int rlev = ((mon->race->level >= 1) ? mon->race->level : 1);
 	char m_name[80];

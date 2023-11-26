@@ -877,6 +877,7 @@ percept:0
 stealth:0
 will:0
 prot:-5:4d4
+flags:NEVER_ATTACK
 desc:One of the great war machines of Isengard,
 desc: this mighty log hangs suspended from a frame of metal.
 
@@ -1007,6 +1008,7 @@ percept:0
 stealth:0
 will:0
 prot:-5:3d4
+flags:NEVER_ATTACK
 ranged-freq:100
 spell-power:3
 spells:ARROW1
@@ -1136,6 +1138,7 @@ percept:0
 stealth:0
 will:0
 prot:-5:3d4
+flags:NEVER_ATTACK
 desc:One of the great war machines of Isengard,
 desc: this mighty wall-destroyer lies unmanned by a heap of boulders.
 

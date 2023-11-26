@@ -1202,10 +1202,15 @@ void lore_append_attack(textblock *tb, const struct monster_race *race,
 	}
 
 	/* Describe the lack of knowledge */
-	if (known_attacks == 0) {
+    if (rf_has(known_flags, RF_NEVER_ATTACK)) {
+        textblock_append(tb, "%s cannot attack.  ",
+                         lore_pronoun_nominative(msex, true));
+    return;
+    }
+	else if (known_attacks == 0) {
 		textblock_append(tb, "Nothing is known about %s attack.  ",
 						 lore_pronoun_possessive(msex, false));
-		return;
+    return;
 	}
 
 	/* Describe each melee attack */

@@ -140,6 +140,7 @@ pursuit:1
 warning:5
 flags:MALE | OPEN_DOOR | SMART | ORC | MAN
 desc:Uruk-Hai
+
 ## TODO: Rename STONE flag to SHATTERS because buildings are not stone; remember that it makes them nonliving.
 name:building
 glyph:#

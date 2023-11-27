@@ -1001,7 +1001,7 @@ void lore_append_abilities(textblock *tb, const struct monster_race *race,
 	/* Describe abilities. */
 	create_mon_flag_mask(current_flags, RFT_ABIL, RFT_MAX);
 	rf_inter(current_flags, known_flags);
-	my_strcpy(start, format("%s has the abilities:", initial_pronoun),
+	my_strcpy(start, format("%s has the abilities: ", initial_pronoun),
 			  sizeof(start));
 	lore_append_clause(tb, current_flags, COLOUR_RED, start, "and", ".  ");
 
@@ -1130,8 +1130,13 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 	monster_sex_t msex = MON_SEX_NEUTER;
 	const char *initial_pronoun;
 	bitflag current_flags[RSF_SIZE];
+	const struct monster_race *old_ref;
 
 	assert(tb && race && lore);
+
+	/* Set the race for expressions in the spells. */
+	old_ref = ref_race;
+	ref_race = race;
 
 	/* Extract a gender (if applicable) and get a pronoun for the start of
 	 * sentences */
@@ -1164,6 +1169,9 @@ void lore_append_spells(textblock *tb, const struct monster_race *race,
 		lore_append_spell_clause(tb, current_flags, race, COLOUR_ORANGE,
 								 COLOUR_WHITE);
 	}
+
+	/* Restore the previous reference. */
+	ref_race = old_ref;
 }
 
 /**

@@ -352,8 +352,8 @@ static struct panel *get_panel_combat(void) {
 	/* Health */
 	panel_line(p, COLOUR_L_BLUE, "Health", "%d:%d", player->chp, player->mhp);
 
-	/* Voice */
-	panel_line(p, COLOUR_L_BLUE, "Voice", "%d:%d", player->csp, player->msp);
+	/* Stamina */
+	panel_line(p, COLOUR_L_BLUE, "Stamina", "%d:%d", player->csp, player->msp);
 
 	/* Song */
 	if (player->song[SONG_MAIN]) {

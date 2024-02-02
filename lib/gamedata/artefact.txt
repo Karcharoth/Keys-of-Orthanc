@@ -710,7 +710,7 @@ depth:20
 rarity:1
 weight:40
 cost:10000000
-attack:0:0d0
+attack:-3:1d1
 defence:0:0d0:0
 flags:INDESTRUCTIBLE | NO_RANDOM
 desc:The keyring holding access to Orthanc itself, this black

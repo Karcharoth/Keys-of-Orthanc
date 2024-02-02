@@ -121,6 +121,7 @@ struct angband_constants
 	uint16_t ability_cost;	/* Base experience cost of an ability */
 	uint16_t stealth_bonus;	/* Bonus to stealth in stealth mode */
 	uint16_t player_regen_period;	/* Player turns for complete regeneration */
+    uint16_t low_stamina_regen_rate; /* Low stamina regeneration slowness ratio */
 };
 
 struct init_module {

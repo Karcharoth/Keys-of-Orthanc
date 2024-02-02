@@ -313,27 +313,27 @@ static void prt_hp(int row, int col)
 }
 
 /**
- * Prints players max/cur voice
+ * Prints players max/cur stamina
  */
 static void prt_sp(int row, int col)
 {
-	char cur_sp[32], voice[32];
+	char cur_sp[32], stamina[32];
 	uint8_t color = player_sp_attr(player);
 	int len;
 
 	if (player->msp >= 100) {
-		put_str("Vce        ", row, col);
+		put_str("Stm        ", row, col);
 	} else {
-		put_str("Voice      ", row, col);
+		put_str("Stamina      ", row, col);
 	}
 
-	len = strnfmt(voice, sizeof(voice), "%d:%d", player->csp, player->msp);
-	c_put_str(COLOUR_L_GREEN, voice, row, col + 12 - len);
+	len = strnfmt(stamina, sizeof(stamina), "%d:%d", player->csp, player->msp);
+	c_put_str(COLOUR_L_GREEN, stamina, row, col + 12 - len);
 
 	/* Done? */
 	if (player->csp >= player->msp) return;
 
-	/* Show current voice using another color */
+	/* Show current stamina using another color */
 	strnfmt(cur_sp, sizeof(cur_sp), "%d", player->csp);
 	c_put_str(color, cur_sp, row, col + 12 - len);
 }

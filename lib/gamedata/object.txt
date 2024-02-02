@@ -1274,13 +1274,13 @@ expr:B:PLAYER_CUT: / 2
 effect:CURE:AFRAID
 effect:HEAL_HP
 dice:m50
-effect:RESTORE_MANA
+effect:RESTORE_STAMINA
 effect:NOURISH:INC_BY
 dice:100
 flags:GOOD
 desc:It cures stunning, confusion, hallucination, poison,
 desc: blindness, cuts, and fear. It restores half your health, and
-desc: all your voice.
+desc: all your stamina.
 
 
 # Index 315
@@ -1351,7 +1351,7 @@ desc:It heals all cuts and restores half your health.
 
 
 # Index 319
-name:Voice
+name:Stamina
 graphics:!:d
 type:potion
 depth:13
@@ -1360,10 +1360,10 @@ cost:300
 attack:0:0d0
 defence:0:0d0
 alloc:13:1
-effect:RESTORE_MANA
+effect:RESTORE_STAMINA
 effect:NOURISH:INC_BY
 dice:100
-desc:It renews your voice. 
+desc:It restores your stamina. 
 
 
 # Index 320

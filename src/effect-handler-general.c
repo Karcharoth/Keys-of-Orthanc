@@ -344,7 +344,7 @@ bool effect_handler_DRAIN_STAT(effect_handler_context_t *context)
 	return true;
 }
 
-bool effect_handler_RESTORE_MANA(effect_handler_context_t *context)
+bool effect_handler_RESTORE_STAMINA(effect_handler_context_t *context)
 {
 	int amount = effect_calculate_value(context);
 	if (!amount) amount = player->msp;

@@ -79,7 +79,7 @@ void take_hit(struct player *p, int dam, const char *kb_str);
 void death_knowledge(struct player *p);
 int energy_per_move(struct player *p);
 void player_regen_hp(struct player *p);
-void player_regen_mana(struct player *p);
+void player_regen_stamina(struct player *p);
 void convert_mana_to_hp(struct player *p, int32_t sp);
 void player_digest(struct player *p);
 void player_update_light(struct player *p);

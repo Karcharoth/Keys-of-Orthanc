@@ -222,7 +222,7 @@ static void get_bonuses(struct player *p)
 	p->chp = p->mhp;
 
 	/* Fully rested */
-	calc_voice(p, true);
+	calc_stamina(p, true);
 	p->csp = p->msp;
 }
 

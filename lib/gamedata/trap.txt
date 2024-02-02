@@ -170,7 +170,7 @@ dice:4d4
 effect:NOISE:PLAYER
 dice:5
 desc:A trap that releases venomous gas.
-msg:A venomous vapor fill your lungs.
+msg:A venomous vapor fills your lungs.
 
 
 # alarm

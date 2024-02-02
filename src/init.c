@@ -577,6 +577,8 @@ static enum parser_error parse_constants_player(struct parser *p) {
 		z->stealth_bonus = value;
 	else if (streq(label, "regen-period"))
 		z->player_regen_period = value;
+    else if (streq(label, "low-stamina-regen-rate"))
+        z->low_stamina_regen_rate = value;
 	else
 		return PARSE_ERROR_UNDEFINED_DIRECTIVE;
 

@@ -489,7 +489,7 @@ void do_cmd_drop(struct command *cmd)
 
 enum use {
 	USE_CHARGE,
-	USE_VOICE,
+	USE_STAMINA,
 	USE_SINGLE
 };
 
@@ -531,18 +531,18 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 	/* Verify effect */
 	assert(effect);
 
-	/* Check voice */
-	if (use == USE_VOICE) {
-		int voice_cost = player_active_ability(player, "Channeling") ? 10 : 20;
+	/* Check stamina. TODO: Make costs vary by item; right now they are all 20. */
+	if (use == USE_STAMINA) {
+		int stamina_cost = player_active_ability(player, "Channeling") ? 10 : 20;
 
-		if (player->csp < voice_cost) {
+		if (player->csp < stamina_cost) {
 			event_signal(EVENT_INPUT_FLUSH);
-			msg("You are out of breath.");
+			msg("You are out of energy.");
 			return;
 		}
 
 		msg("You sound a loud note on the horn.");
-		player->csp -= voice_cost;
+		player->csp -= stamina_cost;
 		player->upkeep->redraw |= PR_MANA;
 	}
 

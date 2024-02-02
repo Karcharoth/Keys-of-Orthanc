@@ -37,7 +37,7 @@ EFFECT(TERROR,						false,	NULL,		1,		EFINFO_TERROR,	"administers fear for %s tu
 EFFECT(GLYPH,						false,	NULL,		1,		EFINFO_NONE,	"inscribes a glyph beneath you",	"inscribe a glyph")
 EFFECT(RESTORE_STAT,				false,	NULL,		1,		EFINFO_STAT,	"restores your %s",	"restore %s")
 EFFECT(DRAIN_STAT,					false,	NULL,		1,		EFINFO_STAT,	"reduces your %s",	"drains %s")
-EFFECT(RESTORE_MANA,				false,	NULL,		0,		EFINFO_NONE,	"restores some mana",	"restore some mana")
+EFFECT(RESTORE_STAMINA,				false,	NULL,		0,		EFINFO_NONE,	"restores some mana",	"restore some mana")
 EFFECT(REMOVE_CURSE,				false,	NULL,		1,		EFINFO_DICE,	"attempts power %s removal of a single curse on an object",	"remove curse")
 EFFECT(MAP_AREA,					false,	NULL,		0,		EFINFO_NONE,	"maps the current dungeon level",	"map level")
 EFFECT(DETECT_TRAPS,				false,	NULL,		0,		EFINFO_NONE,	"detects traps nearby",	"detect traps")

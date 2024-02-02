@@ -752,7 +752,7 @@ static void process_player_post_energy_use_cleanup(void)
 
 	/* Regenerate voice if needed */
 	if (player->csp < player->msp) {
-		player_regen_mana(player);
+		player_regen_stamina(player);
 	}
 
 	/* Timeout various things */

@@ -272,7 +272,7 @@ uint8_t player_sp_attr(struct player *p)
 	return attr;
 }
 
-bool player_restore_mana(struct player *p, int amt) {
+bool player_restore_stamina(struct player *p, int amt) {
 	int old_csp = p->csp;
 
 	p->csp += amt;

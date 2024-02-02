@@ -402,23 +402,23 @@ void calc_inventory(struct player *p)//TODO make two quivers (= quiver slots?)
 
 
 /**
- * Calculate maximum voice.  You do not need to know any songs.
+ * Calculate maximum stamina.  You do not need to know any songs.
  *
  * This function induces status messages.
  */
-void calc_voice(struct player *p, bool update)
+void calc_stamina(struct player *p, bool update)
 {
 	int i, msp, tmp; 
 
-	/* Get voice value -  20 + a compounding 20% bonus per point of gra */
+	/* Get stamina value -  20 + a compounding 10% bonus per point of gra and con */
 	tmp = 20 * 100;
 	if (p->state.stat_use[STAT_GRA] >= 0) {
-		for (i = 0; i < p->state.stat_use[STAT_GRA]; i++) {
-			tmp = tmp * 12 / 10;
+		for (i = 0; i < (p->state.stat_use[STAT_GRA]+p->state.stat_use[STAT_CON]); i++) {
+			tmp = tmp * 11 / 10;
 		}
 	} else {
-		for (i = 0; i < -(p->state.stat_use[STAT_GRA]); i++) {
-			tmp = tmp * 10 / 12;
+		for (i = 0; i < -(p->state.stat_use[STAT_GRA]+p->state.stat_use[STAT_CON]); i++) {
+			tmp = tmp * 10 / 11;
 		}
 	}
 	msp = tmp / 100;
@@ -426,7 +426,7 @@ void calc_voice(struct player *p, bool update)
 	/* Return if no updates */
 	if (!update) return;
 
-	/* Maximum voice has changed */
+	/* Maximum stamina has changed */
 	if (p->msp != msp) {
 		i = 100;
 
@@ -459,7 +459,7 @@ static void calc_hitpoints(struct player *p)
 {
 	int i, mhp, tmp; 
 
-	/* Get voice value -  20 + a compounding 20% bonus per point of con */
+	/* Get health value -  20 + a compounding 20% bonus per point of con */
 	tmp = 20 * 100;
 	if (p->state.stat_use[STAT_CON] >= 0) {
 		for (i = 0; i < p->state.stat_use[STAT_CON]; i++) {
@@ -1116,8 +1116,12 @@ static void update_bonuses(struct player *p)
 			if (i == STAT_CON)
 				p->upkeep->update |= (PU_HP);
 
-			/* Change in GRA affects voice */
+			/* Change in GRA affects stamina */
 			if (i == STAT_GRA)
+				p->upkeep->update |= (PU_MANA);
+
+			/* Change in GRA affects stamina */
+			if (i == STAT_CON)
 				p->upkeep->update |= (PU_MANA);
 		}
 	}
@@ -1309,7 +1313,7 @@ void update_stuff(struct player *p)
 
 	if (p->upkeep->update & (PU_MANA)) {
 		p->upkeep->update &= ~(PU_MANA);
-		calc_voice(p, true);
+		calc_stamina(p, true);
 	}
 
 	/* Character is not ready yet, no map updates */

@@ -375,7 +375,7 @@ void player_sing(struct player *p)
 	struct song *minor = p->song[SONG_MINOR];
 
 	if (!p->song[SONG_MAIN]) return;
-	/* Abort song if out of voice, lost the ability to weave themes,
+	/* Abort song if out of stamina, lost the ability to weave themes,
 	 * or lost either song ability */
 	if ((p->csp < 1) ||
 		(p->song[SONG_MINOR] && !player_active_ability(p, "Woven Themes")) ||

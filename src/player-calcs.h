@@ -107,7 +107,7 @@ uint8_t total_ads(struct player *p, struct player_state *state,
 				  const struct object *obj, bool single_shot);
 int equipped_item_slot(struct player_body body, struct object *obj);
 void calc_inventory(struct player *p);
-void calc_voice(struct player *p, bool update);
+void calc_stamina(struct player *p, bool update);
 bool weapon_glows(struct object *obj);
 void calc_light(struct player *p);
 int weight_limit(struct player_state state);

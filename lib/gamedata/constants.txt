@@ -178,5 +178,8 @@ player:ability-cost:500
 # Bonus to stealth in stealth mode
 player:stealth-bonus:5
 
-# Number of player turns for complete health or voice regeneration
+# Number of player turns for complete health or stamina regeneration. Note - not really the regen rate for stamina at low stamina values, see below.
 player:regen-period:150
+
+#Fraction of normal regen rate that stamina goes to at 0 stamina; smooth distribution from full to 0
+player:low-stamina-regen-rate:3

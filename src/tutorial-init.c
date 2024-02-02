@@ -1508,7 +1508,7 @@ static int get_drained_index(const char *name)
 			}
 		} else if (streq(name, "HEALTH")) {
 			return STAT_MAX;
-		} else if (streq(name, "VOICE")) {
+		} else if (streq(name, "STAMINA")) {
 			return STAT_MAX + 1;
 		} else {
 			return -1;

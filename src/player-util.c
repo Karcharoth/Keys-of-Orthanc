@@ -285,16 +285,22 @@ void player_regen_hp(struct player *p)
 
 
 /**
- * Regenerate one turn's worth of voice
+ * Regenerate one turn's worth of stamina
  */
-void player_regen_mana(struct player *p)
+void player_regen_stamina(struct player *p)
 {
 	int old_csp = p->csp;
 	int regen_multiplier = p->state.flags[OF_REGEN] + 1;
 	int regen_period = z_info->player_regen_period;
 
-	/* Don't regenerate voice if singing */
-	if (p->song[SONG_MAIN]) return;
+	/* Don't regenerate stamina if singing
+	if (p->song[SONG_MAIN]) return; */
+
+    /* Modify regen_multiplier based on distance from 0 stamina and
+    z_info->low_stamina_regen_rate. Overly complicated. In short, at full stamina,
+    regen at rate 1, and at half stamina, regen at rate 1/(1/2+1/2*low_stamina_regen_rate,
+    equivalent to 1/2.)*/
+    regen_multiplier /= (p->csp/p->msp)+(1-(p->csp/p->msp))*(z_info->low_stamina_regen_rate);
 
 	/* Complete healing every z_info->player_regen_period player turns,
 	 * modified */

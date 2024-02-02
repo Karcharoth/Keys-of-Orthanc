@@ -616,6 +616,8 @@ static void tutorial_handle_player_move(game_event_type t, game_event_data *d,
 			const struct trigger_compiled_op *op =
 					entry->v.trigger.expr.ops + iop;
 
+			struct ability *ability;
+
 			switch (op->kind) {
 			case TRIGGER_OP_NOT:
 				assert(next > 0);
@@ -650,8 +652,9 @@ static void tutorial_handle_player_move(game_event_type t, game_event_data *d,
 
 			case TRIGGER_OP_ABILITY:
 				assert(next < entry->v.trigger.expr.n_stack);
+				ability = lookup_ability(op->idx, op->name);
 				estack[next] =
-					player_has_ability(player, op->name);
+					player_has_ability(player, ability);
 				++next;
 				break;
 

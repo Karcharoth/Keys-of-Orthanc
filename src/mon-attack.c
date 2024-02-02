@@ -350,6 +350,10 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 {
     /* Hack: before loading anything, cancel if it never attacks.*/
     if (rf_has(mon->race->flags, RF_NEVER_ATTACK)) {
+        if (monster_is_visible(mon)) {
+        	struct monster_lore *lore = get_lore(mon->race);
+			rf_on(lore->flags, RF_NEVER_ATTACK);
+        }
     return true;
     }
 	struct monster_lore *lore = get_lore(mon->race);

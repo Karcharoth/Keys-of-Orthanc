@@ -113,7 +113,7 @@ desc:A hole dug to snare the unwary.
 
 # spiked pit
 
-name:pit:spiked pit
+name:spiked pit:spiked pit
 graphics:^:s
 rarity:1
 min-depth:11

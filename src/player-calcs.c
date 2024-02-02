@@ -409,17 +409,25 @@ void calc_inventory(struct player *p)//TODO make two quivers (= quiver slots?)
 void calc_stamina(struct player *p, bool update)
 {
 	int i, msp, tmp; 
-
-	/* Get stamina value -  20 + a compounding 10% bonus per point of gra and con */
+    int gracecon_sum = p->state.stat_use[STAT_GRA]+p->state.stat_use[STAT_CON];
+	/* Get stamina value -  20 + a compounding 20% bonus per 2 points of gra and con, 
+    then another 10% if it is odd. */
 	tmp = 20 * 100;
-	if (p->state.stat_use[STAT_GRA] >= 0) {
-		for (i = 0; i < (p->state.stat_use[STAT_GRA]+p->state.stat_use[STAT_CON]); i++) {
-			tmp = tmp * 11 / 10;
-		}
+	if ((gracecon_sum)/2 >= 0) {
+		for (i = 0; i < (gracecon_sum)/2; i++) {
+			tmp = tmp * 12 / 10;
+		} /* The square root of 1.2, for if the sum is odd.*/
+        if (gracecon_sum % 2 == 1) {
+            tmp = tmp * 1.09544;
+        }
 	} else {
-		for (i = 0; i < -(p->state.stat_use[STAT_GRA]+p->state.stat_use[STAT_CON]); i++) {
-			tmp = tmp * 10 / 11;
+		for (i = 0; i < -(p->state.stat_use[STAT_GRA]+p->state.stat_use[STAT_CON])/2; i++) {
+			tmp = tmp * 10 / 12;
 		}
+        if (gracecon_sum % 2 == 1) {
+            tmp = tmp * .91287;
+        }
+
 	}
 	msp = tmp / 100;
 

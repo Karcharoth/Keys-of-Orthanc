@@ -36,7 +36,7 @@
 #define PU_BONUS		0x00000001L	/* Calculate bonuses */
 #define PU_TORCH		0x00000002L	/* Calculate torch radius */
 #define PU_HP			0x00000004L	/* Calculate chp and mhp */
-#define PU_MANA			0x00000008L	/* Calculate csp and msp */
+#define PU_STAMINA		0x00000008L	/* Calculate csp and msp */
 #define PU_SPELLS		0x00000010L	/* Calculate spells */
 #define PU_UPDATE_VIEW	0x00000020L	/* Update field of view */
 #define PU_MONSTERS		0x00000040L	/* Update monsters */
@@ -55,7 +55,7 @@
 #define PR_STATS		0x00000010L	/* Display Stats */
 #define PR_ARMOR		0x00000020L	/* Display Armor */
 #define PR_HP			0x00000040L	/* Display Hitpoints */
-#define PR_MANA			0x00000080L	/* Display Mana */
+#define PR_STAMINA		0x00000080L	/* Display Stamina */
 #define PR_SONG			0x00000100L	/* Display Songs */
 #define PR_HEALTH		0x00000200L	/* Display Health Bar */
 #define PR_SPEED		0x00000400L	/* Display Extra (Speed) */
@@ -81,7 +81,7 @@
  */
 #define PR_BASIC \
 	(PR_MISC | PR_STATS | PR_TERRAIN | PR_EXP | PR_SONG | PR_ARMOR \
-	 | PR_HP | PR_MELEE | PR_ARC | PR_MANA | PR_DEPTH | PR_HEALTH | PR_SPEED)
+	 | PR_HP | PR_MELEE | PR_ARC | PR_STAMINA | PR_DEPTH | PR_HEALTH | PR_SPEED)
 
 /**
  * Display Extra Info

@@ -356,7 +356,7 @@ bool effect_handler_RESTORE_STAMINA(effect_handler_context_t *context)
 			msg("You feel your power renew.");
 		} else
 			msg("You feel your power renew somewhat.");
-		player->upkeep->redraw |= (PR_MANA);
+		player->upkeep->redraw |= (PR_STAMINA);
 	}
 	context->ident = true;
 

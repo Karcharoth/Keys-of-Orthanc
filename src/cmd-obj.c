@@ -543,7 +543,7 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 
 		msg("You sound a loud note on the horn.");
 		player->csp -= stamina_cost;
-		player->upkeep->redraw |= PR_MANA;
+		player->upkeep->redraw |= PR_STAMINA;
 	}
 
 

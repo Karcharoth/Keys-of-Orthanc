@@ -444,8 +444,8 @@ void calc_stamina(struct player *p, bool update)
 			p->csp = msp;
 		}
 
-		/* Display mana later */
-		p->upkeep->redraw |= (PR_MANA);
+		/* Display stamina later */
+		p->upkeep->redraw |= (PR_STAMINA);
 	}
 }
 
@@ -490,7 +490,7 @@ static void calc_hitpoints(struct player *p)
 			p->chp = mhp;
 		}
 
-		/* Display mana later */
+		/* Display health later */
 		p->upkeep->redraw |= (PR_HP);
 	}
 }
@@ -712,7 +712,7 @@ int weight_remaining(struct player *p)
  * not only race/class intrinsics, but also objects being worn
  * and temporary spell effects.
  *
- * See also calc_mana() and calc_hitpoints().
+ * See also calc_stamina() and calc_hitpoints().
  *
  * Take note of the new "speed code", in particular, a very strong
  * player will start slowing down as soon as he reaches 150 pounds,
@@ -1118,11 +1118,11 @@ static void update_bonuses(struct player *p)
 
 			/* Change in GRA affects stamina */
 			if (i == STAT_GRA)
-				p->upkeep->update |= (PU_MANA);
+				p->upkeep->update |= (PU_STAMINA);
 
-			/* Change in GRA affects stamina */
+			/* Change in CON affects stamina */
 			if (i == STAT_CON)
-				p->upkeep->update |= (PU_MANA);
+				p->upkeep->update |= (PU_STAMINA);
 		}
 	}
 
@@ -1311,8 +1311,8 @@ void update_stuff(struct player *p)
 		calc_hitpoints(p);
 	}
 
-	if (p->upkeep->update & (PU_MANA)) {
-		p->upkeep->update &= ~(PU_MANA);
+	if (p->upkeep->update & (PU_STAMINA)) {
+		p->upkeep->update &= ~(PU_STAMINA);
 		calc_stamina(p, true);
 	}
 
@@ -1365,7 +1365,7 @@ static const struct flag_event_trigger redraw_events[] =
 	{ PR_STATS,   EVENT_STATS },
 	{ PR_ARMOR,   EVENT_ARMOR },
 	{ PR_HP,      EVENT_HP },
-	{ PR_MANA,    EVENT_MANA },
+	{ PR_STAMINA, EVENT_STAMINA },
 	{ PR_SONG,    EVENT_SONG },
 	{ PR_MELEE,   EVENT_MELEE },
 	{ PR_ARC,     EVENT_ARCHERY },

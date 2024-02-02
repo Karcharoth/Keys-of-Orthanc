@@ -434,7 +434,7 @@ void do_cmd_wiz_advance(struct command *cmd)
 	player->csp_frac = 0;
 
 	/* Flag update and redraw for things not handled in player_exp_gain() */
-	player->upkeep->redraw |= PR_HP | PR_MANA;
+	player->upkeep->redraw |= PR_HP | PR_STAMINA;
 }
 
 
@@ -893,7 +893,7 @@ void do_cmd_wiz_cure_all(struct command *cmd)
 	/* Heal the player */
 	player->chp = player->mhp;
 
-	/* Restore mana */
+	/* Restore stamina */
 	player->csp = player->msp;
 
 	/* Cure stuff */

@@ -486,9 +486,9 @@ struct player {
 	int16_t chp;		/* Cur hit pts */
 	uint16_t chp_frac;	/* Cur hit frac (times 2^16) */
 
-	int16_t msp;		/* Max mana pts */
-	int16_t csp;		/* Cur mana pts */
-	uint16_t csp_frac;	/* Cur mana frac (times 2^16) */
+	int16_t msp;		/* Max stamina pts */
+	int16_t csp;		/* Cur stamina pts */
+	uint16_t csp_frac;	/* Cur stamina frac (times 2^16) */
 
 	int16_t stat_base[STAT_MAX];	/* The base ('internal') stat values */
 	int16_t stat_drain[STAT_MAX];	/* The negative modifier from stat drain */

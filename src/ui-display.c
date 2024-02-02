@@ -76,7 +76,7 @@ static game_event_type player_events[] =
 	EVENT_EQUIPMENT,  /* For equippy chars */
 	EVENT_STATS,
 	EVENT_HP,
-	EVENT_MANA,
+	EVENT_STAMINA,
 	EVENT_MELEE,
 	EVENT_ARCHERY,
 	EVENT_ARMOR,
@@ -149,11 +149,11 @@ static void prt_stat(int stat, int row, int col)
 	if (player->stat_drain[stat] < 0) {
 		put_str(stat_names_reduced[stat], row, col);
 		strnfmt(tmp, sizeof(tmp), "    %2d", player->state.stat_use[stat]);
-		c_put_str(COLOUR_YELLOW, tmp, row, col + 6);
+		c_put_str(COLOUR_YELLOW, tmp, row, col + 7);
 	} else {
 		put_str(stat_names[stat], row, col);
 		strnfmt(tmp, sizeof(tmp), "    %2d", player->state.stat_use[stat]);
-		c_put_str(COLOUR_L_GREEN, tmp, row, col + 6);
+		c_put_str(COLOUR_L_GREEN, tmp, row, col + 7);
 	}
 
 	/* Indicate temporary modifiers */
@@ -178,7 +178,7 @@ static void prt_exp(int row, int col)
 	strnfmt(out_val, sizeof(out_val), "%8d", player->new_exp);
 
 	put_str("Exp ", row, col);
-	c_put_str(COLOUR_L_GREEN, out_val, row, col + 4);
+	c_put_str(COLOUR_L_GREEN, out_val, row, col + 5);
 }
 
 
@@ -302,14 +302,14 @@ static void prt_hp(int row, int col)
 	}
 
 	len = strnfmt(health, sizeof(health), "%d:%d", player->chp, player->mhp);
-	c_put_str(COLOUR_L_GREEN, health, row, col + 12 - len);
+	c_put_str(COLOUR_L_GREEN, health, row, col + 13 - len);
 
 	/* Done? */
 	if (player->chp >= player->mhp) return;
 
 	/* Show current hitpoints using another color */
 	strnfmt(cur_hp, sizeof(cur_hp), "%d", player->chp);
-	c_put_str(color, cur_hp, row, col + 12 - len);
+	c_put_str(color, cur_hp, row, col + 13 - len);
 }
 
 /**
@@ -328,14 +328,14 @@ static void prt_sp(int row, int col)
 	}
 
 	len = strnfmt(stamina, sizeof(stamina), "%d:%d", player->csp, player->msp);
-	c_put_str(COLOUR_L_GREEN, stamina, row, col + 12 - len);
+	c_put_str(COLOUR_L_GREEN, stamina, row, col + 13 - len);
 
 	/* Done? */
 	if (player->csp >= player->msp) return;
 
 	/* Show current stamina using another color */
 	strnfmt(cur_sp, sizeof(cur_sp), "%d", player->csp);
-	c_put_str(color, cur_sp, row, col + 12 - len);
+	c_put_str(color, cur_sp, row, col + 13 - len);
 }
 
 /**
@@ -659,7 +659,7 @@ static int prt_sp_short(int row, int col)
 	strnfmt(max_sp, sizeof(max_sp), "%d", player->msp);
 	strnfmt(cur_sp, sizeof(cur_sp), "%d", player->csp);
 
-	/* Show mana */
+	/* Show stamina */
 	c_put_str(color, cur_sp, row, col);
 	col += strlen(cur_sp);
 	c_put_str(COLOUR_WHITE, "/", row, col);
@@ -722,7 +722,7 @@ static const struct side_handler_t
 	{ prt_exp,      5, EVENT_EXPERIENCE },
 	{ NULL,        24, 0 },
 	{ prt_hp,       6, EVENT_HP },
-	{ prt_sp,       7, EVENT_MANA },
+	{ prt_sp,       7, EVENT_STAMINA },
 	{ NULL,        17, 0 },
 	{ prt_mel,      8, EVENT_MELEE },/* May overlap upwards */
 	{ prt_arc,      9, EVENT_ARCHERY },

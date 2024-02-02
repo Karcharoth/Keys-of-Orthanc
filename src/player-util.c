@@ -316,7 +316,7 @@ void player_regen_stamina(struct player *p)
 
 	/* Notice changes */
 	if (old_csp != p->csp) {
-		p->upkeep->redraw |= (PR_MANA);
+		p->upkeep->redraw |= (PR_STAMINA);
 	}
 }
 

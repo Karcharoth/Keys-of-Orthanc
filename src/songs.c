@@ -413,7 +413,7 @@ void player_sing(struct player *p)
 	/* Pay costs */
 	p->csp -= MIN(cost, p->csp);
 
-	p->upkeep->redraw |= (PR_MANA);
+	p->upkeep->redraw |= (PR_STAMINA);
 }
 
 /**

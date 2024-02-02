@@ -34,7 +34,7 @@ typedef enum game_event_type
 	EVENT_STATS,  		/* One or more of the stats. */
 	EVENT_SKILLS,  		/* One or more of the skills. */
 	EVENT_HP,	   		/* HP or MaxHP. */
-	EVENT_MANA,			/* Mana or MaxMana. */
+	EVENT_STAMINA,		/* Stamina or MaxStamina. */
 	EVENT_MELEE,
 	EVENT_ARCHERY,
 	EVENT_ARMOR,

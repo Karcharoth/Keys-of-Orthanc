@@ -279,9 +279,9 @@ bool player_restore_stamina(struct player *p, int amt) {
 	if (p->csp > p->msp) {
 		p->csp = p->msp;
 	}
-	p->upkeep->redraw |= PR_MANA;
+	p->upkeep->redraw |= PR_STAMINA;
 
-	msg("You feel some of your energies returning.");
+	msg("You feel some of your energy returning.");
 
 	return p->csp != old_csp;
 }

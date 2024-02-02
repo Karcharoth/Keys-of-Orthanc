@@ -698,106 +698,41 @@ desc: devilish cunning and ingenuity.
 ## Claws of Beorning_Name_Here? Attack bonus, but what even
 ## would they be, fancy claw covers?
 
-##### Morgoth Artefacts #####
+##### Saruman Artefacts #####
 
-
-## The Massive Iron Crown of Morgoth (no Silmarils)
-## 1st age
-## (automatic drop -- don't move)
-
-# Index 175
-#name:of Morgoth
-#base-object:crown:Massive Iron Crown
-#depth:20
-#rarity:1
-#weight:4000
-#cost:10000000
-#attack:0:0d0
-#defence:0:0d0:0
-#flags:INDESTRUCTIBLE
-#desc:Once containing much of the power of he who is the mightiest among the
-#desc: Ainur, this plain iron crown now bears just three empty sockets:
-#desc: holes where should be stars.
-
-
-## The Massive Iron Crown of Morgoth (one Silmaril)
-## 1st age
-## (automatic drop -- don't move)
-
-# Index 176
-#name:of Morgoth
-#base-object:crown:Massive Iron Crown
-#depth:20
-#rarity:1
-#weight:4000
-#cost:10000000
-#attack:0:0d0
-#defence:0:0d0:0
-#flags:INDESTRUCTIBLE
-#flags:QUEST_ART 
-#desc:Containing much of the power of he who is the mightiest among the
-#desc: Ainur, this plain iron crown has mounted upon it the sole remaining
-#desc: Silmaril, greatest treasure of Middle-Earth.
-
-
-## The Massive Iron Crown of Morgoth (two Silmarils)
-## 1st age
-## (automatic drop -- don't move)
-
-# Index 177
-#name:of Morgoth
-#base-object:crown:Massive Iron Crown
-#depth:20
-#rarity:1
-#weight:4000
-#cost:10000000
-#attack:0:0d0
-#defence:0:0d0:0
-#flags:INDESTRUCTIBLE
-#flags:QUEST_ART 
-#desc:Containing much of the power of he who is the mightiest among the
-#desc: Ainur, this plain iron crown has mounted upon it the two remaining
-#desc: Silmarils, greatest treasures of Middle-Earth.
-
-
-## The Massive Iron Crown of Morgoth (three Silmarils)
-## 1st age
-## (automatic drop -- don't move)
+## The Keys of Orthanc
+## 2nd age
 
 # Index 178
-name:of Morgoth
-base-object:helm:Great Helm
+name:of Orthanc
+base-object:sword:Keys
 depth:20
 rarity:1
-weight:4000
+weight:40
 cost:10000000
 attack:0:0d0
 defence:0:0d0:0
 flags:INDESTRUCTIBLE | NO_RANDOM
-desc:Containing much of the power of he who is the mightiest among the
-desc: Ainur, this plain iron crown has mounted upon it the three
-desc: Silmarils, greatest treasures of Middle-Earth. To attempt to cut
-desc: a Silmaril from the crown, stand over it and press (k).
+desc:The keyring holding access to Orthanc itself, this black
+desc: loop of metal bears two great keys. To open the door of Orthanc,
+desc: wield it and use (/).
 
 
-## The Mighty Hammer 'Grond'
-## 1st age
-## (automatic drop -- don't move)
+## The Ring of Saruman
+## 3rd age
 
 # Index 179
-name:'Grond'
-base-object:hafted:Hammer
+name:of Saruman
+base-object:ring:Ring
 depth:20
 rarity:1
-weight:1000
+weight:1
 cost:500000
-attack:-9:6d5
-defence:0:0d0
-flags:NO_RANDOM
-values:TUNNEL[3]
-desc:The mighty Hammer of the Underworld, blackened by dark sorceries,
-desc: whose wielder holds the lives of all Morgoth's servants
-desc: in his hand.
+flags:NO_RANDOM | LIGHT | AGGRAVATE | CURSED
+values:GRA[2]
+desc:The shining masterpiece of Saruman's craft,
+desc: this ring bears a jewel that shatters
+desc: light into every color.
 
 
 

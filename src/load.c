@@ -846,7 +846,7 @@ int rd_player(void)
 	rd_byte(&tmp8u);
 	player->on_the_run = tmp8u ? true : false;
 	rd_byte(&tmp8u);
-	player->morgoth_slain = tmp8u ? true : false;
+	player->saruman_slain = tmp8u ? true : false;
 	rd_byte(&tmp8u);
 	player->escaped = tmp8u ? true : false;
 	rd_u16b(&player->noscore);
@@ -991,7 +991,7 @@ int rd_artifacts(void)
 {
 	int i;
 	uint16_t tmp16u;
-	const struct artifact *crown = lookup_artifact_name("of Morgoth");
+	const struct artifact *keys = lookup_artifact_name("of Orthanc");
 
 	/* Load the Artifacts */
 	rd_u16b(&tmp16u);
@@ -1016,13 +1016,11 @@ int rd_artifacts(void)
 		rd_byte(&tmp8u);
 	}
 
-	/* Change Morgoth's stats if his crown has been knocked off */
-	if (is_artifact_created(crown)) {
-		struct monster_race *race = lookup_monster("Morgoth, Lord of Darkness");
-		race->pd -= 1;
-		race->light = 0;
-		race->wil += 5;
-		race->per += 5;
+	/* Change Saruman's stats if his keys have been taken */
+	if (is_artifact_created(keys)) {
+		struct monster_race *race = lookup_monster("Saruman of Many Colors");
+		race->wil += 2;
+		race->per += 4;
 	}
 
 	return 0;

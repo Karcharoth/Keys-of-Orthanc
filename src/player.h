@@ -545,7 +545,7 @@ struct player {
 	bool crown_shatter;		/* Player has had a weapon shattered by the Crown */
 	bool cursed;			/* Player has taken a third Silmaril */
 	bool on_the_run;		/* Player is on the run from Angband */
-	bool morgoth_slain;		/* Player has slain Morgoth */
+	bool saruman_slain;		/* Player has slain Morgoth */
 	uint8_t morgoth_hits;		/* Number of big hits against Morgoth */
 	bool escaped;			/* Player has escaped Angband */
 

@@ -536,16 +536,7 @@ void process_world(struct chunk *c)
 	}
 
 	/* Check for creature generation */
-	if (silmarils_possessed(player) >= 2) {
-		/* Vastly more wandering monsters during the endgame when you have
-		 * 2 or 3 Silmarils */
-		int percent = (c->height * c->width)
-			/ (z_info->block_hgt * z_info->block_wid);
-		if (percent_chance(percent)) {
-			(void)pick_and_place_monster_on_stairs(c, player, true, c->depth,
-												   false);
-		}
-	} else if (one_in_(z_info->alloc_monster_chance)) {
+    if (one_in_(z_info->alloc_monster_chance)) {
 		/* Normal wandering monster generation */
 		(void)pick_and_place_monster_on_stairs(c, player, true, c->depth,
 											   false);
@@ -592,11 +583,6 @@ static void pre_process_player(void)
 
 		/* Redraw the state */
 		player->upkeep->redraw |= (PR_STATE);
-	}
-
-	/* Morgoth will announce a challenge if adjacent */
-	if (player->truce && (player->depth == z_info->dun_depth)) {
-		check_truce(player);
 	}
 
 	/* List all challenge options at the start of the game */

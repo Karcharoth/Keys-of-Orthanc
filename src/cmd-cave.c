@@ -117,8 +117,8 @@ static void do_cmd_go_up_aux(void)
 	}
 
 	/* Force descend */
-	if (OPT(player, birth_force_descend) && (silmarils_possessed(player) == 0)){
-		msg("You have vowed to not to return until you hold a Silmaril.");
+	if (OPT(player, birth_force_descend) && (keys_possessed(player) == 0)){
+		msg("You have vowed to not to return until you have taken Saruman's Keys.");
 		return;
 	}
 	
@@ -131,12 +131,12 @@ static void do_cmd_go_up_aux(void)
 	/* Store the action type */
 	player->previous_action[0] = ACTION_MISC;
 
-	/* Cannot flee Morgoth's throne room without a Silmaril */
+	/* I still don't know how I plan to do the last level */ /*
 	if ((player->max_depth == z_info->dun_depth) &&
-		(silmarils_possessed(player) == 0)) {
+		(keys_possessed(player) == 0)) {
 		msg("You enter a maze of staircases, but cannot find your way.");
 		return;
-	}
+	} */
 
 	/* Calculate the new depth to arrive at */
 	min = player_min_depth(player);
@@ -169,14 +169,9 @@ static void do_cmd_go_up_aux(void)
 		/* Deal with cases where you can find your way */
 		msgt(MSG_STAIRS_UP, "You enter a maze of up staircases.");
 
-		/* Escaping */
-		if (silmarils_possessed(player) > 0) {
-			msgt(MSG_STAIRS_UP, "The divine light reveals the way.");
-		}
-
 		/* Flee Morgoth's throne room */
 		if (player->depth == z_info->dun_depth) {
-			if (!player->morgoth_slain) {
+			if (!player->saruman_slain) {
 				msg("As you climb the stair, a great cry of rage and anguish comes from below.");
 				msg("Make quick your escape: it shall be hard-won.");
 			}
@@ -965,9 +960,6 @@ static bool do_cmd_tunnel_aux(struct loc grid)
             msg("You are wielding %s.", o_full_name);
 		}
 	}
-
-	/* Break the truce if creatures see */
-	break_truce(player, false);
 
     /* Provoke attacks of opportunity from adjacent monsters */
     attacks_of_opportunity(player, loc(0, 0));

@@ -540,7 +540,7 @@ void wr_player(void)
 	wr_byte(player->crown_shatter);
 	wr_byte(player->cursed);
 	wr_byte(player->on_the_run);
-	wr_byte(player->morgoth_slain);
+	wr_byte(player->saruman_slain);
 	wr_byte(player->escaped);
 	wr_u16b(player->noscore);
 	wr_s16b(player->smithing_leftover);

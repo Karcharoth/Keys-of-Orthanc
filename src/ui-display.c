@@ -2518,9 +2518,9 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 		}
 
 		/* Special explanation the first time you step over the crown */
-		if (obj->artifact && streq(obj->artifact->name, "of Morgoth") &&
+		if (obj->artifact && streq(obj->artifact->name, "of Orthanc") &&
 			!player->crown_hint) {
-			msg("To attempt to prise a Silmaril from the crown, use the 'destroy' command (which is 'k' by default).");
+			msg("To open the door of Orthanc, wield it and use (/).");
 			player->crown_hint = true;
 		}
 	} else {

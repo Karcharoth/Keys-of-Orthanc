@@ -20,13 +20,8 @@
 #define QUEST_H
 
 /* Functions */
-void drop_iron_crown(struct monster *mon, const char *message);
-void shatter_weapon(struct player *p, int silnum);
-void break_truce(struct player *p, bool obvious);
-void check_truce(struct player *p);
-void wake_all_monsters(struct player *p);
-void prise_silmaril(struct player *p);
-int silmarils_possessed(struct player *p);
+void drop_the_keys(struct monster *mon, const char *message);
+int keys_possessed(struct player *p);
 
 
 #endif /* QUEST_H */

@@ -34,12 +34,12 @@
 static int score_points(const struct high_score *score)
 {
 	int points = 0;
-	int silmarils;
+	int keys;
 	
 	int maxturns = 100000;
-	int silmarils_factor = maxturns;
-	int depth_factor = silmarils_factor * 10;
-	int morgoth_factor = depth_factor * 100;
+	int keys_factor = maxturns;
+	int depth_factor = keys_factor * 10;
+	int saruman_factor = depth_factor * 10;
 
 	/* Points from turns taken (00000 to 99999)  */
 	points = maxturns - atoi(score->turns);
@@ -50,25 +50,25 @@ static int score_points(const struct high_score *score)
 		points = maxturns - 1;
 	}
 
-	/* Points from silmarils (0 00000 to 3 00000) */
-	silmarils = atoi(score->silmarils);
-	points += silmarils_factor * silmarils;
+	/* Points from keys (0 00000 to 1 00000) */
+	keys = atoi(score->keys);
+	points += keys_factor * keys;
 
-	/* Points from depth (01 0 00000 to 40 0 00000) */
-	if (silmarils == 0) {
+	/* Points from depth (01 0 00000 to 20 0 00000) */
+	if (keys == 0) {
 		points += depth_factor * atoi(score->cur_dun);
 	} else {
-		points += depth_factor * (40 - atoi(score->cur_dun));
+		points += depth_factor * (20 - atoi(score->cur_dun));
 	}
 
-	/* Points for escaping (changes 40 0 00000 to 41 0 00000) */
+	/* Points for escaping (changes 20 0 00000 to 41 0 00000) */
 	if (score->escaped[0] == 't') {
 		points += depth_factor;
 	}
 
-	/* points slaying Morgoth  (0 00 0 00000 to 1 00 0 00000) */
-	if (score->morgoth_slain[0] == 't') {
-		points += morgoth_factor;
+	/* points slaying Morgoth  (00 0 00000 to  10 0 00000) */
+	if (score->saruman_slain[0] == 't') {
+		points += saruman_factor;
 	}
 
 	return points;
@@ -288,15 +288,15 @@ void build_score(struct high_score *entry, const struct player *p,
 	/* No cause of death */
 	my_strcpy(entry->how, died_from, sizeof(entry->how));
 
-	/* Save the number of silmarils, whether morgoth is slain,
+	/* Save the presence of keys, whether morgoth is slain,
 	 * whether the player has escaped */
-	strnfmt(entry->silmarils, sizeof(entry->silmarils), "%1d",
-			silmarils_possessed((struct player *)p));
+	strnfmt(entry->keys, sizeof(entry->keys), "%1d",
+			keys_possessed((struct player *)p));
 
-	if (p->morgoth_slain) {
-		strnfmt(entry->morgoth_slain, sizeof(entry->morgoth_slain), "t");
+	if (p->saruman_slain) {
+		strnfmt(entry->saruman_slain, sizeof(entry->saruman_slain), "t");
 	} else {
-		strnfmt(entry->morgoth_slain, sizeof(entry->morgoth_slain), "f");
+		strnfmt(entry->saruman_slain, sizeof(entry->saruman_slain), "f");
 	}
 	if (p->escaped) {
 		strnfmt(entry->escaped, sizeof(entry->escaped), "t");

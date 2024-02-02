@@ -149,23 +149,15 @@ void display_single_score(const struct high_score *score, int row, int place,
 	}
 
 	/* Possibly amend the first line */
-	if (score->morgoth_slain[0] == 't') {
-		my_strcat(out_val,     ", who defeated Morgoth in his dark halls",
+	if (score->saruman_slain[0] == 't') {
+		my_strcat(out_val,     ", who defeated Saruman in his bastion",
 				  sizeof(out_val));
 	} else {
-		if (score->silmarils[0] == '1') {
-			my_strcat(out_val, ", who freed a Silmaril", sizeof(out_val));
+		if (score->keys[0] == '1') {
+			my_strcat(out_val, ", who took the Keys of Orthanc", sizeof(out_val));
 		}
-		if (score->silmarils[0] == '2') {
-			my_strcat(out_val, ", who freed two Silmarils",
-					  sizeof(out_val));
-		}
-		if (score->silmarils[0] == '3') {
-			my_strcat(out_val, ", who freed all three Silmarils",
-					  sizeof(out_val));
-		}
-		if (score->silmarils[0] > '3') {
-			my_strcat(out_val, ", who freed suspiciously many Silmarils",
+		if (score->keys[0] > '1') {
+			my_strcat(out_val, ", who took suspiciously many Keys",
 					  sizeof(out_val));
 		}
 	}
@@ -176,11 +168,11 @@ void display_single_score(const struct high_score *score, int row, int place,
 	/* Prepare the second line for escapees */
 	if (score->escaped[0] == 't') {
 		strnfmt(out_val, sizeof(out_val),
-				"               Escaped the iron hells");
+				"               Escaped Isengard");
 
-		if ((score->morgoth_slain[0] == 't') ||
-			(score->silmarils[0] > '0')) {
-			my_strcat(out_val, " and brought back the light of Valinor",
+		if ((score->saruman_slain[0] == 't') ||
+			(score->keys[0] > '0')) {
+			my_strcat(out_val, " and freed Gandalf the Grey",
 					  sizeof(out_val));
 		} else {
 			my_strcat(out_val, format(" with %s task unfulfilled",
@@ -189,15 +181,15 @@ void display_single_score(const struct high_score *score, int row, int place,
 	} else if (alive) {
 		/* If character is still alive, display differently */
 		strnfmt(out_val, sizeof(out_val),
-				"               Lives still, deep within Angband's vaults");
+				"               Lives still, deep within Isengard's caves");
 	} else {
 		/* Prepare the second line for those slain */
 		strnfmt(out_val, sizeof(out_val),
 				"               Slain by %s",
 				score->how);
 
-		/* Mark those with a silmaril */
-		if (score->silmarils[0] > '0') {
+		/* Mark those with the Keys */
+		if (score->keys[0] > '0') {
 			my_strcat(out_val, format(" during %s escape", s->possessive),
 					  sizeof(out_val));
 		}
@@ -219,21 +211,15 @@ void display_single_score(const struct high_score *score, int row, int place,
 		c_put_str(attr, out_val, row + 5, 0);
 	}
 
-	/* Print symbols for silmarils / slaying Morgoth */
+	/* Print symbols for Keys / slaying Saruman */
 	if (score->escaped[0] == 't') {
 		c_put_str(attr, "  escaped", row + 3, 4);
 	}
-	if (score->silmarils[0] == '1') {
-		c_put_str(attr, "         *", row + 5, 0);
+	if (score->keys[0] == '1') {
+		c_put_str(COLOUR_L_DARK, "         ~", row + 5, 0);
 	}
-	if (score->silmarils[0] == '2') {
-		c_put_str(attr, "        * *", row + 5, 0);
-	}
-	if (score->silmarils[0] > '2') {
-		c_put_str(attr, "       * * *", row + 5, 0);
-	}
-	if (score->morgoth_slain[0] == 't') {
-		c_put_str(COLOUR_L_DARK, "         V", row + 4, 0);
+	if (score->saruman_slain[0] == 't') {
+		c_put_str(COLOUR_WHITE, "         @", row + 4, 0);
 	}
 }
 

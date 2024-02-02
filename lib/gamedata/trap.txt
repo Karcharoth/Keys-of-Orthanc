@@ -310,7 +310,6 @@ min-depth:7
 max-depth:10
 power:13
 flags:TRAP | FLOOR | ONETIME | SAVE_SKILL
-effect:DEADFALL
 effect:EARTHQUAKE
 dice:6
 effect:NOISE:PLAYER

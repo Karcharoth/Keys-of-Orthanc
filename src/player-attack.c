@@ -304,7 +304,7 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
 	char verb[20];
 	char punct[20];
 	int weight;
-	const struct artifact *crown = lookup_artifact_name("of Morgoth");
+	const struct artifact *keys = lookup_artifact_name("of Orthanc");
 
 	/* Default to punching */
 	my_strcpy(verb, "punch", sizeof(verb));
@@ -326,16 +326,11 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
 
     /* Inscribing an object with "!a" produces prompts to confirm that you wish
 	 * to attack with it; idea from MarvinPA */
-    if (obj && check_for_inscrip(obj, "!a") && !p->truce) {
+    if (obj && check_for_inscrip(obj, "!a")) {
 		if (!get_check("Are you sure you wish to attack? ")) {
 			abort_attack = true;
 		}
     }
-
- 	/* Warning about breaking the truce */
-	if (p->truce && !get_check("Are you sure you wish to attack? ")) {
-        abort_attack = true;
-	}
 
     /* Warn about fighting with fists */
     if (!obj &&	!get_check("Are you sure you wish to attack with no weapon? ")){
@@ -593,20 +588,20 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
                     knocked = knock_back(p->grid, grid);
  				}
 
-				/* Morgoth drops his iron crown if he is hit for 10 or more
-				 * net damage twice */
-				if (rf_has(mon->race->flags, RF_QUESTOR) &&
-					!is_artifact_created(crown)) {
-					if (net_dam >= 10) {
-						if (p->morgoth_hits == 0) {
-							msg("The force of your blow knocks the Iron Crown off balance.");
-							p->morgoth_hits++;
-						} else if (p->morgoth_hits == 1) {
-							drop_iron_crown(mon, "You knock his crown from off his brow, and it falls to the ground nearby.");
-							p->morgoth_hits++;
+						/* Saruman drops his Keys if he is hit for 10 or
+						 * more net damage twice */
+						if (rf_has(mon->race->flags, RF_QUESTOR) &&
+							!is_artifact_created(keys)) {
+							if (net_dam >= 10) {
+								if (p->morgoth_hits == 0) {
+									msg("The force of your blow damages his belt, and the Keys swing precariously.");
+									p->morgoth_hits++;
+								} else if (player->morgoth_hits == 1) {
+									drop_the_keys(mon, "You strike the keys off his belt, and they falls to the ground nearby.");
+									p->morgoth_hits++;
+								}
+							}
 						}
-					}
-				}
 
 				if (net_dam) {
 					cruel_blow(crit_bonus_dice, mon);
@@ -657,8 +652,6 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
 		if (knocked) break;
 	}
 
-	/* Break the truce if creatures see */
-	break_truce(p, false);
 }
 
 
@@ -705,9 +698,6 @@ int breakage_chance(const struct object *obj, bool hit_wall) {
 		if (of_has(obj->flags, OF_NO_FUEL)) {
 			if (obj->pval == 1) {
 				/* Lesser Jewel */
-				perc = 0;
-			} else if (obj->pval == 7) {
-				/* Silmaril */
 				perc = 0;
 			}
 		}
@@ -1146,7 +1136,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 	struct object *bow = equipped_item_by_slot_name(p, "shooting");
 	struct object *missile;
 	int shot;
-	const struct artifact *crown = lookup_artifact_name("of Morgoth");
+	const struct artifact *keys = lookup_artifact_name("of Orthanc");
 
 	/* Check for target validity */
 	if ((dir == DIR_TARGET) && target_okay(range)) {
@@ -1379,16 +1369,16 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 							make_alert(mon, 0);
 						}
 						
-						/* Morgoth drops his iron crown if he is hit for 10 or
+						/* Saruman drops his Keys if he is hit for 10 or
 						 * more net damage twice */
 						if (rf_has(mon->race->flags, RF_QUESTOR) &&
-							!is_artifact_created(crown)) {
+							!is_artifact_created(keys)) {
 							if (result.dmg >= 10) {
 								if (p->morgoth_hits == 0) {
-									msg("The force of your %s knocks the Iron Crown off balance.", archery ? "shot" : "blow");
+									msg("The force of your %s damages his belt, and the Keys swing precariously.", archery ? "shot" : "blow");
 									p->morgoth_hits++;
 								} else if (player->morgoth_hits == 1) {
-									drop_iron_crown(mon, "You knock his crown from off his brow, and it falls to the ground nearby.");
+									drop_the_keys(mon, "You strike the keys off his belt, and they falls to the ground nearby.");
 									p->morgoth_hits++;
 								}
 							}
@@ -1447,9 +1437,6 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			msg("The arrow leaves behind a trail of light!");
 			msg("You recognize your %s to be %s", o_short_name, o_full_name);
 		}
-
-		/* Break the truce if creatures see */
-		break_truce(p, false);
 
 		/* Get the missile */
 		if (object_is_carried(p, obj)) {

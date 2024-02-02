@@ -779,6 +779,8 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 				struct object_kind *kind;
 				assert(drop->art);
 				art = drop->art;
+                /* Mostly for killing Saruman when he has already dropped the keys.*/
+		        if (is_artifact_created(art)) continue;
 				kind = lookup_kind(art->tval, art->sval);
 				obj = mem_zalloc(sizeof(*obj));
 				object_prep(obj, kind, 100, RANDOMISE);
@@ -900,14 +902,10 @@ void monster_death(struct monster *mon, struct player *p, bool by_player,
 
 	/* Play a special sound if the monster was unique */
 	if (rf_has(race->flags, RF_UNIQUE)) {
-		/* Special message and flag setting for killing Morgoth */
-		if (race->base == lookup_monster_base("Morgoth")) {
+		/* Special flag setting for killing Saruman */
+		if (race->base == lookup_monster_base("Saruman")) {
 			soundfx = MSG_KILL_KING;
-			p->morgoth_slain = true;
-			msg("BUG: Morgoth has been defeated in combat.");
-			msg("But this is not possible within the fates Illuvatar has decreed.");
-			msg("Please post an 'ultimate bug-report' on http://angband.oook.cz/forum/ explaining how this happened.");
-			msg("But for now, let's run with it, since it's undeniably impressive.");
+			p->saruman_slain = true;
 
 			/* Display the ultimate bug text */
 			event_signal_poem(EVENT_POEM, "ultimate_bug", 5, 15);

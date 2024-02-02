@@ -1185,9 +1185,9 @@ struct chunk *cave_gen(struct player *p)
 		(void) pick_and_place_distant_monster(c, p, true, c->depth);
 	}
 
-	/* Place Morgoth if on the run */
-	if (p->on_the_run && !p->morgoth_slain) {
-		/* Place Morgoth */
+	/* Place Saruman if on the run */
+	if (p->on_the_run && !p->saruman_slain) {
+		/* Place Saruman */
 		struct loc grid;
 		int count = 100;
 
@@ -1196,7 +1196,7 @@ struct chunk *cave_gen(struct player *p)
 			/* Out of sight of the player */
 			if (!los(c, p->grid, grid)) {
 				struct monster_group_info info = {0, 0};
-				place_new_monster_one(c, grid, lookup_monster("Morgoth"), true,
+				place_new_monster_one(c, grid, lookup_monster("Saruman of Many Colours"), true,
 									  true, info, ORIGIN_DROP);
 				break;
 			}

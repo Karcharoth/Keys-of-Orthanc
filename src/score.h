@@ -50,8 +50,8 @@ struct high_score {
 	char cur_dun[4];	/* Current Dungeon Level (number) */
 	char max_dun[4];	/* Max Dungeon Level (number) */
 	char how[50];		/* Method of death (string) */
-	char silmarils[2];		/* Number of Silmarils (number) */
-	char morgoth_slain[2];	/* Has player slain Morgoth (t/f) */
+	char keys[2];		/* Number of Keys (number) */
+	char saruman_slain[2];	/* Has player slain Saruman (t/f) */
 	char escaped[2];		/* Has player escaped (t/f) */
 };
 

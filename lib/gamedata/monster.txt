@@ -1012,6 +1012,7 @@ flags:NEVER_ATTACK
 ranged-freq:100
 spell-power:3
 spells:ARROW1
+message-vis:ARROW1:A goblin in the {name} fires an arrow.
 desc:One of the great war machines of Isengard,
 desc: this towering construction holds a few archers.
 
@@ -1194,6 +1195,8 @@ desc:'And here you will stay, Gandalf the Grey, and rest from journeys.
 desc: For I am Saruman the Wise, Saruman Ring-Maker, Saruman of Many Colours!'
 desc: He is the master of Isengard. A ring gleams on his finger and his robes shimmer, amazing the eyes.
 desc: A great key ring rests on his belt. You need those keys.
+drop-artifact:Saruman
+drop-artifact:Orthanc
 
 
 

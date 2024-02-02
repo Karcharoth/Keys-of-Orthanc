@@ -965,31 +965,6 @@ void do_cmd_destroy(struct command *cmd)
 {
 	int amt;
 	struct object *obj;
-	struct object *weapon = equipped_item_by_slot_name(player, "weapon");
-
-	/* Special case for prising Silmarils from the Iron Crown of Morgoth */
-	obj = square_object(cave, player->grid);
-	if (obj && (obj->artifact == lookup_artifact_name("of Morgoth")) &&
-		obj->pval) {
-		/* No weapon */
-		if (!weapon) {
-			msg("To prise a Silmaril from the crown, you would need to wield a weapon.");
-		} else {
-			/* Wielding a weapon */
-			if (get_check("Will you try to prise a Silmaril from the Iron Crown? ")) {
-				prise_silmaril(player);
-
-				/* Take a turn */
-				player->upkeep->energy_use = z_info->move_energy;
-
-				/* Store the action type */
-				player->previous_action[0] = ACTION_MISC;
-
-				return;
-			}
-		}
-	}
-
 
 	/* Get an item */
 	if (cmd_get_item(cmd, "item", &obj,
@@ -997,28 +972,6 @@ void do_cmd_destroy(struct command *cmd)
 			"You have nothing to destroy.",
 			NULL,
 			USE_INVEN | USE_FLOOR) != CMD_OK) return;
-
-	/* Special case for Iron Crown of Morgoth, if it has Silmarils left */
-	if ((obj->artifact == lookup_artifact_name("of Morgoth")) && obj->pval) {
-		if (object_is_carried(player, obj)) {
-			msg("You would have to put it down first.");
-		} else {
-			/* No weapon */
-			if (!weapon) {
-				msg("To prise a Silmaril from the crown, you would need to wield a weapon.");
-			} else {
-				msg("You decide to try to prise out a Silmaril after all.");
-				prise_silmaril(player);
-
-				/* Take a turn */
-				player->upkeep->energy_use = z_info->move_energy;
-
-				/* Store the action type */
-				player->previous_action[0] = ACTION_MISC;
-			}
-		}
-		return;
-	}
 
 	if (cmd_get_quantity(cmd, "quantity", &amt, obj->number) != CMD_OK)
 		return;

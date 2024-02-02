@@ -434,9 +434,9 @@ void set_alertness(struct monster *mon, int alertness)
 				/* Dump a message */
 				alert_msg = MON_MSG_FALL_ASLEEP;
 
-				/* Morgoth drops his iron crown if he falls asleep */
+				/* Saruman will drop his Keys if he falls asleep. TODO: make this less silly sounding */
 				if (rf_has(mon->race->flags, RF_QUESTOR)) {
-					drop_iron_crown(mon, "His crown slips from off his brow and falls to the ground nearby.");
+					drop_the_keys(mon, "The Keys of Orthanc fall to the ground beside Saruman.");
 				}
 
 				/* Redisplay the monster */

@@ -1165,18 +1165,6 @@ desc:Once a proud shepherd of the trees, this misshapen,
 desc: stony mass cowers, lumbering away fearfully.
 
 
-
-
-
-
-##### 11 #####
-
-##### 12 #####
-
-##### 15 #####
-
-
-
 ##### 20 #####
 
 # Saruman is a very special monster (thus the QUESTOR flag).

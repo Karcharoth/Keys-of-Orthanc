@@ -86,10 +86,10 @@ desc:An obstruction which makes a closed door harder to open.
 # false floor
 
 name:false floor:false floor
-graphics:^:w
-rarity:2
-min-depth:5
-max-depth:18
+graphics:^:U
+rarity:1
+min-depth:0
+max-depth:10
 power:6
 flags:TRAP | FLOOR | DOWN
 effect:DAMAGE
@@ -104,30 +104,30 @@ msg3:...and land somewhere deeper in the Iron Hells.
 name:pit:pit
 graphics:^:s
 rarity:1
-min-depth:5
+min-depth:0
 max-depth:10
 power:-1
 flags:TRAP | FLOOR | PIT
 effect:PIT:NORMAL
-desc:A hole dug to snare the unwary.
+desc:A hole dug in the excavation of Isengard.
 
 # spiked pit
 
 name:spiked pit:spiked pit
 graphics:^:s
-rarity:1
-min-depth:11
-max-depth:17
+rarity:3
+min-depth:4
+max-depth:10
 power:-1
-flags:TRAP | FLOOR | PIT | SURFACE | DELAY
+flags:TRAP | FLOOR | PIT | SURFACE
 effect:PIT:SPIKED
-desc:A hole dug to snare the unwary, with spikes.
+desc:A hole dug in the excavation of Isengard, full of dangerous debris.
 
 # dart
 
 name:dart trap:dart
-graphics:^:r
-rarity:1
+graphics:^:p
+rarity:4
 min-depth:8
 max-depth:15
 power:3
@@ -141,9 +141,9 @@ desc:A trap which shoots darts.
 # gas -- confuse
 
 name:gas trap:confusion gas trap
-graphics:^:g
-rarity:1
-min-depth:1
+graphics:^:G
+rarity:4
+min-depth:0
 max-depth:13
 power:5
 flags:TRAP | FLOOR
@@ -156,13 +156,30 @@ dice:10
 desc:A trap that releases gas to confuse you.
 msg:A vapor fills the air and you feel yourself becoming lightheaded.
 
+# gas -- confuse
+
+name:gas trap:poison gas trap
+graphics:^:g
+rarity:1
+min-depth:0
+max-depth:10
+power:5
+flags:TRAP | FLOOR
+effect:SPOT:POIS:1
+dice:4d4
+effect:NOISE:PLAYER
+dice:5
+desc:A trap that releases venomous gas.
+msg:A venomous vapor fill your lungs.
+
+
 # alarm
 
 name:alarm:bell
-graphics:^:R
-rarity:1
+graphics:^:M
+rarity:3
 min-depth:0
-max-depth:20
+max-depth:10
 power:2
 flags:TRAP | FLOOR
 effect:NOISE:PLAYER
@@ -174,9 +191,9 @@ msg-silence:You hear the muffled toll of a bell above your head.
 # flash
 
 name:flash trap:flash
-graphics:^:M
-rarity:1
-min-depth:1
+graphics:^:Y
+rarity:3
+min-depth:6
 max-depth:20
 power:4
 flags:TRAP | FLOOR
@@ -189,8 +206,8 @@ msg-vis:There is a searing flash of light!
 
 # caltrop
 
-name:caltrop trap:caltrops
-graphics:^:r
+name:spikes:spikes
+graphics:^:w
 rarity:1
 min-depth:0
 max-depth:20
@@ -202,9 +219,9 @@ effect:TIMED_INC_CHECK:SLOW
 effect-xtra:TIMED_INC_NO_RES:SLOW
 dice-xtra:4d4
 stealth:-10
-desc:A field of caltrops.
-msg-good:You step carefully amidst a field of caltrops.
-msg-bad:You step on a caltrop.
+desc:A field of spikes.
+msg-good:You step carefully amidst a field of spikes.
+msg-bad:You step on a spike.
 msg-xtra:It pierces your foot.
 
 ### 14
@@ -227,9 +244,9 @@ msg-xtra:There is a flutter of wings from high above.
 # TODO: make web/nets happen properly. Why does the code care so much about webs?!
 
 name:net:web
-graphics:^:B
+graphics:^:U
 rarity:1
-min-depth:8
+min-depth:7
 max-depth:20
 power:5
 flags:TRAP | FLOOR
@@ -241,11 +258,11 @@ msg-xtra:A harsh bell rings.
 
 # dungeon alter -- rock fall
 
-name:ancient mechanism:deadfall trap
-graphics:^:U
+name:broken pillar:deadfall trap
+graphics:^:z
 rarity:1
 min-depth:14
-max-depth:20
+max-depth:10
 power:7
 flags:TRAP | FLOOR | ONETIME | SURFACE
 effect:DEADFALL
@@ -259,8 +276,8 @@ msg:The ceiling collapses!
 name:discoloured spot:acid trap
 graphics:^:u
 rarity:1
-min-depth:1
-max-depth:0
+min-depth:3
+max-depth:10
 power:5
 flags:TRAP | FLOOR
 effect:SPOT:ACID:0
@@ -270,3 +287,34 @@ dice:10
 desc:A strange coloured spot on the ground - beware its acidic attack.
 msg:You are splashed with acid!
 
+# spot -- fire
+
+name:flame vent:fire trap
+graphics:^:o
+rarity:3
+min-depth:8
+max-depth:10
+power:8
+flags:TRAP | FLOOR
+effect:SPOT:FIRE:1
+dice:10d4
+effect:NOISE:PLAYER
+dice:10
+desc:A large hissing vent on the ground.
+msg:You are struck by a burst of liquid fire!
+
+name:weak point:earthquake trap
+graphics:^:W
+rarity:5
+min-depth:7
+max-depth:10
+power:13
+flags:TRAP | FLOOR | ONETIME | SAVE_SKILL
+effect:DEADFALL
+effect:EARTHQUAKE
+dice:6
+effect:NOISE:PLAYER
+dice:40
+desc:A vulnerable section of rock holding up the surrounding area.
+msg-good:You step carefully around the weak spot.
+msg-bad:The entire cavern collapses!

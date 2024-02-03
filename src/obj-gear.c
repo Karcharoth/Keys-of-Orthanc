@@ -879,7 +879,9 @@ void inven_wield(struct object *obj, int slot)
 		inven_carry(player, wielded, false, false);
 		split = (wielded != obj);
 	}
-
+    /* Drain stamina by item weight/4 - notably wearing a new item also takes off the old,
+    so it will drain by total items weight/4.*/
+    stamina_hit(player, (obj->weight)/40);
 	/* Wear the new stuff */
 	player->body.slots[slot].obj = wielded;
 
@@ -1010,6 +1012,9 @@ void inven_takeoff(struct object *obj)
 		act = "You were holding";
 	else
 		act = "You were wearing";
+
+    /* Drain stamina by item weight / 3*/
+    stamina_hit(player, (obj->weight)/40);
 
 	/* De-equip the object */
 	player->body.slots[slot].obj = NULL;

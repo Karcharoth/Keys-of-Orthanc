@@ -714,7 +714,8 @@ void do_cmd_exchange(struct command *cmd)
 		msg("You cannot exchange places over the chasm.");
 		return;
 	}
-	
+	/* Spend 2 stamina*/
+    stamina_hit(player, 2);
 	/* Recalculate the monster name (in case confusion changed the move) */
 	monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT);
 

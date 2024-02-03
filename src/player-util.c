@@ -320,6 +320,36 @@ void player_regen_stamina(struct player *p)
 	}
 }
 
+/**
+ * Reduce the player's stamina
+ *
+ * should not be possible to die to this; it should convert all excess stamina loss into 
+ * negative health unless that would kill, in which case it sets health to 1.
+ */
+
+void stamina_hit(struct player *p, int dam)
+{
+    p->csp -= dam;
+    /* If player can survive turning all negative stamina into health damage, do it*/
+    if (p->csp<0 && p->chp>-1*(p->csp)) {
+		msgt(MSG_SPENDING_HEALTH_STAMINA, "*** SPENDING HEALTH FOR STAMINA! ***");
+        take_hit (p, (-(p->csp)), "exhaustion");
+        p->csp = 0;
+	p->upkeep->redraw |= (PR_HP);
+    }
+    /* Otherwise, set player's health to 1 and reset stamina to 0*/
+    else if (p->csp<0 && p->chp<-1*(p->csp)) {
+		msgt(MSG_SPENDING_HEALTH_STAMINA, "*** SPENDING HEALTH FOR STAMINA! ***");
+        take_hit (p, (p->chp-1), "exhaustion");
+        p->csp = 0;
+	p->upkeep->redraw |= (PR_HP);
+    }
+   	p->upkeep->redraw |= (PR_STAMINA);
+    
+   
+return;
+}
+
 
 /**
  * Digest food.

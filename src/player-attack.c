@@ -345,6 +345,12 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
 			abort_attack = true;
 		}
     }
+    /* Warn about spending health instead of stamina - doesn't quite fit with current plans
+    if (p->csp<1) {
+        if (!get_check("Are you sure you wish to attack with no stamina? ")) {
+            abort_attack = true;
+        }
+    } */
 
     /* Cancel the attack if needed */
     if (abort_attack) {
@@ -409,6 +415,13 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
 		bool do_knock_back = false;
 		bool knocked = false;
 		bool off_hand_blow = false;
+        /* Spend stamina on the attack, more if it was a charge */
+        if (charge) {
+            stamina_hit (p, 3);
+        }
+        else {
+            stamina_hit (p, 1);
+        }
 
 		/* If the previous blow was a charge, undo the charge effects for
 		 * later blows */

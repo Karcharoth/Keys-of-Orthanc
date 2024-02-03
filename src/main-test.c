@@ -100,7 +100,7 @@ static void c_player_birth(char *rest) {
 		return;
 	}
 
-	player_generate(player, r, h, s, false);
+	player_generate(player, r, h, false);
 }
 
 static void c_player_house(char *rest) {

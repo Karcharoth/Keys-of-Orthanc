@@ -403,7 +403,7 @@ void wield_all(struct player *p)
  */
 bool player_make_simple(const char *nrace, const char *nhouse, const char* nplayer)
 {
-	int ir = 0, ih = 0, is = 0;
+	int ir = 0, ih = 0;
 
 	if (nrace) {
 		const struct player_race *rc = races;

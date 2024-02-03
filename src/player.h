@@ -218,17 +218,6 @@ struct start_item {
 };
 
 /**
- * Player sex info
- */
-struct player_sex {
-	struct player_sex *next;
-	const char *name;			/* Type of sex */
-	const char *possessive;		/* Possessive pronoun */
-	const char *poetry_name;	/* Name of entry poetry file */
-	unsigned int sidx;
-};
-
-/**
  * Player race info
  */
 struct player_race {
@@ -457,7 +446,6 @@ struct player_upkeep {
  * which can be recomputed as needed.
  */
 struct player {
-	const struct player_sex *sex;
 	const struct player_race *race;
 	const struct player_house *house;
 
@@ -585,7 +573,6 @@ struct player {
 
 extern struct player_body *bodies;
 extern struct player_race *races;
-extern struct player_sex *sexes;
 extern struct player_house *houses;
 extern struct player_ability *player_abilities;
 
@@ -596,7 +583,6 @@ extern struct player *player;
 struct player_race *player_id2race(guid id);
 struct player_house *player_id2house(guid id);
 struct player_house *player_house_from_count(int idx);
-struct player_sex *player_id2sex(guid id);
 
 int stat_name_to_idx(const char *name);
 const char *stat_idx_to_name(int type);

@@ -306,45 +306,6 @@ void start_tutorial(void)
 		} else {
 			cmd_set_arg_choice(cmdq_peek(), "choice", 0);
 		}
-		if (!sexes) {
-			quit_fmt("No sexes specified prior to loading tutorial.");
-		}
-		cmdq_push(CMD_CHOOSE_SEX);
-		if (a->v.archetype.sex_name) {
-			const struct player_sex *spick = NULL;
-
-			if (streq(a->v.archetype.sex_name, "*")) {
-				/* Choose one at random. */
-				const struct player_sex *sc = sexes;
-				int ns = 0;
-
-				while (sc) {
-					++ns;
-					if (one_in_(ns)) {
-						spick = sc;
-					}
-					sc = sc->next;
-				}
-			} else {
-				spick = sexes;
-				while (1) {
-					if (!spick) {
-						quit_fmt("Unknown sex, %s, "
-							"specified for "
-							"tutorial archetype.",
-							a->v.archetype.sex_name);
-						break;
-					}
-					if (streq(spick->name, a->v.archetype.sex_name)) {
-						break;
-					}
-					spick = spick->next;
-				}
-			}
-			cmd_set_arg_choice(cmdq_peek(), "choice", spick->sidx);
-		} else {
-			cmd_set_arg_choice(cmdq_peek(), "choice", sexes->sidx);
-		}
 		cmdq_push(CMD_NAME_CHOICE);
 		if (a->v.archetype.character_name
 				&& !streq(a->v.archetype.character_name, "*")) {
@@ -657,7 +618,7 @@ void start_tutorial(void)
 		bool result;
 
 		(void) player_random_name(name, sizeof(name));
-		result = player_make_simple(NULL, NULL, NULL, name);
+		result = player_make_simple(NULL, NULL, name);
 		if (!result) {
 			assert(false);
 		}

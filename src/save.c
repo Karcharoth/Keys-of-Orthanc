@@ -427,7 +427,6 @@ void wr_player(void)
 	/* Race/Class/Gender/Spells */
 	wr_string(player->race->name);
 	wr_string(player->house->name);
-	wr_string(player->sex->name);
 	wr_byte(player->opts.name_suffix);
 
 	wr_s16b(player->game_type);

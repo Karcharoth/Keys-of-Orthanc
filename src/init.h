@@ -157,7 +157,6 @@ extern char *ANGBAND_DIR_ARCHIVE;
 extern struct parser *init_parse_artifact(void);
 extern struct parser *init_parse_race(void);
 extern struct parser *init_parse_house(void);
-extern struct parser *init_parse_sex(void);
 extern struct parser *init_parse_ego(void);
 extern struct parser *init_parse_feat(void);
 extern struct parser *init_parse_history(void);

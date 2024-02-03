@@ -373,7 +373,6 @@ static void tutorial_value_free(void* value)
 	case TUTORIAL_ARCHETYPE:
 		string_free(tv->v.archetype.race_name);
 		string_free(tv->v.archetype.house_name);
-		string_free(tv->v.archetype.sex_name);
 		string_free(tv->v.archetype.character_name);
 		string_free(tv->v.archetype.history);
 		mem_free(tv->v.archetype.added_abilities);
@@ -994,27 +993,6 @@ static enum parser_error parse_archetype_house(struct parser *p)
 	}
 	return result;
 }
-
-
-static enum parser_error parse_archetype_sex(struct parser *p)
-{
-	struct tutorial_parser_priv *priv = (struct tutorial_parser_priv*)
-		parser_priv(p);
-	enum parser_error result = PARSE_ERROR_NONE;
-
-	if (priv->curr_value->key->comp == TUTORIAL_ARCHETYPE) {
-		const char *name = parser_getstr(p, "name");
-
-		if (priv->curr_value->v.archetype.sex_name) {
-			string_free(priv->curr_value->v.archetype.sex_name);
-		}
-		priv->curr_value->v.archetype.sex_name = string_make(name);
-	} else {
-		result = PARSE_ERROR_UNDEFINED_DIRECTIVE;
-	}
-	return result;
-}
-
 
 static enum parser_error parse_archetype_character_name(struct parser *p)
 {
@@ -2932,7 +2910,6 @@ struct parser *tutorial_init_parser(void)
 	/* These are specific to the archetype block. */
 	parser_reg(p, "race str name", parse_archetype_race);
 	parser_reg(p, "house str name", parse_archetype_house);
-	parser_reg(p, "sex str name", parse_archetype_sex);
 	parser_reg(p, "name str name", parse_archetype_character_name);
 	parser_reg(p, "history str history", parse_archetype_history);
 	/*

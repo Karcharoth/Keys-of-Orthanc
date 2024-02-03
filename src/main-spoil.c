@@ -137,7 +137,7 @@ errr init_spoil(int argc, char *argv[]) {
 	/* Generate the spoilers. */
 	init_angband();
 
-	if (!player_make_simple(NULL, NULL, NULL, "Spoiler")) {
+	if (!player_make_simple(NULL, NULL, "Spoiler")) {
 		printf("init-spoil: could not initialize player.\n");
 		result = 1;
 	}

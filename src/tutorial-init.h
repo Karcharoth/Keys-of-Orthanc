@@ -144,7 +144,6 @@ struct tutorial_dict_val_type {
 		struct {
 			char *race_name;
 			char *house_name;
-			char *sex_name;
 			char *character_name;
 			char *history;
 			struct ability **added_abilities;

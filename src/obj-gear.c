@@ -1013,7 +1013,7 @@ void inven_takeoff(struct object *obj)
 	else
 		act = "You were wearing";
 
-    /* Drain stamina by item weight / 3*/
+    /* Drain stamina by item weight / 4*/
     stamina_hit(player, (obj->weight)/40);
 
 	/* De-equip the object */

@@ -335,19 +335,18 @@ void stamina_hit(struct player *p, int dam)
 		msgt(MSG_SPENDING_HEALTH_STAMINA, "*** SPENDING HEALTH FOR STAMINA! ***");
         take_hit (p, (-(p->csp)), "exhaustion");
         p->csp = 0;
-	p->upkeep->redraw |= (PR_HP);
+	    p->upkeep->redraw |= (PR_HP);
     }
     /* Otherwise, set player's health to 1 and reset stamina to 0*/
-    else if (p->csp<0 && p->chp<-1*(p->csp)) {
+    else if (p->csp<0 && p->chp<=-1*(p->csp)) {
 		msgt(MSG_SPENDING_HEALTH_STAMINA, "*** SPENDING HEALTH FOR STAMINA! ***");
         take_hit (p, (p->chp-1), "exhaustion");
         p->csp = 0;
-	p->upkeep->redraw |= (PR_HP);
+        p->upkeep->redraw |= (PR_HP);
     }
-   	p->upkeep->redraw |= (PR_STAMINA);
     
-   
-return;
+   	p->upkeep->redraw |= (PR_STAMINA);   
+    return;
 }
 
 

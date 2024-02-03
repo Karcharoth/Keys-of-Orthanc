@@ -1262,7 +1262,10 @@ static bool do_cmd_bash_aux(struct loc grid)
 
 	/* The base difficulty is the door power  */
 	difficulty = square_door_jam_power(cave, grid);
-
+    
+    /* Spend 5 stamina*/
+    stamina_hit(player, 5);    
+    
 	/* Message */
 	msg("You slam into the door!");
 

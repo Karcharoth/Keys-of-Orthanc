@@ -936,6 +936,9 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 		/* Make a lot of noise */
 		monsters_hear(true, false, -10);
 
+        /* Spends 2 Stamina*/
+        stamina_hit(player, 2);
+
 		/* Success */
 		msg(square_feat(cave, grid)->dig_msg);
 		twall(grid);
@@ -1098,6 +1101,9 @@ static bool do_cmd_disarm_aux(struct loc grid)
 		difficulty += 5;
 	if (player->timed[TMD_CONFUSED])
 		difficulty += 5;
+
+    /* Spend 2 stamina*/
+    stamina_hit(player, 2);
 
 	/* Perform the check */
 	result = skill_check(source_player(), skill, difficulty, source_none());

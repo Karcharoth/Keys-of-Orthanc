@@ -301,7 +301,7 @@ With the X11 front end, the number of windows opened is set by the '-n' option
 on the command line, i.e. running ``./angband -mx11 -- -n4`` will open the
 main window and subwindows one through three if the executable is in the
 current working directory.  To control the font, placement, and size used for
-each of the windows, set enviroment variables before running NarSil.  Those
+each of the windows, set environment variables before running NarSil.  Those
 environment variables for window 'z' where 'z' is an integer between 0 (the
 main window) and 7 are:
 

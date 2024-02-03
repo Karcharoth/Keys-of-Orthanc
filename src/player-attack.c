@@ -1205,6 +1205,8 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 		struct loc final_grid = (path_n > 0) ?
 			path_g[path_n - 1] : p->grid;
 
+        /* Spend stamina for each shot*/
+        stamina_hit(p, 1);
 		/* Abort any later shot(s) if there is no target on the trajectory */
 		if ((shot > 0) && !targets_remaining) break;
 		targets_remaining = false;

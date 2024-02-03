@@ -608,14 +608,33 @@ bool handle_stickied_removal(struct player *p, struct object *obj)
 		 */
 		return false;
 	}
-
 	if (player_active_ability(player, "Curse Breaking")) {
-		msg("With a great strength of will, you break the curse!");
-		uncurse_object(obj);
-		return false;
+        /* If player has enough stamina, try to break the curse; de facto forbids
+        spending health for Curse Breaking, making it harder to try again and again.
+        Drains 1 grace. */
+        if (player->csp > 3*(player->msp)/4){
+            stamina_hit (player, (3*(player->msp)/4));
+            if (skill_check(source_player(), p->state.skill_use[SKILL_WILL], 
+            15, source_none()) > 0){
+                uncurse_object(obj);
+		        msg("With a great strength of will, you give it up! You feel drained.");
+                player_stat_dec(player, STAT_GRA);
+                return false;
+            }
+            else {
+                msg("You struggle, but cannot bear to give it up. You feel drained.");
+                player_stat_dec(player, STAT_GRA);
+                return true;
+            }
+        }
+
+        else {
+        msg("You are too tired to try to give it up.");
+        return true;
+        }
 	}
 
-	msg("You cannot bear to part with it.");
+    msg("You cannot bear to part with it.");
 	return true;
 }
 

@@ -477,7 +477,8 @@ desc:Makes you grow hungry at just one third the normal rate.
 name:Curse Breaking
 level:4
 desc:Allows you to break the curses on items when you
-desc: attempt to take them off.
+desc: attempt to take them off. Spends most of your stamina,
+desc: and drains a point of grace.
 type:helm
 
 name:Inner Light

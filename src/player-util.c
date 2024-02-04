@@ -290,17 +290,34 @@ void player_regen_hp(struct player *p)
 void player_regen_stamina(struct player *p)
 {
 	int old_csp = p->csp;
-	int regen_multiplier = p->state.flags[OF_REGEN] + 1;
-	int regen_period = z_info->player_regen_period;
+    int regen_multiplier;
+    /* Stamina regen is faster than health because it starts at 4, 
+    but gains less bonus from regeneration and drops precipitously when low stamina*/
+    if ((100*p->csp/p->msp) >= 75) {
+        regen_multiplier = p->state.flags[OF_REGEN] + 4;
+    }
+    else if ((100*p->csp/p->msp) >= 50) {
+        regen_multiplier = p->state.flags[OF_REGEN] + 3;
+    }
+    else if ((100*p->csp/p->msp) >= 25) {
+        regen_multiplier = p->state.flags[OF_REGEN] + 2;
+    }
+    else if ((100*p->csp/p->msp) >= 0) {
+        regen_multiplier = p->state.flags[OF_REGEN] + 1;
+    }
+    /* Paranoia*/
+    else {
+        regen_multiplier = 1;
+        msg("Something has gone horribly wrong with your stamina regeneration or its current value. Please report this bug.");
+    }
+
+    /* At low stamina, stamina regeneration is much slower. I expect this to be
+    very imbalanced in both directions at first, and require fine-tuning.*/
+	int regen_period = z_info->player_regen_period / 2;
 
 	/* Don't regenerate stamina if singing
 	if (p->song[SONG_MAIN]) return; */
 
-    /* Modify regen_multiplier based on distance from 0 stamina and
-    z_info->low_stamina_regen_rate. Overly complicated. In short, at full stamina,
-    regen at rate 1, and at half stamina, regen at rate 1/(1/2+1/2*low_stamina_regen_rate,
-    equivalent to 1/2.)*/
-    regen_multiplier /= (p->csp/p->msp)+(1-(p->csp/p->msp))*(z_info->low_stamina_regen_rate);
 
 	/* Complete healing every z_info->player_regen_period player turns,
 	 * modified */

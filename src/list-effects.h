@@ -18,7 +18,7 @@ EFFECT(DART,						false,	"hurt",		1,		EFINFO_DICE,	"does %s damage to the player
 EFFECT(PIT,							false,	"hurt",		0,		EFINFO_DICE,	"player falls in a pit",	"pitfall")
 EFFECT(PROJECT_LOS,					false,	"power",	1,		EFINFO_PROJ,	"%s which are in line of sight",	"%s in line of sight")
 EFFECT(PROJECT_LOS_GRIDS,			false,	"power",	1,		EFINFO_PROJ,	"%s which are in line of sight",	"%s in line of sight")
-EFFECT(DEADFALL,					false,	"hurt",		0,		EFINFO_DICE,	"makes rocks fall on the player",	"deadfall")
+EFFECT(DEADFALL,					false,	"hurt",		1,		EFINFO_DICE,	"makes rocks fall on the player for %s damage",	"deadfall %s")
 EFFECT(EARTHQUAKE,					false,	NULL,		1,		EFINFO_QUAKE,	"causes an earthquake around you of radius %d",	"cause earthquake")
 EFFECT(SPOT,						false,	"dam",		4,		EFINFO_SPOT,	"creates a ball of %s with radius %d, centred on and hitting the player, with full intensity to radius %d, dealing %s damage at the centre",	"engulf with %s")
 EFFECT(SPHERE,						false,	"dam",		4,		EFINFO_SPOT,	"creates a ball of %s with radius %d, centred on the player, with full intensity to radius %d, dealing %s damage at the centre",	"project %s")

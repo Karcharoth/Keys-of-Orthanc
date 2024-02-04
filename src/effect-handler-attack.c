@@ -334,7 +334,8 @@ bool effect_handler_DEADFALL(effect_handler_context_t *context)
 	int i;
 	struct loc pgrid = player->grid, safe_grid = loc(0, 0);
 	int safe_grids = 0;
-	int dam, prt, net_dam = 0;
+	int dice, dam, prt, net_dam = 0;
+
 
 	/* Check around the player */
 	for (i = 0; i < 8; i++) {
@@ -353,9 +354,10 @@ bool effect_handler_DEADFALL(effect_handler_context_t *context)
 
 	/* Check for safety */
 	if (!safe_grids) {
-		/* Hurt the player a lot */
+		/* Hurt the player by 2 dice more */
 		msg("You are severely crushed!");
-		dam = damroll(6, 8);
+		dice = effect_calculate_value(context)+2;
+        dam = damroll (dice, 8);
 
 		/* Protection */
 		prt = protection_roll(player, PROJ_HURT, false, false);
@@ -372,7 +374,9 @@ bool effect_handler_DEADFALL(effect_handler_context_t *context)
 		/* Destroy the grid, and push the player to safety */
 		if (check_hit(20, true, context->origin)) {
 			msg("You are struck by rubble!");
-			dam = damroll(4, 8);
+	    	dice = effect_calculate_value(context);
+            dam = damroll (dice, 8);
+
 
 			/* Protection */
 			prt = protection_roll(player, PROJ_HURT, false, false);

@@ -168,7 +168,7 @@ flags:TRAP | FLOOR
 effect:SPOT:POIS:1
 dice:4d4
 effect:NOISE:PLAYER
-dice:5
+dice:10
 desc:A trap that releases venomous gas.
 msg:A venomous vapor fills your lungs.
 
@@ -266,6 +266,7 @@ max-depth:10
 power:7
 flags:TRAP | FLOOR | ONETIME | SURFACE
 effect:DEADFALL
+dice:4
 effect:NOISE:PLAYER
 dice:-20
 desc:A trap that drops a boulder on you.
@@ -283,7 +284,7 @@ flags:TRAP | FLOOR
 effect:SPOT:ACID:0
 dice:4d4
 effect:NOISE:PLAYER
-dice:10
+dice:5
 desc:A strange coloured spot on the ground - beware its acidic attack.
 msg:You are splashed with acid!
 
@@ -299,7 +300,7 @@ flags:TRAP | FLOOR
 effect:SPOT:FIRE:1
 dice:10d4
 effect:NOISE:PLAYER
-dice:10
+dice:0
 desc:A large hissing vent on the ground.
 msg:You are struck by a burst of liquid fire!
 
@@ -309,11 +310,13 @@ rarity:5
 min-depth:7
 max-depth:10
 power:13
-flags:TRAP | FLOOR | ONETIME | SAVE_SKILL
+flags:TRAP | FLOOR | SAVE_SKILL
+effect:DEADFALL
+dice:1
 effect:EARTHQUAKE
 dice:6
 effect:NOISE:PLAYER
-dice:40
+dice:-40
 desc:A vulnerable section of rock holding up the surrounding area.
 msg-good:You step carefully around the weak spot.
 msg-bad:The entire cavern collapses!

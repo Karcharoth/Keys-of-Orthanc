@@ -313,7 +313,7 @@ void player_regen_stamina(struct player *p)
 
     /* At low stamina, stamina regeneration is much slower. I expect this to be
     very imbalanced in both directions at first, and require fine-tuning.*/
-	int regen_period = z_info->player_regen_period / 2;
+	int regen_period = z_info->player_regen_period*2;
 
 	/* Don't regenerate stamina if singing
 	if (p->song[SONG_MAIN]) return; */

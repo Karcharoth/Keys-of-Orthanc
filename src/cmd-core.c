@@ -58,7 +58,6 @@ static const struct command_info game_cmds[] =
 	{ CMD_BIRTH_RESET, "go back to the beginning", do_cmd_birth_reset, false, 0 },
 	{ CMD_CHOOSE_RACE, "select race", do_cmd_choose_race, false, 0 },
 	{ CMD_CHOOSE_HOUSE, "select house", do_cmd_choose_house, false, 0 },
-	{ CMD_CHOOSE_SEX, "select sex", do_cmd_choose_sex, false, 0 },
 	{ CMD_BUY_STAT, "buy points in a stat", do_cmd_buy_stat, false, 0 },
 	{ CMD_SELL_STAT, "sell points in a stat", do_cmd_sell_stat, false, 0 },
 	{ CMD_RESET_STATS, "reset stats", do_cmd_reset_stats, false, 0 },

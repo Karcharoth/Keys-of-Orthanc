@@ -77,14 +77,11 @@ static void c_version(char *rest) {
 static void c_player_birth(char *rest) {
 	const char *race = strtok(rest, " ");
 	const char *house = strtok(NULL, " ");
-	const char *sex = strtok(NULL, " ");
 	struct player_house *h;
 	struct player_race *r;
-	struct player_sex *s;
 
 	if (!race) race = "Noldor";
 	if (!house) house = "Feanor";
-	if (!sex) sex = "Male";
 
 	for (r = races; r; r = r->next)
 		if (streq(race, r->name))
@@ -103,16 +100,7 @@ static void c_player_birth(char *rest) {
 		return;
 	}
 
-	for (s = sexes; s; s = s->next)
-		if (streq(sex, s->name))
-			break;
-
-	if (!s) {
-		printf("player-birth: bad sex '%s'\n", sex);
-		return;
-	}
-
-	player_generate(player, r, h, s, false);
+	player_generate(player, r, h, false);
 }
 
 static void c_player_house(char *rest) {
@@ -123,9 +111,6 @@ static void c_player_race(char *rest) {
 	printf("player-race: %s\n", player->race->name);
 }
 
-static void c_player_sex(char *rest) {
-	printf("player-sex: %s\n", player->sex->name);
-}
 
 typedef struct {
 	const char *name;
@@ -143,7 +128,6 @@ static test_cmd cmds[] = {
 	{ "player-birth", c_player_birth },
 	{ "player-race?", c_player_race },
 	{ "player-house?", c_player_house },
-	{ "player-sex?", c_player_sex },
 
 	{ NULL, NULL }
 };

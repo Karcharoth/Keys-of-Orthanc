@@ -44,7 +44,6 @@ struct high_score {
 	char day[10];		/* Time stamp (string) */
 	char who[16];		/* Player Name (string) */
 	char uid[8];		/* Player UID (number) */
-	char p_s[3];		/* Player Sex (number) */
 	char p_r[3];		/* Player Race (number) */
 	char p_h[3];		/* Player House (number) */
 	char cur_dun[4];	/* Current Dungeon Level (number) */

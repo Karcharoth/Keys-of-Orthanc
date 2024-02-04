@@ -23,19 +23,16 @@
 
 extern void player_init(struct player *p);
 extern void player_generate(struct player *p, const struct player_race *r,
-                            const struct player_house *h,
-							const struct player_sex *s, bool old_history);
+                            const struct player_house *h, bool old_history); 
 extern void get_ahw(struct player *p);
 extern char *get_history(struct history_chart *h, struct player *p);
 extern void wield_all(struct player *p);
-extern bool player_make_simple(const char *nrace, const char *nhouse,
-							   const char *nsex, const char *nplayer);
+extern bool player_make_simple(const char *nrace, const char *nhouse, const char *nplayer);
 
 void do_cmd_birth_init(struct command *cmd);
 void do_cmd_birth_reset(struct command *cmd);
 void do_cmd_choose_race(struct command *cmd);
 void do_cmd_choose_house(struct command *cmd);
-void do_cmd_choose_sex(struct command *cmd);
 void do_cmd_buy_stat(struct command *cmd);
 void do_cmd_sell_stat(struct command *cmd);
 void do_cmd_reset_stats(struct command *cmd);

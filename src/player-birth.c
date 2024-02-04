@@ -87,7 +87,6 @@ struct birther
 {
 	const struct player_race *race;
 	const struct player_house *house;
-	const struct player_sex *sex;
 
 	int16_t age;
 	int16_t wt;
@@ -140,7 +139,6 @@ static void save_birth_data(birther *tosave)
 	/* Save the data */
 	tosave->race = player->race;
 	tosave->house = player->house;
-	tosave->sex = player->sex;
 	tosave->age = player->age;
 	tosave->wt = player->wt_birth;
 	tosave->ht = player->ht_birth;
@@ -184,7 +182,6 @@ static void load_birth_data(birther *saved, birther *prev_player)
 	/* Load previous data */
 	player->race     = saved->race;
 	player->house    = saved->house;
-	player->sex      = saved->sex;
 	player->age      = saved->age;
 	player->wt       = player->wt_birth = saved->wt;
 	player->ht       = player->ht_birth = saved->ht;
@@ -341,7 +338,6 @@ void player_init(struct player *p)
 	/* Default to the first race/house/sex in the edit file */
 	p->race = races;
 	p->house = houses;
-	p->sex = sexes;
 }
 
 /**
@@ -405,10 +401,9 @@ void wield_all(struct player *p)
  * Requires a prior call to init_angband().  Intended for use by test cases
  * or stub front ends that need a fully initialized player.
  */
-bool player_make_simple(const char *nrace, const char *nhouse, const char *nsex,
-	const char* nplayer)
+bool player_make_simple(const char *nrace, const char *nhouse, const char* nplayer)
 {
-	int ir = 0, ih = 0, is = 0;
+	int ir = 0, ih = 0;
 
 	if (nrace) {
 		const struct player_race *rc = races;
@@ -446,32 +441,12 @@ bool player_make_simple(const char *nrace, const char *nhouse, const char *nsex,
 		ih = nh - ih - 1;
 	}
 
-	if (nsex) {
-		const struct player_sex *sc = sexes;
-		int ns = 0;
-
-		while (1) {
-			if (!sc) return false;
-			if (streq(sc->name, nsex)) break;
-			sc = sc->next;
-			++is;
-			++ns;
-		}
-		while (sc) {
-			sc = sc->next;
-			++ns;
-		}
-		is = ns - is - 1;
-	}
-
 	cmdq_push(CMD_BIRTH_INIT);
 	cmdq_push(CMD_BIRTH_RESET);
 	cmdq_push(CMD_CHOOSE_RACE);
 	cmd_set_arg_choice(cmdq_peek(), "choice", ir);
 	cmdq_push(CMD_CHOOSE_HOUSE);
 	cmd_set_arg_choice(cmdq_peek(), "choice", ih);
-	cmdq_push(CMD_CHOOSE_SEX);
-	cmd_set_arg_choice(cmdq_peek(), "choice", is);
 	cmdq_push(CMD_NAME_CHOICE);
 	cmd_set_arg_string(cmdq_peek(), "name",
 		(nplayer == NULL) ? "Simple" : nplayer);
@@ -656,19 +631,15 @@ static void finalise_stats(struct player *p)
  * and so is called whenever things like race or house are chosen.
  */
 void player_generate(struct player *p, const struct player_race *r,
-					 const struct player_house *h, const struct player_sex *s,
-					 bool old_history)
+					 const struct player_house *h, bool old_history)
 {
 	if (!h)
 		h = p->house;
 	if (!r)
 		r = p->race;
-	if (!s)
-		s = p->sex;
 
 	p->house = h;
 	p->race = r;
-	p->sex = s;
 	if (!p->house) {
 		p->house = player_house_from_count(0);
 	}
@@ -704,8 +675,7 @@ static void do_birth_reset(bool use_quickstart, birther *quickstart_prev_local)
 	if (use_quickstart && quickstart_prev_local)
 		load_birth_data(quickstart_prev_local, NULL);
 
-	player_generate(player, NULL, NULL, NULL,
-					use_quickstart && quickstart_prev_local);
+	player_generate(player, NULL, NULL, use_quickstart && quickstart_prev_local);
 
 	player->depth = 1;
 
@@ -742,8 +712,7 @@ void do_cmd_birth_init(struct command *cmd)
 		save_birth_data(&quickstart_prev);
 		quickstart_allowed = true;
 	} else {
-		player_generate(player, player_id2race(0), player_house_from_count(0),
-						player_id2sex(0), false);
+		player_generate(player, player_id2race(0), player_house_from_count(0), false);
 		quickstart_allowed = false;
 	}
 
@@ -763,8 +732,7 @@ void do_cmd_choose_race(struct command *cmd)
 {
 	int choice;
 	cmd_get_arg_choice(cmd, "choice", &choice);
-	player_generate(player, player_id2race(choice), NULL, NULL, false);
-
+	player_generate(player, player_id2race(choice), NULL, false);
 	init_skills(true, true);
 }
 
@@ -772,16 +740,7 @@ void do_cmd_choose_house(struct command *cmd)
 {
 	int choice;
 	cmd_get_arg_choice(cmd, "choice", &choice);
-	player_generate(player, NULL, player_house_from_count(choice), NULL, false);
-
-	init_skills(true, true);
-}
-
-void do_cmd_choose_sex(struct command *cmd)
-{
-	int choice;
-	cmd_get_arg_choice(cmd, "choice", &choice);
-	player_generate(player, NULL, NULL, player_id2sex(choice), false);
+	player_generate(player, NULL, player_house_from_count(choice), false);
 
 	init_skills(true, true);
 }

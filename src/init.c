@@ -1270,86 +1270,6 @@ static struct file_parser history_parser = {
 
 /**
  * ------------------------------------------------------------------------
- * Intialize player sexes
- * ------------------------------------------------------------------------ */
-
-static enum parser_error parse_sex_name(struct parser *p) {
-	struct player_sex *h = parser_priv(p);
-	struct player_sex *s = mem_zalloc(sizeof *s);
-
-	s->next = h;
-	s->name = string_make(parser_getstr(p, "name"));
-	parser_setpriv(p, s);
-	return PARSE_ERROR_NONE;
-}
-
-static enum parser_error parse_sex_possess(struct parser *p) {
-	struct player_sex *s = parser_priv(p);
-	if (!s)
-		return PARSE_ERROR_MISSING_RECORD_HEADER;
-	s->possessive = string_make(parser_getstr(p, "pronoun"));
-	return PARSE_ERROR_NONE;
-}
-
-static enum parser_error parse_sex_poetry(struct parser *p) {
-	struct player_sex *s = parser_priv(p);
-	if (!s)
-		return PARSE_ERROR_MISSING_RECORD_HEADER;
-	s->poetry_name = string_make(parser_getstr(p, "name"));
-	return PARSE_ERROR_NONE;
-}
-
-struct parser *init_parse_sex(void) {
-	struct parser *p = parser_new();
-	parser_setpriv(p, NULL);
-	parser_reg(p, "name str name", parse_sex_name);
-	parser_reg(p, "possess str pronoun", parse_sex_possess);
-	parser_reg(p, "poetry str name", parse_sex_poetry);
-	return p;
-}
-
-static errr run_parse_sex(struct parser *p) {
-	return parse_file_quit_not_found(p, "sex");
-}
-
-static errr finish_parse_sex(struct parser *p) {
-	struct player_sex *s;
-	int num = 0;
-	sexes = parser_priv(p);
-	for (s = sexes; s; s = s->next) num++;
-	for (s = sexes; s; s = s->next, num--) {
-		assert(num);
-		s->sidx = num - 1;
-	}
-	parser_destroy(p);
-	return 0;
-}
-
-static void cleanup_sex(void)
-{
-	struct player_sex *s = sexes;
-	struct player_sex *next;
-
-	while (s) {
-		next = s->next;
-		string_free((char *)s->poetry_name);
-		string_free((char *)s->possessive);
-		string_free((char *)s->name);
-		mem_free(s);
-		s = next;
-	}
-}
-
-static struct file_parser sex_parser = {
-	"sex",
-	init_parse_sex,
-	run_parse_sex,
-	finish_parse_sex,
-	cleanup_sex
-};
-
-/**
- * ------------------------------------------------------------------------
  * Intialize player races
  * ------------------------------------------------------------------------ */
 
@@ -1932,7 +1852,6 @@ static struct {
 	{ "bodies", &body_parser },
 	{ "player races", &race_parser },
 	{ "player houses", &house_parser },
-	{ "player sexes", &sex_parser },
 	{ "artifacts", &artifact_parser },
 	{ "drops", &drop_parser },
 	{ "object properties", &object_property_parser },

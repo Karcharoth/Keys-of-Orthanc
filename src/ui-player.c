@@ -274,7 +274,6 @@ static struct panel *get_panel_topleft(void) {
 	struct panel *p = panel_allocate(4);
 
 	panel_line(p, COLOUR_L_BLUE, "Name", "%s", player->full_name);
-	panel_line(p, COLOUR_L_BLUE, "Sex", "%s", player->sex->name);
 	panel_line(p, COLOUR_L_BLUE, "Race", "%s", player->race->name);
 	panel_line(p, COLOUR_L_BLUE, "House", "%s", player->house->short_name);
 

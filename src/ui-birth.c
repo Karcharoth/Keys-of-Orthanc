@@ -65,7 +65,6 @@ enum birth_stage
 	BIRTH_QUICKSTART,
 	BIRTH_RACE_CHOICE,
 	BIRTH_HOUSE_CHOICE,
-	BIRTH_SEX_CHOICE,
 	BIRTH_STAT_POINTS,
 	BIRTH_SKILL_POINTS,
 	BIRTH_NAME_CHOICE,
@@ -156,7 +155,7 @@ static enum birth_stage textui_birth_quickstart(void)
 /**
  * The various menus
  */
-static struct menu race_menu, house_menu, sex_menu;
+static struct menu race_menu, house_menu;
 static int house_start = 0;
 
 /**
@@ -171,7 +170,7 @@ static int house_start = 0;
 #define RACE_AUX_COL    19
 #define HOUSE_COL       19
 #define HOUSE_AUX_COL   42
-#define SEX_COL         42
+//#define SEX_COL         42
 #define HELP_ROW        14
 #define HIST_INSTRUCT_ROW 18
 
@@ -182,7 +181,7 @@ static int house_start = 0;
  */
 static region race_region = {RACE_COL, TABLE_ROW, 17, MENU_ROWS};
 static region house_region = {HOUSE_COL, TABLE_ROW, 17, MENU_ROWS};
-static region sex_region = {SEX_COL, TABLE_ROW, 34, MENU_ROWS};
+//static region sex_region = {SEX_COL, TABLE_ROW, 34, MENU_ROWS};
 
 /**
  * We use different menu "browse functions" to display the help text
@@ -352,11 +351,6 @@ static void house_help(int i, void *db, const region *l)
 	text_out_indent = 0;
 }
 
-static void sex_help(int i, void *db, const region *l)
-{
-	clear_from(HELP_ROW);
-}
-
 /**
  * Display and handle user interaction with a context menu appropriate for the
  * current stage.  That way actions available with certain keys are also
@@ -496,7 +490,6 @@ static void init_birth_menu(struct menu *menu, int n_choices,
 static void setup_menus(void)
 {
 	int n;
-	struct player_sex *s;
 	struct player_race *r;
 
 	struct birthmenu_data *mdata;
@@ -514,20 +507,6 @@ static void setup_menus(void)
 		mdata->items[r->ridx] = r->name;
 	}
 	mdata->hint = "Race affects stats, skills, and other character traits.";
-
-	/* Count the sexes */
-	n = 0;
-	for (s = sexes; s; s = s->next) n++;
-
-	/* Sex menu similar to race. */
-	init_birth_menu(&sex_menu, n, player->sex ? player->sex->sidx : 0,
-					&sex_region, true, sex_help);
-	mdata = sex_menu.menu_data;
-
-	for (s = sexes; s; s = s->next) {
-		mdata->items[s->sidx] = s->name;
-	}
-	mdata->hint = "Sex has no gameplay effect.";
 }
 
 static void setup_house_menu(const struct player_race *r)
@@ -576,7 +555,6 @@ static void free_birth_menus(void)
 	/* We don't need these any more. */
 	free_birth_menu(&race_menu);
 	free_birth_menu(&house_menu);
-	free_birth_menu(&sex_menu);
 }
 
 /**
@@ -1358,7 +1336,6 @@ int textui_do_birth(void)
 
 			case BIRTH_HOUSE_CHOICE:
 			case BIRTH_RACE_CHOICE:
-			case BIRTH_SEX_CHOICE:
 			{
 				struct menu *menu = &race_menu;
 				cmd_code command = CMD_CHOOSE_RACE;
@@ -1376,8 +1353,6 @@ int textui_do_birth(void)
 
 				if (current_stage > BIRTH_HOUSE_CHOICE) {
 					menu_refresh(&house_menu, false);
-					menu = &sex_menu;
-					command = CMD_CHOOSE_SEX;
 				}
 
 				next = menu_question(current_stage, menu, command);
@@ -1406,7 +1381,7 @@ int textui_do_birth(void)
 				next = stat_points_command();
 
 				if (next == BIRTH_BACK)
-					next = BIRTH_SEX_CHOICE;
+					next = BIRTH_HOUSE_CHOICE;
 
 				if (next != BIRTH_STAT_POINTS)
 					stat_points_stop();

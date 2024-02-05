@@ -283,9 +283,12 @@ static void race_help(int i, void *db, const region *l)
 					   list_player_flag_names[j]);
 		}
 	}
-
-	Term_gotoxy(RACE_AUX_COL, HIST_INSTRUCT_ROW);
+    /* So that the description isn't indented*/
+	text_out_indent = 0;
+	Term_gotoxy(0, HIST_INSTRUCT_ROW);
 	text_out_c(COLOUR_L_WHITE, "%s", r->desc);
+    /* probably pointless and unnecessary*/
+	text_out_indent = RACE_AUX_COL;
 
 	/* Reset text_out() indentation */
 	text_out_indent = 0;
@@ -343,9 +346,12 @@ static void house_help(int i, void *db, const region *l)
 					   list_player_flag_names[j]);
 		}
 	}
-
-	Term_gotoxy(HOUSE_AUX_COL, HIST_INSTRUCT_ROW);
+    /* reset indent so description isn't indented*/
+	text_out_indent = 0;
+	Term_gotoxy(0, HIST_INSTRUCT_ROW);
 	text_out_c(COLOUR_L_WHITE, h->desc);
+    /* Pointless and unnecessary*/
+	text_out_indent = HOUSE_AUX_COL;
 
 	/* Reset text_out() indentation */
 	text_out_indent = 0;

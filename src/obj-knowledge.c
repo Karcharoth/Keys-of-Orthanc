@@ -199,9 +199,11 @@ void object_flavor_aware(struct player *p, struct object *obj)
 	/* Quit if no dungeon yet */
 	if (!cave) return;
 
-	/* Gain experience for identification */
-	player_exp_gain(p, new_exp);
-	p->ident_exp += new_exp;
+	/* Gain experience for identification, unless the fixed XP option is enabled. */
+    if (!OPT(player, birth_fixed_xp)) {
+	    player_exp_gain(p, new_exp);
+	    p->ident_exp += new_exp;
+    }
 
 	/* Some objects change tile on awareness, so update display for all
 	 * floor objects of this kind */
@@ -270,9 +272,11 @@ static void player_know_object(struct player *p, struct object *obj)
 				/* Mark */
 				mark_artifact_seen(art, true);
 
-				/* Gain experience for identification */
-				player_exp_gain(p, new_exp);
-				p->ident_exp += new_exp;
+				/* Gain experience for identification, unless the fixed XP option is enabled. */
+                if (!OPT(player, birth_fixed_xp)) {
+        	        player_exp_gain(p, new_exp);
+    	            p->ident_exp += new_exp;
+                }
 
 				/* Record in the history */
 				history_find_artifact(p, art);
@@ -285,9 +289,11 @@ static void player_know_object(struct player *p, struct object *obj)
 				/* Mark */
 				obj->ego->aware = true;
 
-				/* Gain experience for identification */
-				player_exp_gain(p, new_exp);
-				p->ident_exp += new_exp;
+				/* Gain experience for identification, unless the fixed XP option is enabled. */
+                if (!OPT(player, birth_fixed_xp)) {
+        	        player_exp_gain(p, new_exp);
+    	            p->ident_exp += new_exp;
+                }
 			}
 		}
 	}

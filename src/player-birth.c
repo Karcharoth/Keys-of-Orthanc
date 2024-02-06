@@ -645,7 +645,7 @@ void player_generate(struct player *p, const struct player_race *r,
 	}
 
 	/* Initial experience */
-	p->exp = p->new_exp = z_info->start_exp;
+	p->exp = p->new_exp = (OPT(p, birth_fixed_xp)) ? z_info->fixed_exp_start_exp : z_info->start_exp;
 
 	/* Initial hitpoints etc */
 	get_bonuses(p);

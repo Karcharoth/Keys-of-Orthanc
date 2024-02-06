@@ -169,12 +169,12 @@ static int house_start = 0;
 #define RACE_COL         2
 #define RACE_AUX_COL    19
 #define HOUSE_COL       19
-#define HOUSE_AUX_COL   42
+#define HOUSE_AUX_COL   46
 //#define SEX_COL         42
 #define HELP_ROW        14
 #define HIST_INSTRUCT_ROW 18
 
-#define MENU_ROWS TABLE_ROW + 14
+#define MENU_ROWS TABLE_ROW
 
 /**
  * upper left column and row, width, and lower column

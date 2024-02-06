@@ -103,8 +103,10 @@ OP(score_timestop,        "Score: Don't allow monsters to move",
 SCORE, false)
 OP(birth_discon_stairs,   "Disconnected stairs",
 BIRTH, false)
-OP(birth_force_descend,   "Force player descent (never make up stairs)",
+OP(birth_force_descend,   "Force player descent (no up stairs until endgame)",
 BIRTH, false)
 OP(birth_no_artifacts,    "Restrict creation of artifacts",
+BIRTH, false)
+OP(birth_fixed_xp,        "Fixed XP - gain 50k at the start and nothing after",
 BIRTH, false)
 

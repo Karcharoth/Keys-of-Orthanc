@@ -188,12 +188,15 @@ static void check_experience(struct player *p)
  */
 void player_exp_gain(struct player *p, int32_t amount)
 {
-	/* Gain some experience */
-	p->exp += amount;
-	p->new_exp += amount;
+	/* Gain some experience, unless the fixed XP option is enabled, and we're not in wizard mode.
+        This *shouldn't* be necessary to check, but I'm playing it safe.'*/
+    if (!OPT(player, birth_fixed_xp) || player->wizard) {
+	    p->exp += amount;
+	    p->new_exp += amount;
 
-	/* Check Experience */
-	check_experience(p);
+	    /* Check Experience */
+	    check_experience(p);
+    }
 }
 
 /**

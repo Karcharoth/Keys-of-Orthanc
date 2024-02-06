@@ -571,6 +571,8 @@ static enum parser_error parse_constants_player(struct parser *p) {
 		z->max_range = value;
 	else if (streq(label, "start-exp"))
 		z->start_exp = value;
+	else if (streq(label, "fixed-exp-start-exp"))
+		z->fixed_exp_start_exp = value;
 	else if (streq(label, "ability-cost"))
 		z->ability_cost = value;
 	else if (streq(label, "stealth-bonus"))

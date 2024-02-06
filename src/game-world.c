@@ -910,7 +910,7 @@ void on_new_level(void)
 	/* Track maximum dungeon level */
 	if (player->max_depth < player->depth) {
 		for (i = player->max_depth + 1; i <= player->depth; i++) {
-			if (i > 1) {
+			if (i > 1 && !OPT(player, birth_fixed_xp)) {
 				int new_exp = i * 50;
 				player_exp_gain(player, new_exp);
 				player->descent_exp += new_exp;

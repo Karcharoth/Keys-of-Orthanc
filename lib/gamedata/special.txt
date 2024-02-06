@@ -1110,7 +1110,6 @@ prot-dice:0
 prot-sides:0
 max-pval:0
 item:light:Brass Lantern
-item:light:Lesser Jewel
 flags:LIGHT
 
 

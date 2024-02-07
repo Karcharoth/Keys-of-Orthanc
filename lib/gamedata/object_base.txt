@@ -312,6 +312,7 @@ name:ring:Ring~
 graphics:red
 break:5
 # max-stack:5
+flags:CURSED | EASY_KNOW
 smith-values:STR[1] | DEX[1]
 smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1]
 smith-values:DAMAGE_SIDES[1] | TUNNEL[1]

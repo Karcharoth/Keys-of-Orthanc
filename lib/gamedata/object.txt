@@ -683,91 +683,6 @@ desc: It will shine forever.
 ##### Rings #####
 
 
-# Index 150
-name:Perception
-graphics:=:d
-type:ring
-depth:5
-weight:1
-cost:500
-attack:0:0d0
-defence:0:0d0
-alloc:5:3
-values:PERCEPTION[99]
-special:-1+m5:1
-
-
-# Index 151
-name:Sustenance
-graphics:=:d
-type:ring
-depth:7
-weight:1
-cost:150
-attack:0:0d0
-defence:0:0d0
-alloc:7:3
-flags:SLOW_DIGEST | EASY_KNOW
-
-
-# Index 152
-name:Evasion
-graphics:=:d
-type:ring
-depth:8
-weight:1
-cost:500
-attack:0:0d0
-defence:99:0d0
-alloc:8:3
-special:-1+m7:1
-desc:It helps you avoid your enemies' blows. 
-
-
-# Index 153
-name:Protection
-graphics:=:d
-type:ring
-depth:9
-weight:1
-cost:500
-attack:0:0d0
-defence:0:1d99
-alloc:9:3
-special:1+m14
-desc:It provides protection from damage. 
-
-
-# Index 154
-name:Strength
-graphics:=:d
-type:ring
-depth:9
-weight:1
-cost:500
-attack:0:0d0
-defence:0:0d0
-alloc:9:3
-flags:SUST_STR
-values:STR[-1+m10]
-
-
-
-# Index 157
-name:Warmth
-graphics:=:d
-type:ring
-depth:12
-weight:1
-cost:250
-attack:0:0d0
-defence:0:0d0
-alloc:12:3
-flags:EASY_KNOW
-values:RES_COLD[1]
-
-
-
 # Index 159
 name:Free Action
 graphics:=:d
@@ -834,7 +749,7 @@ cost:20000
 attack:0:0d0
 defence:0:0d0
 alloc:10:40
-flags:LIGHT | REGENERATION
+flags:LIGHT | REGEN
 values:WILL[99]
 special:-1+m5:1
 ability:Will:Majesty
@@ -864,7 +779,6 @@ cost:20000
 attack:0:0d0
 defence:0:0d0
 alloc:10:40
-values:SONG[99] | SMITHING [99]
 special:-1+m5:1
 ability:Perception:Lore-Master
 desc:This ring fills you with ancient wisdom.

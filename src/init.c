@@ -1845,8 +1845,11 @@ static struct {
 	{ "monster warning messages", &warning_parser },
 	{ "monster bases", &mon_base_parser },
 	{ "summons", &summon_parser },
-	{ "objects", &object_parser },
+/* Hack: parse the objects the first time without parsing abilities,
+then the second time parsing abilities after abilities in general have been parsed*/
+	{ "objects 1", &object_parser_1 },
 	{ "abilities", &ability_parser },
+	{ "objects 2", &object_parser_2 },
 	{ "ego-items", &ego_parser },
 	{ "history charts", &history_parser },
 	{ "bodies", &body_parser },

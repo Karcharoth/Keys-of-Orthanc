@@ -59,7 +59,9 @@ flavor:19:Light Slate:Silver
 
 flavor:20:Light Dark:Jet
 
-flavor:21:White:Pearl
+flavor:21:White:Diamond
+
+flavor:22:White:Pearl
 
 #N:20:45
 #G:=:B

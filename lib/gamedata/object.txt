@@ -702,6 +702,48 @@ desc: It will shine forever.
 
 ##### Rings #####
 
+# Index 152
+name:Evasion
+graphics:=:d
+type:ring
+depth:8
+weight:1
+cost:500
+attack:0:0d0
+defence:99:0d0
+alloc:8:3
+special:-1+m7:1
+desc:It helps you avoid your enemies' blows. 
+
+
+# Index 153
+name:Protection
+graphics:=:d
+type:ring
+depth:9
+weight:1
+cost:500
+attack:0:0d0
+defence:0:1d99
+alloc:9:3
+special:1+m14
+desc:It provides protection from damage. 
+
+
+# Index 158
+name:Accuracy
+graphics:=:d
+type:ring
+depth:12
+weight:1
+cost:500
+attack:99:0d0
+defence:0:0d0
+alloc:12:3
+special:-1+m7:1
+desc:It helps you hit your opponents. 
+
+
 #Doesn't really fit very well and steps on other rings' toes. Hmm.
 # Index 150
 name:Glory
@@ -745,6 +787,7 @@ cost:20000
 attack:0:0d0
 defence:0:0d0
 alloc:10:40
+values:PERCEPTION[99] | SMITHING[99]
 special:-1+m5:1
 ability:Perception:Lore-Master
 desc:This ring fills you with ancient wisdom.
@@ -889,7 +932,6 @@ alloc:10:40
 flags:DANGER | AGGRAVATE
 special:-1+m7:1
 desc:This ring drives all to battle. 
-
 
 ##### Staves #####
 

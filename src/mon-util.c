@@ -573,8 +573,8 @@ void monsters_hear(bool player_centered, bool main_roll, int difficulty)
 		 * but this is equivalent) */
 		m_perception -= player_bane_bonus(player, mon);
 
-		/* Increase morale for the Elf-Bane ability */
-		m_perception += monster_elf_bane_bonus(mon, player);
+		/* Increase morale for the Man-Bane ability */
+		m_perception += monster_man_bane_bonus(mon, player);
 
 		/* Monsters are looking more carefully during the escape */
 		if (player->on_the_run) {

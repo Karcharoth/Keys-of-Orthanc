@@ -47,15 +47,14 @@
 /**
  * Bonus for elf bane against elves.
  */
-int monster_elf_bane_bonus(struct monster *mon, struct player *p)
+int monster_man_bane_bonus(struct monster *mon, struct player *p)
 {
-	bool elf = (streq(p->race->name, "Noldor") ||
-				streq(p->race->name, "Sindar"));
+	bool man = streq(p->race->name, "Man");
 
     if (!mon) return 0;
 
-	/* Dagohir must have killed between 32 and 63 elves */
-    return (rf_has(mon->race->flags, RF_ELFBANE) && elf) ? 5 : 0;
+	/* These guys must have killed between 4 and 8 men */
+    return (rf_has(mon->race->flags, RF_MANBANE) && man) ? 2 : 0;
 }
 
 /**
@@ -222,8 +221,8 @@ void calc_morale(struct monster *mon)
 		morale -= player_bane_bonus(player, mon) * 10;
 	}
 
-    /* Increase morale for the Elf-Bane ability */
-	morale += monster_elf_bane_bonus(mon, player) * 10;
+    /* Increase morale for the Man-Bane ability */
+	morale += monster_man_bane_bonus(mon, player) * 10;
 
 	/* Add temporary morale modifiers */
 	morale += mon->tmp_morale;

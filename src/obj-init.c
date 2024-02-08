@@ -1474,11 +1474,6 @@ static enum parser_error parse_object_special(struct parser *p) {
 	return PARSE_ERROR_NONE;
 }
 
-/* Hack: the first time we parse objects, skip the ability: lines*/
-static enum parser_error dont_parse_object_ability(struct parser *p){
-    return PARSE_ERROR_NONE;
-}
-
 static enum parser_error parse_object_ability(struct parser *p) {
 	struct object_kind *k = parser_priv(p);
 	int skill = lookup_skill(parser_getsym(p, "skill"));
@@ -1499,77 +1494,8 @@ static enum parser_error parse_object_ability(struct parser *p) {
 	return PARSE_ERROR_NONE;
 }
 
-/*struct parser *init_parse_object(void) {
-	struct parser *p = parser_new();
-	parser_setpriv(p, NULL);
-	parser_reg(p, "name str name", parse_object_name);
-	parser_reg(p, "type sym tval", parse_object_type);
-	parser_reg(p, "pval int pval", parse_object_pval);
-	parser_reg(p, "graphics char glyph sym color", parse_object_graphics);
-	parser_reg(p, "depth int level", parse_object_level);
-	parser_reg(p, "weight int weight", parse_object_weight);
-	parser_reg(p, "cost int cost", parse_object_cost);
-	parser_reg(p, "alloc uint locale uint chance", parse_object_alloc);
-	parser_reg(p, "attack int att rand hd", parse_object_attack);
-	parser_reg(p, "defence int evn rand hd", parse_object_defence);
-	parser_reg(p, "flags str flags", parse_object_flags);
-	parser_reg(p, "charges rand charges", parse_object_charges);
-	parser_reg(p, "effect sym eff ?sym type ?int radius ?int other", parse_object_effect);
-	parser_reg(p, "dice str dice", parse_object_dice);
-	parser_reg(p, "expr sym name sym base str expr", parse_object_expr);
-	parser_reg(p, "thrown-effect sym eff ?sym type ?int radius ?int other",
-			   parse_object_thrown_effect);
-	parser_reg(p, "thrown-dice str dice", parse_object_thrown_effect_dice);
-	parser_reg(p, "thrown-expr sym name sym base str expr",
-			   parse_object_thrown_effect_expr);
-	parser_reg(p, "msg str text", parse_object_msg);
-	parser_reg(p, "values str values", parse_object_values);
-	parser_reg(p, "desc str text", parse_object_desc);
-	parser_reg(p, "slay str code", parse_object_slay);
-	parser_reg(p, "brand str code", parse_object_brand);
-	parser_reg(p, "special sym value ?int min", parse_object_special);
-	return p;
-}*/
-/* Hack: parse the objects the first time without parsing abilities,
-then the second time parsing abilities after abilities in general have been parsed. If modifying one of these, modify the other.... I think.*/
 
-struct parser *init_parse_object_1(void){
-	struct parser *p = parser_new();
-	parser_setpriv(p, NULL);
-	parser_reg(p, "name str name", parse_object_name);
-	parser_reg(p, "type sym tval", parse_object_type);
-	parser_reg(p, "pval int pval", parse_object_pval);
-	parser_reg(p, "graphics char glyph sym color", parse_object_graphics);
-	parser_reg(p, "depth int level", parse_object_level);
-	parser_reg(p, "weight int weight", parse_object_weight);
-	parser_reg(p, "cost int cost", parse_object_cost);
-	parser_reg(p, "alloc uint locale uint chance", parse_object_alloc);
-	parser_reg(p, "attack int att rand hd", parse_object_attack);
-	parser_reg(p, "defence int evn rand hd", parse_object_defence);
-	parser_reg(p, "flags str flags", parse_object_flags);
-	parser_reg(p, "charges rand charges", parse_object_charges);
-	parser_reg(p, "effect sym eff ?sym type ?int radius ?int other", parse_object_effect);
-	parser_reg(p, "dice str dice", parse_object_dice);
-	parser_reg(p, "expr sym name sym base str expr", parse_object_expr);
-	parser_reg(p, "thrown-effect sym eff ?sym type ?int radius ?int other",
-			   parse_object_thrown_effect);
-	parser_reg(p, "thrown-dice str dice", parse_object_thrown_effect_dice);
-	parser_reg(p, "thrown-expr sym name sym base str expr",
-			   parse_object_thrown_effect_expr);
-	parser_reg(p, "msg str text", parse_object_msg);
-	parser_reg(p, "values str values", parse_object_values);
-	parser_reg(p, "desc str text", parse_object_desc);
-	parser_reg(p, "slay str code", parse_object_slay);
-	parser_reg(p, "brand str code", parse_object_brand);
-	parser_reg(p, "special sym value ?int min", parse_object_special);
-	parser_reg(p, "ability sym skill sym ability", dont_parse_object_ability);
-	return p;
-    
-}
-/* Hack: parse the objects the first time without parsing abilities,
-then the second time parsing abilities after abilities in general have been parsed. If modifying one of these, modify the other.... I think.*/
-
-struct parser *init_parse_object_2(void){
+struct parser *init_parse_object(void){
 	struct parser *p = parser_new();
 	parser_setpriv(p, NULL);
 	parser_reg(p, "name str name", parse_object_name);
@@ -1702,28 +1628,15 @@ static void cleanup_object(void)
 	}
 	mem_free(k_info);
 }
-/* Hack: parse the objects the first time without parsing abilities,
-then the second time parsing abilities after abilities in general have been parsed*/
 
-
-struct file_parser object_parser_1 = {
+struct file_parser object_parser = {
 	"object",
-	init_parse_object_1,
+	init_parse_object,
 	run_parse_object,
 	finish_parse_object,
 	cleanup_object
 };
 
-/* Hack: parse the objects the first time without parsing abilities,
-then the second time parsing abilities after abilities in general have been parsed*/
-
-struct file_parser object_parser_2 = {
-	"object",
-	init_parse_object_2,
-	run_parse_object,
-	finish_parse_object,
-	cleanup_object
-};
 
 
 /**

@@ -965,10 +965,12 @@ void monster_death(struct monster *mon, struct player *p, bool by_player,
 		}
 	}
 
-	/* Give some experience for the kill */
+	/* Give some experience for the kill, unless the fixed XP option is enabled. */
     new_exp = adjusted_mon_exp(race, true);
-    player_exp_gain(p, new_exp);
-    p->kill_exp += new_exp;
+    if (!OPT(player, birth_fixed_xp)) {
+        player_exp_gain(p, new_exp);
+        p->kill_exp += new_exp;
+    }
 
 	/* When the player kills a Unique, it stays dead */
 	if (rf_has(race->flags, RF_UNIQUE)) {
@@ -1002,9 +1004,11 @@ void monster_death(struct monster *mon, struct player *p, bool by_player,
     if (!mon->encountered) {
         new_exp = adjusted_mon_exp(mon->race, false);
 
-        /* Gain experience for encounter */
-        player_exp_gain(p, new_exp);
-        p->encounter_exp += new_exp;
+        /* Gain experience for encounter, unless the fixed xp option is enabled. */
+        if (!OPT(player, birth_fixed_xp)) {
+            player_exp_gain(p, new_exp);
+            p->encounter_exp += new_exp;
+        }
 
         /* Update stats */
         mon->encountered = true;

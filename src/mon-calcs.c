@@ -776,9 +776,11 @@ void update_mon(struct monster *mon, struct chunk *c, bool full)
 		square_isseen(c, mon->grid) && (lore->psights < SHRT_MAX)) {
 		int new_exp = adjusted_mon_exp(race, false);
 
-		/* Gain experience for encounter */
-		player_exp_gain(player, new_exp);	
-		player->encounter_exp += new_exp;	
+		/* Gain experience for encounter, unless the fixed xp option is enabled. */
+        if (!OPT(player, birth_fixed_xp)) {
+            player_exp_gain(player, new_exp);
+            player->encounter_exp += new_exp;
+        }	
 
 		/* Update stats */
 		mon->encountered = true;

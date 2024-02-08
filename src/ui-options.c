@@ -115,7 +115,7 @@ static void option_toggle_display(struct menu *m, int oid, bool cursor,
 	uint8_t attr = curs_attrs[CURS_KNOWN][cursor != 0];
 	bool *options = menu_priv(m);
 
-	c_prt(attr, format("%-45s: %s  (%s)", option_desc(oid),
+	c_prt(attr, format("%-51s: %s  (%s)", option_desc(oid),
 			options[oid] ? "yes" : "no ", option_name(oid)), row, col);
 }
 
@@ -316,7 +316,7 @@ static void option_toggle_menu(const char *name, int page)
 
 	/* We add 10 onto the page amount to indicate we're at birth */
 	if (page == OPT_PAGE_BIRTH) {
-		m->prompt = "You can only modify these options at character birth.";
+		m->prompt = "Challenge options can only be altered during character creation.";
 		m->cmd_keys = "";
 		m->flags = MN_NO_TAGS;
 	} else if (page == OPT_PAGE_BIRTH + 10 || page == OP_INTERFACE) {
@@ -1975,8 +1975,8 @@ void do_cmd_options_item(const char *title, int row)
 static struct menu *option_menu;
 static menu_action option_actions[] = 
 {
-	{ 0, 'a', "User interface options", option_toggle_menu },
-	{ 0, 'b', "Birth (difficulty) options", option_toggle_menu },
+	{ 0, 'a', "Interface Options", option_toggle_menu },
+	{ 0, 'b', "Challenge Options", option_toggle_menu },
 	{ 0, 'x', "Cheat options", option_toggle_menu },
 	{ 0, 'w', "Subwindow setup", do_cmd_options_win },
 	{ 0, 'i', "Item ignoring setup", do_cmd_options_item },

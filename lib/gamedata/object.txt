@@ -70,6 +70,12 @@
 #     to describe the object. Note that lines will need spaces at their
 #     ends or the beginning of the next line to prevent words from running
 #     together.
+#
+# 'smithability' is for abilities that can be added to that type of artifact in smithing.
+#     It has a fairly obvious syntax. Any abilities that are added will need
+#     smithability: lines added (unless they can't be smithed anywhere, of course).
+#     Note that most of the smithability lines are in object_base.txt - here they
+#     are only for hammers and gloves right now.
 
 
 ##### Non-kind (contains the 'pile' picture) #####
@@ -397,6 +403,13 @@ attack:-2:4d1
 defence:0:0d0
 alloc:5:3
 flags:HAND_AND_A_HALF
+smithability:Smithing:Weaponsmith
+smithability:Smithing:Armoursmith
+smithability:Smithing:Enchantment
+smithability:Smithing:Artistry
+smithability:Smithing:Artifice
+smithability:Smithing:Masterpiece
+smithability:Smithing:Ringlore
 
 
 ##### Digging Tools #####
@@ -606,6 +619,13 @@ attack:0:0d0
 defence:0:1d0
 alloc:1:4
 alloc:10:2
+smithability:Archery:Careful Shot
+smithability:Archery:Precision
+smithability:Archery:Point Blank Archery
+smithability:Archery:Versatility
+smithability:Archery:Crippling Shot
+smithability:Archery:Flaming Arrows
+smithability:Archery:Rapid Fire
 
 
 # Index 126

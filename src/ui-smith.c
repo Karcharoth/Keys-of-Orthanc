@@ -679,16 +679,20 @@ static int get_smith_art_abilities(int skill)
 {
 	struct ability *a;
 	int count = 0;
-	for (a = abilities; a; a = a->next) {
-		struct poss_item *poss = a->poss_items;
-		if (a->skill != skill) continue;
-		while (poss) {
-			if (poss->kidx == smith_obj->kind->kidx) break;
-			poss = poss->next;
-		}
-		if (!poss) continue;
-		smith_art_abilities[count++] = a;
-	}
+    if(smith_obj->kind->base->smithabilities){
+        a = smith_obj->kind->base->smithabilities;
+	    for (a; a; a = a->next) {
+		    if (a->skill != skill) continue;
+		    smith_art_abilities[count++] = a;
+	    }
+    }
+    if(smith_obj->kind->smithabilities){
+        a=smith_obj->kind->smithabilities;
+        for (a; a; a = a->next) {
+		    if (a->skill != skill) continue;
+		    smith_art_abilities[count++] = a;
+        }
+    }
 	return count;
 }
 
@@ -746,9 +750,9 @@ static void skill_display(struct menu *menu, int oid, bool cursor, int row,
 	bool chosen = !!locate_ability(smith_obj->abilities, choice[oid]);
 	uint8_t attr = chosen ? COLOUR_BLUE : COLOUR_SLATE;
 	struct object backup;
-	if (!applicable_ability(choice[oid], smith_obj)) {
-		attr = COLOUR_L_DARK;
-	} else {
+	/*if (!applicable_ability(choice[oid], smith_obj)) {
+		attr = COLOUR_L_DARK
+	} else {*/
 		include_pval(smith_obj);
 		object_copy(&backup, smith_obj);
 		if (!chosen) {
@@ -764,7 +768,7 @@ static void skill_display(struct menu *menu, int oid, bool cursor, int row,
 		object_copy(smith_obj, &backup);
 		(void) smith_affordable(smith_obj, &current_cost);
 		exclude_pval(smith_obj);
-	}
+	/*}*/
 	c_put_str(attr, choice[oid]->name, row, col);	
 }
 
@@ -774,8 +778,8 @@ static void skill_display(struct menu *menu, int oid, bool cursor, int row,
 static bool skill_action(struct menu *m, const ui_event *event, int oid)
 {
 	struct ability **choice = m->menu_data;
-	if (event->type == EVT_SELECT) {
-		if (!applicable_ability(choice[oid], smith_obj)) return false;
+	if (event->type == EVT_SELECT) {/*
+		if (!applicable_ability(choice[oid], smith_obj)) return false;*/
 		if (!locate_ability(smith_obj->abilities, choice[oid])) {
 			add_ability(&smith_obj->abilities, choice[oid]);
 		} else {

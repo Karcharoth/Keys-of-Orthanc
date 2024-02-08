@@ -648,6 +648,33 @@ static enum parser_error parse_object_base_smith_brand(struct parser *p) {
 	return PARSE_ERROR_NONE;
 }
 
+static enum parser_error parse_object_base_smithability(struct parser *p) {
+    struct object_base *kb;
+	struct kb_parsedata *d = parser_priv(p);
+	assert(d);
+
+	kb = d->kb;
+	assert(kb);
+
+    int skill = lookup_skill(parser_getsym(p, "skill"));
+	struct ability *a = lookup_ability(skill, parser_getsym(p, "ability")), *n;
+
+    if (!kb)
+        return PARSE_ERROR_MISSING_RECORD_HEADER;
+    if (skill < 0)
+        return PARSE_ERROR_INVALID_SKILL;
+    if (!a)
+        return PARSE_ERROR_INVALID_ABILITY;
+
+    n = mem_zalloc(sizeof(*n));
+    memcpy(n, a, sizeof(*n));
+    n->next =  kb->smithabilities;
+    kb->smithabilities = n;
+    
+    return PARSE_ERROR_NONE;
+    
+}
+
 struct parser *init_parse_object_base(void) {
 	struct parser *p = parser_new();
 
@@ -666,6 +693,7 @@ struct parser *init_parse_object_base(void) {
 	parser_reg(p, "smith-flags str flags", parse_object_base_smith_flags);
 	parser_reg(p, "slay str code", parse_object_base_smith_slay);
 	parser_reg(p, "brand str code", parse_object_base_smith_brand);
+    parser_reg(p, "smithability sym skill sym ability", parse_object_base_smithability);
 	return p;
 }
 
@@ -1494,6 +1522,27 @@ static enum parser_error parse_object_ability(struct parser *p) {
 	return PARSE_ERROR_NONE;
 }
 
+static enum parser_error parse_object_smithability(struct parser *p) {
+	struct object_kind *k = parser_priv(p);
+    int skill = lookup_skill(parser_getsym(p, "skill"));
+	struct ability *a = lookup_ability(skill, parser_getsym(p, "ability")), *n;
+
+    if (!k)
+        return PARSE_ERROR_MISSING_RECORD_HEADER;
+    if (skill < 0)
+        return PARSE_ERROR_INVALID_SKILL;
+    if (!a)
+        return PARSE_ERROR_INVALID_ABILITY;
+
+    n = mem_zalloc(sizeof(*n));
+    memcpy(n, a, sizeof(*n));
+    n->next =  k->smithabilities;
+    k->smithabilities = n;
+    
+    return PARSE_ERROR_NONE;
+    
+}
+
 
 struct parser *init_parse_object(void){
 	struct parser *p = parser_new();
@@ -1525,6 +1574,7 @@ struct parser *init_parse_object(void){
 	parser_reg(p, "brand str code", parse_object_brand);
 	parser_reg(p, "special sym value ?int min", parse_object_special);
 	parser_reg(p, "ability sym skill sym ability", parse_object_ability);
+    parser_reg(p, "smithability sym skill sym ability", parse_object_smithability);
 	return p;
     
 }

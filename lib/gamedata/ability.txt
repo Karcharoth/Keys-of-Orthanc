@@ -5,6 +5,8 @@
 # Do not modify this file unless you know exactly what you are doing,
 # unless you wish to risk possible system crashes and broken savefiles.
 #
+# Note that what item kinds and bases can be given what abilities is
+# defined in their respective files.
 #
 # === Understanding ability.txt ===
 #
@@ -28,13 +30,6 @@
 # 'prerequisite' is skill name and ability name (both needed because some
 # ability names are duplicated across skills) of any prerequisite abilities.
 #
-# 'type' is for possible tvals (object bases).  A 'type' line indicates
-# that any object kind of that type can be used for this ability.
-#
-# 'item' is for possible tval-sval pairs, which correspond to object kinds.
-# One or more 'item' lines are used when we don't want all object kinds of
-# this tval to be possible for this ability.
-#
 # 'desc' is a textual description of the ability
 
 
@@ -48,24 +43,15 @@ name:Power
 level:1
 desc:Gives a bonus of +1 damage sides to your melee attacks, but makes it
 desc: harder to score critical hits (increasing the base required by 1).
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Finesse
 level:2
 desc:Lowers the base number needed to get critical hits with melee
 desc: from 7 to 6.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Throwing Mastery
 level:3
 desc:Gives a +5 bonus to throwing attacks and prevents thrown items breaking.
-type:gloves
 # + all throwing items (hard coded)
 
 name:Polearm Mastery
@@ -73,18 +59,12 @@ level:4
 desc:Gives you +1 to attack with polearms (spears & glaives)
 desc: and lets you set them to receive free attacks on advancing enemies
 desc: when you wait (z or 5).
-type:gloves
-type:polearm
 
 name:Charge
 level:5
 desc:When you attack an opponent immediately after moving towards it,
 desc: your attack is calculated as if you you had 3 points more
 desc: strength and dexterity.
-type:hafted
-type:polearm
-type:sword
-type:boots
 
 name:Follow-Through
 level:6
@@ -92,10 +72,6 @@ prerequisite:Melee:Power
 prerequisite:Melee:Finesse
 desc:Allows you to continue your attack if you kill an opponent,
 desc: moving onto the next adjacent enemy.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Zone of Control
 level:7
@@ -103,10 +79,6 @@ prerequisite:Melee:Finesse
 prerequisite:Melee:Polearm Mastery
 desc:You get a free attack whenever an opponent moves between two
 desc: squares which are adjacent to you.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Subtlety
 level:8
@@ -114,10 +86,6 @@ prerequisite:Melee:Finesse
 desc:Lowers the base number needed to get critical hits with melee
 desc: by 2 points, when you are using a one handed weapon with the
 desc: other hand free.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Momentum
 level:9
@@ -125,10 +93,6 @@ prerequisite:Melee:Charge
 prerequisite:Melee:Follow-Through
 desc:Doubles the upper limit on the amount of strength bonus you can get
 desc: with a weapon of a given weight. It becomes 1 point per 0.5 lbs.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Rapid Attack
 level:10
@@ -136,10 +100,6 @@ prerequisite:Melee:Subtlety
 prerequisite:Stealth:Opportunist
 desc:Grants you an extra melee attack, but your attacks
 desc: are calculated as if you had 3 points less strength and dexterity.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Two Weapon Fighting
 level:11
@@ -147,10 +107,6 @@ prerequisite:Melee:Finesse
 prerequisite:Evasion:Parry
 desc:Allows you to wield a one-handed weapon in your off-hand for an extra
 desc: attack (calculated as if you had 3 points less strength and dexterity).
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Knock Back
 level:12
@@ -158,20 +114,12 @@ prerequisite:Melee:Power
 prerequisite:Melee:Charge
 desc:You have a chance to knock enemies back a square in melee depending
 desc: upon your effective strength and your opponent's constitution.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Whirlwind Attack
 level:13
 prerequisite:Melee:Follow-Through
 desc:Allows you to attack all adjacent enemies if there are no
 desc: adjacent walls or rubble.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Strength
 level:20
@@ -187,52 +135,38 @@ skill:Archery
 name:Careful Shot
 level:1
 desc:Halves the chance of breaking arrows.
-type:bow
-item:gloves:Set of Gloves
 
 name:Precision
 level:3
 desc:Lowers the base number needed to get critical hits with archery
 desc: from 7 to 6.
-type:bow
-item:gloves:Set of Gloves
 
 name:Point Blank Archery
 level:4
 prerequisite:Archery:Careful Shot
 desc:The monster you are firing at cannot get an attack of opportunity.
-type:bow
-item:gloves:Set of Gloves
 
 name:Versatility
 level:5
 desc:If you have more skill points in archery than in melee, you gain a bonus
 desc: to melee of half the difference between them.
-type:bow
-item:gloves:Set of Gloves
 
 name:Crippling Shot
 level:6
 prerequisite:Archery:Precision
 desc:Your critical hits sometimes temporarily slow monsters
 desc: (depending on the level of critical and the monster's Will).
-type:bow
-item:gloves:Set of Gloves
 
 name:Flaming Arrows
 level:7
 desc:Your arrows do an extra die of damage against most targets,
 desc: but they always break.
-type:bow
-item:gloves:Set of Gloves
 
 name:Rapid Fire
 level:8
 prerequisite:Archery:Precision
 desc:Lets you fire two arrows per round, but they are calculated as
 desc: if you had 3 points less strength and dexterity.
-type:bow
-item:gloves:Set of Gloves
 
 name:Dexterity
 level:10
@@ -248,35 +182,24 @@ name:Dodging
 level:2
 desc:Gives you a +3 bonus to evasion if you moved on your last
 desc: turn.
-type:boots
 
 name:Blocking
 level:3
 desc:Doubles the protection roll for your shield against all ranged
 desc: attacks, and against melee as well if you waited last turn (z or 5).
-type:shield
 
 name:Parry
 level:4
 desc:Doubles the evasion bonus granted by your primary melee weapon.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Crowd Fighting
 level:5
 desc:Halves the bonus opponents get for surrounding you.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Leaping
 level:6
 desc:You can leap over a chasm, pit, or false floor if you moved
 desc: towards it the previous turn.
-type:boots
 
 name:Sprinting
 level:7
@@ -284,17 +207,12 @@ prerequisite:Evasion:Dodging
 prerequisite:Evasion:Leaping
 desc:You start moving more quickly if you run four or more squares
 desc: in roughly the same direction.
-type:boots
 
 name:Flanking
 level:8
 desc:Gives you a free attack on an opponent if you step from a square
 desc: which is adjacent to it, to another square which is adjacent
 desc: to it.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Heavy Armour
 level:9
@@ -302,8 +220,6 @@ prerequisite:Evasion:Blocking
 prerequisite:Evasion:Crowd Fighting
 desc:Gives you [1dX] protection, where X is your total armour weight
 desc: divided by 15 lbs.
-type:soft armor
-type:mail
 
 name:Riposte
 level:10
@@ -311,10 +227,6 @@ prerequisite:Evasion:Parry
 desc:It gives you a free attack on an opponent who misses you by
 desc: at least 10 + the weight of your weapon (only once
 desc: per round).
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Controlled Retreat
 level:11
@@ -322,10 +234,6 @@ prerequisite:Evasion:Blocking
 prerequisite:Evasion:Flanking
 desc:Gives you a free attack on an opponent when you step away
 desc: from it, but only if you did not move the previous round.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Dexterity
 level:20
@@ -339,27 +247,17 @@ name:Disguise
 level:3
 desc:Halves any bonuses that awake but unwary enemies have
 desc: to notice you due to you being in their line of sight.
-type:cloak
-type:soft armor
 
 name:Assassination
 level:4
 desc:Gives you a melee bonus against non-alert creatures
 desc: equal to your stealth score.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Cruel Blow
 level:5
 prerequisite:Stealth:Assassination
 desc:Your critical hits sometimes confuse monsters with the pain
 desc: (depending on the level of critical and the monster's Will).
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Opportunist
 level:6
@@ -367,10 +265,6 @@ prerequisite:Stealth:Assassination
 prerequisite:Melee:Follow-Through
 desc:You get a free attack whenever an adjacent opponent
 desc: moves away from you.
-type:hafted
-type:polearm
-type:sword
-type:gloves
 
 name:Exchange Places
 level:7
@@ -378,15 +272,12 @@ prerequisite:Stealth:Disguise
 prerequisite:Evasion:Crowd Fighting
 desc:Allows you to use the 'X' command to exchange places with
 desc: an adjacent enemy (who gets a free attack on you as you pass).
-type:boots
 
 name:Vanish
 level:8
 prerequisite:Stealth:Disguise
 desc:Gives a +10 stealth bonus towards making enemies become unwary
 desc: when you are out of their line of sight.
-type:cloak
-type:soft armor
 
 name:Dexterity
 level:11
@@ -399,34 +290,27 @@ skill:Perception
 name:Eye for Detail
 level:1
 desc:Gives you a bonus of +5 for finding traps and secret doors.
-type:helm
-type:light
 
 name:Focused Attack
 level:2
 desc:Gives you a bonus of half your Perception score to your
 desc: attacks if you passed the previous turn.
-type:helm
 
 name:Keen Senses
 level:3
 desc:Allows you to see enemies who are just beyond the edge of a
 desc: pool of light, and gives a +5 bonus to spot 'invisible' creatures.
-type:helm
-type:light
 
 name:Lore-Keeper
 level:4
 desc:Lets you tell the difference between mere special items
 desc: and artifacts, as well as which items are cursed.
-type:helm
 
 name:Concentration
 level:5
 prerequisite:Perception:Focused Attack
 desc:Gives you a +1 bonus to attack for every consecutive round
 desc: spent attacking the same enemy (to a maximum of Perception/2).
-type:helm
 
 name:Bane
 level:6
@@ -439,14 +323,12 @@ level:7
 prerequisite:Perception:Lore-Keeper
 desc:You can immediately identify every item and have full knowledge
 desc: of all your opponents.
-type:helm
 
 name:Listen
 level:8
 prerequisite:Perception:Keen Senses
 desc:Gives you a chance each turn to detect enemies that you
 desc: cannot see (including around corners and through doors).
-type:helm
 
 name:Master Hunter
 level:9
@@ -454,7 +336,6 @@ prerequisite:Perception:Concentration
 prerequisite:Perception:Bane
 desc:Gives you an attack bonus of +1 for each time you have killed
 desc: an opponent of the same type (up to a maximum of Perception/4).
-type:helm
 
 name:Grace
 level:10
@@ -468,7 +349,6 @@ name:Channeling
 level:2
 desc:Gives you bonuses to using staves and horns
 desc: (+5 to skill checks, always know charges, half voice cost).
-type:helm
 
 name:Mind Over Body
 level:3
@@ -479,19 +359,15 @@ level:4
 desc:Allows you to break the curses on items when you
 desc: attempt to take them off. Spends most of your stamina,
 desc: and drains a point of grace.
-type:helm
 
 name:Inner Light
 level:5
 desc:Increases the intensity of light within your light radius by 1 point
 desc: (without increasing the radius).
-type:helm
-type:light
 
 name:Clarity
 level:5
 desc:Gives you resistance to confusion, stunning, and hallucination.
-type:helm
 
 name:Hardiness
 level:6
@@ -509,9 +385,6 @@ prerequisite:Will:Mind Over Body
 prerequisite:Will:Inner Light
 desc:Gives you bonuses to Strength and Grace when seriously injured:
 desc: +1 when less than or equal to 50% health, +2 when 25%.
-type:helm
-type:soft armor
-type:mail
 
 name:Critical Resistance
 level:9
@@ -519,16 +392,12 @@ prerequisite:Will:Curse Breaking
 prerequisite:Will:Hardiness
 desc:Raises the base number enemies need to get critical hits against
 desc: you by 1 per 5 points of Will.
-type:helm
-type:soft armor
-type:mail
 
 name:Majesty
 level:9
 prerequisite:Will:Channeling
 prerequisite:Will:Inner Light
 desc:Lowers monster morale by half the difference between your Will and theirs.
-type:helm
 
 name:Constitution
 level:12
@@ -543,20 +412,14 @@ skill:Smithing
 name:Weaponsmith
 level:2
 desc:Allows you to create weapons.
-item:hafted:Hammer
-type:gloves
 
 name:Armoursmith
 level:3
 desc:Allows you to create armour.
-item:hafted:Hammer
-type:gloves
 
 name:Enchantment
 level:5
 desc:Allows you to create {special} items.
-item:hafted:Hammer
-type:gloves
 
 name:Artistry
 level:6
@@ -564,31 +427,23 @@ prerequisite:Smithing:Weaponsmith
 prerequisite:Smithing:Armoursmith
 desc:Allows you to create items with bonuses to attack, evasion,
 desc: damage, or protection.
-item:hafted:Hammer
-type:gloves
 
 name:Artifice
 level:8
 prerequisite:Smithing:Enchantment
 desc:Allows you to create highly customised artifacts.
-item:hafted:Hammer
-type:gloves
 
 name:Masterpiece
 level:9
 prerequisite:Smithing:Enchantment
 desc:Allows you to create items that are more difficult than usual.
 desc: Doing so drains your smithing skill for each excess point.
-item:hafted:Hammer
-type:gloves
 
 name:Ringlore
 level:10
 prerequisite:Smithing:Artifice
 prerequisite:Smithing:Masterpiece
 desc:Allows you to create lesser Rings.
-type:gloves
-
 
 name:Grace
 level:10

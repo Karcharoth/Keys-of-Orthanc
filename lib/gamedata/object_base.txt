@@ -78,6 +78,13 @@ slay:WOLF_1
 slay:MAN_1
 slay:HORROR_1
 slay:UNDEAD_1
+smithability:Archery:Careful Shot
+smithability:Archery:Precision
+smithability:Archery:Point Blank Archery
+smithability:Archery:Versatility
+smithability:Archery:Crippling Shot
+smithability:Archery:Flaming Arrows
+smithability:Archery:Rapid Fire
 
 name:digger:Digger~
 graphics:slate
@@ -131,6 +138,25 @@ brand:ELEC_1
 brand:FIRE_1
 brand:COLD_1
 brand:POIS_1
+smithability:Melee:Power
+smithability:Melee:Finesse
+smithability:Melee:Charge
+smithability:Melee:Follow-Through
+smithability:Melee:Zone of Control
+smithability:Melee:Subtlety
+smithability:Melee:Momentum
+smithability:Melee:Rapid Attack
+smithability:Melee:Two Weapon Fighting
+smithability:Melee:Knock Back
+smithability:Melee:Whirlwind Attack
+smithability:Evasion:Parry
+smithability:Evasion:Crowd Fighting
+smithability:Evasion:Flanking
+smithability:Evasion:Riposte
+smithability:Evasion:Controlled Retreat
+smithability:Stealth:Assassination
+smithability:Stealth:Cruel Blow
+smithability:Stealth:Opportunist
 
 name:polearm:Polearm~
 graphics:white
@@ -159,6 +185,26 @@ brand:ELEC_1
 brand:FIRE_1
 brand:COLD_1
 brand:POIS_1
+smithability:Melee:Power
+smithability:Melee:Finesse
+smithability:Melee:Polearm Mastery
+smithability:Melee:Charge
+smithability:Melee:Follow-Through
+smithability:Melee:Zone of Control
+smithability:Melee:Subtlety
+smithability:Melee:Momentum
+smithability:Melee:Rapid Attack
+smithability:Melee:Two Weapon Fighting
+smithability:Melee:Knock Back
+smithability:Melee:Whirlwind Attack
+smithability:Evasion:Parry
+smithability:Evasion:Crowd Fighting
+smithability:Evasion:Flanking
+smithability:Evasion:Riposte
+smithability:Evasion:Controlled Retreat
+smithability:Stealth:Assassination
+smithability:Stealth:Cruel Blow
+smithability:Stealth:Opportunist
 
 name:sword:Bladed weapon~
 graphics:white
@@ -187,6 +233,27 @@ brand:ELEC_1
 brand:FIRE_1
 brand:COLD_1
 brand:POIS_1
+smithability:Melee:Power
+smithability:Melee:Finesse
+smithability:Melee:Charge
+smithability:Melee:Follow-Through
+smithability:Melee:Zone of Control
+smithability:Melee:Subtlety
+smithability:Melee:Momentum
+smithability:Melee:Rapid Attack
+smithability:Melee:Two Weapon Fighting
+smithability:Melee:Knock Back
+smithability:Melee:Whirlwind Attack
+smithability:Evasion:Parry
+smithability:Evasion:Crowd Fighting
+smithability:Evasion:Flanking
+smithability:Evasion:Riposte
+smithability:Evasion:Controlled Retreat
+smithability:Stealth:Assassination
+smithability:Stealth:Cruel Blow
+smithability:Stealth:Opportunist
+
+
 
 name:boots:Boot~
 graphics:light umber
@@ -201,6 +268,12 @@ smith-flags:SUST_DEX
 smith-flags:FREE_ACT | SPEED
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
+smithability:Melee:Charge
+smithability:Evasion:Dodging
+smithability:Evasion:Leaping
+smithability:Evasion:Sprinting
+smithability:Stealth:Exchange Places
+
 
 name:gloves:Glove~
 graphics:light umber
@@ -216,6 +289,33 @@ smith-flags:SUST_STR | SUST_DEX
 smith-flags:FREE_ACT
 smith-flags:HUNGER | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
+smithability:Melee:Power
+smithability:Melee:Finesse
+smithability:Melee:Throwing Mastery
+smithability:Melee:Polearm Mastery
+smithability:Melee:Follow-Through
+smithability:Melee:Zone of Control
+smithability:Melee:Subtlety
+smithability:Melee:Momentum
+smithability:Melee:Rapid Attack
+smithability:Melee:Two Weapon Fighting
+smithability:Melee:Knock Back
+smithability:Melee:Whirlwind Attack
+smithability:Evasion:Parry
+smithability:Evasion:Crowd Fighting
+smithability:Evasion:Flanking
+smithability:Evasion:Riposte
+smithability:Evasion:Controlled Retreat
+smithability:Stealth:Assassination
+smithability:Stealth:Cruel Blow
+smithability:Stealth:Opportunist
+smithability:Smithing:Weaponsmith
+smithability:Smithing:Armoursmith
+smithability:Smithing:Enchantment
+smithability:Smithing:Artistry
+smithability:Smithing:Artifice
+smithability:Smithing:Masterpiece
+smithability:Smithing:Ringlore
 
 name:helm:Helm~
 graphics:light umber
@@ -232,6 +332,21 @@ smith-flags:PROT_FEAR | PROT_BLIND | PROT_CONF | PROT_STUN | PROT_HALLU
 smith-flags:LIGHT | REGEN | SEE_INVIS
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
+smithability:Perception:Eye for Detail
+smithability:Perception:Focused Attack
+smithability:Perception:Keen Senses
+smithability:Perception:Lore-Keeper
+smithability:Perception:Concentration
+smithability:Perception:Lore-Master
+smithability:Perception:Listen
+smithability:Perception:Master Hunter
+smithability:Will:Channeling
+smithability:Will:Curse Breaking
+smithability:Will:Inner Light
+smithability:Will:Clarity
+smithability:Will:Strength in Adversity
+smithability:Will:Critical Resistance
+smithability:Will:Majesty
 
 name:shield:Shield~
 graphics:light umber
@@ -247,6 +362,7 @@ smith-flags:PROT_FEAR | PROT_BLIND | PROT_CONF | PROT_STUN
 smith-flags:LIGHT | REGEN | FREE_ACT
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
+smithability:Evasion:Blocking
 
 name:cloak:Cloak~
 graphics:light umber
@@ -262,6 +378,8 @@ smith-flags:PROT_FEAR | PROT_CONF | PROT_STUN | PROT_HALLU
 smith-flags:SLOW_DIGEST | LIGHT | REGEN | FREE_ACT
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
+smithability:Stealth:Disguise
+smithability:Stealth:Vanish
 
 name:soft armor:Soft Armor~
 graphics:slate
@@ -278,6 +396,10 @@ smith-flags:PROT_FEAR | PROT_BLIND | PROT_CONF | PROT_STUN | PROT_HALLU
 smith-flags:SLOW_DIGEST | LIGHT | REGEN | SEE_INVIS | FREE_ACT | SPEED
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
+smithability:Evasion:Heavy Armour
+smithability:Stealth:Vanish
+smithability:Will:Strength in Adversity
+smithability:Will:Critical Resistance
 
 name:mail:Mail~
 graphics:slate
@@ -294,6 +416,10 @@ smith-flags:PROT_FEAR | PROT_BLIND | PROT_CONF | PROT_STUN | PROT_HALLU
 smith-flags:SLOW_DIGEST | LIGHT | REGEN | SEE_INVIS | FREE_ACT | SPEED
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
+smithability:Evasion:Heavy Armour
+smithability:Will:Strength in Adversity
+smithability:Will:Critical Resistance
+
 
 name:light:Light~
 graphics:yellow
@@ -307,6 +433,9 @@ smith-flags:PROT_FEAR | PROT_BLIND | PROT_HALLU
 smith-flags:LIGHT | SEE_INVIS
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
+smithability:Perception:Eye for Detail
+smithability:Perception:Keen Senses
+smithability:Will:Inner Light
 
 name:ring:Ring~
 graphics:red

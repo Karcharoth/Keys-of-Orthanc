@@ -173,6 +173,7 @@ struct object_base {
     int smith_modifiers[OBJ_MOD_MAX];
 	bool *smith_slays;
 	bool *smith_brands;
+    struct ability *smithabilities; /* What you can smith on the artifact versions */
 
 	int break_perc;
 	int max_stack;
@@ -231,6 +232,7 @@ struct object_kind {
 	char *effect_msg;
 	struct effect *thrown_effect;/**< Effect for thrown potions */
 	struct ability *abilities;	    /* Abilities */
+    struct ability *smithabilities; /* What you can smith on the artifact versions */
 
 	int level;				/**< Level (difficulty of activation) */
 

@@ -167,6 +167,7 @@ desc: but this one still gleams brightly in Isengard's tunnels.
 ## The Filthy Rag of Helm
 ## Rohirric artifact
 ## Stolen by Wormtongue, graverobber?
+## That, or dropped by Helm Hammerhand, who is inexplicably wandering around Isengard
 ## That white clothing Helm wore during the Long Winter
 
 name:of Helm

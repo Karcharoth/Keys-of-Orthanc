@@ -838,7 +838,28 @@ flags:RES_POIS | TERRITORIAL | FRIENDS | SMART
 desc:A spider as big as a dog, covered in thick bristles,
 desc: with the light reflecting off its pale bulbous eyes.
 
-
+# Index 79
+name:Helm Hammerhand
+base:wraith
+depth:7
+rarity:80
+color:w
+speed:2
+health:10d4
+sleep:0
+percept:11
+stealth:7
+will:8
+prot:6:3d4
+blow:HIT:BATTER:15:1d14
+blow:TOUCH:LOSE_STR_CON:8:1d5
+drop-artifact:of Helm
+flags:UNIQUE | MALE | INVISIBLE
+flags:RAND_25 | SMART | MANBANE | PASS_DOOR | HURT_FIRE
+ranged-freq:20
+spells:SCARE
+desc:The spirit of a long-dead ruler of Rohan,
+desc: returned to destroy all in Isengard. Flee!
 
 ##### 8 #####
 
@@ -862,7 +883,7 @@ spells:SHRIEK
 message-vis:SHRIEK:{name} howls for your blood.
 message-invis:SHRIEK:A great voice howls for your blood.
 desc:A great grey wolf, eyes gleaming with wickedness.
-desc: His pack is in search of food.
+desc: Its pack is in search of food.
 
 # Index 82
 name:Battering ram
@@ -970,7 +991,27 @@ desc:Modeled on the Pukel-Men of the Druedain and
 desc: fearful tales of Sauron's Silent Watchers,
 desc: this statue's eyes shine with a dull grey light.
 
-# Index 87
+rarity:15
+
+# Index 88
+name:Oathbreaker
+base:wraith
+depth:8
+rarity:15
+color:D
+speed:2
+health:6d4
+sleep:10
+percept:4
+stealth:7
+will:7
+prot:6:3d4
+blow:HIT:WOUND:5:2d7
+flags:PASS_DOOR
+desc:A pale shadow of a once-proud Dunlending
+desc: warrior who broke his oath.
+
+# Index 89
 #name:Watcher in the Isen
 #base:horror
 #depth:8
@@ -1165,6 +1206,31 @@ message-invis:SHRIEK:A deep voice roars in despair.
 desc:Once a proud shepherd of the trees, this misshapen,
 desc: stony mass cowers, lumbering away fearfully.
 
+name:Forsworn
+base:wraith
+depth:10
+rarity:40
+color:z
+speed:2
+health:10d4
+sleep:10
+percept:5
+stealth:8
+will:7
+prot:6:3d4
+blow:HIT:DISARM:10:2d8
+blow:TOUCH:LOSE_DEX:10:1d5
+flags:PASS_DOOR | ESCORT | MALE
+ranged-freq:20
+spells:SHRIEK | SLOW | DARKNESS
+message-vis:SHRIEK:{name} calls {pronoun} warriors to battle.
+message-invis:SHRIEK:A cold voice calls for battle.
+message-vis:SLOW:{name} whispers of oaths and betrayal.
+message-invis:SLOW:A cold voice whispers of oaths and betrayal.
+desc:The remnant of a Dunlending lord who
+desc: deserted his sworn allies on the day
+desc: of battle, buried in ignominy.
+drop:sword:Sword:100:1d1
 
 ##### 20 #####
 

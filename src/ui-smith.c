@@ -683,14 +683,14 @@ static int get_smith_art_abilities(int skill)
 	int count = 0;
     if(smith_obj->kind->base->smithabilities){
         a = smith_obj->kind->base->smithabilities;
-	    for (a; a; a = a->next) {
+	    for (; a; a = a->next) {
 		    if (a->skill != skill) continue;
 		    smith_art_abilities[count++] = a;
 	    }
     }
     if(smith_obj->kind->smithabilities){
         a=smith_obj->kind->smithabilities;
-        for (a; a; a = a->next) {
+        for (; a; a = a->next) {
 		    if (a->skill != skill) continue;
 		    smith_art_abilities[count++] = a;
         }

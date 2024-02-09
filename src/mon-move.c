@@ -2923,7 +2923,7 @@ static void process_move(struct monster *mon, struct loc tgrid, bool bash)
 		/* Monster is visible and not cloaked */
 		if (monster_is_visible(mon)) {
 			/* Report passing through doors */
-			if (square_isdoor(cave, mon->grid)) {
+			if (square_iscloseddoor(cave, mon->grid)) {
 				if (rf_has(race->flags, RF_PASS_DOOR)) {
 					add_monster_message(mon, MON_MSG_PASS_DOOR, true);
 				}

@@ -141,14 +141,14 @@ int skill_check(struct source attacker, int skill, int difficulty,
 		difficulty += player_bane_bonus(player, mon);
     }
 
-    /* Elf-bane bonus against you */
+    /* Man-bane bonus against you */
 	if ((attacker.what == SRC_PLAYER) && (defender.what == SRC_MONSTER)) {
 		struct monster *mon = cave_monster(cave, defender.which.monster);
-		difficulty += monster_elf_bane_bonus(mon, player);
+		difficulty += monster_man_bane_bonus(mon, player);
 	}
 	if ((defender.what == SRC_PLAYER) && (attacker.what == SRC_MONSTER)) {
 		struct monster *mon = cave_monster(cave, attacker.which.monster);
-		skill += monster_elf_bane_bonus(mon, player);
+		skill += monster_man_bane_bonus(mon, player);
     }
 
 	/* The basic rolls */
@@ -412,8 +412,8 @@ int total_monster_attack(struct player *p, struct monster *mon, int base)
 	/* Penalise distance */
 	att -= distance(p->grid, mon->grid) / 5;
 
-    /* Elf-bane bonus */
-    att += monster_elf_bane_bonus(mon, p);
+    /* Man-bane bonus */
+    att += monster_man_bane_bonus(mon, p);
 	
 	/* Halve attack score for certain situations (and only positive scores!) */
 	if (att > 0) {
@@ -449,8 +449,8 @@ int total_monster_evasion(struct player *p, struct monster *mon, bool archery)
 	/* Penalise being in bright light for light-averse monsters */
 	evn -= light_penalty(mon);
 	
-    /* Elf-bane bonus */
-    evn += monster_elf_bane_bonus(mon, p);
+    /* Man-bane bonus */
+    evn += monster_man_bane_bonus(mon, p);
 	
     /* Halve evasion for certain situations (and only halve positive evasion!)*/
 	if (evn > 0) {

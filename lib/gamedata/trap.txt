@@ -97,7 +97,7 @@ dice:3d4
 desc:It looks like floor, but step incautiously and you will fall through.
 msg:The floor crumbles beneath you!
 msg2:You fall through...
-msg3:...and land somewhere deeper in the Iron Hells.
+msg3:...and land somewhere deeper in the pits of Isengard.
 
 # open pit
 

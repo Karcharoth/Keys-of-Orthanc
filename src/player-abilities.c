@@ -103,7 +103,8 @@ static enum parser_error parse_ability_prereq(struct parser *p) {
 	prereq_num++;
 	return PARSE_ERROR_NONE;
 }
-
+/* This is parsed under object kinds and object types now*/
+/*
 static enum parser_error parse_ability_type(struct parser *p) {
 	struct poss_item *poss;
 	int i;
@@ -116,7 +117,7 @@ static enum parser_error parse_ability_type(struct parser *p) {
 	if (tval < 0)
 		return PARSE_ERROR_UNRECOGNISED_TVAL;
 
-	/* Find all the right object kinds */
+	Find all the right object kinds
 	for (i = 0; i < z_info->k_max; i++) {
 		if (k_info[i].tval != tval) continue;
 		poss = mem_zalloc(sizeof(struct poss_item));
@@ -129,8 +130,8 @@ static enum parser_error parse_ability_type(struct parser *p) {
 	if (!found_one_kind)
 		return PARSE_ERROR_NO_KIND_FOR_ABILITY;
 	return PARSE_ERROR_NONE;
-}
-
+}*/
+/*
 static enum parser_error parse_ability_item(struct parser *p) {
 	struct poss_item *poss;
 	int tval = tval_find_idx(parser_getsym(p, "tval"));
@@ -153,7 +154,7 @@ static enum parser_error parse_ability_item(struct parser *p) {
 		return PARSE_ERROR_INVALID_ITEM_NUMBER;
 	return PARSE_ERROR_NONE;
 }
-
+*/
 static enum parser_error parse_ability_desc(struct parser *p) {
 	struct ability *a = parser_priv(p);
 	if (!a)
@@ -171,8 +172,6 @@ static struct parser *init_parse_ability(void) {
 	parser_reg(p, "name str name", parse_ability_name);
 	parser_reg(p, "level int level", parse_ability_level);
 	parser_reg(p, "prerequisite sym skill sym ability", parse_ability_prereq);
-	parser_reg(p, "type str tval", parse_ability_type);
-	parser_reg(p, "item sym tval sym sval", parse_ability_item);
 	parser_reg(p, "desc str desc", parse_ability_desc);
 	return p;
 }
@@ -218,12 +217,6 @@ static void cleanup_ability(void)
 	while (a) {
 		struct ability *a_next = a->next;
 		struct ability *pre = a->prerequisites;
-		struct poss_item *poss = a->poss_items;
-		while (poss) {
-			struct poss_item *poss_next = poss->next;
-			mem_free(poss);
-			poss = poss_next;
-		}
 		while (pre) {
 			struct ability *pre_next = pre->next;
 			mem_free(pre);
@@ -324,7 +317,7 @@ static int test_ability(const char *name, struct ability *test,
 
 /**
  * Does the given object type support the given ability type?
- */
+ *//*
 bool applicable_ability(struct ability *ability, struct object *obj)
 {
 	struct poss_item *poss = ability->poss_items;
@@ -333,14 +326,14 @@ bool applicable_ability(struct ability *ability, struct object *obj)
 		if (poss->kidx == obj->kind->kidx) return true;
 	}		
 
-	/* Throwing Mastery is OK for throwing items */
+	Throwing Mastery is OK for throwing items
 	if (of_has(obj->flags, OF_THROWING) && (ability->skill == SKILL_MELEE) &&
 		streq(ability->name, "Throwing Mastery")) {
 		return true;
 	}
 
 	return false;
-}
+}*/
 
 /**
  * Reports if a given ability is already in a set of abilities.

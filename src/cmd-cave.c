@@ -78,7 +78,7 @@ static bool trapped_stairs(void)
 		event_signal(EVENT_MESSAGE_FLUSH);
 		msg("You fall through...");
 		event_signal(EVENT_MESSAGE_FLUSH);
-		msg("...and land somewhere deeper in the Iron Hells.");
+		msg("...and land somewhere deeper in the pits of Isengard.");
 		event_signal(EVENT_MESSAGE_FLUSH);
 		history_add(player, "Fell through a crumbling stair",
 					HIST_TRAPPED_STAIRS);

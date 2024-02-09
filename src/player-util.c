@@ -584,7 +584,7 @@ void player_fall_in_chasm(struct player *p)
 	/* Several messages so the player has a chance to see it happen */
 	msg("You fall into the darkness!");
 	event_signal(EVENT_MESSAGE_FLUSH);
-	msg("...and land somewhere deeper in the Iron Hells.");
+	msg("...and land somewhere deeper in the pits of Isengard.");
 	event_signal(EVENT_MESSAGE_FLUSH);
 
 	/* Add to the history */
@@ -837,7 +837,7 @@ void player_blast_floor(struct player *p)
 			event_signal(EVENT_MESSAGE_FLUSH);
 			msg("You fall through...");
 			event_signal(EVENT_MESSAGE_FLUSH);
-			msg("...and land somewhere deeper in the Iron Hells.");
+			msg("...and land somewhere deeper in the pits of Orthanc.");
 			event_signal(EVENT_MESSAGE_FLUSH);
 
 			/* Add to the history */

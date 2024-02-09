@@ -33,7 +33,6 @@ struct ability {
 	bool last;
 	struct ability *prerequisites;
 	int prereq_index[MAX_PREREQS];		/* Temporary field for parsing */
-	struct poss_item *poss_items;
 };
 
 extern struct ability *abilities;

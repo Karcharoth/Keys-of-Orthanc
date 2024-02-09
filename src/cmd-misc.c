@@ -87,7 +87,7 @@ void do_cmd_escape(void)
 	(void)strftime(long_day, 40, "%d %B %Y", localtime(&ct));
 	
 	/* Add notes to the history */
-	strnfmt(buf, sizeof(buf), "You escaped the Iron Hells on %s.", long_day);
+	strnfmt(buf, sizeof(buf), "You escaped the pits of Isengard on %s.", long_day);
 	history_add(player, buf, HIST_ESCAPE);
 	switch (keys_possessed(player)) {
 		case 0:	{

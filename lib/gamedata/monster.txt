@@ -1216,10 +1216,10 @@ health:10d4
 sleep:10
 percept:5
 stealth:8
-will:7
+will:5
 prot:6:3d4
 blow:HIT:DISARM:10:2d8
-blow:TOUCH:LOSE_DEX:10:1d5
+blow:TOUCH:LOSE_DEX:5:1d5
 flags:PASS_DOOR | ESCORT | MALE
 ranged-freq:20
 spells:SHRIEK | SLOW | DARKNESS

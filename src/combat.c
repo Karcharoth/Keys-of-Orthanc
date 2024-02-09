@@ -729,7 +729,7 @@ int protection_roll(struct player *p, int typ, bool melee, aspect prot_aspect)
 					prt += damcalc(obj->pd * mult, obj->ps, prot_aspect);
 				}
 			}
-		} else if ((typ == PROJ_HURT) || (tval_is_jewelry(obj)))	{
+		} else if ((typ == PROJ_HURT) || (tval_is_ring(obj)))	{
 			/* Also add protection if damage is generic 'hurt' or it is
 			 * a ring or amulet slot */
 			if (obj->ps > 0) {

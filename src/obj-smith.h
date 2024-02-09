@@ -27,7 +27,8 @@
 enum smithing_type {
 	SMITH_TYPE_WEAPON,
 	SMITH_TYPE_ARMOUR,
-	SMITH_TYPE_JEWELRY
+	SMITH_TYPE_RING,
+    SMITH_TYPE_LIGHT
 };
 
 /**
@@ -85,7 +86,7 @@ struct smithing_cost {
 	int difficulty;
     bool weaponsmith;
     bool armoursmith;
-    bool jeweller;
+    bool ringlore;
     bool enchantment;
     bool artistry;
     bool artifice;

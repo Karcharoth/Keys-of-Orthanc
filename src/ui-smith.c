@@ -220,8 +220,8 @@ static void show_smith_obj(void)
 		costs++;
 		Term_gotoxy(COL_SMT4 + 2, ROW_SMT3 + costs);
 	}
-	if (current_cost.jeweller) {
-		text_out_c(COLOUR_RED, "Jeweller\n");
+	if (current_cost.ringlore) {
+		text_out_c(COLOUR_RED, "Ringlore\n");
 		costs++;
 		Term_gotoxy(COL_SMT4 + 2, ROW_SMT3 + costs);
 	}
@@ -451,8 +451,10 @@ static void tval_display(struct menu *menu, int oid, bool cursor, int row,
 
 	if (((smithing_tvals[oid].category == SMITH_TYPE_WEAPON) &&
 		 player_active_ability(player, "Weaponsmith")) ||
-		((smithing_tvals[oid].category == SMITH_TYPE_JEWELRY) &&
-		 player_active_ability(player, "Ringlore")) ||
+		((smithing_tvals[oid].category == SMITH_TYPE_RING) &&
+		 player_active_ability(player, "Ringlore")) ||  /* Lights take no ability, 
+        though you probably shouldn't make one without Enchantment. */
+		(smithing_tvals[oid].category == SMITH_TYPE_LIGHT) ||
 		((smithing_tvals[oid].category == SMITH_TYPE_ARMOUR) &&
 		 player_active_ability(player, "Armoursmith"))) {
 		attr = COLOUR_WHITE;
@@ -1272,19 +1274,17 @@ static void check_smithing_menu_row_colors(void)
 
 	/* Recognise which actions are valid, and which need a new ability */
 	for (i = 0; i < N_ELEMENTS(smithing_actions); i++) {
-		if (i == 0) {
-			if (player_active_ability(player, "Weaponsmith") ||
-				player_active_ability(player, "Armoursmith") ||
-				player_active_ability(player, "Jeweller")) {
+		if (i == 0) { 
+    /* This used to color based on the presence of a skill, but lights can be made
+    without one, so the first menu row is always white*/
 				smithing_actions[i].flags = 0;
 			} else {
 				smithing_actions[i].flags = MN_ACT_MAYBE;
 			}
-		}
+		
 		if (i == 1) {
 			if (!smith_obj->kind || smith_obj->artifact || numbers_changed ||
-				tval_is_jewelry(smith_obj) ||
-				strstr(smith_obj->kind->name, "Shovel")) {
+				tval_is_ring(smith_obj)) {
 				smithing_actions[i].flags = MN_ACT_GRAYED;
 			} else if (player_active_ability(player, "Enchantment")) {
 				smithing_actions[i].flags = 0;

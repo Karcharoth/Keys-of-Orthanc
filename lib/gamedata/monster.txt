@@ -1161,7 +1161,7 @@ flags:MALE | UNIQUE | REGENERATE | SMART | KNOCK_BACK | HURT_FIRE | BASH_DOOR | 
 ranged-freq:20
 spells:SHRIEK
 message-vis:SHRIEK:{name} roars in despair.
-message-invis:SHRIEK:{name} roars in despair.
+message-invis:SHRIEK:A deep voice roars in despair.
 desc:Once a proud shepherd of the trees, this misshapen,
 desc: stony mass cowers, lumbering away fearfully.
 

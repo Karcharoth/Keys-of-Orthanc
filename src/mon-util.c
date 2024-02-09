@@ -770,7 +770,7 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 				}
 
 				/* Identify non-special non-artefact weapons/armour */
-				if (tval_has_variable_power(obj) && !tval_is_jewelry(obj)) {
+				if (tval_has_variable_power(obj) && !tval_is_ring(obj)) {
 					object_know(obj);
 				}
 			} else {

@@ -411,7 +411,7 @@ bool object_similar(const struct object *obj1, const struct object *obj2,
 		/* Staves never stack */
 		return false;
 	} else if (tval_is_weapon(obj1) || tval_is_armor(obj1) ||
-			   tval_is_jewelry(obj1) || tval_is_light(obj1)) {
+			   tval_is_ring(obj1) || tval_is_light(obj1)) {
 		/* Require identical knowledge of both items */
 		if (object_is_known(obj1) != object_is_known(obj2)) return false;
 

@@ -185,11 +185,6 @@ bool tval_is_useable(const struct object *obj)
 	}
 }
 
-bool tval_is_jewelry(const struct object *obj)
-{
-	return obj->tval == TV_RING;
-}
-
 bool tval_is_weapon(const struct object *obj)
 {
 	switch (obj->tval) {

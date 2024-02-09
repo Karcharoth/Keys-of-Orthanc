@@ -134,7 +134,7 @@ static bool check_similar(const struct object* obj1, const struct object *obj2) 
 			return false;
 	}
 	if (tval_is_weapon(obj1) || tval_is_armor(obj1) ||
-			tval_is_jewelry(obj1) || tval_is_light(obj1)) {
+			tval_is_ring(obj1) || tval_is_light(obj1)) {
 		if (obj1->att != obj2->att) return false;
 		if (obj1->dd != obj2->dd) return false;
 		if (obj1->ds != obj2->ds) return false;

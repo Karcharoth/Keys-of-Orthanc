@@ -290,7 +290,7 @@ static void wiz_drop_object(struct object *obj)
 	/* Pseudo-id artefacts and specials, identify other weapons/armour */
 	if (obj->artifact || obj->ego) {
 		pseudo_id(obj);
-	} else if (tval_has_variable_power(obj) && !tval_is_jewelry(obj)) {
+	} else if (tval_has_variable_power(obj) && !tval_is_ring(obj)) {
 		object_know(obj);
 	}
 

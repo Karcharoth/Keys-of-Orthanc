@@ -1276,7 +1276,7 @@ struct chunk *gates_gen(struct player *p)
 {
 	int y, x;
 	struct chunk *c;
-	struct room_profile profile = lookup_room_profile("Gates of Angband");
+	struct room_profile profile = lookup_room_profile("Surface of Isengard");
 	struct loc pgrid = loc(0, 0);
 
 	/* Restrict to single-screen size */

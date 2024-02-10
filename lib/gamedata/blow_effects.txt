@@ -35,7 +35,7 @@ desc:stun
 name:SHATTER
 power:60
 eval:300
-desc:cause eqrthquakes
+desc:cause earthquakes
 
 name:EAT_ITEM
 power:0

@@ -190,7 +190,7 @@ msg-silence:You hear the muffled toll of a bell above your head.
 
 # flash
 
-name:flash trap:flash
+name:flash trap:flash trap
 graphics:^:Y
 rarity:3
 min-depth:6
@@ -204,7 +204,7 @@ dice:5
 desc:A trap that can blind you.
 msg-vis:There is a searing flash of light!
 
-# caltrop
+# spikes
 
 name:spikes:spikes
 graphics:^:w
@@ -320,3 +320,76 @@ dice:-40
 desc:A vulnerable section of rock holding up the surrounding area.
 msg-good:You step carefully around the weak spot.
 msg-bad:The entire cavern collapses!
+
+#name:sabotaged false floor:false floor (sabotaged)
+#graphics:*:U
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged dart trap:dart trap (sabotaged)
+#graphics:*:p
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged gas trap:confusion gas trap (sabotaged)
+#graphics:*:G
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+name:sabotaged gas trap:poison gas trap (sabotaged)
+graphics:*:g
+rarity:0
+power:1
+flags:SABOTAGE | FLOOR
+desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged alarm:bell (sabotaged)
+#graphics:*:M
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged flash trap:flash trap (sabotaged)
+#graphics:*:Y
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged spikes:spikes (sabotaged)
+#graphics:*:w
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged net:net (sabotaged)
+#graphics:*:U
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged pillar:deadfall trap (sabotaged)
+#graphics:*:z
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged spot:acid trap (sabotaged)
+#graphics:*:u
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged flame vent:fire trap (sabotaged)
+#graphics:*:o
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.
+
+#name:sabotaged weak point:earthquake trap (sabotaged)
+#graphics:*:W
+#rarity:0
+#flags:SABOTAGE | VISIBLE
+#desc:A trap repurposed by the Sabotage skill.

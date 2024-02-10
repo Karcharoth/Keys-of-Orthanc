@@ -853,7 +853,7 @@ void apply_magic(struct object *obj, int lev, bool allow_artifacts, bool good,
 		if (fine) {
 			apply_magic_armour(obj, lev);
 		}
-	} else if (tval_is_jewelry(obj)) {
+	} else if (tval_is_ring(obj)) {
 		/* For jewellery, some negative values mean cursed and broken */
 		if ((obj->att < 0) || (obj->evn < 0)) {
 			of_on(obj->flags, OF_CURSED);
@@ -888,7 +888,7 @@ void apply_magic(struct object *obj, int lev, bool allow_artifacts, bool good,
 	if (of_has(obj->kind->flags, OF_CURSED)) obj->notice |= (OBJ_NOTICE_CURSED);
 
 	/* Identify non-special non-artefact weapons/armour */
-	if (tval_has_variable_power(obj) && !tval_is_jewelry(obj)) {
+	if (tval_has_variable_power(obj) && !tval_is_ring(obj)) {
 		object_know(obj);
 	}
 }

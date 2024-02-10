@@ -342,7 +342,7 @@ int pval_max(struct object *obj)
 	/* Artefacts have pvals that are mostly unlimited  */
 	if (obj->artifact) {
 		pval += 4;
-	} else if (tval_is_jewelry(obj)) {
+	} else if (tval_is_ring(obj)) {
 		/* Non-artefact rings have a maximum pval of 4 */
 		pval = 4;
 	}
@@ -370,7 +370,7 @@ int pval_min(struct object *obj)
 	/* Artefacts have pvals that are mostly unlimited  */
 	if (obj->artifact) {
 		pval -= 4;
-	} else if (tval_is_jewelry(obj)) {
+	} else if (tval_is_ring(obj)) {
 		/* Non-artefact rings and have a maximum pval of 4 */
 		pval = -4;
 	}
@@ -674,14 +674,14 @@ int object_difficulty(struct object *obj, struct smithing_cost *smithing_cost)
 	smithing_cost->drain = 0;
     smithing_cost->weaponsmith = 0;
     smithing_cost->armoursmith = 0;
-    smithing_cost->jeweller = 0;
+    smithing_cost->ringlore = 0;
     smithing_cost->enchantment = 0;
     smithing_cost->artistry = 0;
     smithing_cost->artifice = 0;
 
 	of_copy(flags, obj->flags);
     
-	if (!tval_is_jewelry(obj)) {
+	if (!tval_is_ring(obj)) {
 
 		dif_inc += kind->level / 2;
 		/* We need to ignore the flags that are basic to the object type
@@ -840,9 +840,9 @@ int object_difficulty(struct object *obj, struct smithing_cost *smithing_cost)
 		!player_active_ability(player, "Armoursmith")) {
 		smithing_cost->armoursmith = 1;
     }
-    if ((cat == SMITH_TYPE_JEWELRY)
+    if ((cat == SMITH_TYPE_RING)
 		&& !player_active_ability(player, "Ringlore")) {
-		smithing_cost->jeweller = 1;
+		smithing_cost->ringlore = 1;
     }
     if (obj->artifact && !player_active_ability(player, "Artifice")) {
 		smithing_cost->artifice = 1;
@@ -926,7 +926,7 @@ bool smith_affordable(struct object *obj, struct smithing_cost *smithing_cost)
 
 	/* Check abilities */
     if (smithing_cost->weaponsmith || smithing_cost->armoursmith ||
-		smithing_cost->jeweller || smithing_cost->enchantment ||
+		smithing_cost->ringlore || smithing_cost->enchantment ||
 		smithing_cost->artistry || smithing_cost->artifice) {
 		return false;
 	}

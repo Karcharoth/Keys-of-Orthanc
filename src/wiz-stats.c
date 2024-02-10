@@ -762,7 +762,7 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 			} else if (strstr(obj->kind->name, "ESP")) {
 				add_stats(ST_TELEP_AMULETS, vault, mon, number);
 			}
-
+*/
 			/* is cursed */ /*
 			if (obj->curses)
 				add_stats(ST_CURSED_AMULETS, vault, mon, number);

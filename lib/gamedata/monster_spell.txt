@@ -92,6 +92,21 @@ lore:throw boulders
 message-vis:{name} hurls a boulder.
 message-invis:You hear a grunt of exertion.
 
+# TODO: Make this actually cause an explosion
+name:BOMB
+mana:0
+best-range:4
+max-range:8
+desire:1
+disturb:1
+use-past-range:100
+effect:BOLT:FIRE
+dice:6d4m$M
+expr:M:ZERO: - 1
+lore:throw explosives
+message-vis:{name} flings an explosive at you.
+message-invis:You hear a gleeful cackle.
+
 name:BR_FIRE
 msgt:BR_FIRE
 mana:10

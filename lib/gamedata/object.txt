@@ -626,6 +626,8 @@ smithability:Archery:Versatility
 smithability:Archery:Crippling Shot
 smithability:Archery:Flaming Arrows
 smithability:Archery:Rapid Fire
+smithability:Stealth:Sabotage
+smithability:Stealth:Burglary
 
 
 # Index 126
@@ -683,9 +685,10 @@ desc: 7,000 turns of light.
 
 
 # Lesser Jewel is at index 500
+# * is a more beautiful symbol, but that's now for sabotaged traps.
 # Index 500
 name:& Lesser Jewel~
-graphics:*:B
+graphics:~:B
 type:light
 pval:1
 depth:3

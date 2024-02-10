@@ -105,7 +105,7 @@ bool knock_back(struct loc grid1, struct loc grid2)
 				square_isdisarmabletrap(cave, grid3)) {
 				disturb(player, false);
 				square_reveal_trap(cave, grid3, true);
-				hit_trap(grid3);
+				player_hit_trap(grid3);
 			} else if (square_ischasm(cave, grid3)) {
 				player_fall_in_chasm(player);
 			}
@@ -729,7 +729,7 @@ int protection_roll(struct player *p, int typ, bool melee, aspect prot_aspect)
 					prt += damcalc(obj->pd * mult, obj->ps, prot_aspect);
 				}
 			}
-		} else if ((typ == PROJ_HURT) || (tval_is_jewelry(obj)))	{
+		} else if ((typ == PROJ_HURT) || (tval_is_ring(obj)))	{
 			/* Also add protection if damage is generic 'hurt' or it is
 			 * a ring or amulet slot */
 			if (obj->ps > 0) {

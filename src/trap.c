@@ -644,7 +644,6 @@ static bool square_verify_trap(struct chunk *c, struct loc grid, int vis)
 		/* Take note */
 		square_note_spot(c, grid);
     }
-
     /* Report failure */
     return false;
 }
@@ -1054,23 +1053,21 @@ void player_hit_trap(struct loc grid)
 /**
  * Trigger a sabotaged trap on a monster. 
  */
-void monster_hit_sabotage(struct monster *mon)
+void monster_hit_sabotage(struct monster *mon, struct loc grid)
 {
+
 	bool ident = false;
 	struct trap *trap;
 	struct effect *effect;
-
 	/* Look at the traps in this grid */
-	for (trap = square_trap(cave, mon->grid); trap; trap = trap->next) {
+	for (trap = square_trap(cave, grid); trap; trap = trap->next) {
     /*	struct song *silence = lookup_song("Silence");*/
 		bool saved = false;
-
 		/* Require that trap be capable of affecting the monster */
 		if (!trf_has(trap->kind->flags, TRF_SABOTAGE)) continue;
 
 		/* Disturb the player */
 		disturb(player, false);
-
 
         /*TODO: Secondary messages don't work with Sabotage; maybe they should.*/
         assert (!trap->kind->msg2);
@@ -1086,15 +1083,15 @@ void monster_hit_sabotage(struct monster *mon)
 
 		/* Save, or fire off the trap */
 		if (saved) {
-			if (trap->kind->msg_good && square_isview(cave, mon->grid))
+			if (trap->kind->msg_good && square_isview(cave, grid))
 				msg("%s", trap->kind->msg_good);
 		} else {
         /* TODO: Make sabotaged traps out of sight trigger a sound message if player succeeds
         a perception check based on distance; figure out irl audio too.*/
 
-			if (trap->kind->msg_bad && square_isview(cave, mon->grid))
+			if (trap->kind->msg_bad && square_isview(cave, grid))
 				msg("%s", trap->kind->msg_bad);
-			if (trap->kind->msg_vis && square_isview(cave, mon->grid))
+			if (trap->kind->msg_vis && square_isview(cave, grid))
 				msg("%s", trap->kind->msg_vis);
 
 			/* Affect stealth */
@@ -1105,7 +1102,7 @@ void monster_hit_sabotage(struct monster *mon)
 			effect_do(effect, source_trap(trap), NULL, &ident, false, 0, NULL);
 
 			/* Trap may have gone or the player may be dead */
-			if (!square_trap(cave, mon->grid) || player->is_dead) break;
+			if (!square_trap(cave, grid) || player->is_dead) break;
 
 			/* Do any extra effects (hack - use ident as the trigger - NRM) */
 			if (trap->kind->msg_xtra && ident) {
@@ -1132,7 +1129,7 @@ void monster_hit_sabotage(struct monster *mon)
 
 		/* Some traps drop you onto them */
 		if (trf_has(trap->kind->flags, TRF_PIT))
-			monster_swap(mon->grid, trap->grid);
+			monster_swap(grid, trap->grid);
 
 		/* Some traps disappear after activating */
 		if (trf_has(trap->kind->flags, TRF_ONETIME)) {
@@ -1146,12 +1143,12 @@ void monster_hit_sabotage(struct monster *mon)
 	}
 
     /* Verify traps (remove marker if appropriate) */
-    if (square_verify_trap(cave, trap->grid, 0)) {
+    if (square_verify_trap(cave, grid, 0)) {
 		/* At least one trap left.  Memorize the grid. */
-		square_mark(cave, trap->grid);
+		square_mark(cave, grid);
     }
-    if (square_isseen(cave, trap->grid)) {
-		square_light_spot(cave, trap->grid);
+    if (square_isseen(cave, grid)) {
+		square_light_spot(cave, grid);
     }
 }
 

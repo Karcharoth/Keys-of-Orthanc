@@ -1055,7 +1055,6 @@ void player_hit_trap(struct loc grid)
  */
 void monster_hit_sabotage(struct monster *mon, struct loc grid)
 {
-
 	bool ident = false;
 	struct trap *trap;
 	struct effect *effect;

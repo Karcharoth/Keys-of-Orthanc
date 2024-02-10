@@ -906,7 +906,7 @@ void monster_death(struct monster *mon, struct player *p, bool by_player,
 	/* Play a special sound if the monster was unique */
 	if (rf_has(race->flags, RF_UNIQUE)) {
 		/* Special flag setting for killing Saruman */
-		if (race->base == lookup_monster_base("Saruman")) {
+		if (rf_has(race->flags, RF_QUESTOR)) {
 			soundfx = MSG_KILL_KING;
 			p->saruman_slain = true;
 

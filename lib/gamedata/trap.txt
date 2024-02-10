@@ -343,7 +343,7 @@ name:sabotaged gas trap:poison gas trap (sabotaged)
 graphics:*:g
 rarity:0
 power:1
-flags:SABOTAGE | FLOOR
+flags:SABOTAGE | VISIBLE
 desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged alarm:bell (sabotaged)

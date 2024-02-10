@@ -799,7 +799,6 @@ bool place_new_monster_one(struct chunk *c, struct loc grid,
 	struct monster monster_body;
 	int index = group_info.index;
 	struct monster_group *group;
-
 	assert(square_in_bounds(c, grid));
 	assert(race && race->name);
 

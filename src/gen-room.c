@@ -524,7 +524,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 
 				/* Carcharoth */
 				case 'C': {
-					place_new_monster_one(c, grid, lookup_monster("Carcharoth"),
+					place_new_monster_one(c, grid, lookup_monster("goblin miner"),
 										  true, true, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -533,7 +533,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* silent watcher */
 				case 'H': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Silent watcher"),
+										  lookup_monster("scuttling horror"),
 										  true, false, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -542,7 +542,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* easterling spy */
 				case '@': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Easterling spy"),
+										  lookup_monster("dunlending warrior"),
 										  true, false, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -551,7 +551,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* orc champion */
 				case 'o': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Orc champion"), true,
+										  lookup_monster("dunlending chieftain"), true,
 										  false, info, ORIGIN_DROP_VAULT);
 					break;
 				}
@@ -559,7 +559,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* orc captain */
 				case 'O': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Orc captain"), true,
+										  lookup_monster("uruk-hai champion"), true,
 										  false, info, ORIGIN_DROP_VAULT);
 					break;
 				}
@@ -567,7 +567,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* cat warrior */
 				case 'f': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Cat warrior"), true,
+										  lookup_monster("Goblin Footpad"), true,
 										  false, info, ORIGIN_DROP_VAULT);
 					break;
 				}
@@ -575,7 +575,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* cat assassin */
 				case 'F': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Cat assassin"), true,
+										  lookup_monster("Half-orc Spy"), true,
 										  false, info, ORIGIN_DROP_VAULT);
 					break;
 				}
@@ -583,7 +583,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* troll guard */
 				case 'T': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Troll guard"), true,
+										  lookup_monster("Venomthorn"), true,
 										  false, info, ORIGIN_DROP_VAULT);
 					break;
 				}
@@ -591,7 +591,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* barrow wight */
 				case 'W': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Barrow wight"), true,
+										  lookup_monster("Goblin Archer"), true,
 										  false, info, ORIGIN_DROP_VAULT);
 					break;
 				}
@@ -599,7 +599,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* young cold drake */
 				case 'y': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("Young cold-drake"),
+										  lookup_monster("Oathbreaker"),
 										  true, false, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -608,7 +608,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				/* young fire drake */
 				case 'Y': {
 					place_new_monster_one(c, grid,
-									  lookup_monster("Young fire-drake"),
+									  lookup_monster("Helm Hammerhand"),
 									  true, false, info, ORIGIN_DROP_VAULT);
 					break;
 				}
@@ -643,7 +643,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 										
                 /* Aldor */
 				case 'A': {
-					place_new_monster_one(c, grid, lookup_monster("Aldor"),
+					place_new_monster_one(c, grid, lookup_monster("Iron Horror"),
 										  true, true, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -651,7 +651,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
                     
 				/* Glaurung */
 				case 'D': {
-					place_new_monster_one(c, grid, lookup_monster("Glaurung"),
+					place_new_monster_one(c, grid, lookup_monster("Forsworn"),
 										  true, true, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -659,7 +659,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 
 				/* Gothmog */
 				case 'R': {
-					place_new_monster_one(c, grid, lookup_monster("Gothmog"),
+					place_new_monster_one(c, grid, lookup_monster("Oakroot"),
 										  true, true, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -667,7 +667,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 					
 				/* Ungoliant */
 				case 'U': {
-					place_new_monster_one(c, grid, lookup_monster("Ungoliant"),
+					place_new_monster_one(c, grid, lookup_monster("Ugluk"),
 										  true, true, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -675,7 +675,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 
 				/* Gorthaur */
 				case 'G': {
-					place_new_monster_one(c, grid, lookup_monster("Gorthaur"),
+					place_new_monster_one(c, grid, lookup_monster("Gorol"),
 										  true, true, info,
 										  ORIGIN_DROP_VAULT);
 					break;
@@ -683,7 +683,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 					
 				/* Morgoth */
 				case 'V': {
-					place_new_monster_one(c, grid, lookup_monster("Morgoth, Lord of Darkness"),
+					place_new_monster_one(c, grid, lookup_monster("Saruman of Many Colours"),
 										  true, true, info,
 										  ORIGIN_DROP_VAULT);
 					break;

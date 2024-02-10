@@ -380,6 +380,7 @@ smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
 smithability:Stealth:Disguise
 smithability:Stealth:Vanish
+smithability:Stealth:Burglary
 
 name:soft armor:Soft Armor~
 graphics:slate
@@ -398,6 +399,7 @@ smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
 smithability:Evasion:Heavy Armour
 smithability:Stealth:Vanish
+smithability:Stealth:Burglary
 smithability:Will:Strength in Adversity
 smithability:Will:Critical Resistance
 

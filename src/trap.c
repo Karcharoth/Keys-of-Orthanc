@@ -888,7 +888,7 @@ void place_trap(struct chunk *c, struct loc grid, int t_idx, int trap_level)
 }
 
 /**
- * Reveal some of the player traps in a square
+ * Reveal some of the player and monster traps in a square
  */
 bool square_reveal_trap(struct chunk *c, struct loc grid, bool domsg)
 {
@@ -896,13 +896,13 @@ bool square_reveal_trap(struct chunk *c, struct loc grid, bool domsg)
 	struct trap *trap = square_trap(c, grid);
     
     /* Check there is a player trap */
-    if (!square_isplayertrap(c, grid))
+    if (!square_isplayertrap(c, grid) && !square_ismonstertrap(c, grid))
 		return false;
 
 	/* Scan the grid */
 	while (trap) {
 		/* Skip non-player traps */
-		if (!trf_has(trap->flags, TRF_TRAP)) {
+		if (!trf_has(trap->flags, TRF_TRAP) && !trf_has(trap->flags, TRF_SABOTAGE)) {
 			trap = trap->next;
 			continue;
 		}

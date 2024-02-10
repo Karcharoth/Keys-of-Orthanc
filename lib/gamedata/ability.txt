@@ -253,28 +253,43 @@ level:4
 desc:Gives you a melee bonus against non-alert creatures
 desc: equal to your stealth score.
 
-name:Cruel Blow
+name:Sabotage
 level:5
+desc:When you disarm a trap, you may try to sabotage it instead.
+desc: This is more difficult, uses Stealth, and repurposes
+desc: the trap to hit enemies (more depending on the level of
+desc: success).
+
+name:Cruel Blow
+level:6
 prerequisite:Stealth:Assassination
 desc:Your critical hits sometimes confuse monsters with the pain
 desc: (depending on the level of critical and the monster's Will).
 
+#Unfinished; does absolutely nothing as of yet
+name:Burglary
+level:7
+prerequisite:Stealth:Disguise
+desc:You may attempt to rob enemies with a Stealth roll,
+desc: though only enemies marked in purple will have useful loot.
+desc: Marking is based on perception; robbed enemies drop no loot.
+
 name:Opportunist
-level:6
+level:8
 prerequisite:Stealth:Assassination
 prerequisite:Melee:Follow-Through
 desc:You get a free attack whenever an adjacent opponent
 desc: moves away from you.
 
 name:Exchange Places
-level:7
+level:9
 prerequisite:Stealth:Disguise
 prerequisite:Evasion:Crowd Fighting
 desc:Allows you to use the 'X' command to exchange places with
 desc: an adjacent enemy (who gets a free attack on you as you pass).
 
 name:Vanish
-level:8
+level:10
 prerequisite:Stealth:Disguise
 desc:Gives a +10 stealth bonus towards making enemies become unwary
 desc: when you are out of their line of sight.

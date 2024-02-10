@@ -1062,6 +1062,9 @@ static bool do_cmd_disarm_aux(struct loc grid)
 	int skill, power, difficulty, result;
     struct trap *trap = square(cave, grid)->trap;
 	bool more = false;
+    bool sabotage = false;
+    int sabotage_success;
+    char *trapname = trap->kind->name;
 
 	/* Verify legality */
 	if (!do_cmd_disarm_test(grid)) return (false);
@@ -1076,9 +1079,14 @@ static bool do_cmd_disarm_aux(struct loc grid)
 	}
 	if (!trap)
 		return false;
-
-	/* Get the base disarming skill */
-	skill = player->state.skill_use[SKILL_PERCEPTION];
+    if  (!player_active_ability(player, "Sabotage") || !get_check("Attempt to sabotage this trap?")) {
+	    /* Get the base disarming skill */
+	    skill = player->state.skill_use[SKILL_PERCEPTION];
+    } /* Using Sabotage, skill is based on Stealth*/
+    else {
+    sabotage = true;
+    skill = player->state.skill_use[SKILL_STEALTH];
+    }
 
 	/* Special case: player is stuck in a web */
 	if (square_iswebbed(cave, grid) && loc_eq(grid, player->grid)) {
@@ -1086,16 +1094,23 @@ static bool do_cmd_disarm_aux(struct loc grid)
 		return !more;
 	}
 
-	/* Determine trap power; (uint8_t)-1 is undisarmable */
+	/* Determine trap power; (uint8_t)-1 is undisarmable*/
 	power = trap->power;
 	if (power == (uint8_t)-1) {
 		msg("You cannot disarm the %s.", trap->kind->name);
 		return false;
 	}
-
+    if (sabotage == true && trf_has(trap->flags, TRF_GLYPH)) {
+        msg("You cannot sabotage the %s.", trap->kind->name);
+        return false;
+    }
 	/* Base difficulty is the trap power */
-	difficulty = power;
-
+    if (sabotage == false) {
+    	difficulty = power;
+    }
+    else {
+        difficulty = power + 5;
+    }
 	/* Penalize some conditions */
 	if (player->timed[TMD_BLIND] ||	no_light(player) ||
 		player->timed[TMD_IMAGE])
@@ -1112,18 +1127,35 @@ static bool do_cmd_disarm_aux(struct loc grid)
 		/* Success, always succeed with player trap */
 		if (trf_has(trap->flags, TRF_GLYPH)) {
 			msgt(MSG_DISARM, "You have scuffed the %s.", trap->kind->name);
-		} else {
+		} else if (sabotage == false) {
 			msgt(MSG_DISARM, "You have disarmed the %s.", trap->kind->name);
-		}
-
+		} else {
+            /* Sabotage is active, so count the level of success - implement in a bit */
+            /*sabotage_success = MAX(((result)/5), 0);*/ 
+            msgt(MSG_DISARM, "You have sabotaged the %s.", trap->kind->name);
+            /* Save the trap's name with " (sabotaged)" added - 
+            the trap will be deleted in a moment so we won't have its name*/
+            strcat(trapname, " (sabotaged)"); 
+        }
+        
 		/* Trap is gone */
 		square_destroy_trap(cave, grid);
 		square_unmark(cave, grid);
+        /* New trap!*/
+        if (sabotage == true) {
+            place_trap (cave, grid, lookup_trap(trapname)->tidx, 0);
+            square_reveal_trap(cave, grid, true);
+        }
+
 	} else if (result > -3) {
 		/* Failure by a small amount allows one to keep trying */
-		event_signal(EVENT_INPUT_FLUSH);
-		msg("You failed to disarm the %s.", trap->kind->name);
-
+        if (sabotage == false){
+		    event_signal(EVENT_INPUT_FLUSH);
+		    msg("You failed to disarm the %s.", trap->kind->name);
+        } else {
+            event_signal(EVENT_INPUT_FLUSH);
+		    msg("You failed to sabotage the %s.", trap->kind->name);
+        }
 		/* Player can try again */
 		more = true;
 	} else {

@@ -324,7 +324,7 @@ msg-bad:The entire cavern collapses!
 #name:sabotaged false floor:false floor (sabotaged)
 #graphics:*:U
 #rarity:0
-#flags:SABOTAGE | FLOOR | VISIBLE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged dart trap:dart trap (sabotaged)
@@ -339,11 +339,12 @@ msg-bad:The entire cavern collapses!
 #flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
-#name:sabotaged gas trap:poison gas trap (sabotaged)
-#graphics:*:g
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
+name:sabotaged gas trap:poison gas trap (sabotaged)
+graphics:*:g
+rarity:0
+power:1
+flags:SABOTAGE | FLOOR
+desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged alarm:bell (sabotaged)
 #graphics:*:M

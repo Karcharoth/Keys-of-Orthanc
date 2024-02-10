@@ -691,6 +691,7 @@ attack:0:0d0
 defence:0:0d0
 flags:SUST_DEX
 values:DEX[1] | STEALTH[1]
+ability:Stealth:Sabotage
 ##ability:Alchemy:Explosives
 desc:These long, thin cloth gloves were worn by a
 desc: goblin alchemist of ages past, and grant his

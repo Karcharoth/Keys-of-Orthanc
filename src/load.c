@@ -1003,7 +1003,7 @@ int rd_artifacts(void)
 
 	/* Change Saruman's stats if his keys have been taken */
 	if (is_artifact_created(keys)) {
-		struct monster_race *race = lookup_monster("Saruman of Many Colors");
+		struct monster_race *race = lookup_monster("Saruman of Many Colours");
 		race->wil += 2;
 		race->per += 4;
 	}

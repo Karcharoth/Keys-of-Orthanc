@@ -2449,7 +2449,7 @@ static void process_move_exchange_places(struct monster *mon)
 		square_reveal_trap(cave, grid, true);
 
         /* Hit the trap */
-        hit_trap(grid);
+        player_hit_trap(grid);
     }
 }
 

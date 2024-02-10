@@ -768,6 +768,14 @@ bool square_isplayertrap(struct chunk *c, struct loc grid)
 }
 
 /**
+ * True if there is a player trap (known or unknown) in this square.
+ */
+bool square_ismonstertrap(struct chunk *c, struct loc grid)
+{
+    return square_trap_flag(c, grid, TRF_SABOTAGE);
+}
+
+/**
  * True if there is a visible trap in this square.
  */
 bool square_isvisibletrap(struct chunk *c, struct loc grid)

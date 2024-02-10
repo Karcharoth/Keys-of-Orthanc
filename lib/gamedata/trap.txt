@@ -324,71 +324,71 @@ msg-bad:The entire cavern collapses!
 #name:sabotaged false floor:false floor (sabotaged)
 #graphics:*:U
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged dart trap:dart trap (sabotaged)
 #graphics:*:p
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged gas trap:confusion gas trap (sabotaged)
 #graphics:*:G
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged gas trap:poison gas trap (sabotaged)
 #graphics:*:g
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged alarm:bell (sabotaged)
 #graphics:*:M
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged flash trap:flash trap (sabotaged)
 #graphics:*:Y
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged spikes:spikes (sabotaged)
 #graphics:*:w
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged net:net (sabotaged)
 #graphics:*:U
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged pillar:deadfall trap (sabotaged)
 #graphics:*:z
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged spot:acid trap (sabotaged)
 #graphics:*:u
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged flame vent:fire trap (sabotaged)
 #graphics:*:o
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.
 
 #name:sabotaged weak point:earthquake trap (sabotaged)
 #graphics:*:W
 #rarity:0
-#flags:SABOTAGE
+#flags:SABOTAGE | VISIBLE
 #desc:A trap repurposed by the Sabotage skill.

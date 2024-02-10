@@ -739,7 +739,7 @@ void do_cmd_exchange(struct command *cmd)
 	if (square_isplayertrap(cave, grid)) {
 		/* Hit the trap */
 		square_reveal_trap(cave, grid, true);
-		hit_trap(grid);
+		player_hit_trap(grid);
 	} else if (square_ischasm(cave, grid)) {
 		player_fall_in_chasm(player);
 	}
@@ -1130,7 +1130,7 @@ static bool do_cmd_disarm_aux(struct loc grid)
 		/* Failure by a larger amount sets off the trap */
 		monster_swap(player->grid, grid);
 		msg("You set off the %s!", trap->kind->name);
-		hit_trap(grid);
+		player_hit_trap(grid);
 	}
 
 	/* Result */
@@ -1554,10 +1554,10 @@ static void player_land(struct player *p)
 	if (square_issecrettrap(cave, p->grid)) {
 		disturb(player, false);
 		square_reveal_trap(cave, p->grid, true);
-		hit_trap(p->grid);
+		player_hit_trap(p->grid);
 	} else if (square_isdisarmabletrap(cave, p->grid)) {
 		disturb(player, false);
-		hit_trap(p->grid);
+		player_hit_trap(p->grid);
 	}
 
 	/* Fall into chasms */
@@ -1841,7 +1841,7 @@ void move_player(int dir, bool disarm)
 			if (square_isplayertrap(cave, grid)) {
 				disturb(player, false);
 				square_reveal_trap(cave, grid, true);
-				hit_trap(grid);
+				player_hit_trap(grid);
 			} else if (square_ischasm(cave, grid)) {
 				player_fall_in_chasm(player);
 			}

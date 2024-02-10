@@ -12,6 +12,7 @@
 TRF(NONE,		"")
 TRF(GLYPH,		"Is a glyph")
 TRF(TRAP,		"Is a player trap")
+TRF(SABOTAGE,	"Is a sabotaged monster trap")
 TRF(VISIBLE,	"Is visible")
 TRF(INVISIBLE,	"Is invisible")
 TRF(FLOOR,		"Can be set on a floor")

@@ -190,7 +190,9 @@ static void player_pickup_aux(struct player *p, struct object *obj,
 	p->previous_action[0] = ACTION_MISC;
 
 	/* Take a turn */
-	p->upkeep->energy_use = z_info->move_energy;
+    /* Hack: if auto_max exists don't spend energy, or you could die horribly to autograbbing
+    arrows while being chased*/
+    if (!auto_max)	p->upkeep->energy_use = z_info->move_energy;
 }
 
 /**

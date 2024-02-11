@@ -1119,7 +1119,7 @@ bool build_throne(struct chunk *c, struct loc centre)
 bool build_gates(struct chunk *c, struct loc centre)
 {
 	int y1, x1, y2, x2;
-	struct vault *v = random_vault(c->depth, "Gates of Angband", false);
+	struct vault *v = random_vault(c->depth, "Surface of Isengard", false);
 	if (v == NULL) {
 		return false;
 	}

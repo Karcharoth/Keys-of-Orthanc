@@ -1527,9 +1527,9 @@ static bool textui_get_aim_dir(int *dp, int range)
 	while (!dir) {
 		/* Choose a prompt */
 		if (!target_okay(range))
-			p = "Direction ('*' or <click> to target, \"'\" for closest, Escape to cancel)? ";
+			p = "Direction ('t' or <click> to target, 'f' or 'c' for closest, Escape to cancel)? ";
 		else
-			p = "Direction ('5' for target, '*' or <click> to re-target, Escape to cancel)? ";
+			p = "Direction ('f' for target, 't' or <click> to re-target, 'c' for closest, Escape to cancel)? ";
 
 		/* Get a command (or Cancel) */
 		if (!get_com_ex(p, &ke)) break;
@@ -1544,15 +1544,15 @@ static bool textui_get_aim_dir(int *dp, int range)
 				break;
 			}
 		} else if (ke.type == EVT_KBRD) {
-			if (ke.key.code == '*') {
+			if (ke.key.code == 't') {
 				/* Set new target, use target if legal */
 				if (target_set_interactive(TARGET_KILL, loc(-1, -1), range))
 					dir = DIR_TARGET;
-			} else if (ke.key.code == '\'') {
+			} else if (ke.key.code == 'c' || (ke.key.code == 'f' && !target_okay(range))) {
 				/* Set to closest target */
 				if (target_set_closest(TARGET_KILL, NULL))
 					dir = DIR_TARGET;
-			} else if (ke.key.code == 't' || ke.key.code == '5' ||
+			} else if (ke.key.code == '5' || ke.key.code == 'f' ||
 					   ke.key.code == '0' || ke.key.code == '.') {
 				if (target_okay(range))
 					dir = DIR_TARGET;

@@ -1317,7 +1317,7 @@ bool target_set_interactive(int mode, struct loc grid, int range)
 				}
 			}
 
-		} else if (event_is_key(press, ESCAPE) || event_is_key(press, 'q')) {
+		} else if (event_is_key(press, ESCAPE) || event_is_key(press, 'Q')) {
 			/* Cancel */
 			done = true;
 
@@ -1364,8 +1364,8 @@ bool target_set_interactive(int mode, struct loc grid, int range)
 				}
 			}
 
-		} else if (event_is_key(press, 't') || event_is_key(press, '5')
-				|| event_is_key(press, '0') || event_is_key(press, '.')) {
+		} else if (event_is_key(press, 't') || event_is_key(press, '5') || event_is_key(press, '0')
+                || event_is_key(press, '.') || event_is_key(press, KC_ENTER)) {
 			/* Set a target and done */
 			if (use_interesting_mode) {
 				struct monster *m_local = square_monster(cave, grid);

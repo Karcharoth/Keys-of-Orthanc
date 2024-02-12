@@ -1400,7 +1400,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 						}
 
 						/* Message if applicable */
-						if (!potion_effect || (pdam > 0)) {
+						if ((!potion_effect || (pdam > 0)) && !monster_is_visible(mon)) {
 							message_pain(mon, pdam ? pdam : result.dmg);
 						}
 

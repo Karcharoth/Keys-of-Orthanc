@@ -41,7 +41,7 @@
 #include "project.h"
 
 /**
- * Makes Morgoth drop his Iron Crown with an appropriate message.
+ * Makes Saruman drop the Keys of Orthanc with an appropriate message.
  */
 void drop_the_keys(struct monster *mon, const char *message)
 {

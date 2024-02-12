@@ -606,12 +606,12 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
 						if (rf_has(mon->race->flags, RF_QUESTOR) &&
 							!is_artifact_created(keys)) {
 							if (net_dam >= 10) {
-								if (p->morgoth_hits == 0) {
+								if (p->saruman_hits == 0) {
 									msg("The force of your blow damages his belt, and the Keys swing precariously.");
-									p->morgoth_hits++;
-								} else if (player->morgoth_hits == 1) {
+									p->saruman_hits++;
+								} else if (player->saruman_hits == 1) {
 									drop_the_keys(mon, "You strike the keys off his belt, and they falls to the ground nearby.");
-									p->morgoth_hits++;
+									p->saruman_hits++;
 								}
 							}
 						}
@@ -1389,12 +1389,12 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 						if (rf_has(mon->race->flags, RF_QUESTOR) &&
 							!is_artifact_created(keys)) {
 							if (result.dmg >= 10) {
-								if (p->morgoth_hits == 0) {
+								if (p->saruman_hits == 0) {
 									msg("The force of your %s damages his belt, and the Keys swing precariously.", archery ? "shot" : "blow");
-									p->morgoth_hits++;
-								} else if (player->morgoth_hits == 1) {
+									p->saruman_hits++;
+								} else if (player->saruman_hits == 1) {
 									drop_the_keys(mon, "You strike the keys off his belt, and they falls to the ground nearby.");
-									p->morgoth_hits++;
+									p->saruman_hits++;
 								}
 							}
 						}

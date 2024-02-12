@@ -534,7 +534,7 @@ void wr_player(void)
 	wr_byte(player->stealth_mode);
 	wr_byte(player->self_made_arts);
 	wr_byte(player->truce);
-	wr_byte(player->morgoth_hits);
+	wr_byte(player->saruman_hits);
 	wr_byte(player->crown_hint);
 	wr_byte(player->crown_shatter);
 	wr_byte(player->cursed);

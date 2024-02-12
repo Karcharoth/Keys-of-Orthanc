@@ -2901,7 +2901,9 @@ static void lookup_symbol(char sym, char *buf, size_t max)
 	/* Look through monster base templates */
 	for (base = rb_info; base; base = base->next) {
 		/* Slight hack - P appears twice */
-		if (streq(base->name, "Morgoth")) continue;
+        /* It doesn't seem necessary to keep this, but I don't know what it does.
+        Chesterton's Fence.*/
+		/*if (streq(base->name, "Morgoth")) continue;*/
 		if (char_matches_key(base->d_char, sym)) {
 			strnfmt(buf, max, "%c - %s.", sym, base->text);
 			return;
@@ -2911,7 +2913,9 @@ static void lookup_symbol(char sym, char *buf, size_t max)
 	/* Look through monster templates */
 	for (race = r_info; race; race = race->next) {
 		/* Slight hack - P appears twice */
-		if (streq(race->name, "Morgoth")) continue;
+        /* It doesn't seem necessary to keep this, but I don't know what it does.
+        Chesterton's Fence.*/
+		/*if (streq(race->name, "Morgoth")) continue;*/
 		if (char_matches_key(race->d_char, sym)) {
 			strnfmt(buf, max, "%c - %s.", sym, race->name);
 			return;

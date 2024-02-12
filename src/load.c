@@ -821,7 +821,7 @@ int rd_player(void)
 	rd_byte(&player->self_made_arts);
 	rd_byte(&tmp8u);
 	player->truce = tmp8u ? true : false;
-	rd_byte(&player->morgoth_hits);
+	rd_byte(&player->saruman_hits);
 	rd_byte(&tmp8u);
 	player->crown_hint = tmp8u ? true : false;
 	rd_byte(&tmp8u);

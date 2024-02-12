@@ -463,7 +463,7 @@ static bool monster_check_active(struct monster *mon)
 		/* Monsters that are fleeing are active, so as to get far enough away */
 		return true;
 	} else if (rf_has(mon->race->flags, RF_QUESTOR) && player->on_the_run) {
-		/* Morgoth is always active during the escape */
+		/* Saruman is always active during the escape */
 		return true;
 	} else if ((mon->race->level > 17) && (player->depth == 0)) {
 		/* Pursuing creatures are always active at the Gates */
@@ -2933,7 +2933,7 @@ static void process_move(struct monster *mon, struct loc tgrid, bool bash)
 
 		/* Take objects on the floor */
 		process_move_grab_objects(mon, next);
-	}
+	
 
 
 	/* Notice changes in view */

@@ -869,7 +869,7 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 /* 
  * A rewrite of monster death that gets rid of some features
  * That we don't want to deal with.  Namely, no notifying the
- * player and no generation of Morgoth artifacts
+ * player and no generation of Saruman artifacts
  * 
  * It also replaces drop near with a new function that drops all 
  * the items on the exact square that the monster was on.

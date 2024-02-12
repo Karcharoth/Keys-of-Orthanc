@@ -595,23 +595,13 @@ bool make_attack_normal(struct monster *mon, struct player *p)
 				/* Message */
 				msg("%s just misses you.", m_name);
 
-				/* Morgoth */
-				if (rf_has(mon->race->flags, RF_QUESTOR)) {
-					msg("You leap aside as his great hammer slams into the floor.");
-					msg("The ground shakes violently with the force of the blow!");
+				msg("You leap aside as its stony fist slams into the floor.");
+				msg("The ground shakes violently with the force of the blow!");
 
-					/* Radius 5 earthquake centered on the monster */
-					effect_simple(EF_EARTHQUAKE, source_monster(mon->midx), "0",
-								  0, 5, 1, NULL);
-				} else {
-					/* Kemenrauko */
-					msg("You leap aside as its stony fist slams into the floor.");
-					msg("The ground shakes violently with the force of the blow!");
-
-					/* Radius 4 earthquake centered on the monster */
-					effect_simple(EF_EARTHQUAKE, source_monster(mon->midx), "0",
+				/* Radius 4 earthquake centered on the monster */
+				effect_simple(EF_EARTHQUAKE, source_monster(mon->midx), "0",
 								  0, 4, 1, NULL);
-				}
+				
 			} else {
 				/* A normal miss */
 				msg("%s misses you.", m_name);

@@ -435,11 +435,8 @@ int monster_sing(struct monster *mon, struct song *song)
     monster_desc(m_name, sizeof(m_name), mon, MDESC_SHOW);
 
     /* Messages for beginning a new song */
-    if (mon->song != song) {
+if ((mon->song != song) && monster_is_visible(mon)) {
         msg("%s begins a song of %s.", m_name, song->desc);
-
-        /* And remember the monster is now singing this song */
-        mon->song = song;
 
         /* Disturb if message printed */
         disturb(player, true);

@@ -341,18 +341,13 @@ void do_cmd_wield(struct command *cmd)
 	}
 
 	/* Usually if the slot is taken we'll just replace the item in the slot,
-	 * but for rings we need to ask the user which slot they actually
-	 * want to replace */
+	 * but rings are unusual, and not quite finished. No ring can be 
+     * equipped if you're wearing a ring. */
 	if (tval_is_ring(obj)) {
-		if (cmd_get_item(cmd, "replace", &equip_obj,
-						 /* Prompt */ "Replace which ring? ",
-						 /* Error  */ "Error in do_cmd_wield(), please report.",
-						 /* Filter */ tval_is_ring,
-						 /* Choice */ USE_EQUIP) != CMD_OK)
+		object_desc(o_name, sizeof(o_name), equip_obj, ODESC_BASE,
+			player);
+        msg("You must remove your %s to put on a new Ring.", o_name);
 			return;
-
-		/* Change slot if necessary */
-		slot = equipped_item_slot(player->body, equip_obj);
 	}
 
 	/* Ask about two weapon fighting if necessary */

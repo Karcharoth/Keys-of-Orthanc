@@ -2914,7 +2914,7 @@ static void lookup_symbol(char sym, char *buf, size_t max)
 	for (race = r_info; race; race = race->next) {
 		/* Slight hack - P appears twice */
         /* It doesn't seem necessary to keep this, but I don't know what it does.
-        Chesterton's Fence.*/
+        So I'm commenting it out - Chesterton's Fence.*/
 		/*if (streq(race->name, "Morgoth")) continue;*/
 		if (char_matches_key(race->d_char, sym)) {
 			strnfmt(buf, max, "%c - %s.", sym, race->name);

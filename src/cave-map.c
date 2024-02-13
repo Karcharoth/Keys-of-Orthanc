@@ -140,6 +140,7 @@ void map_info(struct loc grid, struct grid_data *g)
 		/* Scan the square trap list */
 		while (trap) {
 			if (trf_has(trap->flags, TRF_TRAP) ||
+                trf_has(trap->flags, TRF_SABOTAGE) ||
 				trf_has(trap->flags, TRF_GLYPH)) {
 				/* Accept the trap */
 				g->trap = trap;

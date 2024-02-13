@@ -1064,7 +1064,6 @@ static bool do_cmd_disarm_aux(struct loc grid)
 	bool more = false;
     bool sabotage = false;
     int sabotage_success;
-    char *trapname = trap->kind->name;
 
 	/* Verify legality */
 	if (!do_cmd_disarm_test(grid)) return (false);
@@ -1079,6 +1078,8 @@ static bool do_cmd_disarm_aux(struct loc grid)
 	}
 	if (!trap)
 		return false;
+    char *trapdesc = trap->kind->desc;
+
     if  (!player_active_ability(player, "Sabotage") || !get_check("Attempt to sabotage this trap?")) {
 	    /* Get the base disarming skill */
 	    skill = player->state.skill_use[SKILL_PERCEPTION];
@@ -1133,9 +1134,6 @@ static bool do_cmd_disarm_aux(struct loc grid)
             /* Sabotage is active, so count the level of success - implement in a bit */
             /*sabotage_success = MAX(((result)/5), 0);*/ 
             msgt(MSG_DISARM, "You have sabotaged the %s.", trap->kind->name);
-            /* Save the trap's name with " (sabotaged)" added - 
-            the trap will be deleted in a moment so we won't have its name*/
-            strcat(trapname, " (sabotaged)"); 
         }
         
 		/* Trap is gone */
@@ -1143,7 +1141,7 @@ static bool do_cmd_disarm_aux(struct loc grid)
 		square_unmark(cave, grid);
         /* New trap!*/
         if (sabotage == true) {
-            place_trap (cave, grid, lookup_trap(trapname)->tidx, 0);
+            place_trap (cave, grid, lookup_trap(trapdesc, true)->tidx, 0);
             square_reveal_trap(cave, grid, true);
         }
 

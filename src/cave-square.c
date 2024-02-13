@@ -632,7 +632,7 @@ bool square_iswebbable(struct chunk *c, struct loc grid) {
  * True if the square is a chasm or a known pit or false floor
  */
 bool square_isleapable(struct chunk *c, struct loc grid) {
-	struct trap_kind *false_floor = lookup_trap("false floor");
+	struct trap_kind *false_floor = lookup_trap("false floor", false);
 	if (square_istrap(c, grid) &&
 		square_trap_specific(c, grid, false_floor->tidx)) {
 		return true;
@@ -722,13 +722,13 @@ bool square_isnoscent(struct chunk *c, struct loc grid) {
 
 bool square_iswarded(struct chunk *c, struct loc grid)
 {
-	struct trap_kind *rune = lookup_trap("glyph of warding");
+	struct trap_kind *rune = lookup_trap("glyph of warding", false);
 	return square_trap_specific(c, grid, rune->tidx);
 }
 
 bool square_iswebbed(struct chunk *c, struct loc grid)
 {
-	struct trap_kind *web = lookup_trap("web");
+	struct trap_kind *web = lookup_trap("web", false);
 	return square_trap_specific(c, grid, web->tidx);
 }
 
@@ -1131,7 +1131,7 @@ void square_add_glyph(struct chunk *c, struct loc grid, int type)
 	struct trap_kind *glyph = NULL;
 	switch (type) {
 		case GLYPH_WARDING: {
-			glyph = lookup_trap("glyph of warding");
+			glyph = lookup_trap("glyph of warding", false);
 			break;
 		}
 		default: {
@@ -1144,7 +1144,7 @@ void square_add_glyph(struct chunk *c, struct loc grid, int type)
 
 void square_add_web(struct chunk *c, struct loc grid)
 {
-	struct trap_kind *web = lookup_trap("web");
+	struct trap_kind *web = lookup_trap("web", false);
 	place_trap(c, grid, web->tidx, 0);
 }
 

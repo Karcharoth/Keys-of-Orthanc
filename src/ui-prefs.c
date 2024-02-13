@@ -726,7 +726,7 @@ static enum parser_error parse_prefs_trap(struct parser *p)
 	if (streq(idx_sym, "*")) {
 		trap_idx = -1;
 	} else {
-		struct trap_kind *trap = lookup_trap(idx_sym);
+		struct trap_kind *trap = lookup_trap(idx_sym, false);
 		if (!trap) {
 			return PARSE_ERROR_UNRECOGNISED_TRAP;
 		} else {

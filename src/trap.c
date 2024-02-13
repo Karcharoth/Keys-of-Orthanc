@@ -536,7 +536,7 @@ struct trap_kind *trap_info;
 /**
  * Find a trap kind based on its short description
  */
-struct trap_kind *lookup_trap(const char *desc)
+struct trap_kind *lookup_trap(const char *desc, bool sabotage)
 {
 	int i;
 	struct trap_kind *closest = NULL;
@@ -546,7 +546,11 @@ struct trap_kind *lookup_trap(const char *desc)
 		struct trap_kind *kind = &trap_info[i];
 		if (!kind->name)
 			continue;
-
+        /*Hack: check if we are searching for sabotaged traps.
+        0 means any, 1 means only sabotaged*/
+        /* If we are searching and it doesn't have sabotage, move on*/
+        if(sabotage && !trf_has(kind->flags, TRF_SABOTAGE))
+            continue;
 		/* Test for equality */
 		if (streq(desc, kind->desc))
 			return kind;
@@ -1117,18 +1121,15 @@ void monster_hit_sabotage(struct monster *mon, struct loc grid)
 			}
 		}
 
-		/* Some traps drop you a dungeon level */
-        /* TODO: Make DOWN traps work with Sabotage*//*
-		if (trf_has(trap->kind->flags, TRF_DOWN)) {
-			int next = dungeon_get_next_level(player, player->depth, 1);
-			dungeon_change_level(player, next);
-			history_add(player, format("Fell through a %s", trap->kind->name),
-						HIST_FELL_DOWN_LEVEL);
-		}*/
 
 		/* Some traps drop you onto them */
 		if (trf_has(trap->kind->flags, TRF_PIT))
 			monster_swap(grid, trap->grid);
+
+        /* Some traps create a chasm under monsters */
+		if (trf_has(trap->kind->flags, TRF_DOWN)) {
+			square_set_feat(cave, trap->grid, FEAT_CHASM);
+		}
 
 		/* Some traps disappear after activating */
 		if (trf_has(trap->kind->flags, TRF_ONETIME)) {
@@ -1138,6 +1139,7 @@ void monster_hit_sabotage(struct monster *mon, struct loc grid)
 
 		/* Trap may have gone */
 		if (!square_trap(cave, trap->grid)) break;
+
 
 	}
 
@@ -1160,7 +1162,7 @@ void monster_hit_sabotage(struct monster *mon, struct loc grid)
  */
 void square_set_door_lock(struct chunk *c, struct loc grid, int power)
 {
-	struct trap_kind *lock = lookup_trap("door lock");
+	struct trap_kind *lock = lookup_trap("door lock", false);
 	struct trap *trap;
 
 	/* Verify it's a closed door */
@@ -1185,7 +1187,7 @@ void square_set_door_lock(struct chunk *c, struct loc grid, int power)
  */
 int square_door_lock_power(struct chunk *c, struct loc grid)
 {
-	struct trap_kind *lock = lookup_trap("door lock");
+	struct trap_kind *lock = lookup_trap("door lock", false);
 	struct trap *trap;
 
 	/* Verify it's a closed door */
@@ -1212,7 +1214,7 @@ int square_door_lock_power(struct chunk *c, struct loc grid)
  */
 void square_set_door_jam(struct chunk *c, struct loc grid, int power)
 {
-	struct trap_kind *jam = lookup_trap("door jam");
+	struct trap_kind *jam = lookup_trap("door jam", false);
 	struct trap *trap;
 
 	/* Verify it's a closed door */
@@ -1237,7 +1239,7 @@ void square_set_door_jam(struct chunk *c, struct loc grid, int power)
  */
 int square_door_jam_power(struct chunk *c, struct loc grid)
 {
-	struct trap_kind *jam = lookup_trap("door jam");
+	struct trap_kind *jam = lookup_trap("door jam", false);
 	struct trap *trap;
 
 	/* Verify it's a closed door */
@@ -1268,7 +1270,7 @@ int square_door_jam_power(struct chunk *c, struct loc grid)
  */
 void square_set_forge(struct chunk *c, struct loc grid, int uses)
 {
-	struct trap_kind *forge = lookup_trap("forge use");
+	struct trap_kind *forge = lookup_trap("forge use", false);
 	struct trap *trap;
 
 	/* Verify it's a forge */
@@ -1293,7 +1295,7 @@ void square_set_forge(struct chunk *c, struct loc grid, int uses)
  */
 int square_forge_uses(struct chunk *c, struct loc grid)
 {
-	struct trap_kind *forge = lookup_trap("forge use");
+	struct trap_kind *forge = lookup_trap("forge use", false);
 	struct trap *trap;
 
 	/* Verify it's a forge */

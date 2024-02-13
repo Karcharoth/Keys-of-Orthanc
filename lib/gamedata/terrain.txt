@@ -329,3 +329,18 @@ priority:20
 flags:LOS | PROJECT | INTERESTING | PASSABLE
 desc:Strong chains binding together the pillars of Isengard.
 desc:  Can be walked across by anything.  Does not break line of sight.
+
+name:Orthanc-stone
+graphics:#:D
+priority:20
+flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH
+confused-msg:bashes into a wall
+desc:You can dig through most walls but these are impenetrable.  The ancient
+desc: creators of Orthanc made these.
+
+name:Gates of Isengard
+graphics:+:s
+priority:20
+flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH | INTERESTING
+confused-msg:bashes into a gate
+desc:The huge gates of Isengard cannot be opened.

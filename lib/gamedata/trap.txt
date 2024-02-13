@@ -123,24 +123,9 @@ flags:TRAP | FLOOR | PIT | SURFACE
 effect:PIT:SPIKED
 desc:A hole dug in the excavation of Isengard, full of dangerous debris.
 
-# dart
-
-name:dart trap:dart
-graphics:^:p
-rarity:4
-min-depth:8
-max-depth:15
-power:3
-flags:TRAP | FLOOR
-effect:DART:STR:15:1
-dice:1d15
-effect:NOISE:PLAYER
-dice:5
-desc:A trap which shoots darts.
-
 # gas -- confuse
 
-name:gas trap:confusion gas trap
+name:confusion gas trap:confusion gas trap
 graphics:^:G
 rarity:4
 min-depth:0
@@ -158,7 +143,7 @@ msg:A vapor fills the air and you feel yourself becoming lightheaded.
 
 # gas -- confuse
 
-name:gas trap:poison gas trap
+name:poison gas trap:poison gas trap
 graphics:^:g
 rarity:1
 min-depth:0
@@ -173,21 +158,6 @@ desc:A trap that releases venomous gas.
 msg:A venomous vapor fills your lungs.
 
 
-# alarm
-
-name:alarm:bell
-graphics:^:M
-rarity:3
-min-depth:0
-max-depth:10
-power:2
-flags:TRAP | FLOOR
-effect:NOISE:PLAYER
-dice:-20
-desc:A trap that wakes nearby monsters.
-msg:You hear a bell toll loudly above your head.
-msg-silence:You hear the muffled toll of a bell above your head.
-
 # flash
 
 name:flash trap:flash trap
@@ -201,6 +171,8 @@ effect:TIMED_INC:BLIND
 dice:5d4
 effect:NOISE:PLAYER
 dice:5
+effect:LIGHT_AREA:LIGHT:0
+dice:1d4
 desc:A trap that can blind you.
 msg-vis:There is a searing flash of light!
 
@@ -248,7 +220,7 @@ graphics:^:U
 rarity:1
 min-depth:7
 max-depth:20
-power:5
+power:-1
 flags:TRAP | FLOOR
 effect:NOISE:PLAYER
 dice:-10
@@ -263,7 +235,7 @@ graphics:^:z
 rarity:1
 min-depth:14
 max-depth:10
-power:7
+power:-1
 flags:TRAP | FLOOR | ONETIME | SURFACE
 effect:DEADFALL
 dice:4
@@ -279,7 +251,7 @@ graphics:^:u
 rarity:1
 min-depth:3
 max-depth:10
-power:5
+power:10
 flags:TRAP | FLOOR
 effect:SPOT:ACID:0
 dice:4d4
@@ -309,7 +281,7 @@ graphics:^:W
 rarity:5
 min-depth:7
 max-depth:10
-power:13
+power:-1
 flags:TRAP | FLOOR | SAVE_SKILL
 effect:DEADFALL
 dice:1
@@ -321,75 +293,76 @@ desc:A vulnerable section of rock holding up the surrounding area.
 msg-good:You step carefully around the weak spot.
 msg-bad:The entire cavern collapses!
 
-#name:sabotaged false floor:false floor (sabotaged)
-#graphics:*:U
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
+#This is stupid: I never made a NONE effect, so I have to put an effect here.
+#I hope NOISE does nothing but I'm too lazy to check.
+name:false floor (sabotaged):false floor (sabotaged)
+graphics:*:U
+rarity:0
+power:6
+flags:SABOTAGE | VISIBLE | DOWN | ONETIME
+effect:NOISE
+desc:A trap repurposed by the Sabotage skill.
+msg-vis:Your sabotaged trap triggers!
 
-#name:sabotaged dart trap:dart trap (sabotaged)
-#graphics:*:p
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
+name:confusion gas trap (sabotaged):confusion gas trap (sabotaged)
+graphics:*:G
+rarity:0
+power:5
+flags:SABOTAGE | VISIBLE
+effect:SPOT:CONFUSION:1
+dice:4d4
+desc:A trap repurposed by the Sabotage skill.
+msg-vis:Your sabotaged trap triggers!
 
-#name:sabotaged gas trap:confusion gas trap (sabotaged)
-#graphics:*:G
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
-
-name:sabotaged gas trap:poison gas trap (sabotaged)
+name:poison gas trap (sabotaged):poison gas trap (sabotaged)
 graphics:*:g
+rarity:0
+power:5
+flags:SABOTAGE | VISIBLE
+effect:SPOT:POIS:1
+dice:4d4
+desc:A trap repurposed by the Sabotage skill.
+msg-vis:Your sabotaged trap triggers!
+
+
+name:flash trap (sabotaged):flash trap (sabotaged)
+graphics:*:Y
+rarity:0
+power:4
+flags:SABOTAGE | VISIBLE
+effect:SPOT:CONFUSION:0
+dice:5d4
+effect:LIGHT_AREA:LIGHT:0
+dice:1d4
+desc:A trap repurposed by the Sabotage skill.
+msg-vis:Your sabotaged trap triggers!
+
+name:spikes (sabotaged):spikes (sabotaged)
+graphics:*:w
 rarity:0
 power:1
 flags:SABOTAGE | VISIBLE
+effect:SPOT:SLOW:0
+dice:4d4
 desc:A trap repurposed by the Sabotage skill.
+msg-vis:Your sabotaged trap triggers!
 
-#name:sabotaged alarm:bell (sabotaged)
-#graphics:*:M
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
+name:discoloured spot (sabotaged):acid trap (sabotaged)
+graphics:*:u
+rarity:0
+power:10
+flags:SABOTAGE | VISIBLE
+effect:SPOT:ACID:0
+dice:4d4
+desc:A trap repurposed by the Sabotage skill.
+msg-vis:Your sabotaged trap triggers!
 
-#name:sabotaged flash trap:flash trap (sabotaged)
-#graphics:*:Y
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
-
-#name:sabotaged spikes:spikes (sabotaged)
-#graphics:*:w
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
-
-#name:sabotaged net:net (sabotaged)
-#graphics:*:U
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
-
-#name:sabotaged pillar:deadfall trap (sabotaged)
-#graphics:*:z
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
-
-#name:sabotaged spot:acid trap (sabotaged)
-#graphics:*:u
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
-
-#name:sabotaged flame vent:fire trap (sabotaged)
-#graphics:*:o
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
-
-#name:sabotaged weak point:earthquake trap (sabotaged)
-#graphics:*:W
-#rarity:0
-#flags:SABOTAGE | VISIBLE
-#desc:A trap repurposed by the Sabotage skill.
+name:flame vent (sabotaged):fire trap (sabotaged)
+graphics:*:o
+rarity:0
+power:8
+flags:SABOTAGE | VISIBLE
+effect:SPOT:FIRE:1
+dice:8d4
+desc:A trap repurposed by the Sabotage skill.
+msg-vis:Your sabotaged trap triggers!

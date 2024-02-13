@@ -82,8 +82,7 @@ extern struct trap_kind *trap_info;
 /**
  * An actual trap.
  */
-struct trap
-{
+struct trap{
 	uint8_t t_idx;			/**< Trap kind index */
 	struct trap_kind *kind;		/**< Trap kind */
 	struct trap *next;		/**< Next trap in this location */
@@ -97,7 +96,7 @@ struct trap
 
 extern struct file_parser trap_parser;
 
-struct trap_kind *lookup_trap(const char *desc);
+struct trap_kind *lookup_trap(const char *desc, bool sabotage);
 bool square_trap_specific(struct chunk *c, struct loc grid, int t_idx);
 bool square_trap_flag(struct chunk *c, struct loc grid, int flag);
 bool square_reveal_trap(struct chunk *c, struct loc grid, bool domsg);

@@ -841,7 +841,7 @@ void do_cmd_wiz_create_trap(struct command *cmd)
 
 		if (!get_string("Create which trap? ", s, sizeof(s))) return;
 		if (!get_int_from_string(s, &tidx)) {
-			const struct trap_kind *trap = lookup_trap(s);
+			const struct trap_kind *trap = lookup_trap(s, false);
 
 			tidx = (trap) ? trap->tidx : z_info->trap_max;
 		}

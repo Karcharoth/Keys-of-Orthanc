@@ -2491,7 +2491,7 @@ static enum parser_error parse_section_trap(struct parser *p)
 	if (priv->curr_value->key->comp != TUTORIAL_SECTION) {
 		return PARSE_ERROR_UNDEFINED_DIRECTIVE;
 	}
-	trap = lookup_trap(parser_getsym(p, "name"));
+	trap = lookup_trap(parser_getsym(p, "name"), false);
 	vis = false;
 	flags = string_make(parser_getstr(p, "flags"));
 	s = strtok(flags, " |");

@@ -726,19 +726,18 @@ bool effect_handler_EARTHQUAKE(effect_handler_context_t *context)
 }
 
 /**
- * Project from the source grid at the player, with full intensity out to
+ * Project from the source grid, with full intensity out to
  * its radius
  * Affect the player
  */
 bool effect_handler_SPOT(effect_handler_context_t *context)
 {
-	struct loc pgrid = player->grid;
 	int rad = context->radius ? context->radius : 0;
 
-	int flg = PROJECT_JUMP | PROJECT_PLAY;
+	int flg = PROJECT_JUMP | PROJECT_PLAY | PROJECT_ITEM | PROJECT_KILL;
 
 	/* Aim at the target */
-	if (project(context->origin, rad, pgrid, context->value.dice,
+	if (project(context->origin, rad, origin_get_loc(context->origin), context->value.dice,
 				context->value.sides, context->value.m_bonus, context->subtype,
 				flg, 0, true, NULL))
 		context->ident = true;

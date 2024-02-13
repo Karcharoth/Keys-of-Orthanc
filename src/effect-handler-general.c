@@ -856,11 +856,10 @@ bool effect_handler_DARKEN_LEVEL(effect_handler_context_t *context)
 }
 
 /**
- * Call light around the player
+ * Call light around the origin
  */
 bool effect_handler_LIGHT_AREA(effect_handler_context_t *context)
 {
-	struct loc pgrid = player->grid;
 	int rad = context->radius ? context->radius : 0;
 
 	int flg = PROJECT_BOOM | PROJECT_GRID | PROJECT_KILL;
@@ -870,7 +869,7 @@ bool effect_handler_LIGHT_AREA(effect_handler_context_t *context)
 		msg("You are surrounded by a white light.");
 
 	/* Lots of light */
-	(void) project(source_player(), rad, pgrid, context->value.dice,
+	(void) project(source_player(), rad, origin_get_loc(context->origin), context->value.dice,
 				   context->value.sides, -1, context->subtype, flg, 0, false,
 				   NULL);
 

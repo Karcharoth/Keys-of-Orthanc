@@ -948,7 +948,6 @@ cost:400
 attack:0:0d0
 defence:0:0d0
 alloc:9:3
-charges:4d2
 staminapercent:40
 effect:DETECT_TRAPS
 effect:DETECT_DOORS
@@ -978,7 +977,6 @@ cost:250
 attack:0:0d0
 defence:0:0d0
 alloc:5:4
-charges:4d2
 staminapercent:30
 effect:LIGHT_AREA:LIGHT:7
 dice:$B
@@ -999,11 +997,9 @@ attack:0:0d0
 defence:0:0d0
 alloc:4:3
 alloc:8:5
-charges:2d2
 staminapercent:40
 effect:IDENTIFY
 desc:It identifies an item. 
-desc: (This may be aborted without using up a charge.) 
 
 
 # Index 197
@@ -1016,7 +1012,6 @@ cost:400
 attack:0:0d0
 defence:0:0d0
 alloc:10:3
-charges:4d2
 staminapercent:70
 effect:MAP_AREA
 #dice:$B
@@ -1034,7 +1029,6 @@ cost:400
 attack:0:0d0
 defence:0:0d0
 alloc:9:3
-charges:2d2
 staminapercent:50
 effect:DETECT_OBJECTS
 #dice:$B
@@ -1052,7 +1046,6 @@ cost:400
 attack:0:0d0
 defence:0:0d0
 alloc:8:3
-charges:4d2
 staminapercent:70
 effect:DETECT_MONSTERS
 #dice:$B
@@ -1071,7 +1064,6 @@ attack:0:0d0
 defence:0:0d0
 alloc:6:3
 alloc:9:3
-charges:4d2
 staminapercent:30
 effect:PROJECT_LOS:SLEEP
 dice:$B
@@ -1090,7 +1082,6 @@ attack:0:0d0
 defence:0:0d0
 alloc:6:3
 alloc:9:3
-charges:4d2
 staminapercent:50
 effect:PROJECT_LOS:FEAR
 dice:$B
@@ -1108,7 +1099,6 @@ attack:0:0d0
 defence:0:0d0
 alloc:6:3
 alloc:9:3
-charges:4d2
 staminapercent:30
 effect:PROJECT_LOS:CONFUSION
 dice:$B
@@ -1125,7 +1115,6 @@ cost:400
 attack:0:0d0
 defence:0:0d0
 alloc:11:3
-charges:2d2
 staminapercent:50
 effect:GLYPH:WARDING
 desc:It can be used to create glyphs of warding, which your opponents
@@ -1143,7 +1132,6 @@ attack:0:0d0
 defence:0:0d0
 alloc:8:3
 alloc:21:2
-charges:2d2
 staminapercent:70
 effect:EARTHQUAKE
 dice:$B
@@ -1164,7 +1152,6 @@ cost:500
 attack:0:0d0
 defence:0:0d0
 alloc:9:2
-charges:2d2
 staminapercent:50
 effect:SPHERE:FORCE:20
 dice:$Bd4
@@ -1182,7 +1169,6 @@ attack:0:0d0
 defence:0:0d0
 alloc:4:2
 alloc:9:3
-charges:2d2
 staminapercent:40
 effect:HEAL_HP
 dice:m$B

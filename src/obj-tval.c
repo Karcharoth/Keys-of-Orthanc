@@ -96,11 +96,17 @@ bool tval_can_have_nourishment(const struct object *obj)
 	return obj->tval == TV_FOOD || obj->tval == TV_POTION ||
 			obj->tval == TV_HERB;
 }
-
+/* probably vestigial*/
 bool tval_can_have_charges(const struct object *obj)
 {
 	return obj->tval == TV_STAFF;
 }
+
+bool tval_can_have_staminapercent(const struct object *obj)
+{
+	return obj->tval == TV_STAFF;
+}
+
 
 bool tval_is_cloak(const struct object *obj)
 {

@@ -27,6 +27,7 @@
 #define SV_UNKNOWN			0
 
 bool tval_can_have_charges(const struct object *obj);
+bool tval_can_have_staminapercent(const struct object *obj);
 bool tval_can_have_flavor_k(const struct object_kind *kind);
 bool tval_can_have_nourishment(const struct object *obj);
 bool tval_can_have_timeout(const struct object *obj);

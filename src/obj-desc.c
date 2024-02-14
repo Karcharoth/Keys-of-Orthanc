@@ -417,9 +417,25 @@ static size_t obj_desc_charges(const struct object *obj, char *buf, size_t max,
 	bool aware = object_flavor_is_aware(obj);
 
 	/* Wands and staffs have charges, others may be charging */
-	if (aware && tval_can_have_charges(obj)) {
+/*	if (aware && tval_can_have_charges(obj)) {
 		strnfcat(buf, max, &end, " (%d charge%s)", obj->pval,
 				 PLURAL(obj->pval));
+	}*/
+
+	return end;
+}
+
+/**
+ * Describe charges or charging status for re-usable items with magic effects
+ */
+static size_t obj_desc_staminapercent(const struct object *obj, char *buf, size_t max,
+		size_t end, uint32_t mode)
+{
+	bool aware = object_flavor_is_aware(obj);
+    int staminacost = player->msp * obj->kind->staminapercent / 100;
+	/* Wands and staffs have stamina percent, but display as actual stamina cost*/
+	if (aware && tval_can_have_staminapercent(obj)) {
+		strnfcat(buf, max, &end, " (%d stamina)", staminacost);
 	}
 
 	return end;
@@ -537,10 +553,11 @@ size_t object_desc(char *buf, size_t max, const struct object *obj,
 		end = obj_desc_combat(obj, buf, max, end, mode, p);
 	}
 
-	/* Modifiers, charges, flavour details, inscriptions */
+	/* Modifiers, charges, stamina cost, flavour details, inscriptions */
 	if (mode & ODESC_EXTRA) {
 		end = obj_desc_mods(obj, buf, max, end);
 		end = obj_desc_charges(obj, buf, max, end, mode);
+		end = obj_desc_staminapercent(obj, buf, max, end, mode);
 		end = obj_desc_inscrip(obj, buf, max, end, p);
 	}
 

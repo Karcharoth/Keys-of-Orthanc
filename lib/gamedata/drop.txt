@@ -75,7 +75,7 @@ item:staff:Understanding
 item:staff:Treasures
 item:staff:Slumber
 item:staff:Warding
-item:staff:Recharging
+item:staff:Earthquakes
 
 name:shield
 chest:1

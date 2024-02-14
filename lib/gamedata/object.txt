@@ -938,24 +938,6 @@ desc:This ring drives all to battle.
 
 ##### Staves #####
 
-
-# Index 191
-name:Imprisonment
-graphics:_:d
-type:staff
-depth:6
-weight:50
-cost:400
-attack:0:0d0
-defence:0:0d0
-alloc:6:3
-charges:4d2
-effect:PROJECT_LOS_GRIDS:LOCK_DOOR
-dice:$B
-expr:B:PLAYER_WILL: + 0
-desc:It may shut and lock all doors in line of sight.
-
-
 # Index 192
 name:Freedom
 graphics:_:d
@@ -967,19 +949,24 @@ attack:0:0d0
 defence:0:0d0
 alloc:9:3
 charges:4d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:40
 effect:DETECT_TRAPS
 effect:DETECT_DOORS
 effect:PROJECT_LOS_GRIDS:KILL_DOOR
 dice:$B
-expr:B:PLAYER_WILL: + 0
+expr:B:PLAYER_WILL: + 3
 effect:PROJECT_LOS_GRIDS:KILL_TRAP
 dice:$B
-expr:B:PLAYER_WILL: + 0
+expr:B:PLAYER_WILL: + 3
 effect:CLOSE_CHASMS:NONE:0:1
 dice:$B
-expr:B:PLAYER_WILL: + 0
+expr:B:PLAYER_WILL: + 3
+effect:REMOVE_CURSE
+#dice:$B
+#expr:B:PLAYER_WILL: + 0
 desc:It reveals doors and traps in line of sight and may
-desc: open or destroy them.
+desc: open or destroy them, and attempts to remove curses.
 
 
 # Index 193
@@ -991,29 +978,16 @@ weight:50
 cost:250
 attack:0:0d0
 defence:0:0d0
-alloc:5:2
+alloc:5:4
 charges:4d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:30
 effect:LIGHT_AREA:LIGHT:7
-dice:4d4
+dice:$B
+expr:B:PLAYER_WILL: + 0
 desc:It lights up an area with a radius of 7 squares, plus the entire room
 desc: if you are currently in one.  This stuns
 desc: any light-sensitive creatures within the area of effect.
-
-
-# Index 195
-name:Sanctity
-graphics:_:d
-type:staff
-depth:6
-weight:50
-cost:400
-attack:0:0d0
-defence:0:0d0
-alloc:6:2
-alloc:14:4
-charges:2d2
-effect:REMOVE_CURSE
-desc:It removes curses from the items in your possession.
 
 
 # Index 196
@@ -1025,9 +999,11 @@ weight:50
 cost:400
 attack:0:0d0
 defence:0:0d0
-alloc:10:2
-alloc:15:1
+alloc:4:3
+alloc:8:5
 charges:2d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:40
 effect:IDENTIFY
 desc:It identifies an item. 
 desc: (This may be aborted without using up a charge.) 
@@ -1042,9 +1018,13 @@ weight:50
 cost:400
 attack:0:0d0
 defence:0:0d0
-alloc:13:3
+alloc:10:3
 charges:4d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:70
 effect:MAP_AREA
+#dice:$B
+#expr:B:PLAYER_WILL: + 3
 desc:It reveals your surroundings.
 
 
@@ -1057,10 +1037,14 @@ weight:50
 cost:400
 attack:0:0d0
 defence:0:0d0
-alloc:13:3
+alloc:9:3
 charges:2d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:50
 effect:DETECT_OBJECTS
-desc:It shows you the whereabouts of all items on the level.
+#dice:$B
+#expr:B:PLAYER_WILL: + 3
+desc:It shows you the whereabouts of all items nearby.
 
 
 # Index 199
@@ -1072,10 +1056,14 @@ weight:50
 cost:400
 attack:0:0d0
 defence:0:0d0
-alloc:13:3
+alloc:8:3
 charges:4d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:70
 effect:DETECT_MONSTERS
-desc:It shows you the whereabouts of all monsters on the level.
+#dice:$B
+#expr:B:PLAYER_WILL: + 5
+desc:It shows you the whereabouts of all monsters nearby.
 
 
 # Index 200
@@ -1087,12 +1075,14 @@ weight:50
 cost:400
 attack:0:0d0
 defence:0:0d0
-alloc:11:3
-alloc:17:2
+alloc:6:3
+alloc:9:3
 charges:4d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:30
 effect:PROJECT_LOS:SLEEP
 dice:$B
-expr:B:PLAYER_WILL: + 0
+expr:B:PLAYER_WILL: + 3
 desc:It causes a great weariness in all monsters in line of sight.
 
 
@@ -1105,28 +1095,34 @@ weight:50
 cost:400
 attack:0:0d0
 defence:0:0d0
+alloc:6:3
 alloc:9:3
 charges:4d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:50
 effect:PROJECT_LOS:FEAR
 dice:$B
-expr:B:PLAYER_WILL: + 0
+expr:B:PLAYER_WILL: + 5
 desc:It causes fear in all monsters in line of sight.
 
-
-# Index 202
-#name:Self Knowledge
-#graphics:_:d
-#type:staff
-#depth:7
-#weight:50
-#cost:400
-#attack:0:0d0
-#defence:0:0d0
-#alloc:7:2
-#charges:2d2
-#effect:SELF_KNOWLEDGE
-#desc:It lets you know all of your abilities.
-
+# Index 201
+name:Dismay
+graphics:_:d
+type:staff
+depth:9
+weight:50
+cost:400
+attack:0:0d0
+defence:0:0d0
+alloc:6:3
+alloc:9:3
+charges:4d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:30
+effect:PROJECT_LOS:CONFUSION
+dice:$B
+expr:B:PLAYER_WILL: + 5
+desc:It causes confusion in all monsters in line of sight.
 
 # Index 203
 name:Warding
@@ -1139,6 +1135,8 @@ attack:0:0d0
 defence:0:0d0
 alloc:11:3
 charges:2d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:50
 effect:GLYPH:WARDING
 desc:It can be used to create glyphs of warding, which your opponents
 desc: have difficulty crossing.
@@ -1153,63 +1151,56 @@ weight:50
 cost:400
 attack:0:0d0
 defence:0:0d0
-alloc:13:3
+alloc:8:3
 alloc:21:2
 charges:2d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:70
 effect:EARTHQUAKE
 dice:$B
-expr:B:PLAYER_WILL: / 5 + 3
-desc:It causes a small earthquake, crushing nearby areas with
+expr:B:PLAYER_WILL: / 3 + 3
+desc:It causes an earthquake, crushing nearby areas with
 desc: stone and rubble. 
 
+## A little hacky, I'd rather have something that worked
+## with PROJECT_LOS and didn't have a wonky object description
+## ingame.
 
-# Index 206
-name:Recharging
+name:Wrath
 graphics:_:d
 type:staff
-depth:11
+depth:8
 weight:50
-cost:400
+cost:500
 attack:0:0d0
 defence:0:0d0
-alloc:11:2
+alloc:9:2
 charges:2d2
-effect:RECHARGE
-dice:1
-desc:It allows you to partially recharge another staff.
+#effect:STAMINA_PERCENT_DRAIN
+#effect:50
+effect:SPHERE:FORCE:20
+dice:$Bd4
+expr:B:PLAYER_WILL: / 3 + 3
+desc:It smites all nearby monsters with the force of
+desc: your will. 
 
-
-# Index 210
-name:Summoning
+name:Curing
 graphics:_:d
 type:staff
-depth:7
+depth:5
 weight:50
-cost:0
+cost:500
 attack:0:0d0
 defence:0:0d0
-alloc:7:6
-charges:6d2
-effect:SUMMON:ANY:0:1
-dice:1d4
-desc:It summons 1d4 monsters to the stairs on the current level. 
-
-
-# Index 211
-name:Entrapment
-graphics:_:d
-type:staff
-depth:9
-weight:50
-cost:0
-attack:0:0d0
-defence:0:0d0
-alloc:9:6
-charges:6d2
-effect:CREATE_TRAPS
-dice:2d4
-desc:It produces 2d4 new traps on the current level. 
-
+alloc:4:2
+alloc:9:3
+charges:2d2
+#effect:STAMINA_PERCENT_DRAIN
+#effect:40
+effect:HEAL_HP
+dice:m$B
+expr:B:PLAYER_WILL: * 3
+desc:It cures some of your wounds.
 
 ##### Potions #####
 
@@ -2005,10 +1996,12 @@ alloc:7:4
 alloc:10:6
 #effect:CANNIBAL
 #dice:3
+effect:DRAIN_STAT:STR
 effect:NOURISH:INC_BY
 dice:500
 msg:It tastes foul.
-desc:It provides nourishment for about 500 turns under normal conditions.
+desc:It provides nourishment for about 500 turns under normal conditions,
+desc: and reduces your strength by one point.
 desc: You can't tell what it came from. 
 
 # Index 401

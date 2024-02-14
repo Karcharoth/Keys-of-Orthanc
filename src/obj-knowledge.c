@@ -249,7 +249,7 @@ void object_flavor_tried(struct object *obj)
 /**
  * This function does a few book keeping things for item identification.
  *
- * It identifies visible objects for the Lore-Master ability, marks
+ * It identifies visible objects for the identification abilities, marks
  * artefacts/specials as seen and grants experience for the first sighting.
  *
  * \param p is the player
@@ -262,6 +262,33 @@ static void player_know_object(struct player *p, struct object *obj)
         !tval_is_chest(obj)) {
 		ident(obj);
 	}
+	/* Identify seen staves with Channeling */    
+    if (!object_is_known(obj) && player_active_ability(p, "Channeling") &&
+        tval_is_staff(obj)) {
+        ident(obj);
+    }
+	/* Identify seen egos with Enchantment */        
+    if (!object_is_known(obj) && player_active_ability(p, "Enchantment") &&
+        obj->ego) {
+        ident(obj);
+    }
+	/* Identify seen artifacts with Artifice */    
+    if (!object_is_known(obj) && player_active_ability(p, "Artifice") &&
+        obj->artifact) {
+        ident(obj);
+    }
+	/* Identify seen potions with Leechcraft */        
+    if (!object_is_known(obj) && player_active_ability(p, "Leechcraft") &&
+        tval_is_potion(obj)) {
+        ident(obj);
+    }
+	/* Identify seen rings with Ringlore */        
+    if (!object_is_known(obj) && player_active_ability(p, "Ringlore") &&
+        tval_is_ring(obj)) {
+        ident(obj);
+    }
+    
+
 
 	/* Mark new identified artefacts/specials and gain experience for them */
 	if (object_is_known(obj)) {

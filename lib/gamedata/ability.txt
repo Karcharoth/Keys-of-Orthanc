@@ -362,8 +362,8 @@ skill:Will
 
 name:Channeling
 level:2
-desc:Gives you bonuses to using staves and horns
-desc: (+5 to skill checks, always know charges, half voice cost).
+desc:Gives you +5 to will checks with all staves,
+desc: and automatically identifies them.
 
 name:Mind Over Body
 level:3
@@ -434,7 +434,7 @@ desc:Allows you to create armour.
 
 name:Enchantment
 level:5
-desc:Allows you to create {special} items.
+desc:Allows you to create and identify non-artifact {special} items.
 
 name:Artistry
 level:6
@@ -446,7 +446,8 @@ desc: damage, or protection.
 name:Artifice
 level:8
 prerequisite:Smithing:Enchantment
-desc:Allows you to create highly customised artifacts.
+desc:Allows you to create highly customised artifacts,
+desc: and identifies artifacts.
 
 name:Masterpiece
 level:9
@@ -458,7 +459,7 @@ name:Ringlore
 level:10
 prerequisite:Smithing:Artifice
 prerequisite:Smithing:Masterpiece
-desc:Allows you to create lesser Rings.
+desc:Allows you to create and recognize lesser Rings.
 
 name:Grace
 level:10
@@ -487,6 +488,10 @@ name:Song of Freedom
 level:4
 prerequisite:Song:Song of Elbereth
 desc:Discovers and overcomes nearby doors, traps, and rubble.
+
+name:Leechcraft
+level:4
+desc:You can identify all potions.
 
 name:Song of the Trees
 level:5

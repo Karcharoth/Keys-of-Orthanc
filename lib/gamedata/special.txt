@@ -555,6 +555,36 @@ item:sword:Longsword
 ability:Melee:Whirlwind Attack
 flags:AGGRAVATE | CURSED
 
+# Hammers only
+
+name:of Crushing
+alloc:2:0 to 0
+cost:4000
+max-attack:0
+dam-dice:0
+dam-sides:0
+max-evasion:0
+prot-dice:0
+prot-sides:0
+max-pval:0
+item:hafted:Hammer
+values:STR[1]
+
+# Hammers only
+
+name:of Battering
+alloc:2:0 to 0
+cost:3000
+max-attack:1
+dam-dice:0
+dam-sides:0
+max-evasion:0
+prot-dice:0
+prot-sides:0
+max-pval:0
+item:hafted:Hammer
+ability:Melee:Knock Back
+
 # Daggers only
 # Arguably magical, arguably not
 

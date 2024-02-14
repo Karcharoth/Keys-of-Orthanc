@@ -1899,7 +1899,7 @@ desc: about 250 turns under normal conditions.
 
 
 # Index 399
-name:& Piece~ of Dark Bread
+name:& Chunk~ of Dark Bread
 graphics:,:s
 type:food
 depth:7
@@ -1907,16 +1907,33 @@ weight:5
 cost:2
 attack:0:0d0
 defence:0:0d0
-alloc:7:2
-alloc:13:1
+alloc:1:2
+alloc:4:2
+alloc:6:2
 effect:NOURISH:INC_BY
-dice:1500
-msg:It is hard and bitter.
-desc:It provides nourishment for about 1,500 turns under normal conditions. 
+dice:1000
+msg:It is hard.
+desc:It provides nourishment for about 1,000 turns under normal conditions. 
 
+name:& Chunk~ of Moldy Bread
+graphics:,:s
+type:food
+depth:7
+weight:3
+cost:2
+attack:0:0d0
+defence:0:0d0
+alloc:1:2
+alloc:4:2
+alloc:6:2
+effect:DRAIN_STAT:CON
+effect:NOURISH:INC_BY
+dice:500
+msg:It is fuzzy.
+desc:It provides nourishment for about 500 turns under normal conditions,
+desc: and reduces your constitution by 1 point. 
 
-# Index 400
-name:& Strip~ of Dried Meat
+name:& Strip~ of Mysterious Jerky
 graphics:,:u
 type:food
 depth:10
@@ -1924,13 +1941,75 @@ weight:10
 cost:3
 attack:0:0d0
 defence:0:0d0
-alloc:10:4
-alloc:16:1
+alloc:2:4
+alloc:6:4
+alloc:7:3
+#effect:CANNIBAL
+#dice:5
+effect:NOURISH:INC_BY
+dice:1500
+msg:It tastes salty.
+desc:It provides nourishment for about 1,500 turns under normal conditions.
+desc: Who knows what it came from?
+
+name:& Lump~ of Manflesh
+graphics:,:r
+type:food
+depth:10
+weight:20
+cost:3
+attack:0:0d0
+defence:0:0d0
+alloc:3:10
+alloc:7:4
+alloc:10:6
+#effect:CANNIBAL
+#dice:1
+effect:NOURISH:INC_BY
+dice:1500
+msg:It tastes fresh.
+desc:It provides nourishment for about 1,500 turns under normal conditions.
+desc: It clearly didn't come from an animal. 
+
+name:& Piece~ of Rich Food
+graphics:,:o
+type:food
+depth:10
+weight:30
+cost:50
+attack:0:0d0
+defence:0:0d0
+alloc:4:20
+alloc:8:10
+alloc:10:8
 effect:NOURISH:INC_BY
 dice:2000
-msg:It tastes foul.
-desc:It provides nourishment for about 2,000 turns under normal conditions. 
+effect:RESTORE_STAT:CON
+dice:1
+msg:It is delicious!
+desc:It restores a point of constitution if it has been drained.
+desc: It provides nourishment for about 2,000 turns under normal conditions.
+desc: Isengard has at least a bit of good food, usually owned by Saruman's
+desc: favored minions. 
 
+name:& Piece~ of Rotten Meat
+graphics:,:r
+type:food
+depth:10
+weight:20
+cost:3
+attack:0:0d0
+defence:0:0d0
+alloc:3:10
+alloc:7:4
+alloc:10:6
+#effect:CANNIBAL
+#dice:3
+effect:NOURISH:INC_BY
+dice:500
+msg:It tastes foul.
+desc:It provides nourishment for about 500 turns under normal conditions.
+desc: You can't tell what it came from. 
 
 # Index 401
 name:& Fragment~ of Lembas
@@ -1941,8 +2020,6 @@ weight:1
 cost:10
 attack:0:0d0
 defence:0:0d0
-alloc:7:4
-alloc:18:2
 effect:NOURISH:INC_BY
 dice:3000
 effect:RESTORE_STAT:GRA

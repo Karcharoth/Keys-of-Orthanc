@@ -127,6 +127,7 @@
 #  * Thranduil - elven cloak, master hunter, sustain dex
 # Mordor
 # Other
+#  * Bladorthin - spear, will
 
 
 #################################################################
@@ -445,7 +446,22 @@ ability:Melee:Follow-Through
 desc:The mighty spear of Gil-galad, famed as "Snow-point" in the songs of
 desc: Elves.
 
-## The Throwing Axe of Angabar
+name:of Bladorthin
+base-object:polearm:Great Spear
+depth:8
+rarity:40
+weight:70
+cost:10000
+attack:1:1d15
+defence:0:0d0
+values:WILL[1]
+desc:A mighty weapon crafted in Erebor for a long-dead king,
+desc: this spear's head is inlaid with shining lines of gold.
+desc: Perhaps the dwarves are selling off their ancient works
+desc: to Saruman?
+
+
+## The Throwing Axe of Angobar
 ## Dunlending treasure
 ## Angobar ~= Doom-Man, in the ancient speech that first-age Edain once had.
 ## Dunlending language presumably has similar stock?

@@ -88,7 +88,7 @@ age:35:180
 height:50:3
 weight:155:10
 player-flags:
-equip:food:Piece of Dark Bread:5:5
+equip:food:Chunk of Dark Bread:5:5
 equip:light:Wooden Torch:3:4
 equip:sword:Sword:1:1
 desc:The dwarves are stone-hard and stubborn, fast in friendship
@@ -104,7 +104,8 @@ age:30:75
 height:40:10
 weight:90:10
 player-flags:
-equip:food:Piece of Dark Bread:5:5
+equip:food:Chunk of Dark Bread:1:3
+equip:food:Piece of Rich Food:1:3
 equip:light:Wooden Torch:3:4
 equip:sword:Sword:1:1
 desc:The Hobbits are a curious people, small and quiet.
@@ -121,7 +122,7 @@ history:41
 age:15:45
 height:70:3
 weight:166:14
-equip:food:Piece of Dark Bread:5:5
+equip:food:Chunk of Dark Bread:5:5
 equip:light:Wooden Torch:3:4
 equip:sword:Sword:1:1
 desc:The elves are passing away; the dwarves and hobbits

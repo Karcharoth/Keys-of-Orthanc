@@ -836,7 +836,11 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 {
 	bool more = false;
 	int weapon_slot = slot_by_name(player, "weapon");
+	int armour_slot = slot_by_name(player, "body");
+	int gloves_slot = slot_by_name(player, "hands");
 	struct object *current_weapon = slot_object(player, weapon_slot);
+	struct object *current_armour = slot_object(player, armour_slot);
+	struct object *current_gloves = slot_object(player, gloves_slot);
 	struct object *digger = NULL;
 	int digging_score = 0;
 	int difficulty = square_digging(cave, grid);
@@ -851,32 +855,35 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 		digging_score = obj_digging_score(current_weapon);
 		digger = current_weapon;
 	} else {
-        /* Find one or more diggers in the pack */
-		bool more_than_one = false;
+        /* Find the best digger in the pack */
 		struct object *test;
 		for (test = player->gear; test; test = test->next) {
-			if (obj_digging_score(test)) {
+			if (obj_digging_score(test) && tval_is_weapon(test)) {
 				if (digging_score) {
-					more_than_one = true;
+                    if (obj_digging_score(test) > digging_score) {
+                        digging_score = obj_digging_score(test);
+				        digger = test;
+                    }
 				}
+                else {
+                    digging_score = obj_digging_score(test);
+				    digger = test;
+
+                }
 				digging_score = obj_digging_score(test);
 				digger = test;
 			}
 		}
 
-		/* Make a choice if needed */
-		if (more_than_one) {
-			/* Get arguments */
-			if (!get_item(&digger, "Use which digger?",
-						  "You are not carrying a shovel or mattock.",
-						  CMD_TUNNEL, obj_can_dig, USE_INVEN))
-				return false;
-			digging_score = obj_digging_score(digger);
-		}
 	}
-
+    if (obj_digging_score(current_armour)) {
+        digging_score += obj_digging_score(current_armour);
+    }
+    if (obj_digging_score(current_gloves)) {
+        digging_score += obj_digging_score(current_gloves);
+    }
 	/* Abort if you have no digger */
-    if (digging_score == 0) {
+    if (digging_score == 0 || !digger) {
         /* Confused players trying to dig without a digger waste their turn
 		 * (otherwise control-dir is safe in a corridor) */
         if (player->timed[TMD_CONFUSED]) {

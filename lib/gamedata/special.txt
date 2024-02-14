@@ -153,7 +153,7 @@ values:RES_FIRE[1]
 
 # Not sure if this fits very well; meant to be 
 # something used by goblin miners
-# Leather only - add gloves?
+# Leather armour, gloves and gauntlets only
 
 name:of the Mines
 alloc:3:0 to 0
@@ -166,6 +166,7 @@ prot-dice:0
 prot-sides:0
 max-pval:1
 item:soft armor:Leather Armour
+type:gloves
 values:TUNNEL[1]
 
 # Rare; one of the few sources of free action

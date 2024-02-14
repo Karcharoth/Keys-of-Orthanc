@@ -1202,6 +1202,15 @@ static enum parser_error parse_object_charges(struct parser *p) {
 	return PARSE_ERROR_NONE;
 }
 
+static enum parser_error parse_object_staminapercent(struct parser *p) {
+	struct object_kind *k = parser_priv(p);
+	assert(k);
+
+	k->staminapercent = parser_getint(p, "staminapercent");
+	return PARSE_ERROR_NONE;
+}
+
+
 static enum parser_error parse_object_effect(struct parser *p) {
 	struct object_kind *k = parser_priv(p);
 	struct effect *effect;
@@ -1559,6 +1568,7 @@ struct parser *init_parse_object(void){
 	parser_reg(p, "defence int evn rand hd", parse_object_defence);
 	parser_reg(p, "flags str flags", parse_object_flags);
 	parser_reg(p, "charges rand charges", parse_object_charges);
+    parser_reg(p, "staminapercent int staminapercent", parse_object_staminapercent);
 	parser_reg(p, "effect sym eff ?sym type ?int radius ?int other", parse_object_effect);
 	parser_reg(p, "dice str dice", parse_object_dice);
 	parser_reg(p, "expr sym name sym base str expr", parse_object_expr);

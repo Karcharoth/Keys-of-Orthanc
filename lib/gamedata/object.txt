@@ -949,8 +949,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:9:3
 charges:4d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:40
+staminapercent:40
 effect:DETECT_TRAPS
 effect:DETECT_DOORS
 effect:PROJECT_LOS_GRIDS:KILL_DOOR
@@ -980,8 +979,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:5:4
 charges:4d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:30
+staminapercent:30
 effect:LIGHT_AREA:LIGHT:7
 dice:$B
 expr:B:PLAYER_WILL: + 0
@@ -1002,8 +1000,7 @@ defence:0:0d0
 alloc:4:3
 alloc:8:5
 charges:2d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:40
+staminapercent:40
 effect:IDENTIFY
 desc:It identifies an item. 
 desc: (This may be aborted without using up a charge.) 
@@ -1020,8 +1017,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:10:3
 charges:4d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:70
+staminapercent:70
 effect:MAP_AREA
 #dice:$B
 #expr:B:PLAYER_WILL: + 3
@@ -1039,8 +1035,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:9:3
 charges:2d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:50
+staminapercent:50
 effect:DETECT_OBJECTS
 #dice:$B
 #expr:B:PLAYER_WILL: + 3
@@ -1058,8 +1053,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:8:3
 charges:4d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:70
+staminapercent:70
 effect:DETECT_MONSTERS
 #dice:$B
 #expr:B:PLAYER_WILL: + 5
@@ -1078,8 +1072,7 @@ defence:0:0d0
 alloc:6:3
 alloc:9:3
 charges:4d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:30
+staminapercent:30
 effect:PROJECT_LOS:SLEEP
 dice:$B
 expr:B:PLAYER_WILL: + 3
@@ -1098,8 +1091,7 @@ defence:0:0d0
 alloc:6:3
 alloc:9:3
 charges:4d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:50
+staminapercent:50
 effect:PROJECT_LOS:FEAR
 dice:$B
 expr:B:PLAYER_WILL: + 5
@@ -1117,8 +1109,7 @@ defence:0:0d0
 alloc:6:3
 alloc:9:3
 charges:4d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:30
+staminapercent:30
 effect:PROJECT_LOS:CONFUSION
 dice:$B
 expr:B:PLAYER_WILL: + 5
@@ -1135,8 +1126,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:11:3
 charges:2d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:50
+staminapercent:50
 effect:GLYPH:WARDING
 desc:It can be used to create glyphs of warding, which your opponents
 desc: have difficulty crossing.
@@ -1154,8 +1144,7 @@ defence:0:0d0
 alloc:8:3
 alloc:21:2
 charges:2d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:70
+staminapercent:70
 effect:EARTHQUAKE
 dice:$B
 expr:B:PLAYER_WILL: / 3 + 3
@@ -1176,8 +1165,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:9:2
 charges:2d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:50
+staminapercent:50
 effect:SPHERE:FORCE:20
 dice:$Bd4
 expr:B:PLAYER_WILL: / 3 + 3
@@ -1195,8 +1183,7 @@ defence:0:0d0
 alloc:4:2
 alloc:9:3
 charges:2d2
-#effect:STAMINA_PERCENT_DRAIN
-#effect:40
+staminapercent:40
 effect:HEAL_HP
 dice:m$B
 expr:B:PLAYER_WILL: * 3

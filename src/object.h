@@ -233,10 +233,10 @@ struct object_kind {
 	struct effect *thrown_effect;/**< Effect for thrown potions */
 	struct ability *abilities;	    /* Abilities */
     struct ability *smithabilities; /* What you can smith on the artifact versions */
-
 	int level;				/**< Level (difficulty of activation) */
 
-	random_value charge;	/**< Number of charges (staves/wands) */
+	random_value charge;	/**< Number of charges (nonexistent wands) */
+    int staminapercent;    /**< Percent of your stamina that it spends when used (staves) */
 
 	int gen_mult_prob;		/**< Probability of generating more than one */
 	random_value stack_size;/**< Number to generate */

@@ -76,13 +76,13 @@ static int check_devices(struct object *obj)
 	}
 
 	/* Notice empty staffs */
-	if (!obj_has_charges(obj)) {
+	/*if (!obj_has_charges(obj)) {
 		event_signal(EVENT_INPUT_FLUSH);
 		msg("That staff has no charges left.");
 		obj->notice |= (OBJ_NOTICE_EMPTY);
 		return false;
-	}
-
+	}*/
+    /* Stamina cost is checked later under use_aux.*/
 	return true;
 }
 
@@ -526,9 +526,10 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 	/* Verify effect */
 	assert(effect);
 
-	/* Check stamina. TODO: Make costs vary by item; right now they are all 20. */
+	/* Check stamina.*/
 	if (use == USE_STAMINA) {
-		int stamina_cost = player_active_ability(player, "Channeling") ? 10 : 20;
+        assert (obj->kind->staminapercent);
+		int stamina_cost = player->msp * obj->kind->staminapercent / 100;
 
 		if (player->csp < stamina_cost) {
 			event_signal(EVENT_INPUT_FLUSH);
@@ -536,7 +537,6 @@ static void use_aux(struct command *cmd, struct object *obj, enum use use,
 			return;
 		}
 
-		msg("You sound a loud note on the horn.");
 		player->csp -= stamina_cost;
 		player->upkeep->redraw |= PR_STAMINA;
 	}
@@ -704,7 +704,7 @@ void do_cmd_use_staff(struct command *cmd)
 			tval_is_staff,
 			USE_INVEN | USE_FLOOR | SHOW_FAIL) != CMD_OK) return;
 
-	use_aux(cmd, obj, USE_CHARGE, MSG_USE_STAFF, false);
+	use_aux(cmd, obj, USE_STAMINA, MSG_USE_STAFF, false);
 }
 
 /**

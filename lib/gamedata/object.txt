@@ -737,7 +737,7 @@ desc:It provides protection from damage.
 name:Accuracy
 graphics:=:d
 type:ring
-depth:12
+depth:12special:-1+m7:1
 weight:1
 cost:500
 attack:99:0d0
@@ -760,7 +760,7 @@ defence:0:0d0
 alloc:10:40
 flags:LIGHT | REGEN
 values:WILL[99]
-special:-1+m5:1
+special:1+m14
 ability:Will:Majesty
 desc:This ring fills you with unmatched splendor.
 
@@ -776,7 +776,7 @@ attack:0:0d0
 defence:1:0d0
 alloc:10:40
 values:PERCEPTION[99] | STEALTH[99]
-special:-1+m5:1
+special:1+m14
 ability:Perception:Listen
 desc:This ring fills you with silent cunning.
 
@@ -791,7 +791,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:10:40
 values:PERCEPTION[99] | SMITHING[99]
-special:-1+m5:1
+special:1+m14
 ability:Perception:Lore-Master
 desc:This ring fills you with ancient wisdom.
 
@@ -823,7 +823,7 @@ defence:0:0d0
 alloc:10:40
 flags:SUST_STR
 values:RES_FIRE[1]
-values:STR[-1+m10]
+values:STR[1+m14]
 desc:This ring gives you strength of arm.
 
 # Index 155
@@ -837,7 +837,7 @@ attack:0:0d0
 defence:1:0d0
 alloc:10:40
 flags:SUST_DEX
-values:DEX[-1+m10]
+values:DEX[1+m14]
 ability:Evasion:Leaping
 desc:This ring gives you swiftness of foot.
 
@@ -853,7 +853,7 @@ defence:0:0d0
 alloc:10:40
 flags:SUST_CON
 values:RES_POIS[1]
-values:CON[-1+m10]
+values:CON[1+m14]
 desc:This ring gives you health of body.
 
 # Index 157
@@ -867,7 +867,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:10:40
 flags:SUST_GRA | LIGHT
-values:GRA[-1+m10]
+values:GRA[1+m14]
 ability:Will:Strength in Adversity
 desc:This ring gives you hope and peace.
 
@@ -883,7 +883,7 @@ defence:0:0d0
 alloc:10:40
 flags:HUNGER | DARKNESS
 values:STEALTH[99]
-special:-1+m5:1
+special:1+m14
 ability:Stealth:Vanish
 desc:This ring drives all into darkness.
 
@@ -901,7 +901,7 @@ attack:0:0d0
 defence:0:0d0
 alloc:10:40
 flags:SUST_GRA | SEE_INVIS | HAUNTED
-values:GRA[-1+m10]
+values:GRA[1+m14]
 desc:This ring drives all into the wraith-world.
 
 # TODO: Make this work by adding Betray
@@ -917,7 +917,7 @@ defence:0:0d0
 alloc:10:40
 flags:COWARDICE
 values:WILL[99]
-special:-1+m5:1
+special:1+m14
 ability:Will:Majesty
 desc:This ring drives all to despair.
 
@@ -933,7 +933,7 @@ attack:99:0d0
 defence:-1:0d0
 alloc:10:40
 flags:DANGER | AGGRAVATE
-special:-1+m7:1
+special:1+m14
 desc:This ring drives all to battle. 
 
 ##### Staves #####

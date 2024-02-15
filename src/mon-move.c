@@ -2924,7 +2924,7 @@ static void process_move(struct monster *mon, struct loc tgrid, bool bash)
 		if (monster_is_visible(mon)) {
 			/* Report passing through doors */
             if (did_pass_door) {
-				add_monster_message(mon, MON_MSG_PASS_DOOR, true);				}
+				add_monster_message(mon, MON_MSG_PASS_DOOR, true);
 			}
 
 			/* Player will always be disturbed */
@@ -2933,7 +2933,7 @@ static void process_move(struct monster *mon, struct loc tgrid, bool bash)
 
 		/* Take objects on the floor */
 		process_move_grab_objects(mon, next);
-	
+	}
 
 
 	/* Notice changes in view */

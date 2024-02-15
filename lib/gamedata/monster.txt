@@ -515,7 +515,6 @@ drop:bow:Shortbow:8:1d1
 desc:He is one of Saruman's slaves from the mountains.
 desc: He carries a small dagger and bow.
 
-
 ##### 5 #####
 
 
@@ -648,14 +647,14 @@ rarity:15
 color:p
 speed:3
 health:9d4
-light:-1
+light:0
 sleep:15
 percept:5
 stealth:5
 will:8
 prot:11:2d4
-blow:BITE:WOUND:2d8
-blow:CLAW:BLIND:2d4
+blow:BITE:WOUND:5:2d8
+blow:CLAW:BLIND:7:2d4
 flags:FLYING | SMART | BASH_DOOR
 ranged-freq:20
 spells:SHRIEK

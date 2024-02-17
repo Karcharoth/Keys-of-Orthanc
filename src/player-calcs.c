@@ -877,6 +877,10 @@ void calc_bonuses(struct player *p, struct player_state *state, bool known_only,
 		state->el_info[ELEM_POIS].res_level += 1;
 	}
 
+	if (player_active_ability(p, "Fire Resistance")) {
+		state->el_info[ELEM_FIRE].res_level += 1;
+	}
+
 	/* Timed effects */
 	if (player_timed_grade_eq(p, TMD_STUN, "Heavy Stun")) {
 		for (i = 0; i < SKILL_MAX; i++) {

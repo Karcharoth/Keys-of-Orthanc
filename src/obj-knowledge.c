@@ -277,8 +277,8 @@ static void player_know_object(struct player *p, struct object *obj)
         obj->artifact) {
         ident(obj);
     }
-	/* Identify seen potions with Leechcraft */        
-    if (!object_is_known(obj) && player_active_ability(p, "Leechcraft") &&
+	/* Identify seen potions with Gondor Leechcraft */        
+    if (!object_is_known(obj) && player_active_ability(p, "Gondor Leechcraft") &&
         tval_is_potion(obj)) {
         ident(obj);
     }

@@ -388,25 +388,12 @@ name:Hardiness
 level:6
 desc:Gives you [1dX] additional protection, where X = Will/6.
 
-name:Poison Resistance
-level:7
-prerequisite:Will:Mind Over Body
-prerequisite:Will:Hardiness
-desc:Gives you resistance to poison.
-
 name:Strength in Adversity
 level:8
 prerequisite:Will:Mind Over Body
 prerequisite:Will:Inner Light
 desc:Gives you bonuses to Strength and Grace when seriously injured:
 desc: +1 when less than or equal to 50% health, +2 when 25%.
-
-name:Critical Resistance
-level:9
-prerequisite:Will:Curse Breaking
-prerequisite:Will:Hardiness
-desc:Raises the base number enemies need to get critical hits against
-desc: you by 1 per 5 points of Will.
 
 name:Majesty
 level:9
@@ -416,8 +403,6 @@ desc:Lowers monster morale by half the difference between your Will and theirs.
 
 name:Constitution
 level:12
-prerequisite:Will:Poison Resistance
-prerequisite:Will:Critical Resistance
 desc:You gain a point of constitution.
 
 # Smithing ---------------------------------------------
@@ -470,77 +455,53 @@ desc:You gain a point of grace.
 
 skill:Song
 
-name:Song of Elbereth
-level:1
-desc:Causes fear in nearby servants of Morgoth.
 
-name:Song of Slaying
-level:2
-desc:Gives you a bonus to attack that increases
-desc: for each kill, and then fades away over time.
-
-name:Song of Silence
+name:Gondor Leechcraft
 level:3
-desc:Dampens all nearby sounds, making it harder for
-desc: opponents to hear you and each other.
+desc:Allows you to brew beneficial potions at a lab,
+desc: and identify all potions.
+desc: Nonfunctional for now, except the identification part.
 
-name:Song of Freedom
+name:Isengard Alchemy
 level:4
-prerequisite:Song:Song of Elbereth
-desc:Discovers and overcomes nearby doors, traps, and rubble.
+desc:Allows you to brew combat potions at a lab.
+desc: Nonfunctional for now.
 
-name:Leechcraft
-level:4
-desc:You can identify all potions.
-
-name:Song of the Trees
+name:Gundabad Explosives
 level:5
-desc:Increases your light level by 1 point per 5 points
-desc: of Song.
+desc:Allows you to synthesize explosives at a lab.
+desc: Nonfunctional for now.
 
-name:Song of Aule
+name:Potion Belt
 level:6
-desc:Gives you a bonus of +1 to Smithing per 4 points
-desc: of Song.
+desc:Gives you six potion slots in your equipment, and makes potions
+desc: in these slots instant to drink.
+desc: Nonfunctional for now.
 
-name:Song of Staying
+name:Mastery
 level:7
-prerequisite:Song:Song of Slaying
-prerequisite:Song:Song of the Trees
-desc:Gives you a bonus of +X to Will and [1dX] protection,
-desc: where X = Song/3.
+prerequisite:Song:Gondor Leechcraft
+prerequisite:Song:Isengard Alchemy
+prerequisite:Song:Gundabad Explosives
+desc:Allows you to create unique potions and explosives.
+desc: Nonfunctional for now.
 
-name:Song of Lorien
+name:Poison Resistance
 level:8
-prerequisite:Song:Song of Silence
-desc:Gradually puts nearby opponents to sleep.
+prerequisite:Song:Gondor Leechcraft
+desc:Gives you resistance to poison.
 
-name:Song of Este
+name:Critical Resistance
 level:9
-prerequisite:Song:Song of the Trees
-desc:Provides a bonus to your regeneration and your recovery
-desc: from all negative timed effects (such as confusion or poison)
-desc: with every 4 points of Song.
+prerequisite:Song:Isengard Alchemy
+desc:Raises the base number enemies need to get critical hits against
+desc: you by 2.
 
-name:Song of Sharpness
+name:Fire Resistance
 level:10
-prerequisite:Song:Song of Slaying
-prerequisite:Song:Song of Aule
-desc:Your attacks ignore 2 percent of your opponent's armour per point of Song.
-desc: Works for edged weapons, axes, polearms, and arrows.
-
-name:Song of Mastery
-level:11
-prerequisite:Song:Song of Elbereth
-prerequisite:Song:Song of Lorien
-desc:Occasionally prevents nearby opponents from moving or acting.
-
-name:Woven Themes
-level:12
-desc:Allows you to add a 'minor theme' to your song. This means you
-desc: can have the effect of a second song, but at half your normal Song score.
+prerequisite:Song:Gundabad Explosives
+desc:Gives you resistance to fire.
 
 name:Grace
-level:15
+level:11
 desc:You gain a point of grace.
-

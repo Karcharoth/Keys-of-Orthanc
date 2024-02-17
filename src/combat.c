@@ -657,7 +657,7 @@ int crit_bonus(struct player *p, int hit_result, int weight,
 		/* When attacking the player... */
 		/* Resistance to criticals increases what they need for each bonus die*/
 		if (player_active_ability(p, "Critical Resistance")) {
-			crit_separation += (p->state.skill_use[SKILL_WILL] / 5) * 10;	
+			crit_separation += 2 * 10;	
 		}
 	}
 

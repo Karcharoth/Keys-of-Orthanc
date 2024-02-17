@@ -316,6 +316,10 @@ smithability:Smithing:Artistry
 smithability:Smithing:Artifice
 smithability:Smithing:Masterpiece
 smithability:Smithing:Ringlore
+smithability:Song:Gondor Leechcraft
+smithability:Song:Isengard Alchemy
+smithability:Song:Gundabad Explosives
+smithability:Song:Mastery
 
 name:helm:Helm~
 graphics:light umber
@@ -345,7 +349,6 @@ smithability:Will:Curse Breaking
 smithability:Will:Inner Light
 smithability:Will:Clarity
 smithability:Will:Strength in Adversity
-smithability:Will:Critical Resistance
 smithability:Will:Majesty
 
 name:shield:Shield~
@@ -401,7 +404,7 @@ smithability:Evasion:Heavy Armour
 smithability:Stealth:Vanish
 smithability:Stealth:Burglary
 smithability:Will:Strength in Adversity
-smithability:Will:Critical Resistance
+smithability:Song:Potion Belt
 
 name:mail:Mail~
 graphics:slate
@@ -420,7 +423,6 @@ smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
 smithability:Evasion:Heavy Armour
 smithability:Will:Strength in Adversity
-smithability:Will:Critical Resistance
 
 
 name:light:Light~

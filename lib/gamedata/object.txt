@@ -1828,42 +1828,6 @@ desc: Herbs provide nourishment for about 250 turns under
 desc: normal conditions. 
 
 
-# Index 388
-name:Weakness
-graphics:,:d
-type:herb
-depth:8
-weight:1
-cost:0
-attack:0:0d0
-defence:0:0d0
-alloc:8:3
-effect:DRAIN_STAT:STR
-effect:NOURISH:INC_BY
-dice:250
-desc:It reduces your strength by one point.
-desc: Herbs provide nourishment for about 250
-desc: turns under normal conditions. 
-
-
-# Index 389
-name:Sickness
-graphics:,:d
-type:herb
-depth:8
-weight:1
-cost:0
-attack:0:0d0
-defence:0:0d0
-alloc:8:3
-effect:DRAIN_STAT:CON
-effect:NOURISH:INC_BY
-dice:250
-desc:It reduces your constitution by one point.
-desc: Herbs provide nourishment for
-desc: about 250 turns under normal conditions. 
-
-
 # Index 399
 name:& Chunk~ of Dark Bread
 graphics:,:s
@@ -1884,7 +1848,7 @@ desc:It provides nourishment for about 1,000 turns under normal conditions.
 name:& Chunk~ of Moldy Bread
 graphics:,:s
 type:food
-depth:7
+depth:5
 weight:3
 cost:2
 attack:0:0d0
@@ -1894,10 +1858,10 @@ alloc:4:2
 alloc:6:2
 effect:DRAIN_STAT:CON
 effect:NOURISH:INC_BY
-dice:500
+dice:1000
 msg:It is fuzzy.
-desc:It provides nourishment for about 500 turns under normal conditions,
-desc: and reduces your constitution by 1 point. 
+desc:It provides nourishment for about 1000 turns under normal conditions,
+desc: and may reduce your constitution by 1 point. 
 
 name:& Strip~ of Mysterious Jerky
 graphics:,:u
@@ -1961,7 +1925,7 @@ desc: favored minions.
 name:& Piece~ of Rotten Meat
 graphics:,:r
 type:food
-depth:10
+depth:5
 weight:20
 cost:3
 attack:0:0d0
@@ -1973,10 +1937,10 @@ alloc:10:6
 #dice:3
 effect:DRAIN_STAT:STR
 effect:NOURISH:INC_BY
-dice:500
+dice:1000
 msg:It tastes foul.
-desc:It provides nourishment for about 500 turns under normal conditions,
-desc: and reduces your strength by one point.
+desc:It provides nourishment for about 1000 turns under normal conditions,
+desc: and may reduce your strength by one point.
 desc: You can't tell what it came from. 
 
 # Index 401

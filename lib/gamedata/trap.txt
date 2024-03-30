@@ -91,7 +91,7 @@ rarity:1
 min-depth:0
 max-depth:10
 power:6
-flags:TRAP | FLOOR | DOWN
+flags:TRAP | FLOOR | DOWN | SURFACE
 effect:DAMAGE
 dice:3d4
 desc:It looks like floor, but step incautiously and you will fall through.
@@ -107,7 +107,7 @@ rarity:1
 min-depth:0
 max-depth:10
 power:-1
-flags:TRAP | FLOOR | PIT
+flags:TRAP | FLOOR | PIT | SURFACE
 effect:PIT:NORMAL
 desc:A hole dug in the excavation of Isengard.
 
@@ -131,7 +131,7 @@ rarity:4
 min-depth:0
 max-depth:13
 power:5
-flags:TRAP | FLOOR
+flags:TRAP | FLOOR | SURFACE
 effect:TIMED_INC:CONFUSED
 dice:4d4
 effect:SPHERE:CONFUSION:1
@@ -141,7 +141,7 @@ dice:10
 desc:A trap that releases gas to confuse you.
 msg:A vapor fills the air and you feel yourself becoming lightheaded.
 
-# gas -- confuse
+# gas -- damage
 
 name:poison gas trap:poison gas trap
 graphics:^:g
@@ -149,7 +149,7 @@ rarity:1
 min-depth:0
 max-depth:10
 power:5
-flags:TRAP | FLOOR
+flags:TRAP | FLOOR | SURFACE
 effect:SPOT:POIS:1
 dice:4d4
 effect:NOISE:PLAYER
@@ -184,7 +184,7 @@ rarity:1
 min-depth:0
 max-depth:20
 power:1
-flags:TRAP | FLOOR | SAVE_SKILL
+flags:TRAP | FLOOR | SAVE_SKILL | SURFACE
 effect:DAMAGE
 dice:1d4
 effect:TIMED_INC_CHECK:SLOW
@@ -236,7 +236,7 @@ rarity:1
 min-depth:14
 max-depth:10
 power:-1
-flags:TRAP | FLOOR | ONETIME | SURFACE
+flags:TRAP | FLOOR | ONETIME
 effect:DEADFALL
 dice:4
 effect:NOISE:PLAYER
@@ -252,7 +252,7 @@ rarity:1
 min-depth:3
 max-depth:10
 power:10
-flags:TRAP | FLOOR
+flags:TRAP | FLOOR | SURFACE
 effect:SPOT:ACID:0
 dice:4d4
 effect:NOISE:PLAYER
@@ -268,7 +268,7 @@ rarity:3
 min-depth:8
 max-depth:10
 power:8
-flags:TRAP | FLOOR
+flags:TRAP | FLOOR | SURFACE
 effect:SPOT:FIRE:1
 dice:10d4
 effect:NOISE:PLAYER

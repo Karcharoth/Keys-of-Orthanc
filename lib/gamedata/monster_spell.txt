@@ -47,6 +47,19 @@
 # - {name} is the acting monster's name
 # - {pronoun} is his/her/its
 
+name:SP_HURT
+mana:10
+best-range:2
+max-range:3
+desire:1
+disturb:1
+use-past-range:0
+effect:SPOT:HURT
+dice:5d4m$M
+lore:spray bursts of needles
+message-vis:{name} sprays a burst of needles.
+message-invis:{name} hits you with needles.
+
 name:ARROW1
 mana:0
 best-range:4

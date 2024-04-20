@@ -669,16 +669,16 @@ desc: tried to create their equal. He failed, but this horror is dreadful still.
 name:Acidthorn
 base:thorn
 depth:6
-rarity:2
-color:u
+rarity:1
+color:U
 speed:2
-health:9d4
+health:d4
 sleep:0
 percept:0
 stealth:0
 will:4
-prot:-5:3d4
-blow:THORN:ACID:5:4d4
+prot:-5:4d4
+blow:THORN:ACID:6:4d4
 flags:FRIEND
 desc:Dark brambles and deadly vines infest Isengard,
 desc: but these seem especially strange,

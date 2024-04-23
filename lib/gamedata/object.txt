@@ -1355,6 +1355,25 @@ thrown-dice:-1+1d4
 flags:GOOD
 desc:It makes you move more quickly (+1 to speed) for 10d4 turns.
 
+# Index 323
+name:Rage
+graphics:!:d
+type:potion
+depth:3
+weight:5
+cost:100
+attack:0:0d0
+defence:0:0d0
+alloc:3:2
+alloc:9:1
+effect:CURE:AFRAID
+effect:TIMED_INC:RAGE
+dice:10d4
+effect:NOURISH:INC_BY
+dice:100
+desc:It sends you into a dark rage
+desc: (+1 Str/Con, -1 Dex/Gra, special melee attack, resistance to fear)
+desc: for 10d4 turns.
 
 # Index 323
 name:Elemental Resistance
@@ -1658,175 +1677,9 @@ flags:IGNORE_ACID | IGNORE_FIRE | IGNORE_COLD | EASY_KNOW
 
 
 
-##### Herbs #####
+##### Food #####
 
-
-# Index 380
-name:Rage
-graphics:,:d
-type:herb
-depth:3
-weight:1
-cost:25
-attack:0:0d0
-defence:0:0d0
-alloc:3:2
-alloc:9:1
-alloc:15:4
-effect:CURE:AFRAID
-effect:TIMED_INC:RAGE
-dice:10d4
-effect:NOURISH:INC_BY
-dice:250
-desc:It sends you into a dark rage
-desc: (+1 Str/Con, -1 Dex/Gra, special melee attack, resistance to fear)
-desc: for 10d4 turns.
-desc: Herbs provide nourishment for about 250
-desc: turns under normal conditions. 
-
-
-# Index 381
-name:Sustenance
-graphics:,:d
-type:herb
-depth:5
-weight:1
-cost:50
-attack:0:0d0
-defence:0:0d0
-alloc:5:2
-alloc:15:1
-effect:NOURISH:INC_BY
-dice:2000
-desc:It provides nourishment for about 2000 turns
-desc: under normal conditions. 
-
-
-# Index 382
-name:Terror
-graphics:,:d
-type:herb
-depth:3
-weight:1
-cost:10
-attack:0:0d0
-defence:0:0d0
-alloc:3:2
-alloc:6:2
-effect:TERROR
-dice:10d4
-effect:NOURISH:INC_BY
-dice:250
-desc:It induces fear that lasts
-desc: for 10d4 turns and a burst of speed that lasts 5d4 turns.
-desc: Herbs provide nourishment for about 250
-desc: turns under normal conditions.
-
-
-# Index 383
-name:Healing
-graphics:,:d
-type:herb
-depth:7
-weight:1
-cost:75
-attack:0:0d0
-defence:0:0d0
-alloc:7:2
-alloc:17:2
-effect:TIMED_SET:CUT
-dice:$B
-expr:B:PLAYER_CUT: / 2
-effect:HEAL_HP
-dice:m50
-effect:NOURISH:INC_BY
-dice:250
-desc:It cures all cuts and heals half of your health.
-desc:  Herbs provide nourishment for
-desc: about 250 turns under normal conditions. 
-
-
-# Index 384
-name:Restoration
-graphics:,:d
-type:herb
-depth:5
-weight:1
-cost:1000
-attack:0:0d0
-defence:0:0d0
-alloc:5:4
-alloc:9:2
-alloc:19:2
-effect:RESTORE_STAT:STR
-dice:3
-effect:RESTORE_STAT:DEX
-dice:3
-effect:RESTORE_STAT:CON
-dice:3
-effect:RESTORE_STAT:GRA
-dice:3
-effect:NOURISH:INC_BY
-dice:250
-desc:It restores all of your statistics by up to 3 points each. 
-desc: Herbs provide nourishment for about 250 turns under normal
-desc: conditions. 
-
-
-# Index 385
-name:Emptiness
-graphics:,:d
-type:herb
-depth:4
-weight:1
-cost:0
-attack:0:0d0
-defence:0:0d0
-alloc:4:3
-effect:NOURISH:DEC_BY
-dice:1000
-desc:It makes you more hungry (by 1,000 turns under normal conditions). 
-
-
-# Index 386
-name:Visions
-graphics:,:d
-type:herb
-depth:8
-weight:1
-cost:0
-attack:0:0d0
-defence:0:0d0
-alloc:8:3
-effect:CURE:BLIND
-effect:TIMED_INC:IMAGE
-dice:80d4
-effect:NOURISH:INC_BY
-dice:250
-desc:It causes you to hallucinate for 80d4 turns, but cures blindness in
-desc: the process.
-desc: Herbs provide nourishment for about 250
-desc: turns under normal conditions.
-
-
-# Index 387
-name:Entrancement
-graphics:,:d
-type:herb
-depth:8
-weight:1
-cost:0
-attack:0:0d0
-defence:0:0d0
-alloc:8:3
-effect:TIMED_SET:ENTRANCED
-dice:10d4
-effect:NOURISH:INC_BY
-dice:250
-desc:It induces a trance that lasts for 10d4 turns.
-desc: Herbs provide nourishment for about 250 turns under
-desc: normal conditions. 
-
+## Two basic foods:
 
 # Index 399
 name:& Chunk~ of Dark Bread
@@ -1844,24 +1697,6 @@ effect:NOURISH:INC_BY
 dice:1000
 msg:It is hard.
 desc:It provides nourishment for about 1,000 turns under normal conditions. 
-
-name:& Chunk~ of Moldy Bread
-graphics:,:s
-type:food
-depth:5
-weight:3
-cost:2
-attack:0:0d0
-defence:0:0d0
-alloc:1:2
-alloc:4:2
-alloc:6:2
-effect:DRAIN_STAT:CON
-effect:NOURISH:INC_BY
-dice:1000
-msg:It is fuzzy.
-desc:It provides nourishment for about 1000 turns under normal conditions,
-desc: and may reduce your constitution by 1 point. 
 
 name:& Strip~ of Mysterious Jerky
 graphics:,:u
@@ -1882,6 +1717,87 @@ msg:It tastes salty.
 desc:It provides nourishment for about 1,500 turns under normal conditions.
 desc: Who knows what it came from?
 
+## 4 Drain-foods for the desperate:
+
+name:& Chunk~ of Moldy Bread
+graphics:,:s
+type:food
+depth:5
+weight:3
+cost:2
+attack:0:0d0
+defence:0:0d0
+alloc:1:2
+alloc:4:2
+alloc:6:2
+effect:DRAIN_STAT:CON
+effect:NOURISH:INC_BY
+dice:1000
+msg:It is fuzzy.
+desc:It provides nourishment for about 1000 turns under normal conditions,
+desc: and may reduce your constitution by 1 point. 
+desc: It is certainly softer than most bread in Isengard.
+
+name:& Piece~ of Rotten Meat
+graphics:,:r
+type:food
+depth:5
+weight:20
+cost:3
+attack:0:0d0
+defence:0:0d0
+alloc:3:3
+alloc:7:3
+alloc:10:4
+#effect:CANNIBAL
+#dice:3
+effect:DRAIN_STAT:STR
+effect:NOURISH:INC_BY
+dice:1000
+msg:It tastes foul.
+desc:It provides nourishment for about 1000 turns under normal conditions,
+desc: and may reduce your strength by one point.
+desc: You can't tell what it came from. 
+
+name:& Flask~ of Bitter Grog
+graphics:,:M
+type:food
+depth:5
+weight:20
+cost:5
+attack:0:0d0
+defence:0:0d0
+alloc:2:5
+alloc:5:5
+alloc:8:5
+effect:DRAIN_STAT:GRA
+effect:NOURISH:INC_BY
+dice:100
+msg:It tastes numbing.
+desc:It provides nourishment for about 100 turns under normal conditions,
+desc: and may reduce your grace by one point.
+desc: A favorite brew of the orcs.
+
+name:& Sip of Sour Whiskey
+graphics:,:m
+type:food
+depth:5
+weight:10
+cost:5
+attack:0:0d0
+defence:0:0d0
+alloc:6:4
+alloc:9:5
+effect:DRAIN_STAT:DEX
+effect:NOURISH:INC_BY
+dice:100
+msg:It tastes fiery!
+desc:It provides nourishment for about 100 turns under normal conditions,
+desc: and may reduce your dexterity by one point.
+desc: A traditional Dunlending drink.
+
+## The drain-and-restore foods that I thought were funny:
+
 name:& Lump~ of Manflesh
 graphics:,:r
 type:food
@@ -1890,14 +1806,18 @@ weight:20
 cost:3
 attack:0:0d0
 defence:0:0d0
-alloc:3:10
-alloc:7:4
-alloc:10:6
+alloc:3:4
+alloc:7:3
+alloc:10:4
 #effect:CANNIBAL
 #dice:1
+effect:DRAIN_STAT:STR
+effect:RESTORE_STAT:STR
+dice:1
 effect:NOURISH:INC_BY
 dice:1500
 msg:It tastes fresh.
+desc:It drains and then restores a point of strength.
 desc:It provides nourishment for about 1,500 turns under normal conditions.
 desc: It clearly didn't come from an animal. 
 
@@ -1911,37 +1831,60 @@ attack:0:0d0
 defence:0:0d0
 alloc:4:20
 alloc:8:10
-alloc:10:8
+alloc:10:5
 effect:NOURISH:INC_BY
 dice:2000
+effect:DRAIN_STAT:CON
 effect:RESTORE_STAT:CON
 dice:1
 msg:It is delicious!
-desc:It restores a point of constitution if it has been drained.
+desc:It drains and then restores a point of constitution.
 desc: It provides nourishment for about 2,000 turns under normal conditions.
 desc: Isengard has at least a bit of good food, usually owned by Saruman's
 desc: favored minions. 
 
-name:& Piece~ of Rotten Meat
-graphics:,:r
+name:& Flask~ of Dorwinion Wine
+graphics:,:P
 type:food
-depth:5
-weight:20
-cost:3
+depth:8
+weight:25
+cost:50
 attack:0:0d0
 defence:0:0d0
-alloc:3:10
-alloc:7:4
-alloc:10:6
-#effect:CANNIBAL
-#dice:3
-effect:DRAIN_STAT:STR
+alloc:7:10
+alloc:10:10
 effect:NOURISH:INC_BY
-dice:1000
-msg:It tastes foul.
-desc:It provides nourishment for about 1000 turns under normal conditions,
-desc: and may reduce your strength by one point.
-desc: You can't tell what it came from. 
+dice:100
+effect:DRAIN_STAT:GRA
+effect:RESTORE_STAT:GRA
+dice:1
+msg:It is buoying!
+desc:It drains and then restores a point of grace.
+desc: It provides nourishment for about 100 turns under normal conditions.
+desc: The finest imported drinks are reserved for Saruman's
+desc: important servants, and the vintages of Dorwinion are fine indeed.
+
+name:& Jug~ of the Entwash
+graphics:,:G
+type:food
+depth:10
+weight:40
+cost:100
+attack:0:0d0
+defence:0:0d0
+alloc:5:20
+alloc:8:15
+alloc:10:10
+effect:NOURISH:INC_BY
+dice:1200
+effect:DRAIN_STAT:DEX
+effect:RESTORE_STAT:DEX
+dice:1
+msg:It is steadying.
+desc:It drains and then restores a point of dexterity.
+desc: It provides nourishment for about 1200 turns under normal conditions.
+desc: It's said that the drinks of the Onodrim are healthful and restorative.
+desc: Perhaps one of the orcs cutting down Fangorn Forest thought so too.
 
 # Index 401
 name:& Fragment~ of Lembas

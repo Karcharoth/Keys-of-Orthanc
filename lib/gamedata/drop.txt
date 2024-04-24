@@ -67,7 +67,6 @@ item:potion:Quickness
 item:potion:Miruvor
 item:potion:Healing
 #TODO level constraint
-item:herb:Restoration
 
 name:staff
 chest:1

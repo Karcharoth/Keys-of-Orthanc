@@ -655,7 +655,7 @@ will:8
 prot:11:2d4
 blow:BITE:WOUND:5:2d8
 blow:CLAW:BLIND:7:2d4
-flags:FLYING | SMART | BASH_DOOR
+flags:FLYING | SMART | BASH_DOOR | AGGRESSIVE
 ranged-freq:20
 spells:SHRIEK
 message-vis:SHRIEK:{name} shrieks in a dreadful rasp.
@@ -703,6 +703,9 @@ prot:10:1d4
 blow:HIT:HURT:10:1d8
 blow:TOUCH:EAT_ITEM:7
 flags:DROP_100 | BASH_DOOR | TAKE_ITEM | UNLOCK_DOOR | ORC
+#flags: COWARD_AI
+#ranged-freq:20
+#spells:SHRIEK
 desc:He is one of Saruman's trusted servants.
 desc: Recently returned from a mission in other lands,
 desc: he is hungry for plunder.
@@ -874,7 +877,7 @@ blow:HIT:BATTER:15:1d14
 blow:TOUCH:LOSE_STR_CON:8:1d5
 drop-artifact:of Helm
 flags:UNIQUE | MALE | INVISIBLE
-flags:RAND_25 | SMART | MANBANE | PASS_DOOR | HURT_FIRE
+flags:RAND_25 | SMART | MANBANE | PASS_DOOR | HURT_FIRE | AGGRESSIVE
 ranged-freq:20
 spells:SCARE
 desc:The spirit of a long-dead ruler of Rohan,
@@ -959,7 +962,7 @@ stealth:0
 will:8
 prot:10:3d4
 blow:BITE:FIRE:13:2d7
-flags:RES_FIRE | MINDLESS | RAND_25 | RAND_50 | UNIQUE | FLYING
+flags:RES_FIRE | MINDLESS | RAND_25 | RAND_50 | UNIQUE | FLYING | AGGRESSIVE
 ranged-freq:35
 spell-power:6
 spells:SHRIEK | BR_FIRE | CONF
@@ -1180,7 +1183,7 @@ stealth:8
 will:7
 prot:10:1d4
 blow:HIT:WOUND:10:1d8
-flags:MALE | DROP_33 | INVISIBLE | RIPOSTE
+flags:MALE | DROP_33 | INVISIBLE | RIPOSTE | AGGRESSIVE
 drop:sword:Dagger:25:1d1
 desc:'They are fierce folk when roused. They will not give way now for dusk or dawn,
 desc: until Theoden is taken, or they themselves are slain.'

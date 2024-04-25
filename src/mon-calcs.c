@@ -271,7 +271,11 @@ void calc_stance(struct monster *mon)
 	if (player->state.flags[OF_AGGRAVATE] && !rf_has(race->flags, RF_MINDLESS)){
 		stances[1] = STANCE_AGGRESSIVE;
 	}
-
+    
+    if (rf_has(race->flags, RF_AGGRESSIVE)) {
+        stances[1] = STANCE_AGGRESSIVE;
+    }
+    
 	/* Monsters that have been angered have confident turned into aggressive */
 	if (mflag_has(mon->mflag, MFLAG_AGGRESSIVE)) {
 		stances[1] = STANCE_AGGRESSIVE;

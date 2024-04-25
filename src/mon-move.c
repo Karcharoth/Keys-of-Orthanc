@@ -74,9 +74,9 @@ static bool monster_can_smell(struct monster *mon)
 	if (streq("wolf", mon->race->base->name)) {
 		/* I smell a character! */
 		return true;
-	} else if (streq("cat", mon->race->base->name)) {
-		/* Felines are also quite good */
-		if (age <= SMELL_STRENGTH / 2) {
+	} else if (streq("horror", mon->race->base->name)) {
+		/* Horrors are mediocre */
+		if (age <= SMELL_STRENGTH / 3) {
 			/* Something's in the air... */
 			return true;
 		}

@@ -95,8 +95,7 @@ static bool monster_talks_to_friends(struct monster *mon)
 		rf_has(race->flags, RF_FRIEND) ||
 		rf_has(race->flags, RF_UNIQUE_FRIEND) ||
 		rf_has(race->flags, RF_ESCORT) ||
-		rf_has(race->flags, RF_ESCORTS) ||
-		rsf_has(race->spell_flags, RSF_SHRIEK);
+		rf_has(race->flags, RF_ESCORTS);
 }
 
 /**
@@ -416,8 +415,7 @@ static void monster_find_range(struct monster *mon)
 		}
 
 		/* Spies have a high minimum range */
-		if (rf_has(mon->race->flags, RF_SMART) &&
-			rsf_has(mon->race->spell_flags, RSF_SHRIEK) &&
+		if (rf_has(mon->race->flags, RF_COWARD_AI) &&
 			(mon->stance != STANCE_AGGRESSIVE)) {
 			mon->min_range = 10;
 		}
@@ -433,12 +431,12 @@ static void monster_find_range(struct monster *mon)
 	mon->best_range = mon->min_range;
 
 	/* Breathers like range 2 */
-	if ((mon->race->freq_ranged > 15) && !rf_has(mon->race->flags, RF_QUESTOR)){
+	if (rf_has(mon->race->flags, RF_RANGED_AI)){
 		if (monster_breathes(mon) && (mon->best_range < 6)) {
 			mon->best_range = 2;
 		} else if (mon->mana >= z_info->mana_max / 5) {
 			/* Specialized ranged attackers will sit back */
-			mon->best_range += (mon->race->freq_ranged - 15) / 5;
+			mon->best_range += (mon->race->freq_ranged) / 10;
 			mon->best_range = MIN(mon->best_range, 8);
 			mon->min_range = mon->best_range - 1;
 		}
@@ -996,7 +994,7 @@ static bool get_move_retreat(struct monster *mon, struct loc *tgrid)
 
 	/* Monsters that like ranged attacks a lot (e.g. archers) try to stay
 	 * in good shooting locations */
-	if (race->freq_ranged >= 50) {
+	if (rf_has(mon->race->flags, RF_RANGED_AI)) {
 		int start = randint0(8);
 		bool acceptable = false;
 		int best_score = 0;
@@ -1177,7 +1175,7 @@ static bool get_move_retreat(struct monster *mon, struct loc *tgrid)
 		if (square_isview(cave, mon->grid) &&
 		    ((mon->cdis < z_info->turn_range) ||
 			 (mon->mspeed < player->state.speed)) &&
-			!player->truce && (race->freq_ranged < 50)) {			
+			!player->truce && !(rf_has(mon->race->flags, RF_RANGED_AI))) {			
 			/* Message if visible */
 			if (monster_is_visible(mon)) {
 				/* Dump a message */
@@ -1431,7 +1429,7 @@ static int get_move_calc_hesitance(struct monster *mon)
 
 	/* Archers should be slightly more hesitant as they are
 	 * in an excellent situation */
-	if ((mon->race->freq_ranged > 30) && (hesitance == 2)) {
+	if (rf_has(mon->race->flags, RF_RANGED_AI) && (hesitance == 2)) {
 		hesitance++;
 	}
 
@@ -2237,7 +2235,7 @@ static bool make_move(struct monster *mon, struct loc *tgrid, bool fear,
 					 * The only thing left to do is go down fighting. */
 					if (monster_is_visible(mon) &&
 						(square_isfire(cave, current)) &&
-						!player->truce && (mon->race->freq_ranged < 50)) {
+						!player->truce && !(rf_has(mon->race->flags, RF_RANGED_AI))) {
 						/* Dump a message */
 						add_monster_message(mon, MON_MSG_PANIC, true);
 
@@ -3113,7 +3111,7 @@ static void monster_turn_hit_by_ranged(struct monster *mon)
 		}
 
 		/* Monsters with ranged attacks will try to cast a spell*/
-		if (mon->race->freq_ranged) mflag_on(mon->mflag, MFLAG_ALWAYS_CAST);
+		if (rf_has(mon->race->flags, RF_RANGED_AI)) mflag_on(mon->mflag, MFLAG_ALWAYS_CAST);
 
 		calc_monster_speed(mon);
 	}
@@ -3139,7 +3137,7 @@ static void monster_turn_hit_by_melee(struct monster *mon)
 		}
 
 		/* Monsters with ranged attacks will try to cast a spell*/
-		if (mon->race->freq_ranged) mflag_on(mon->mflag, MFLAG_ALWAYS_CAST);
+		if (rf_has(mon->race->flags, RF_RANGED_AI)) mflag_on(mon->mflag, MFLAG_ALWAYS_CAST);
 
 		calc_monster_speed(mon);
 	}
@@ -3381,7 +3379,7 @@ static void monster_turn(struct monster *mon)
 	if (!random_move) {
 		/* Monsters who can't cast, are aggressive, and are not afraid
 		 * just want to charge */
-		if ((mon->stance == STANCE_AGGRESSIVE) && (!mon->race->freq_ranged)) {
+		if ((mon->stance == STANCE_AGGRESSIVE) && (!(rf_has(mon->race->flags, RF_RANGED_AI)))) {
 			mon->target.grid = loc(0, 0);
 		}
 
@@ -3495,7 +3493,7 @@ static void monster_turn(struct monster *mon)
 
 		/* If the square is non-adjacent to the player,
 		 * then allow a ranged attack instead of a move */
-		if ((mon->cdis > 1) && mon->race->freq_ranged) {
+		if ((mon->cdis > 1) && rf_has(mon->race->flags, RF_RANGED_AI)) {
 			make_ranged_attack(mon);
 		}
 

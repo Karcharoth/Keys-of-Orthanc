@@ -297,7 +297,7 @@ stealth:5
 will:0
 prot:6
 blow:HIT:HURT:3:1d5
-flags:UNLOCK_DOOR | DROP_33
+flags:UNLOCK_DOOR | DROP_33 | COWARD_AI
 ranged-freq:20
 spells:SHRIEK
 drop:sword:Dagger:15:1d1
@@ -397,7 +397,7 @@ stealth:4
 will:2
 prot:7
 blow:HIT:HURT:4:1d6
-flags:DROP_1D2 | DROP_GOOD | UNIQUE | MALE 
+flags:DROP_1D2 | DROP_GOOD | UNIQUE | MALE | COWARD_AI
 ranged-freq:20
 spells:SHRIEK
 desc:A small man in Breeland clothing steps nervously along a tunnel.
@@ -420,7 +420,7 @@ stealth:7
 will:5
 prot:5:1d4
 blow:HIT:HURT:8:1d7
-flags:MALE | DROP_100 | DROP_GREAT | UNLOCK_DOOR | UNIQUE
+flags:MALE | DROP_100 | DROP_GREAT | UNLOCK_DOOR | UNIQUE | COWARD_AI
 ranged-freq:20
 spells:SHRIEK
 desc:Strange to see the most trusted advisor of the Lord of the Mark
@@ -506,7 +506,7 @@ stealth:6
 will:1
 prot:6:1d4
 blow:HIT:HURT:5:1d5
-flags:FRIENDS | DROP_33 | UNLOCK_DOOR
+flags:FRIENDS | DROP_33 | UNLOCK_DOOR | RANGED_AI
 ranged-freq:75
 spell-power:6
 spells:ARROW1
@@ -785,7 +785,7 @@ stealth:1
 will:5
 prot:5:2d4
 blow:HIT:HURT:3:1d6
-flags:FRIEND | DROP_33 | SMART | MALE
+flags:FRIEND | DROP_33 | SMART | MALE | RANGED_AI
 ranged-freq:70
 spell-power:6
 spells:ARROW2
@@ -1160,7 +1160,7 @@ stealth:3
 will:8
 prot:6:2d4
 blow:HIT:HURT:4:2d6
-flags:DROP_100 | ESCORT | DROP_GOOD | DROP_1D2 | MALE
+flags:DROP_100 | ESCORT | DROP_GOOD | DROP_1D2 | MALE | RANGED_AI
 ranged-freq:20
 spells:HOLD | SCARE
 desc:A sorcerer of the Dunlendings, he is known for his fearful power.
@@ -1217,7 +1217,7 @@ stealth:8
 will:10
 prot:8:4d4
 blow:HIT:BATTER:10:4d7
-flags:MALE | UNIQUE | REGENERATE | SMART | KNOCK_BACK | HURT_FIRE | BASH_DOOR | RES_POIS
+flags:MALE | UNIQUE | REGENERATE | SMART | KNOCK_BACK | HURT_FIRE | BASH_DOOR | RES_POIS | COWARD_AI
 ranged-freq:20
 spells:SHRIEK
 message-vis:SHRIEK:{name} roars in despair.
@@ -1271,7 +1271,7 @@ will:15
 prot:14:4d4
 blow:HIT:SLOW:15:2d12
 flags:UNIQUE | QUESTOR | MALE | ATTR_MULTI
-flags:OPEN_DOOR | UNLOCK_DOOR
+flags:OPEN_DOOR | UNLOCK_DOOR | RANGED_AI
 flags:DROP_3D2 | DROP_GREAT
 flags:SMART | REGENERATE
 ranged-freq:75

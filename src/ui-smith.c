@@ -28,7 +28,6 @@
 #include "obj-pile.h"
 #include "obj-smith.h"
 #include "obj-tval.h"
-#include "obj-util.h"
 #include "object.h"
 #include "player-abilities.h"
 #include "player-calcs.h"
@@ -952,15 +951,9 @@ static void artefact_menu(const char *name, int row)
 
 	if (!kind) return;
 
-    /* If it's a ring, swap it to the Ring item *kind*, or else you're smithing
-    the Venom's End of Kreh*/
-    if (kind->tval == TV_RING && !smith_obj->artifact) {
-        reset_smithing_objects(lookup_kind(smith_obj->tval, lookup_sval(smith_obj->tval, "Ring")));
-    }
-	if (smith_obj->ego) reset_smithing_objects(kind);
 	/* Mark as an artefact, remove any special item info */
 	smith_obj->artifact = smith_art;
-
+	if (smith_obj->ego) reset_smithing_objects(kind);
 
 	my_strcpy(smith_art_name, format("of %s", player->full_name),
 			  sizeof(smith_art_name));

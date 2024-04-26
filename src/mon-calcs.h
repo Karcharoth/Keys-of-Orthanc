@@ -21,6 +21,7 @@
 #include "cave.h"
 
 int monster_man_bane_bonus(struct monster *mon, struct player *p);
+int monster_dwarf_bane_bonus(struct monster *mon, struct player *p);
 void calc_morale(struct monster *mon);
 void calc_stance(struct monster *mon);
 void make_alert(struct monster *mon, int dam);

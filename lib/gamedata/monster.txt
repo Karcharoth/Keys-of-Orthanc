@@ -427,7 +427,23 @@ desc:Strange to see the most trusted advisor of the Lord of the Mark
 desc: in Isengard's caverns, yet undoubtedly true. His eyes sweep the ground
 desc: as if following a path.
 
-
+# Index 32
+name:Vampire bat
+base:flyer
+depth:3
+rarity:20
+color:p
+speed:4
+health:1d4
+sleep:25
+percept:6
+stealth:6
+will:0
+prot:5
+blow:BITE:WOUND:8:1d6
+flags:FRIENDS | RAND_50 | RAND_25 | TERRITORIAL
+desc:Flocks of vicious bats always seem to follow in the wake of goblins,
+desc: though they've never been seen training the bats.
 
 
 ##### 4 #####
@@ -683,6 +699,31 @@ flags:FRIEND
 desc:Dark brambles and deadly vines infest Isengard,
 desc: but these seem especially strange,
 desc: twisted by acidic pools.
+
+# Index 67
+name:Nar, the Dwarfbiter
+base:goblin
+depth:6
+rarity:50
+color:y
+speed:2
+health:10d4
+sleep:20
+percept:8
+stealth:10
+will:7
+prot:3:3d4
+blow:HIT:HURT:7:3d6
+blow:BITE:HURT:5:1d4
+flags:DROP_1D2 | BASH_DOOR | UNLOCK_DOOR | DWARFBANE | RAND_25
+drop:polearm:Battle Axe:80:1d1
+drop:shield:Round Shield:40:1d1
+drop:mail:Mail Corslet:80:1d1
+desc:Narbalinibunnalifrerindisfloilonigroin is a particularly 
+desc: eccentric goblin, having stolen both the name of every dwarf he has killed,
+desc: and their gear. While thoroughly insane, he certainly knows how to
+desc: kill a dwarf.
+
 
 ##### 7 #####
 

@@ -45,7 +45,7 @@
  * Morale
  * ------------------------------------------------------------------------ */
 /**
- * Bonus for elf bane against elves.
+ * Bonus for man bane against men.
  */
 int monster_man_bane_bonus(struct monster *mon, struct player *p)
 {
@@ -56,6 +56,20 @@ int monster_man_bane_bonus(struct monster *mon, struct player *p)
 	/* These guys must have killed between 4 and 8 men */
     return (rf_has(mon->race->flags, RF_MANBANE) && man) ? 2 : 0;
 }
+
+/**
+ * Bonus for dwarf bane against dwarves.
+ */
+int monster_dwarf_bane_bonus(struct monster *mon, struct player *p)
+{
+	bool dwarf = streq(p->race->name, "Dwarf");
+
+    if (!mon) return 0;
+
+	/* Nar must have killed between 8 and 16 dwarves */
+    return (rf_has(mon->race->flags, RF_DWARFBANE) && dwarf) ? 3 : 0;
+}
+
 
 /**
  * Calculate the number of monsters of the same type within LOS of a given
@@ -221,8 +235,9 @@ void calc_morale(struct monster *mon)
 		morale -= player_bane_bonus(player, mon) * 10;
 	}
 
-    /* Increase morale for the Man-Bane ability */
+    /* Increase morale for the Man-Bane and Dwarf-Bane abilities */
 	morale += monster_man_bane_bonus(mon, player) * 10;
+	morale += monster_dwarf_bane_bonus(mon, player) * 10;
 
 	/* Add temporary morale modifiers */
 	morale += mon->tmp_morale;

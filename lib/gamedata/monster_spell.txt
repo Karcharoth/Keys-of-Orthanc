@@ -47,18 +47,6 @@
 # - {name} is the acting monster's name
 # - {pronoun} is his/her/its
 
-name:SP_HURT
-mana:10
-best-range:2
-max-range:3
-desire:1
-disturb:1
-use-past-range:0
-effect:SPOT:HURT
-dice:5d4m$M
-lore:spray bursts of needles
-message-vis:{name} sprays a burst of needles.
-message-invis:{name} hits you with needles.
 
 name:ARROW1
 mana:0
@@ -79,6 +67,7 @@ mana:0
 best-range:4
 max-range:16
 desire:2
+disturb:1
 use-past-range:100
 effect:BOLT:ARROW
 dice:2d7m$M
@@ -86,6 +75,42 @@ expr:M:ZERO: - 1
 lore:fire a longbow
 message-vis:{name} fires an arrow.
 message-invis:You hear a loud thwang.
+
+# Goblin crossbows aren't the most accurate; low range.
+name:ARROW3
+mana:0
+best-range:3
+max-range:8
+desire:2
+disturb:1
+use-past-range:100
+effect:BOLT:ARROW
+dice:3d7m$M
+expr:M:ZERO: - 1
+lore:fire a crossbow
+message-vis:{name} fires a crossbow.
+message-invis:You hear a loud click.
+
+
+# Does this cause problems with it being a ranged attack?
+# It hopefully rolls against full evasion.
+# The relevant things I see are blocking and riposte.
+# Not being able to riposte against a faraway kraken isn't bad;
+# Blocking being good against long tentacles also isn't bad.
+name:TENTACLE
+mana:0
+best-range:2
+max-range:3
+desire:1
+disturb:1
+use-past-range:100
+effect:BOLT:BOULDER
+dice:2d10m$M
+expr:M:ZERO: - 1
+lore:strike with a tentacle
+message-vis:{name} lashes out with a tentacle.
+message-invis: You hear a swish.
+
 
 name:BOULDER
 mana:0

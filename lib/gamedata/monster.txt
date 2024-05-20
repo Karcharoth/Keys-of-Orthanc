@@ -882,6 +882,9 @@ desc: bodyguards give him a wide berth.
 #drop:digger:Mattock:100:1d1
 ##add Vengeance!
 
+# Hack: if there are ever any other female horrors I need a new flag like WEBDWELLER
+# so that the web summon works.
+
 # Index 78
 name:Scuttling horror
 base:horror
@@ -897,9 +900,9 @@ will:3
 prot:10:1d4
 blow:BITE:ENTRANCE:8:1d10
 blow:BITE:LOSE_CON:8:1d10
-flags:RES_POIS | TERRITORIAL | FRIENDS | SMART
+flags:RES_POIS | TERRITORIAL | FRIENDS | SMART | FEMALE
 desc:A spider as big as a dog, covered in thick bristles,
-desc: with the light reflecting off its pale bulbous eyes.
+desc: with the light reflecting off of pale bulbous eyes.
 
 # Index 79
 name:Helm Hammerhand

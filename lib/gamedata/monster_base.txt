@@ -119,6 +119,9 @@ desc:Insect
 #     - nasty attacks
 #     - quite variable
 #
+# Hack: if there are ever any other female horrors I need a new flag like WEBDWELLER
+# so that the web summon works.
+
 name:horror
 glyph:H
 pain:7

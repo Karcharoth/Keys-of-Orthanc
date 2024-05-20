@@ -213,20 +213,19 @@ desc:A resting place for flying creatures.
 msg-xtra:There is a flutter of wings from high above.
 
 
-# TODO: make web/nets happen properly. Why does the code care so much about webs?!
-
-name:net:web
-graphics:^:U
-rarity:1
-min-depth:7
+name:web:web
+graphics:^:B
+rarity:8
+min-depth:6
 max-depth:20
 power:-1
 flags:TRAP | FLOOR
-effect:NOISE:PLAYER
-dice:-10
-desc:A sturdy net of cords.
-msg:You are caught in a great net.
-msg-xtra:A harsh bell rings.
+effect:SUMMON:SCUTTLING
+dice:1d3
+desc:A web of strong, sticky silk.
+msg:You are caught in a vast black web.
+msg-xtra:You hear the scrabbling of many feet climbing from above.
+
 
 # dungeon alter -- rock fall
 

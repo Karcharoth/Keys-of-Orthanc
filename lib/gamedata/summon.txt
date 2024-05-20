@@ -49,3 +49,12 @@ uniques:0
 base:flyer
 desc:flying creatures
 
+# Hack: if there are ever any other female horrors I need a new flag like WEBDWELLER
+# so that the web summon works.
+
+name:SCUTTLING
+msgt:SUM_SPIDER
+uniques:1
+base:horror
+race-flag:FEMALE
+desc:scuttling horrors

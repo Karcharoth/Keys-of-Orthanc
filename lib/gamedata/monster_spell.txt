@@ -346,6 +346,19 @@ message-vis:{name} whispers of fading and decay.
 message-invis:{name} whispers of fading and decay.
 message-save:You resist.
 
+name:SUMMON
+mana:10
+best-range:0
+desire:1
+disturb:1
+use-past-range:100
+effect:SUMMON:ANY:0:1
+dice:1d4
+lore:call monsters
+message-vis:{name} calls {pronoun} legions to {pronoun} aid!
+message-invis:{name} calls on Isengard's warriors!
+
+
 name:SNG_BIND
 mana:10
 best-range:0

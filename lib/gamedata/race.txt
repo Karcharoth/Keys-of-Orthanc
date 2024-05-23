@@ -11,7 +11,7 @@
 # Format:
 # name:race name
 # stats:str:dex:con:gra
-# skills:melee:archery:evasion:stealth:perception:will:smithing:song
+# skills:melee:archery:evasion:stealth:perception:will:smithing:alchemy
 # history:history
 # age:agebase:agemod
 # height:hgt:modhgt
@@ -25,7 +25,7 @@
 # 'stats' is for the stat modifiers - strength, dexterity, constitution, grace.
 
 # 'skills' is for the skill modifiers - melee, archery, evasion, stealth,
-# perception, will, smithing, song.
+# perception, will, smithing, alchemy.
 
 # 'history' is for starting point of the player history (see history.txt).
 

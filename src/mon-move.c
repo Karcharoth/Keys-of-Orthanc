@@ -3261,7 +3261,7 @@ static void monster_turn(struct monster *mon)
 
 	/* First work out if the song of mastery stops the monster's turn */
 	if (player_is_singing(player, mastery)) {
-		int pskill = song_bonus(player, player->state.skill_use[SKILL_SONG],
+		int pskill = song_bonus(player, player->state.skill_use[SKILL_ALCHEMY],
 								mastery);
 		int mskill = monster_skill(mon, SKILL_WILL) + 5
 			+ flow_dist(cave->player_noise, mon->grid);

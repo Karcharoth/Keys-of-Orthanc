@@ -205,14 +205,14 @@ static int test_sleep0(void *state) {
 	ok;
 }
 
-static int test_song0(void *state) {
-	enum parser_error r = parser_parse(state, "song:15");
+static int test_alchemy0(void *state) {
+	enum parser_error r = parser_parse(state, "alchemy:15");
 	struct monster_race *mr;
 
 	eq(r, PARSE_ERROR_NONE);
 	mr = parser_priv(state);
 	require(mr);
-	eq(mr->song, 15);
+	eq(mr->alchemy, 15);
 	ok;
 }
 
@@ -374,7 +374,7 @@ struct test tests[] = {
 	{ "will0", test_will0 },
 	{ "prot0", test_prot0 },
 	{ "sleep0", test_sleep0 },
-	{ "song0", test_song0 },
+	{ "alchemy0", test_alchemy0 },
 	{ "depth0", test_depth0 },
 	{ "rarity0", test_rarity0 },
 	{ "blow0", test_blow0 },

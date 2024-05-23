@@ -83,7 +83,7 @@ static int test_skills0(void *state) {
 	eq(h->skill_adj[SKILL_PERCEPTION], 1);
 	eq(h->skill_adj[SKILL_WILL], 1);
 	eq(h->skill_adj[SKILL_SMITHING], 0);
-	eq(h->skill_adj[SKILL_SONG], 0);
+	eq(h->skill_adj[SKILL_ALCHEMY], 0);
 	ok;
 }
 

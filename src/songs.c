@@ -469,7 +469,7 @@ if ((mon->song != song) && monster_is_visible(mon)) {
 
     /* If the player is singing the song of silence, penalise the monster */
 	if (player_is_singing(player, silence)) {
-		song_skill -= song_bonus(player, player->state.skill_use[SKILL_SONG],
+		song_skill -= song_bonus(player, player->state.skill_use[SKILL_ALCHEMY],
 								 silence) / 2;
 	}
 

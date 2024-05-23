@@ -120,7 +120,7 @@ smith-attack:1:4
 flags:HATES_ACID | HATES_FIRE
 flags:SHOW_DICE
 smith-values:STR[1] | DEX[1] | CON[1] | GRA[1]
-smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1] | SONG[1]
+smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1]
 smith-values:TUNNEL[1]
 smith-values:RES_FIRE[1] | RES_COLD[1] | RES_POIS[1]
 smith-values:RES_FIRE[-1] | RES_COLD[-1] | RES_POIS[-1]
@@ -166,7 +166,7 @@ smith-attack:1:4
 flags:HATES_ACID | HATES_FIRE
 flags:SHOW_DICE
 smith-values:STR[1] | DEX[1] | CON[1] | GRA[1]
-smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1] | SONG[1]
+smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1]
 smith-values:TUNNEL[1]
 smith-values:RES_FIRE[1] | RES_COLD[1] | RES_POIS[1]
 smith-values:RES_FIRE[-1] | RES_COLD[-1] | RES_POIS[-1]
@@ -214,7 +214,7 @@ smith-attack:1:4
 flags:HATES_ACID
 flags:SHOW_DICE
 smith-values:STR[1] | DEX[1] | CON[1] | GRA[1]
-smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1] | SONG[1]
+smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1]
 smith-values:TUNNEL[1]
 smith-values:RES_FIRE[1] | RES_COLD[1] | RES_POIS[1]
 smith-values:RES_FIRE[-1] | RES_COLD[-1] | RES_POIS[-1]
@@ -316,10 +316,10 @@ smithability:Smithing:Artistry
 smithability:Smithing:Artifice
 smithability:Smithing:Masterpiece
 smithability:Smithing:Ringlore
-smithability:Song:Gondor Leechcraft
-smithability:Song:Isengard Alchemy
-smithability:Song:Gundabad Explosives
-smithability:Song:Mastery
+smithability:Alchemy:Gondor Leechcraft
+smithability:Alchemy:Isengard Alchemy
+smithability:Alchemy:Gundabad Explosives
+smithability:Alchemy:Mastery
 
 name:helm:Helm~
 graphics:light umber
@@ -374,7 +374,7 @@ break:5
 smith-attack:1:1
 flags:HATES_ACID | HATES_FIRE
 smith-values:DEX[1] | CON[1]
-smith-values:STEALTH[1] | SONG[1]
+smith-values:STEALTH[1] | ALCHEMY[1]
 smith-values:RES_FIRE[1] | RES_COLD[1]
 smith-flags:SUST_DEX | SUST_CON
 smith-flags:PROT_FEAR | PROT_CONF | PROT_STUN | PROT_HALLU
@@ -392,7 +392,7 @@ break:5
 smith-attack:1:1
 flags:HATES_ACID | HATES_FIRE
 smith-values:STR[1] | DEX[1] | CON[1] | GRA[1]
-smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1] | SONG[1]
+smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1] | ALCHEMY[1]
 smith-values:RES_FIRE[1] | RES_COLD[1] | RES_POIS[1]
 smith-values:RES_FIRE[-1] | RES_COLD[-1] | RES_POIS[-1]
 smith-flags:SUST_STR | SUST_DEX | SUST_CON | SUST_GRA
@@ -404,7 +404,7 @@ smithability:Evasion:Heavy Armour
 smithability:Stealth:Vanish
 smithability:Stealth:Burglary
 smithability:Will:Strength in Adversity
-smithability:Song:Potion Belt
+smithability:Alchemy:Potion Belt
 
 name:mail:Mail~
 graphics:slate
@@ -413,7 +413,7 @@ break:5
 smith-attack:1:1
 flags:HATES_ACID
 smith-values:STR[1] | DEX[1] | CON[1] | GRA[1]
-smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1] | SONG[1]
+smith-values:ARCHERY[1] | STEALTH[1] | PERCEPTION[1] | WILL[1]
 smith-values:RES_FIRE[1] | RES_COLD[1] | RES_POIS[1]
 smith-values:RES_FIRE[-1] | RES_COLD[-1] | RES_POIS[-1]
 smith-flags:SUST_STR | SUST_DEX | SUST_CON | SUST_GRA

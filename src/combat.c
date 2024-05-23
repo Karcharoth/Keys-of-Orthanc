@@ -699,7 +699,7 @@ int protection_roll(struct player *p, int typ, bool melee, aspect prot_aspect)
 	
 	/* Things that always count: */
 	if (player_is_singing(p, staying)) {
-		int bonus = song_bonus(p, p->state.skill_use[SKILL_SONG], staying);
+		int bonus = song_bonus(p, p->state.skill_use[SKILL_ALCHEMY], staying);
 		prt += damcalc(1, MAX(1, bonus), prot_aspect);
 	}
 	

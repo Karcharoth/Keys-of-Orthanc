@@ -13,7 +13,7 @@
 # short-name: short house name
 # player-flags: house flag
 # stats: str : dex : con : gra
-# skills: melee: archery: evasion: stealth: perception: will: smithing: song
+# skills: melee: archery: evasion: stealth: perception: will: smithing: alchemy
 # desc:description
 #
 # 'name' indicates the beginning of an entry. The serial number must
@@ -28,7 +28,7 @@
 # 'stats' is for the stat modifiers - strength, dexterity, constitution, grace.
 #
 # 'skills' is for the skill modifiers: melee, archery, evasion, stealth,
-# perception, will, smithing, song.
+# perception, will, smithing, alchemy.
 #
 # 'desc' is a text description of the house.
 

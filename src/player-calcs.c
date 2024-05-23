@@ -668,7 +668,7 @@ void calc_light(struct player *p)
 
 	/* Song of the Trees */
 	if (player_is_singing(p, trees)) {
-		new_light += song_bonus(p, p->state.skill_use[SKILL_SONG], trees);
+		new_light += song_bonus(p, p->state.skill_use[SKILL_ALCHEMY], trees);
 	}
 
 	/* Update the light radius and visuals if necessary */
@@ -994,29 +994,29 @@ void calc_bonuses(struct player *p, struct player_state *state, bool known_only,
 	state->skill_stat_mod[SKILL_PERCEPTION] = state->stat_use[STAT_GRA];
 	state->skill_stat_mod[SKILL_WILL] = state->stat_use[STAT_GRA];
 	state->skill_stat_mod[SKILL_SMITHING] = state->stat_use[STAT_GRA];
-	state->skill_stat_mod[SKILL_SONG] = state->stat_use[STAT_GRA];
+	state->skill_stat_mod[SKILL_ALCHEMY] = state->stat_use[STAT_GRA];
 
-	/* Finalise song skill first as it modifies some other skills... */
-	state->skill_use[SKILL_SONG] = p->skill_base[SKILL_SONG]
-		+ state->skill_equip_mod[SKILL_SONG]
-		+ state->skill_stat_mod[SKILL_SONG]
-		+ state->skill_misc_mod[SKILL_SONG];
+	/* No longer applicable: "Finalise song skill first as it modifies some other skills" */
+	state->skill_use[SKILL_ALCHEMY] = p->skill_base[SKILL_ALCHEMY]
+		+ state->skill_equip_mod[SKILL_ALCHEMY]
+		+ state->skill_stat_mod[SKILL_ALCHEMY]
+		+ state->skill_misc_mod[SKILL_ALCHEMY];
 
 	/* Apply song effects that modify skills */
 	song = lookup_song("Slaying");
 	if (player_is_singing(p, song)) {
-		int pskill = state->skill_use[SKILL_SONG];
+		int pskill = state->skill_use[SKILL_ALCHEMY];
 		state->skill_misc_mod[SKILL_MELEE] += song_bonus(p, pskill, song);
 		state->skill_misc_mod[SKILL_ARCHERY] += song_bonus(p, pskill, song);
 	}
 	song = lookup_song("Aule");
 	if (player_is_singing(p, song)) {
-		int pskill = state->skill_use[SKILL_SONG];
+		int pskill = state->skill_use[SKILL_ALCHEMY];
 		state->skill_misc_mod[SKILL_SMITHING] += song_bonus(p, pskill, song);
 	}
 	song = lookup_song("Staying");
 	if (player_is_singing(p, song)) {
-		int pskill = state->skill_use[SKILL_SONG];
+		int pskill = state->skill_use[SKILL_ALCHEMY];
 		state->skill_misc_mod[SKILL_WILL] += song_bonus(p, pskill, song);
 	}
 	song = lookup_song("Freedom");
@@ -1082,7 +1082,7 @@ void calc_bonuses(struct player *p, struct player_state *state, bool known_only,
 	}
 
 	/* Finalise the non-song skills */
-	for (i = 0; i < SKILL_SONG; i++) {
+	for (i = 0; i < SKILL_ALCHEMY; i++) {
 		state->skill_use[i] = p->skill_base[i] + state->skill_equip_mod[i]
 			+ state->skill_stat_mod[i] + state->skill_misc_mod[i];
 	}

@@ -203,7 +203,7 @@ weight:30
 cost:45000
 attack:0:0d0
 defence:2:1d1
-values:SONG[2]
+values:ALCHEMY[2]
 ability:Will:Channeling
 ability:Perception:Lore-Master
 desc:The Blue Wizard, Pallando, once wore this robe,
@@ -770,7 +770,7 @@ desc: light into every color.
 #base-object:sword
 #pval:0
 #flags:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
-#flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
+#flags:ARCHERY | STEALTH | PERCEPTION | WILL
 #flags:TUNNEL | SHARPNESS | VAMPIRIC
 #flags:SLAY_ORC | SLAY_WOLF
 #flags:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
@@ -791,7 +791,7 @@ desc: light into every color.
 #base-object:polearm
 #pval:0
 #flags:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
-#flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
+#flags:ARCHERY | STEALTH | PERCEPTION | WILL
 #flags:TUNNEL | SHARPNESS | VAMPIRIC
 #flags:SLAY_ORC | SLAY_WOLF
 #flags:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
@@ -812,7 +812,7 @@ desc: light into every color.
 #base-object:hafted
 #pval:0
 #flags:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
-#flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
+#flags:ARCHERY | STEALTH | PERCEPTION | WILL
 #flags:TUNNEL
 #flags:SLAY_ORC | SLAY_WOLF
 #flags:SLAY_UNDEAD | SLAY_MAN | SLAY_HORROR
@@ -901,7 +901,7 @@ desc: light into every color.
 #base-object:amulet
 #pval:0
 #flags:CON | GRA | NEG_CON | NEG_GRA
-#flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
+#flags:ARCHERY | STEALTH | PERCEPTION | WILL
 #flags:SUST_CON | SUST_GRA
 #flags:RES_FEAR | RES_BLIND | RES_CONF | RES_STUN | RES_HALLU
 #flags:SLOW_DIGEST | LIGHT | REGEN | SEE_INVIS | FREE_ACT
@@ -933,7 +933,7 @@ desc: light into every color.
 #base-object:soft armor
 #pval:0
 #flags:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
-#flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
+#flags:ARCHERY | STEALTH | PERCEPTION | WILL | ALCHEMY
 #flags:SUST_STR | SUST_DEX | SUST_CON | SUST_GRA
 #flags:RES_FIRE | RES_COLD | RES_POIS
 #flags:RES_FEAR | RES_BLIND | RES_CONF | RES_STUN | RES_HALLU
@@ -950,7 +950,7 @@ desc: light into every color.
 #base-object:mail
 #pval:0
 #flags:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
-#flags:ARCHERY | STEALTH | PERCEPTION | WILL | SONG
+#flags:ARCHERY | STEALTH | PERCEPTION | WILL
 #flags:SUST_STR | SUST_DEX | SUST_CON | SUST_GRA
 #flags:RES_FIRE | RES_COLD | RES_POIS
 #flags:RES_FEAR | RES_BLIND | RES_CONF | RES_STUN | RES_HALLU
@@ -967,7 +967,7 @@ desc: light into every color.
 #base-object:cloak
 #pval:0
 #flags:DEX | CON | NEG_DEX | NEG_CON
-#flags:STEALTH | SONG
+#flags:STEALTH | ALCHEMY
 #flags:SUST_DEX | SUST_CON
 #flags:RES_FIRE | RES_COLD
 #flags:RES_FEAR | RES_CONF | RES_STUN | RES_HALLU
@@ -1018,7 +1018,7 @@ desc: light into every color.
 #base-object:crown
 #pval:0
 #flags:GRA | NEG_GRA
-#flags:PERCEPTION | WILL | SONG
+#flags:PERCEPTION | WILL
 #flags:SUST_GRA
 #flags:RES_FIRE | RES_COLD | RES_POIS
 #flags:RES_FEAR | RES_BLIND | RES_CONF | RES_STUN | RES_HALLU
@@ -1064,7 +1064,7 @@ desc: light into every color.
 # List of all relevant flags...
 #
 #F:STR | DEX | CON | GRA | NEG_STR | NEG_DEX | NEG_CON | NEG_GRA
-#F:ARCHERY | STEALTH | PERCEPTION | WILL | SMITHING | SONG
+#F:ARCHERY | STEALTH | PERCEPTION | WILL | SMITHING | ALCHEMY
 #F:DAMAGE_SIDES
 #F:TUNNEL | SHARPNESS | VAMPIRIC
 #F:SLAY_ORC | SLAY_WOLF

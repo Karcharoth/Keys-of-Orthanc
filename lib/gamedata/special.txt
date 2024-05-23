@@ -307,7 +307,7 @@ prot-dice:0
 prot-sides:0
 max-pval:3
 item:soft armor:Robe
-values:SONG[1]
+values:ALCHEMY[1]
 
 # Very powerful. Should it be
 # normally craftable by smiths?

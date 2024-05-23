@@ -347,7 +347,7 @@ static void prt_song(int row, int col)
 	struct song *song1 = player->song[SONG_MAIN];
 	struct song *song2 = player->song[SONG_MINOR];
 	struct song *slaying = lookup_song("Slaying");
-	int slaying_bonus = song_bonus(player, player->state.skill_use[SKILL_SONG],
+	int slaying_bonus = song_bonus(player, player->state.skill_use[SKILL_ALCHEMY],
 								   slaying);
 
 	/* Wipe old songs */

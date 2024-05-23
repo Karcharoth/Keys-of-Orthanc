@@ -652,9 +652,9 @@ race:Noldor
 house:Finarfin
 experience:1000
 stats: STR[2] | DEX[3] | CON[2] | GRA[1]
-skills: MELEE[4] | ARCHERY[4] | EVASION[4] | STEALTH[4] | SMITHING[5] | SONG[6]
+skills: MELEE[4] | ARCHERY[4] | EVASION[4] | STEALTH[4] | SMITHING[5] | ALCHEMY[6]
 abilities: SMITHING[Armoursmith] | SMITHING[Enchantment]
-abilities: SONG[Song of Slaying] | SONG[Song of the Trees]
+abilities: ALCHEMY[Gondor Leechcraft] | ALCHEMY[Gundabad Explosives]
 flags:DEFAULT
 
 note:welcome note

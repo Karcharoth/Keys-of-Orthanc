@@ -528,7 +528,7 @@ static void listen(struct chunk *c, struct player *p, struct monster *mon)
 
 	/* Penalty for song of silence */
 	if (player_is_singing(p, silence)) {
-		difficulty += song_bonus(p, p->state.skill_use[SKILL_SONG], silence);
+		difficulty += song_bonus(p, p->state.skill_use[SKILL_ALCHEMY], silence);
 	}
 
 	/* Make the check */
@@ -873,8 +873,8 @@ int monster_skill(struct monster *mon, int skill_type)
         case SKILL_SMITHING:
             msg("Can't determine the monster's Smithing score.");
             break;
-        case SKILL_SONG:
-            msg("Can't determine the monster's Song score.");
+        case SKILL_ALCHEMY:
+            msg("Can't determine the monster's Alchemy score.");
             break;
             
         default:

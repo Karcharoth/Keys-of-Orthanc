@@ -1309,7 +1309,7 @@ static enum parser_error parse_race_skills(struct parser *p) {
 	r->skill_adj[SKILL_PERCEPTION] = parser_getint(p, "per");
 	r->skill_adj[SKILL_WILL] = parser_getint(p, "wil");
 	r->skill_adj[SKILL_SMITHING] = parser_getint(p, "smt");
-	r->skill_adj[SKILL_SONG] = parser_getint(p, "sng");
+	r->skill_adj[SKILL_ALCHEMY] = parser_getint(p, "alc");
 	return PARSE_ERROR_NONE;
 }
 
@@ -1416,7 +1416,7 @@ struct parser *init_parse_race(void) {
 	parser_setpriv(p, NULL);
 	parser_reg(p, "name str name", parse_race_name);
 	parser_reg(p, "stats int str int dex int con int gra", parse_race_stats);
-	parser_reg(p, "skills int mel int arc int evn int stl int per int wil int smt int sng", parse_race_skills);
+	parser_reg(p, "skills int mel int arc int evn int stl int per int wil int smt int alc", parse_race_skills);
 	parser_reg(p, "history uint hist", parse_race_history);
 	parser_reg(p, "age int base_age int mod_age", parse_race_age);
 	parser_reg(p, "height int base_hgt int mod_hgt", parse_race_height);
@@ -1541,7 +1541,7 @@ static enum parser_error parse_house_skills(struct parser *p) {
 	h->skill_adj[SKILL_PERCEPTION] = parser_getint(p, "per");
 	h->skill_adj[SKILL_WILL] = parser_getint(p, "wil");
 	h->skill_adj[SKILL_SMITHING] = parser_getint(p, "smt");
-	h->skill_adj[SKILL_SONG] = parser_getint(p, "sng");
+	h->skill_adj[SKILL_ALCHEMY] = parser_getint(p, "alc");
 	return PARSE_ERROR_NONE;
 }
 
@@ -1583,7 +1583,7 @@ struct parser *init_parse_house(void) {
 	parser_reg(p, "short-name str name", parse_house_short_name);
 	parser_reg(p, "race str name", parse_house_race);
 	parser_reg(p, "stats int str int dex int con int gra", parse_house_stats);
-	parser_reg(p, "skills int mel int arc int evn int stl int per int wil int smt int sng", parse_house_skills);
+	parser_reg(p, "skills int mel int arc int evn int stl int per int wil int smt int alc", parse_house_skills);
 	parser_reg(p, "player-flags ?str flags", parse_house_play_flags);
 	parser_reg(p, "desc str desc", parse_house_desc);
 	return p;

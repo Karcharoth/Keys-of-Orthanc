@@ -37,7 +37,7 @@ static int get_songs(void)
 
 	/* Find available songs */
 	while (a) {
-		if ((a->skill == SKILL_SONG) && strstr(a->name, "Song of") &&
+		if ((a->skill == SKILL_ALCHEMY) && strstr(a->name, "Song of") &&
 			player_active_ability(player, a->name)) {
 			labels[count] = 'a' + count;
 			songlist[count].swap = false;

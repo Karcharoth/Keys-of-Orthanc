@@ -461,8 +461,8 @@ int player_timed_decrement_amount(struct player *p, int idx)
 {
 	struct song *este = lookup_song("Este");
 	struct song *freedom = lookup_song("Freedom");
-	int bonus_este = song_bonus(p, p->state.skill_use[SKILL_SONG], este);
-	int bonus_freedom = song_bonus(p, p->state.skill_use[SKILL_SONG], freedom);
+	int bonus_este = song_bonus(p, p->state.skill_use[SKILL_ALCHEMY], este);
+	int bonus_freedom = song_bonus(p, p->state.skill_use[SKILL_ALCHEMY], freedom);
 	int amount = 1;
 
 	/* Adjust for songs */

@@ -544,7 +544,7 @@ void monsters_hear(bool player_centered, bool main_roll, int difficulty)
 	/* The song of silence quietens this a bit */
 	if (player_is_singing(player, silence)) {
 		difficulty_roll += song_bonus(player,
-									  player->state.skill_use[SKILL_SONG],
+									  player->state.skill_use[SKILL_ALCHEMY],
 									  silence);
 	}
 

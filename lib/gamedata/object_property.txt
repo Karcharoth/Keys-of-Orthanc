@@ -108,9 +108,9 @@ smith-cat:skill
 smith-difficulty:4
 smith-cost:EXP:100
 
-name:song
+name:alchemy
 type:skill
-code:SONG
+code:ALCHEMY
 smith-cat:skill
 smith-difficulty:4
 smith-cost:EXP:100

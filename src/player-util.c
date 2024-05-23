@@ -263,7 +263,7 @@ void player_regen_hp(struct player *p)
 
 	/* Various things speed up regeneration */
 	if (player_is_singing(p, este)) {
-		regen_multiplier *= song_bonus(p, p->state.skill_use[SKILL_SONG], este);
+		regen_multiplier *= song_bonus(p, p->state.skill_use[SKILL_ALCHEMY], este);
 	}
 
 	/* Complete healing every z_info->player_regen_period player turns, modified */

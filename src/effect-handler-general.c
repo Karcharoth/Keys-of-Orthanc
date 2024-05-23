@@ -905,7 +905,7 @@ bool effect_handler_DARKEN_AREA(effect_handler_context_t *context)
 bool effect_handler_SONG_OF_ELBERETH(effect_handler_context_t *context)
 {
 	int i;
-	int score = song_bonus(player, player->state.skill_use[SKILL_SONG],
+	int score = song_bonus(player, player->state.skill_use[SKILL_ALCHEMY],
 						   lookup_song("Elbereth"));
 	for (i = cave_monster_max(cave) - 1; i >= 1; i--) {
 		struct monster *mon = cave_monster(cave, i);
@@ -942,7 +942,7 @@ bool effect_handler_SONG_OF_ELBERETH(effect_handler_context_t *context)
 bool effect_handler_SONG_OF_LORIEN(effect_handler_context_t *context)
 {
 	int i;
-	int score = song_bonus(player, player->state.skill_use[SKILL_SONG],
+	int score = song_bonus(player, player->state.skill_use[SKILL_ALCHEMY],
 						   lookup_song("Lorien"));
 	for (i = cave_monster_max(cave) - 1; i >= 1; i--) {
 		struct monster *mon = cave_monster(cave, i);
@@ -981,7 +981,7 @@ bool effect_handler_SONG_OF_LORIEN(effect_handler_context_t *context)
 bool effect_handler_SONG_OF_FREEDOM(effect_handler_context_t *context)
 {
 	int base_diff = player->depth ? player->depth / 2 : 10;
-	int score = song_bonus(player, player->state.skill_use[SKILL_SONG],
+	int score = song_bonus(player, player->state.skill_use[SKILL_ALCHEMY],
 						   lookup_song("Freedom"));
 	struct loc grid;
 	bool closed_chasm = false;

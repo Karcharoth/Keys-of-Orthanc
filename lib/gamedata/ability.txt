@@ -451,9 +451,9 @@ level:10
 prerequisite:Smithing:Artifice
 desc:You gain a point of grace.
 
-# Song ---------------------------------------------
+# Alchemy ---------------------------------------------
 
-skill:Song
+skill:Alchemy
 
 
 name:Gondor Leechcraft
@@ -480,26 +480,26 @@ desc: Nonfunctional for now.
 
 name:Mastery
 level:7
-prerequisite:Song:Gondor Leechcraft
-prerequisite:Song:Isengard Alchemy
-prerequisite:Song:Gundabad Explosives
+prerequisite:Alchemy:Gondor Leechcraft
+prerequisite:Alchemy:Isengard Alchemy
+prerequisite:Alchemy:Gundabad Explosives
 desc:Allows you to create unique potions and explosives.
 desc: Nonfunctional for now.
 
 name:Poison Resistance
 level:8
-prerequisite:Song:Gondor Leechcraft
+prerequisite:Alchemy:Gondor Leechcraft
 desc:Gives you resistance to poison.
 
 name:Critical Resistance
 level:9
-prerequisite:Song:Isengard Alchemy
+prerequisite:Alchemy:Isengard Alchemy
 desc:Raises the base number enemies need to get critical hits against
 desc: you by 2.
 
 name:Fire Resistance
 level:10
-prerequisite:Song:Gundabad Explosives
+prerequisite:Alchemy:Gundabad Explosives
 desc:Gives you resistance to fire.
 
 name:Grace

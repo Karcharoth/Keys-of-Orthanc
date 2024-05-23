@@ -123,10 +123,10 @@ static void mod_message(struct object *obj, int mod)
 			else if (obj->modifiers[OBJ_MOD_SMITHING] < 0)
 				msg("You feel less able to craft things.");
 			break;
-		case OBJ_MOD_SONG:
-			if (obj->modifiers[OBJ_MOD_SONG] > 0)
+		case OBJ_MOD_ALCHEMY:
+			if (obj->modifiers[OBJ_MOD_ALCHEMY] > 0)
 				msg("You are filled with inspiration.");
-			else if (obj->modifiers[OBJ_MOD_SONG] < 0)
+			else if (obj->modifiers[OBJ_MOD_ALCHEMY] < 0)
 				msg("You feel a loss of inspiration.");
 			break;
 		case OBJ_MOD_DAMAGE_SIDES:

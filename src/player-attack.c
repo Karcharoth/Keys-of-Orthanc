@@ -176,7 +176,7 @@ int prt_after_sharpness(struct player *p, const struct object *obj, int *flag)
 	/* Song of sharpness */
 	if (player_is_singing(p, sharp)) {
 		if (tval_is_sharp(obj)) {
-			protection -= song_bonus(p, p->state.skill_use[SKILL_SONG], sharp);
+			protection -= song_bonus(p, p->state.skill_use[SKILL_ALCHEMY], sharp);
 		}
 	}
 

@@ -51,6 +51,8 @@ void place_monster_by_letter(struct chunk *c, struct loc grid, char ch,
 							 bool allow_unique, int max_depth);
 bool pick_and_place_monster_on_stairs(struct chunk *c, struct player *p,
 									  bool sleep, int depth, bool force_undead);
+bool pick_and_place_monster_on_specific_stair(struct chunk *c, struct player *p,
+									          struct loc stair, int depth);
 bool pick_and_place_distant_monster(struct chunk *c, struct player *p,
 									bool sleep, int depth);
 

@@ -1507,6 +1507,141 @@ bool pick_and_place_monster_on_stairs(struct chunk *c, struct player *p,
 
 /**
  * Picks a monster race, makes a new monster of that race, then attempts to
+ * place it on the marked grid with stair messages. The monster race chosen
+ * will be appropriate for dungeon level equal to `depth` plus stair differences.
+ *
+ *
+ * Returns true if we successfully place a monster.
+ */
+bool pick_and_place_monster_on_specific_stair(struct chunk *c, struct player *p,
+									          struct loc stair, int depth)
+{
+	struct loc grid;
+	struct monster *mon;
+	bool displaced = false;
+	bool placed = false;
+	char dir[5];
+	int tries = 0;
+
+	/* No monsters come through the stairs on tutorial/challenge levels */
+	if (in_tutorial() || p->game_type > 0)	return false;
+
+	/* Default the new location to stair location */
+	grid = stair;
+
+	/* If there is something on the stairs, try adjacent squares */
+	mon = square_monster(c, stair);
+	if (mon || loc_eq(p->grid, stair)) {
+		int d, start;
+
+		/* If the monster on the squares cannot move, then simply give up */
+		if (mon && (rf_has(mon->race->flags, RF_NEVER_MOVE) ||
+					rf_has(mon->race->flags, RF_HIDDEN_MOVE))) {
+			return false;
+		}
+
+		/* Look through the eligible squares and choose an empty one randomly */
+		start = randint0(8);
+		for (d = start; d < 8 + start; d++) {
+			struct loc grid1 = loc_sum(grid, ddgrid_ddd[d % 8]);
+
+			/* Check Bounds */
+			if (!square_in_bounds(c, grid1)) continue;
+
+			/* Check Empty Square */
+			if (!(square_isempty(c, grid1) ||
+				  square_isplayer(c, grid1))) {
+				continue;
+			}
+
+			/* Displace the existing monster */
+			grid = grid1;
+			displaced = true;
+			break;
+		}
+
+		/* Give up */
+		if (!displaced) return false;
+	}
+
+	/* First, displace the existing monster to the safe square */
+	if (displaced) {
+		monster_swap(stair, grid);
+
+		/* Need to update the player's field of view if she is moved */
+		if (loc_eq(p->grid, grid)) {
+				update_view(c, p);
+		}
+	}
+
+	/* Try hard to put a monster on the stairs */
+	while (!placed && (tries < 50)) {
+		/* Modify the monster generation level based on the stair type */
+		int monster_level = depth;
+		int feat = square_feat(c, stair)->fidx;
+		if (feat == FEAT_LESS_SHAFT) {
+			monster_level -= 2;
+			my_strcpy(dir, "down", sizeof(dir));
+		} else if (feat == FEAT_LESS) {
+			monster_level -= 1;
+			my_strcpy(dir, "down", sizeof(dir));
+		} else if (feat ==  FEAT_MORE) {
+			monster_level += 1;
+			my_strcpy(dir, "up", sizeof(dir));
+		} else if (feat == FEAT_MORE_SHAFT) {
+			monster_level += 2;
+			my_strcpy(dir, "up", sizeof(dir));
+		}
+
+		/* Correct deviant monster levels */
+		if (monster_level < 1)	monster_level = 1;	
+
+		/* Usually allow most monsters */
+		placed = pick_and_place_monster(c, stair, monster_level, false,
+										true, ORIGIN_DROP);
+		
+
+		tries++;
+	}
+
+	/* Print messages etc */
+	if (placed) {
+		struct monster *mon1 = square_monster(c, stair);
+
+		/* Display a message if seen */
+		if (monster_is_visible(mon1)) {
+			char m_name[80];
+			char who[80];
+			char message[240];
+			monster_desc(m_name, sizeof(m_name), mon1, MDESC_STANDARD);
+
+			if (monster_has_friends(mon1)) {
+				my_strcpy(message, format("A group of enemies come %s the stair", dir), 240);
+			} else {
+				my_strcpy(message, format("%s comes %s the stair", m_name, dir), 240);
+			}
+
+			if (displaced) {
+				if (loc_eq(p->grid, grid)) {
+					my_strcpy(who, "you", 80);
+				} else {
+					monster_desc(who, sizeof(who), square_monster(c, grid),
+								 MDESC_DIED_FROM);
+				}
+				msg("%s, forcing %s out of the way!", message, who);
+				} else {
+					msg("%s!", message);
+			}
+		return true;
+		}
+	}
+
+	/* Didn't happen or not seen */
+	return false;
+}   
+
+/**
+ * Picks a monster race, makes a new monster of that race, then attempts to
  * place it in the dungeon at least `dis` away from the player. The monster
  * race chosen will be appropriate for dungeon level equal to `depth`.
  *

@@ -1107,7 +1107,7 @@ static void ui_visuals_module_init(void)
 	event_signal_message(EVENT_INITSTATUS, 0, "Initializing visuals");
 
 	/* Use the same values as the legacy flicker table. */
-	visuals_flicker_table = visuals_flicker_new(MAX_COLORS, 3);
+	visuals_flicker_table = visuals_flicker_new(MAX_COLORS, 30);
 
 	if (visuals_flicker_table == NULL) {
 		quit("Unable to allocate flicker table");

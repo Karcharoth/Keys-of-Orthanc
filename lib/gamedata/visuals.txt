@@ -55,11 +55,46 @@
 # flicker-color:<step color>
 #   step code - the color code for this step in the cycle
 
-# COLOUR_DARK, COLOUR_L_DARK, COLOUR_L_RED
-flicker:d:black light-dark light-red
+# Note: The maximum length is 30, so something of length 3 will have those
+# 3 steps, then 27 steps of the first color; things should be updated to
+# length 30 for use. I haven't gotten the proper cycles working, because
+# I am lazy and they have an unexplained problem.
+
+# Shades of a nightthorn
+# Mostly dark, some purple, some pure black
+# flickering seems to treat d as D unless it is the base color of the creature?
+# So nightthorns are pure black base because I'm lazy
+flicker:d:nightthorn
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:d
+flicker-color:d
+flicker-color:d
 flicker-color:d
 flicker-color:D
-flicker-color:R
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+flicker-color:D
+
 
 # COLOUR_WHITE, COLOUR_L_WHITE, COLOUR_L_BLUE
 flicker:w:white light-white light-blue
@@ -97,11 +132,39 @@ flicker-color:b
 flicker-color:B
 flicker-color:s
 
-# COLOUR_UMBER, COLOUR_L_UMBER, COLOUR_MUSTARD
-flicker:u:umber light-umber mustard
+# Colors of an acidthorn
+# Largely browns, a bit of green.
+flicker:u:acidthorn
 flicker-color:u
-flicker-color:U
-flicker-color:M
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:u
+flicker-color:m
+flicker-color:m
+flicker-color:m
+flicker-color:m
+flicker-color:m
+flicker-color:g
+flicker-color:g
+flicker-color:g
+flicker-color:g
+flicker-color:g
+flicker-color:g
+flicker-color:m
+flicker-color:m
+flicker-color:m
 
 # COLOUR_L_DARK, COLOUR_SLATE, COLOUR_L_VIOLET
 flicker:D:light-dark slate light-violet
@@ -127,11 +190,39 @@ flicker-color:y
 flicker-color:Y
 flicker-color:M
 
-# COLOUR_L_RED, COLOUR_RED, COLOUR_L_PINK
-flicker:R:light-red red light-pink
+# The coloration of the dragon-horror, Shadrach
+# Should flicker ominously and flare yellow.
+flicker:R:shadrach
+flicker-color:R
 flicker-color:R
 flicker-color:r
-flicker-color:I
+flicker-color:r
+flicker-color:r
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:r
+flicker-color:r
+flicker-color:r
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:R
+flicker-color:r
+flicker-color:r
+flicker-color:o
+flicker-color:y
 
 # COLOUR_L_GREEN, COLOUR_L_TEAL, COLOUR_GREEN
 flicker:G:light-green light-teal green
@@ -211,11 +302,39 @@ flicker-color:M
 flicker-color:y
 flicker-color:u
 
-# COLOUR_BLUE_SLATE, COLOUR_BLUE, COLOUR_SLATE
-flicker:z:blue-slate blue slate
+# Colors of an Iron Horror.
+# Probably just annoying and removable.
+flicker:z:iron horror
 flicker-color:z
-flicker-color:b
-flicker-color:s
+flicker-color:z
+flicker-color:z
+flicker-color:z
+flicker-color:z
+flicker-color:z
+flicker-color:z
+flicker-color:z
+flicker-color:z
+flicker-color:W
+flicker-color:z
+flicker-color:W
+flicker-color:W
+flicker-color:W
+flicker-color:W
+flicker-color:W
+flicker-color:W
+flicker-color:W
+flicker-color:W
+flicker-color:W
+flicker-color:B
+flicker-color:B
+flicker-color:B
+flicker-color:B
+flicker-color:B
+flicker-color:B
+flicker-color:B
+flicker-color:B
+flicker-color:B
+flicker-color:B
 
 # COLOUR_DEEP_L_BLUE, COLOUR_L_BLUE, COLOUR_BLUE
 flicker:Z:deep-light-blue light-blue blue

@@ -1923,9 +1923,11 @@ extern struct init_module options_module;
 extern struct init_module ui_equip_cmp_module;
 extern struct init_module tutorial_module;
 
+
 static struct init_module *modules[] = {
 	&z_quark_module,
 	&messages_module,
+	&ui_visuals_module, /* This may need to load before monsters and objects. */
 	&arrays_module,
 	&generate_module,
 	&player_module,

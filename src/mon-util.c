@@ -501,6 +501,7 @@ void monsters_hear(bool player_centered, bool main_roll, int difficulty)
 	int combat_sight_bonus = 0;
 
 	struct song *silence = lookup_song("Silence");
+    struct loc stair_grid;
 
 	/* Player is dead or leaving the current level */
 	if (player->is_dead || !player->upkeep->playing ||
@@ -547,7 +548,53 @@ void monsters_hear(bool player_centered, bool main_roll, int difficulty)
 									  player->state.skill_use[SKILL_ALCHEMY],
 									  silence);
 	}
+    /* Mega-hack: just scan everything in the entire world for stairs. */
+    /* Process all stairs */
+    for (int x=0; x<cave->width; x++) {
+        for (int y=0; y<cave->height; y++) {
+        stair_grid = loc(x, y);
+        /* Skip all non-stair grids */
+        if (!square_isstairs(cave, stair_grid)) continue;
+        
+    	if (player_centered) {
+			noise_dist = flow_dist(cave->player_noise, stair_grid);
+		} else {
+			noise_dist = flow_dist(cave->monster_noise, stair_grid);
+		}
+        m_perception = combat_noise_bonus - noise_dist;
+        
+		/* Stairs are looking more carefully during the escape */
+		if (player->on_the_run) {
+			m_perception += 5;
+		}
+    
+		/* Aggravation makes stairs much more likely
+		 * to notice the player */
+		if (player->state.flags[OF_AGGRAVATE]) {
+			m_perception += player->state.flags[OF_AGGRAVATE] * 10;
+		}
 
+		/* Do the 'skill_check()' versus the quietness of the sound... */
+		result = (m_perception + randint1(10)) - difficulty_roll;
+
+		/* Debugging message */
+		if (OPT(player, cheat_skill_rolls)) {
+			msg("{%d+%d v %d+%d = %d}.",
+				result - m_perception + difficulty_roll, m_perception, 
+				difficulty_roll - difficulty, difficulty,
+				result);
+		}
+
+		if (result > 0) {
+            if (randint1(100) <= result) {
+                pick_and_place_monster_on_specific_stair(cave, player, stair_grid, cave->depth);
+            }				
+        }
+    }
+    }
+        
+        
+        
 	/* Process the monsters (backwards) */
 	for (i = cave_monster_max(cave) - 1; i >= 1; i--) {
 		/* Access the monster */

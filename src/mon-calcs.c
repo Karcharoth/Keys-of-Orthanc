@@ -961,3 +961,32 @@ void calc_monster_speed(struct monster *mon)
 
 	return;
 }
+
+/**
+ * ------------------------------------------------------------------------
+ * Loot
+ * ------------------------------------------------------------------------ */
+/**
+ * Calculate the amount of loot a monster has.
+ * Should only trigger once, at initialization.
+ */
+void calc_monster_total_loot(struct monster *mon)
+{
+	int loot = 0;
+
+	/* Paranoia */
+	if (!mon) return;
+
+    /* Roll the loot */
+    if (rf_has(mon->race->flags, RF_DROP_33) && percent_chance(33)) loot++;
+	if (rf_has(mon->race->flags, RF_DROP_100)) loot++;
+	if (rf_has(mon->race->flags, RF_DROP_1D2)) loot += damroll(1, 2);
+	if (rf_has(mon->race->flags, RF_DROP_2D2)) loot += damroll(2, 2);
+	if (rf_has(mon->race->flags, RF_DROP_3D2)) loot += damroll(3, 2);
+	if (rf_has(mon->race->flags, RF_DROP_4D2)) loot += damroll(4, 2);
+
+	/* Set the loot and return */
+	mon->total_loot = loot;
+
+	return;
+}

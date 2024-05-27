@@ -34,7 +34,7 @@ void update_smart_learn(struct monster *mon, struct player *p, int flag,
 						int pflag, int element);
 void monsters_hear(bool player_centered, bool main_roll, int difficulty);
 int32_t adjusted_mon_exp(const struct monster_race *race, bool kill);
-int mon_create_drop_count(const struct monster_race *race, bool maximize);
+int mon_maximum_drop_count(const struct monster_race *race);
 void drop_loot(struct chunk *c, struct monster *mon, struct loc grid,
 			   bool stats);
 void monster_death(struct monster *mon, struct player *p, bool by_player,

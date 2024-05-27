@@ -336,7 +336,7 @@ smith-flags:PROT_FEAR | PROT_BLIND | PROT_CONF | PROT_STUN | PROT_HALLU
 smith-flags:LIGHT | REGEN | SEE_INVIS
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
-smithability:Perception:Eye for Detail
+smithability:Perception:Eye for Treasure
 smithability:Perception:Focused Attack
 smithability:Perception:Keen Senses
 smithability:Perception:Lore-Keeper
@@ -437,7 +437,7 @@ smith-flags:PROT_FEAR | PROT_BLIND | PROT_HALLU
 smith-flags:LIGHT | SEE_INVIS
 smith-flags:HUNGER | DARKNESS | DANGER | AGGRAVATE | CURSED
 smith-flags:HAUNTED | COWARDICE
-smithability:Perception:Eye for Detail
+smithability:Perception:Eye for Treasure
 smithability:Perception:Keen Senses
 smithability:Will:Inner Light
 

@@ -377,7 +377,6 @@ struct monster_race {
 	struct monster_drop *drops;
 };
 
-
 /**
  * Monster information, for a specific monster.
  *
@@ -440,6 +439,10 @@ struct monster {
     int16_t consecutive_attacks;   /* Times attacked the player in a row */
     int16_t turns_stationary;      /* Times stayed still in a row */
     uint8_t previous_action[MAX_ACTION];  /* What it did on previous turns */
+    
+    uint8_t total_loot; /* Number of pieces of loot this monster has */
+    uint8_t times_robbed; /* Times this monster has been hit by Burglary */
+    uint8_t eyed_for_treasure; /* Player knows how much treasure monster has*/
 };
 
 /** Variables **/

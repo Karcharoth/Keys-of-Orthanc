@@ -31,3 +31,4 @@ void update_monsters(bool full);
 int monster_skill(struct monster *mon, int skill_type);
 int monster_stat(struct monster *mon, int stat_type);
 void calc_monster_speed(struct monster *mon);
+void calc_monster_total_loot(struct monster *mon);

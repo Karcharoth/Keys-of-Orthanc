@@ -124,6 +124,9 @@ bool knock_back(struct loc grid1, struct loc grid2)
  * There is a fake skill check in monsters_hear (where player roll is
  * used once for all monsters) so if something changes here, remember to change
  * it there.
+ * There is a fake skill check in calc_monster_loot_hideyness (where each
+ * monster rolls once in its life) so if something changes here, 
+ * remember to change it there.
  */
 int skill_check(struct source attacker, int skill, int difficulty,
 				struct source defender)

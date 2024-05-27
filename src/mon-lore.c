@@ -936,7 +936,7 @@ void lore_append_drop(textblock *tb, const struct monster_race *race,
 	msex = lore_monster_sex(race);
 
 	/* Count maximum drop */
-	n = mon_create_drop_count(race, true);
+	n = mon_maximum_drop_count(race);
 
 	/* Drops gold and/or items */
 	if (n > 0) {

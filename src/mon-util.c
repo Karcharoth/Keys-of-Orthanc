@@ -751,33 +751,24 @@ int32_t adjusted_mon_exp(const struct monster_race *race, bool kill)
 }
 
 /**
- * Return the number of things dropped by a monster.
+ * Return the largest possible number of things dropped by a monster.
  *
  * \param race is the monster race.
- * \param maximize should be set to false for a random number, true to find
- * out the maximum count.
  */
-int mon_create_drop_count(const struct monster_race *race, bool maximize)
+int mon_maximum_drop_count(const struct monster_race *race)
 {
 	int number = 0;
 
-	if (maximize) {
-		if (rf_has(race->flags, RF_DROP_33)) number++;
-		if (rf_has(race->flags, RF_DROP_100)) number++;
-		if (rf_has(race->flags, RF_DROP_1D2)) number += 2;
-		if (rf_has(race->flags, RF_DROP_2D2)) number += 4;
-		if (rf_has(race->flags, RF_DROP_3D2)) number += 6;
-		if (rf_has(race->flags, RF_DROP_4D2)) number += 8;
-	} else {
-		if (rf_has(race->flags, RF_DROP_33) && percent_chance(33)) number++;
-		if (rf_has(race->flags, RF_DROP_100)) number++;
-		if (rf_has(race->flags, RF_DROP_1D2)) number += damroll(1, 2);
-		if (rf_has(race->flags, RF_DROP_2D2)) number += damroll(2, 2);
-		if (rf_has(race->flags, RF_DROP_3D2)) number += damroll(3, 2);
-		if (rf_has(race->flags, RF_DROP_4D2)) number += damroll(4, 2);
-	}
+	if (rf_has(race->flags, RF_DROP_33)) number++;
+	if (rf_has(race->flags, RF_DROP_100)) number++;
+	if (rf_has(race->flags, RF_DROP_1D2)) number += 2;
+	if (rf_has(race->flags, RF_DROP_2D2)) number += 4;
+	if (rf_has(race->flags, RF_DROP_3D2)) number += 6;
+	if (rf_has(race->flags, RF_DROP_4D2)) number += 8;
 	return number;
 }
+
+
 
 /**
  * Creates a specific monster's drop, including any drops specified
@@ -801,7 +792,7 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 	visible = monster_is_visible(mon) || monster_is_unique(mon);
 
 	/* Determine how much we can drop */
-	number = mon_create_drop_count(mon->race, false);
+	number = mon->total_loot;
 
 	/* Use the monster's level */
 	level = mon->race->level;

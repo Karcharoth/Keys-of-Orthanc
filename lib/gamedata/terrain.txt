@@ -323,7 +323,7 @@ desc:  It can be removed by digging or magic, and passed
 desc: through by immaterial monsters.  It stops any spells, missiles or line of
 desc: sight.
 
-name:chain
+name:chains
 graphics:%:s
 priority:20
 flags:LOS | PROJECT | INTERESTING | PASSABLE
@@ -335,6 +335,14 @@ graphics:#:D
 priority:20
 flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH
 confused-msg:bashes into a wall
+desc:You can dig through most walls but these are impenetrable.  The ancient
+desc: creators of Orthanc made these.
+
+name:Door of Orthanc
+graphics:+:D
+priority:20
+flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH
+confused-msg:bashes into a door
 desc:You can dig through most walls but these are impenetrable.  The ancient
 desc: creators of Orthanc made these.
 

@@ -715,7 +715,7 @@ will:7
 prot:3:3d4
 blow:HIT:HURT:7:3d6
 blow:BITE:HURT:5:1d4
-flags:DROP_1D2 | BASH_DOOR | UNLOCK_DOOR | DWARFBANE | RAND_25
+flags:DROP_1D2 | BASH_DOOR | UNLOCK_DOOR | DWARFBANE | RAND_25 | UNIQUE
 drop:polearm:Battle Axe:80:1d1
 drop:shield:Round Shield:40:1d1
 drop:mail:Mail Corslet:80:1d1
@@ -723,6 +723,51 @@ desc:Narbalinibunnalifrerindisfloilonigroin is a particularly
 desc: eccentric goblin, having stolen both the name of every dwarf he has killed,
 desc: and their gear. While thoroughly insane, he certainly knows how to
 desc: kill a dwarf.
+
+# Index 68
+name:Freca, the Scarred
+base:person
+depth:6
+rarity:50
+color:T
+speed:2
+health:15d4
+light:1
+sleep:15
+percept:7
+stealth:4
+will:8
+prot:8:2d4
+blow:HIT:HURT:7:2d8
+flags:DROP_100 | DROP_GOOD | SPECIAL_GEN | BASH_DOOR
+flags:EXCHANGE | ESCORT | UNIQUE
+drop:sword:Sword:75:1d1
+desc:Saruman's most trustworthy Dunlendings guard his gates.
+
+# Index 69
+name:Sar, the Weary
+base:person
+depth:6
+rarity:50
+color:V
+speed:2
+health:10d4
+light:1
+sleep:15
+percept:8
+stealth:5
+will:6
+prot:7:1d4
+blow:HIT:HURT:7:1d5
+flags:DROP_100 | DROP_GOOD | SPECIAL_GEN | BASH_DOOR
+flags:EXCHANGE | ESCORT | UNIQUE | CRIPPLING
+ranged-freq:70
+spell-power:8
+spells:ARROW2
+drop:sword:Dagger:30:1d5
+drop:bow:Longbow:60:1d1
+drop:arrow:Arrow:60:2d8
+desc:Saruman's most trustworthy Dunlendings guard his gates.
 
 
 ##### 7 #####
@@ -1231,6 +1276,7 @@ flags:MALE | DROP_33 | INVISIBLE | RIPOSTE | AGGRESSIVE
 drop:sword:Dagger:25:1d1
 desc:'They are fierce folk when roused. They will not give way now for dusk or dawn,
 desc: until Theoden is taken, or they themselves are slain.'
+
 
 
 ##### 10 #####

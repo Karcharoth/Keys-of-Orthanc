@@ -302,9 +302,9 @@ desc:You gain a point of dexterity.
 
 skill:Perception
 
-name:Eye for Detail
+name:Eye for Treasure
 level:1
-desc:Gives you a bonus of +5 for finding traps and secret doors.
+desc:Allows you to try to see which enemies have treasure.
 
 name:Focused Attack
 level:2

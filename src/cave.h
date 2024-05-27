@@ -253,6 +253,17 @@ extern int FEAT_FORGE;
 extern int FEAT_FORGE_GOOD;
 extern int FEAT_FORGE_UNIQUE;
 
+/* Custom top-level stuff */
+extern int FEAT_ORTHANC;
+extern int FEAT_ORTHANC_DOOR;
+extern int FEAT_CHAINS;
+extern int FEAT_IRON_PILLAR;
+extern int FEAT_MARBLE_PILLAR;
+extern int FEAT_COPPER_PILLAR;
+extern int FEAT_FLAGSTONES;
+extern int FEAT_GATES_ISENGARD;
+
+
 
 /* Current level */
 extern struct chunk *cave;

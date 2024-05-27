@@ -403,6 +403,21 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 			case '0': place_forge(c, grid); break;
 				/* Chasm */
 			case '7': square_set_feat(c, grid, FEAT_CHASM); break;
+                /* Orthanc stone */
+            case 'O': square_set_feat(c, grid, FEAT_ORTHANC); break;
+                /* Orthanc's door */
+            case 'D': square_set_feat(c, grid, FEAT_ORTHANC_DOOR); break;
+                /* Random pillar */
+            case 'P': if(one_in_(3)) square_set_feat(c, grid, FEAT_IRON_PILLAR);
+                        else if (one_in_(2)) square_set_feat(c, grid, FEAT_MARBLE_PILLAR);
+                        else square_set_feat(c, grid, FEAT_COPPER_PILLAR);
+                        break;
+                /* Chains */
+            case 'C': square_set_feat(c, grid, FEAT_CHAINS); break;
+                /* Flagstones */
+            case '-': square_set_feat(c, grid, FEAT_FLAGSTONES); break;
+                /* Gates of Isengard */
+            case 'G': square_set_feat(c, grid, FEAT_GATES_ISENGARD); break;
 
 			}
 		}
@@ -468,7 +483,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				}
 
 				/* A good object from 1-4 levels deeper */
-				case '&': {
+				case '"': {
 					place_object(c, grid, c->depth + randint1(4), true, false,
 								 ORIGIN_VAULT, lookup_drop("not useless"));
 					break;
@@ -520,91 +535,35 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 					}
 					break;
 				}
-
-
-				/* Carcharoth */
-				case 'C': {
-					place_new_monster_one(c, grid, lookup_monster("goblin miner"),
-										  true, true, info,
-										  ORIGIN_DROP_VAULT);
+                
+                /* Random food */
+                case ',': {
+					place_object(c, grid, c->depth, false, false,
+								 ORIGIN_VAULT, lookup_drop("food"));
 					break;
 				}
-				
-				/* silent watcher */
-				case 'H': {
+                
+                /* Freca, gateguard 1 */
+                case 'F': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("scuttling horror"),
-										  true, false, info,
-										  ORIGIN_DROP_VAULT);
-					break;
-				}
+									  lookup_monster("Freca, the Scarred"),
+									  true, true, info, ORIGIN_DROP_VAULT);
+                }
 
-				/* easterling spy */
-				case '@': {
+                /* Sar, gateguard 2 */
+                case 'J': {
 					place_new_monster_one(c, grid,
-										  lookup_monster("dunlending warrior"),
-										  true, false, info,
-										  ORIGIN_DROP_VAULT);
-					break;
-				}
-					
-				/* orc champion */
-				case 'o': {
-					place_new_monster_one(c, grid,
-										  lookup_monster("dunlending chieftain"), true,
-										  false, info, ORIGIN_DROP_VAULT);
+									  lookup_monster("Sar, the Weary"),
+									  false, true, info, ORIGIN_DROP_VAULT);
+                }
+				case '&': {
+					place_monster_by_letter(c, grid, '&', true,
+											c->depth);
 					break;
 				}
 
-				/* orc captain */
-				case 'O': {
-					place_new_monster_one(c, grid,
-										  lookup_monster("uruk-hai champion"), true,
-										  false, info, ORIGIN_DROP_VAULT);
-					break;
-				}
 
-				/* cat warrior */
-				case 'f': {
-					place_new_monster_one(c, grid,
-										  lookup_monster("Goblin Footpad"), true,
-										  false, info, ORIGIN_DROP_VAULT);
-					break;
-				}
 
-				/* cat assassin */
-				case 'F': {
-					place_new_monster_one(c, grid,
-										  lookup_monster("Half-orc Spy"), true,
-										  false, info, ORIGIN_DROP_VAULT);
-					break;
-				}
-					
-				/* troll guard */
-				case 'T': {
-					place_new_monster_one(c, grid,
-										  lookup_monster("Venomthorn"), true,
-										  false, info, ORIGIN_DROP_VAULT);
-					break;
-				}
-
-				/* barrow wight */
-				case 'W': {
-					place_new_monster_one(c, grid,
-										  lookup_monster("Goblin Archer"), true,
-										  false, info, ORIGIN_DROP_VAULT);
-					break;
-				}
-				
-				/* young cold drake */
-				case 'y': {
-					place_new_monster_one(c, grid,
-										  lookup_monster("Oathbreaker"),
-										  true, false, info,
-										  ORIGIN_DROP_VAULT);
-					break;
-				}
-					
 				/* young fire drake */
 				case 'Y': {
 					place_new_monster_one(c, grid,
@@ -627,61 +586,8 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 					break;
 				}
 
-                /* Flier */
-				case 'b': {
-					place_monster_by_flag(c, grid, RF_FLYING, -1, true,
-										  c->depth + 1, false);
-					break;
-				}
-
-				/* Wolf */
-				case 'c': {
-					place_monster_by_flag(c, grid, RF_WOLF, -1, true,
-										  c->depth + rand_range(1, 4), false);
-					break;
-				}
-										
-                /* Aldor */
-				case 'A': {
-					place_new_monster_one(c, grid, lookup_monster("Iron Horror"),
-										  true, true, info,
-										  ORIGIN_DROP_VAULT);
-					break;
-				}
-                    
-				/* Glaurung */
-				case 'D': {
-					place_new_monster_one(c, grid, lookup_monster("Forsworn"),
-										  true, true, info,
-										  ORIGIN_DROP_VAULT);
-					break;
-				}
-
-				/* Gothmog */
-				case 'R': {
-					place_new_monster_one(c, grid, lookup_monster("Oakroot"),
-										  true, true, info,
-										  ORIGIN_DROP_VAULT);
-					break;
-				}
 					
-				/* Ungoliant */
-				case 'U': {
-					place_new_monster_one(c, grid, lookup_monster("Ugluk"),
-										  true, true, info,
-										  ORIGIN_DROP_VAULT);
-					break;
-				}
-
-				/* Gorthaur */
-				case 'G': {
-					place_new_monster_one(c, grid, lookup_monster("Gorol"),
-										  true, true, info,
-										  ORIGIN_DROP_VAULT);
-					break;
-				}
-					
-				/* Morgoth */
+				/* Saruman */
 				case 'V': {
 					place_new_monster_one(c, grid, lookup_monster("Saruman of Many Colours"),
 										  true, true, info,

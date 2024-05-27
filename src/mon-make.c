@@ -863,8 +863,8 @@ bool place_new_monster_one(struct chunk *c, struct loc grid,
 	}
 
 	/* Save the hallucinatory race */
-	if (race == lookup_monster("Morgoth, Lord of Darkness")) {
-		mon->image_race = lookup_monster("Melkor, Rightful Lord of Arda");
+	if (race == lookup_monster("Saruman of Many Colours")) {
+		mon->image_race = lookup_monster("Curunir, God-King");
 	} else if (leader) {
 		mon->image_race = leader->image_race;
 	} else {
@@ -927,6 +927,10 @@ bool place_new_monster_one(struct chunk *c, struct loc grid,
 	/* Give almost no starting energy (avoids clumped movement) -
 	 * same as old FORCE_SLEEP flag, which is now the default behaviour */
 	mon->energy = (uint8_t)randint0(10);
+
+    /* If it has DROP_33, roll for loot; if it has DROP_100+, roll amount;
+     * otherwise, set to false */
+    calc_monster_total_loot(mon);
 
 	/* Affect light? */
 	if (mon->race->light != 0)

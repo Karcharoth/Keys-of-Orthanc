@@ -56,6 +56,14 @@ int FEAT_FORGE_GOOD;
 int FEAT_FORGE_UNIQUE;
 int FEAT_PIT;
 int FEAT_SPIKED_PIT;
+int FEAT_ORTHANC;
+int FEAT_ORTHANC_DOOR;
+int FEAT_CHAINS;
+int FEAT_IRON_PILLAR;
+int FEAT_MARBLE_PILLAR;
+int FEAT_COPPER_PILLAR;
+int FEAT_FLAGSTONES;
+int FEAT_GATES_ISENGARD;
 
 /**
  * Global array for looping through the "keypad directions".
@@ -409,7 +417,17 @@ void set_terrain(void)
 	FEAT_FORGE_UNIQUE = lookup_feat("forge 'Orodruth'");
 	FEAT_PIT = lookup_feat("pit");
 	FEAT_SPIKED_PIT = lookup_feat("spiked pit");
+    FEAT_ORTHANC = lookup_feat("Orthanc-stone");
+    FEAT_ORTHANC_DOOR = lookup_feat("Door of Orthanc");
+    FEAT_CHAINS = lookup_feat("chains");
+    FEAT_IRON_PILLAR = lookup_feat("iron pillar");
+    FEAT_MARBLE_PILLAR = lookup_feat("marble pillar");
+    FEAT_COPPER_PILLAR = lookup_feat("copper pillar");
+    FEAT_FLAGSTONES = lookup_feat("flagstones");
+    FEAT_GATES_ISENGARD = lookup_feat("Gates of Isengard");
+    
 }
+
 
 /**
  * Allocate a new flow

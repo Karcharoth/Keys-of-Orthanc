@@ -2695,7 +2695,6 @@ static errr Term_bigcurs_sdl(int col, int row)
 static errr Term_curs_sdl(int col, int row)
 {
 	term_window *win = (term_window*)(Term->data);
-
 	SDL_Color colour = text_colours[COLOUR_YELLOW];
 
 	SDL_Rect rc;

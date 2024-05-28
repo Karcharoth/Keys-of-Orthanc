@@ -262,8 +262,8 @@ int song_bonus(struct player *p, int pskill, struct song *song)
 void player_change_song(struct player *p, struct song *song, bool exchange)
 {
 	int song_to_change;
-
-	if (player_active_ability(p, "Woven Themes") && p->song[SONG_MAIN] && song){
+    /* Commented this out as it was causing crashes*/
+	if (/*player_active_ability(p, "Woven Themes") &&*/ p->song[SONG_MAIN] && song){
 		song_to_change = SONG_MINOR;
 	} else {
 		song_to_change = SONG_MAIN;
@@ -377,8 +377,8 @@ void player_sing(struct player *p)
 	if (!p->song[SONG_MAIN]) return;
 	/* Abort song if out of stamina, lost the ability to weave themes,
 	 * or lost either song ability */
-	if ((p->csp < 1) ||
-		(p->song[SONG_MINOR] && !player_active_ability(p, "Woven Themes")) ||
+	if ((p->csp < 1) ||      /*Commented below out because it was causing crashes*/
+		(p->song[SONG_MINOR] /*&& !player_active_ability(p, "Woven Themes")*/) ||
 		(!player_active_ability(p, format("Song of %s", smain->name))) ||
 		(p->song[SONG_MINOR] &&
 		 !player_active_ability(p, format("Song of %s", minor->name)))) {

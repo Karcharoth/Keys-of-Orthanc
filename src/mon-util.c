@@ -782,17 +782,16 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 	struct monster_drop *drop;
 	bool great, good;
 	bool visible;
-	int number = 0, count = 0, level, j;
-	struct object *obj;
-
+    int count = 0;
+    int level;	
+    struct object *obj;
+    
 	assert(mon);
 
 	great = rf_has(mon->race->flags, RF_DROP_GREAT);
 	good = rf_has(mon->race->flags, RF_DROP_GOOD);
 	visible = monster_is_visible(mon) || monster_is_unique(mon);
 
-	/* Determine how much we can drop */
-	number = mon->total_loot;
 
 	/* Use the monster's level */
 	level = mon->race->level;
@@ -821,7 +820,7 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 				struct object_kind *kind;
 				assert(drop->art);
 				art = drop->art;
-                /* Mostly for killing Saruman when he has already dropped the keys.*/
+                /* Mostly for killing Saruman when he has already dropped the Keys.*/
 		        if (is_artifact_created(art)) continue;
 				kind = lookup_kind(art->tval, art->sval);
 				obj = mem_zalloc(sizeof(*obj));
@@ -839,7 +838,8 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 			obj->origin = visible || stats ? mon->origin : ORIGIN_DROP_UNKNOWN;
 			obj->origin_depth = convert_depth_to_origin(c->depth);
 			obj->origin_race = mon->race;
-			number--;
+            /* This used to reduce the loot the monster would drop. It no longer does.*/
+			/*mon->total_loot--;*/
 			count++;
 
 			drop_near(c, &obj, 0, grid, true, false);
@@ -847,7 +847,7 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 	}
 
 	/* Make and drop some objects */
-	for (j = 0; j < number; j++) {
+	while (mon->total_loot) {
 		obj = make_object(c, level, good, great, lookup_drop("not useless"));
 
 		if (!obj) continue;
@@ -859,6 +859,7 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 		count++;
 
 		drop_near(c, &obj, 0, grid, true, false);
+        mon->total_loot--;
 	}
 
 	return count;

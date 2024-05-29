@@ -30,6 +30,7 @@ void do_cmd_toggle_stealth(struct command *cmd);
 void do_cmd_open(struct command *cmd);
 void do_cmd_close(struct command *cmd);
 void do_cmd_exchange(struct command *cmd);
+void do_cmd_burglary(struct command *cmd);
 void do_cmd_tunnel(struct command *cmd);
 void do_cmd_disarm(struct command *cmd);
 void do_cmd_bash(struct command *cmd);

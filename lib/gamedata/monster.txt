@@ -789,9 +789,9 @@ prot:10:1d4
 blow:HIT:HURT:10:1d8
 blow:TOUCH:EAT_ITEM:7
 flags:DROP_100 | BASH_DOOR | TAKE_ITEM | UNLOCK_DOOR | ORC
-#flags: COWARD_AI
-#ranged-freq:20
-#spells:SHRIEK
+flags: COWARD_AI
+ranged-freq:20
+spells:SHRIEK
 desc:He is one of Saruman's trusted servants.
 desc: Recently returned from a mission in other lands,
 desc: he is hungry for plunder.

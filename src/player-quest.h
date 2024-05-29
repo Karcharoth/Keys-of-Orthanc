@@ -20,7 +20,7 @@
 #define QUEST_H
 
 /* Functions */
-void drop_the_keys(struct monster *mon, const char *message);
+void drop_the_keys(struct monster *mon, const char *message, bool burglary);
 int keys_possessed(struct player *p);
 
 

@@ -93,6 +93,7 @@ typedef enum cmd_code {
 	CMD_BASH,
 	CMD_SING,
 	CMD_EXCHANGE,
+    CMD_BURGLARY,
 	CMD_RUN,
 	CMD_LEAP,
 	CMD_HOLD,

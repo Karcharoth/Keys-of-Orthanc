@@ -269,7 +269,7 @@ desc: (depending on the level of critical and the monster's Will).
 #Unfinished; does absolutely nothing as of yet
 name:Burglary
 level:7
-prerequisite:Stealth:Disguise
+prerequisite:Perception:Eye for Treasure
 desc:You may attempt to rob enemies with a Stealth roll,
 desc: though only enemies marked in purple will have useful loot.
 desc: Marking is based on perception; robbed enemies drop no loot.

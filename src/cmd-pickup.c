@@ -24,7 +24,9 @@
 #include "game-input.h"
 #include "generate.h"
 #include "init.h"
+#include "mon-desc.h"
 #include "mon-lore.h"
+#include "mon-move.h"
 #include "mon-timed.h"
 #include "mon-util.h"
 #include "obj-desc.h"
@@ -36,8 +38,11 @@
 #include "player-attack.h"
 #include "player-calcs.h"
 #include "player-history.h"
+#include "player-quest.h"
+#include "player-timed.h"
 #include "player-util.h"
 #include "trap.h"
+
 
 /**
  * Find the specified object in the inventory (not equipment)
@@ -381,3 +386,134 @@ void do_cmd_autopickup(struct command *cmd)
 	 * somewhat coalesced. Use event_signal(EVENT_ITEMLIST to force update. */
 	player->upkeep->redraw |= (PR_ITEMLIST);
 }
+
+/**
+ * Steal an item from a monster.
+ */
+void do_cmd_burglary(struct command *cmd)
+{
+	int dir;
+	struct loc grid;
+	struct monster *mon;
+	char m_name[80];
+    int p_stealth;
+    int rob_difficulty;
+    struct object *obj;
+	const struct artifact *keys = lookup_artifact_name("of Orthanc");
+
+	if (!player_active_ability(player, "Burglary")) {
+		msg("You need the ability 'burglary' to use this command.");
+		return;
+	}
+
+	/* Get arguments */
+	if (cmd_get_direction(cmd, "direction", &dir, false) != CMD_OK)
+		return;
+
+	/* Get location */
+	grid = loc_sum(player->grid, ddgrid[dir]);
+
+	/* Check for monster */
+	mon = square_monster(cave, grid);
+    if (!mon) {
+		/* No monster, or invisible */
+		msg("You cannot see a monster there to steal from.");
+		return;
+	}
+
+	/* Take a turn */
+	player->upkeep->energy_use = z_info->move_energy;
+
+	/* Store the action type */
+	player->previous_action[0] = ACTION_MISC;
+
+	/* Apply confusion */
+	if (player_confuse_dir(player, &dir, false)) {
+		/* Get location */
+		grid = loc_sum(player->grid, ddgrid[dir]);
+	}
+
+	/* Re-check for a monster (in case confusion changed the move) */
+	mon = square_monster(cave, grid);
+	if (!mon) {
+		/* Message */
+		msg("You cannot see a monster there to steal from.");
+		return;
+	}
+
+	/* Spend 2 stamina*/
+    stamina_hit(player, 2);
+
+	/* Recalculate the monster name (in case confusion changed the move) */
+	monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT);
+
+    /* Calculate the player's stealth */
+    p_stealth = player->state.skill_use[SKILL_STEALTH];
+
+    /* Calculate the monster's stealth (ability to hide the object) */
+    rob_difficulty = monster_skill(mon, SKILL_STEALTH);
+
+    /* If it's aware, add its perception too: does it slap your hand away? */
+    if (mon->alertness >= ALERTNESS_ALERT) {
+        rob_difficulty += monster_skill(mon, SKILL_PERCEPTION);
+    }
+
+    /* Penalize burglary for not seeing the monster right. */
+	if (player->timed[TMD_IMAGE] || !monster_is_visible(mon)) {
+        p_stealth -=5;
+    }
+
+    /* Penalize burglary for confusion. */
+	if (player->timed[TMD_CONFUSED]) {
+		p_stealth -= 5;
+    }
+
+    /* Why is burglary harder the 7th time? Eh, all sorts of reasons.*/
+    p_stealth -= mon->times_robbed;
+
+    /* We made it! */
+    mon->times_robbed++;
+    /* Now for the actual roll... */
+    if (skill_check(source_player(), p_stealth, rob_difficulty, source_monster(mon->midx))) {
+        /* Steal Saruman's Keys! And make some noise...*/
+        if(mon->race == lookup_monster("Saruman of Many Colours") && !is_artifact_created(keys)) {
+            drop_the_keys(mon, "You pilfer the keys from Saruman's belt, and they clank of their own accord.", true);
+            p_stealth -= 10;
+        } else if (mon->held_obj) { /* Monster is carrying an object picked up*/
+            msg("You find some treasure on %s!", m_name);
+            obj = mon->held_obj;
+
+		    /* Object no longer held */
+		    obj->held_m_idx = 0;
+		    pile_excise(&mon->held_obj, obj);
+
+            /* Get it! */
+            inven_carry(player, obj, true, true);
+            pack_overflow(obj);
+
+
+        } else if(mon->total_loot) {
+            msg("You find some treasure on %s!", m_name);
+            obj = mon_create_burgled_loot(cave, mon, false);
+            inven_carry(player, obj, true, true);
+            pack_overflow(obj);
+        } else {
+            msg("You don't find any treasure on %s.", m_name);
+        }
+    } else {
+        msg("You don't find any treasure on %s.", m_name);
+    }
+
+	/* Attack of opportunity */
+	if ((mon->alertness >= ALERTNESS_ALERT) && !mon->m_timed[MON_TMD_CONF] &&
+		!rf_has(mon->race->flags, RF_MINDLESS)) {
+		msg("It attacks you as you rifle through its belongings.");
+		make_attack_normal(mon, player);
+	}
+
+    
+	/* The hiding check: does anyone hear you? */
+    monsters_hear(true, true, p_stealth);
+
+}
+

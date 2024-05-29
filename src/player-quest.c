@@ -43,7 +43,7 @@
 /**
  * Makes Saruman drop the Keys of Orthanc with an appropriate message.
  */
-void drop_the_keys(struct monster *mon, const char *message)
+void drop_the_keys(struct monster *mon, const char *message, bool burglary)
 {
 	int i;
 	struct loc grid;
@@ -76,9 +76,15 @@ void drop_the_keys(struct monster *mon, const char *message)
 		obj->origin_depth = convert_depth_to_origin(cave->depth);
 		obj->origin_race = race;
 		obj->number = 1;
-
-		/* Drop it there */
+        
+        /* If you stole it, you get it. */
+        if(burglary) {
+            inven_carry(player, obj, true, true);
+            pack_overflow(obj);
+        } else {
+		/* Otherwise, drop it there */
 		floor_carry(cave, grid, obj, &note);
+        }
 
         /* Increase Saruman's will and perception when he loses the keys*/
 		race->wil += 2;

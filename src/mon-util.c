@@ -775,9 +775,12 @@ int mon_maximum_drop_count(const struct monster_race *race)
  * in the monster.txt file.
  *
  * Returns true if anything is created, false if nothing is.
+ *
+ * If burglary is true, generate only a single item, and not a
+ * hardcoded drop.
  */
-static int mon_create_drop(struct chunk *c, struct monster *mon,
-						   struct loc grid, bool stats)
+int mon_create_drop(struct chunk *c, struct monster *mon,
+						   struct loc grid, bool stats, bool burglary)
 {
 	struct monster_drop *drop;
 	bool great, good;
@@ -798,6 +801,8 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 
 	/* Specified drops */
 	for (drop = mon->race->drops; drop; drop = drop->next) {
+        /* Can't steal these */
+        if (burglary) continue;
 		if (percent_chance((int) drop->percent_chance)) {
 			/* Specified by tval or by kind */
 			if (drop->kind) {
@@ -857,12 +862,53 @@ static int mon_create_drop(struct chunk *c, struct monster *mon,
 		obj->origin_depth = convert_depth_to_origin(c->depth);
 		obj->origin_race = mon->race;
 		count++;
-
 		drop_near(c, &obj, 0, grid, true, false);
         mon->total_loot--;
+        /* If stealing, only 1 object */
+        if (burglary) break;
 	}
 
 	return count;
+}
+
+/**
+ * Creates a piece of a specific monster's loot.
+ *
+ * Returns the item created; does not place it.
+ *
+ */
+struct object *mon_create_burgled_loot(struct chunk *c, struct monster *mon, bool stats)
+{
+	struct monster_drop *drop;
+	bool great, good;
+	bool visible;
+    int count = 0;
+    int level;	
+    struct object *obj;
+    
+	assert(mon);
+
+	great = rf_has(mon->race->flags, RF_DROP_GREAT);
+	good = rf_has(mon->race->flags, RF_DROP_GOOD);
+	visible = monster_is_visible(mon) || monster_is_unique(mon);
+
+
+	/* Use the monster's level */
+	level = mon->race->level;
+
+	/* Make an object */
+	if (mon->total_loot) {
+		obj = make_object(c, level, good, great, lookup_drop("not useless"));
+
+		/* Set origin details */
+		obj->origin = visible || stats ? mon->origin : ORIGIN_DROP_UNKNOWN;
+		obj->origin_depth = convert_depth_to_origin(c->depth);
+		obj->origin_race = mon->race;
+		count++;
+        mon->total_loot--;
+	}
+
+	return obj;
 }
 
 
@@ -903,7 +949,7 @@ void drop_loot(struct chunk *c, struct monster *mon, struct loc grid,
 	mon->held_obj = NULL;
 
 	/* Drop some objects */
-	dump_item = mon_create_drop(c, mon, grid, stats);
+	dump_item = mon_create_drop(c, mon, grid, stats, false);
 
 	/* Take note of any dropped treasure */
 	if (visible && dump_item && stats) {

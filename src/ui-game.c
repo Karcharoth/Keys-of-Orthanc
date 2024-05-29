@@ -154,6 +154,7 @@ struct cmd_info cmd_action[] =
 	{ "Toggle stealth mode", { 'S' }, CMD_TOGGLE_STEALTH, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Walk into a trap", { '_' }, CMD_JUMP, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 	{ "Exchange places", { 'X' }, CMD_EXCHANGE, NULL, NULL, 0, NULL, NULL, NULL, 0 },
+	{ "Burglarize", { 'B' }, CMD_BURGLARY, NULL, NULL, 0, NULL, NULL, NULL, 0 },
 };
 
 /**

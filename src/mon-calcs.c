@@ -454,7 +454,7 @@ void set_alertness(struct monster *mon, int alertness)
 
 				/* Saruman will drop his Keys if he falls asleep. TODO: make this less silly sounding */
 				if (rf_has(mon->race->flags, RF_QUESTOR)) {
-					drop_the_keys(mon, "The Keys of Orthanc fall to the ground beside Saruman.");
+					drop_the_keys(mon, "The Keys of Orthanc fall to the ground beside Saruman.", false);
 				}
 
 				/* Redisplay the monster */

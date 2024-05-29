@@ -80,6 +80,7 @@ static const struct command_info game_cmds[] =
 	{ CMD_CLOSE, "close", do_cmd_close, true, 99 },
 	{ CMD_BASH, "bash", do_cmd_bash, true, 99 },
 	{ CMD_EXCHANGE, "exchange places", do_cmd_exchange, false, 0 },
+	{ CMD_BURGLARY, "burglarize", do_cmd_burglary, false, 0 },
 	{ CMD_TUNNEL, "tunnel", do_cmd_tunnel, true, 99 },
 	{ CMD_LEAP, "leap", do_cmd_leap, false, 0 },
 	{ CMD_HOLD, "stay still", do_cmd_hold, true, 0 },

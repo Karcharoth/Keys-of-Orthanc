@@ -740,7 +740,7 @@ will:8
 prot:8:2d4
 blow:HIT:HURT:7:2d8
 flags:DROP_100 | DROP_GOOD | SPECIAL_GEN | BASH_DOOR
-flags:EXCHANGE | ESCORT | UNIQUE
+flags:EXCHANGE | ESCORT | UNIQUE | MALE
 drop:sword:Sword:75:1d1
 desc:Saruman's most trustworthy Dunlendings guard his gates.
 
@@ -760,7 +760,7 @@ will:6
 prot:7:1d4
 blow:HIT:HURT:7:1d5
 flags:DROP_100 | DROP_GOOD | SPECIAL_GEN | BASH_DOOR
-flags: ESCORT | UNIQUE | CRIPPLING
+flags: ESCORT | UNIQUE | CRIPPLING | MALE
 ranged-freq:70
 spell-power:8
 spells:ARROW2

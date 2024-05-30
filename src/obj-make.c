@@ -1100,7 +1100,7 @@ static void get_obj_num_prep(struct drop *drop)
 						done = true;
 						/* Accept this object */
 						entry->prob2 = entry->prob1;
-					}
+					} else {entry->prob2 = 0;}
 					if (done) break;
 					item = item->next;
 				}

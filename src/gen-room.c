@@ -546,10 +546,12 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
                 
                 /* Random food */
                 case ',': {
-					place_object(c, grid, 7, false, false,
+					int depth = c->depth ? c->depth + 4 : z_info->dun_depth;
+					place_object(c, grid, depth, false, false,
 								 ORIGIN_VAULT, lookup_drop("food"));
 					break;
 				}
+
                 
                 /* Freca, gateguard 1 */
                 case 'F': {

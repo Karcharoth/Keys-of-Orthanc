@@ -38,6 +38,7 @@ struct chunk *cave = NULL;
 
 int FEAT_NONE;
 int FEAT_FLOOR;
+int FEAT_MUD;
 int FEAT_CLOSED;
 int FEAT_OPEN;
 int FEAT_BROKEN;
@@ -399,6 +400,7 @@ void set_terrain(void)
 {
 	FEAT_NONE = lookup_feat("unknown grid");
 	FEAT_FLOOR = lookup_feat("open floor");
+    FEAT_MUD = lookup_feat("mud");
 	FEAT_CLOSED = lookup_feat("closed door");
 	FEAT_OPEN = lookup_feat("open door");
 	FEAT_BROKEN = lookup_feat("broken door");

@@ -1279,8 +1279,8 @@ struct chunk *gates_gen(struct player *p)
 	struct room_profile profile = lookup_room_profile("Surface of Isengard");
 	struct loc pgrid = loc(0, 0);
 
-	/* Restrict to single-screen size */
-	c = cave_new(3 * z_info->block_hgt, 2 * z_info->block_wid);
+	/* Restrict to a size for some reason */
+	c = cave_new(7 * z_info->block_hgt, 3 * z_info->block_wid);
 	c->depth = p->depth;
 
 	/* Fill cave area with basic granite */

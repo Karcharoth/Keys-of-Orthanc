@@ -1068,7 +1068,6 @@ int square_num_walls_diagonal(struct chunk *c, struct loc grid)
 void square_set_feat(struct chunk *c, struct loc grid, int feat)
 {
 	int current_feat;
-
 	assert(square_in_bounds(c, grid));
 	current_feat = square(c, grid)->feat;
 
@@ -1146,6 +1145,25 @@ void square_add_web(struct chunk *c, struct loc grid)
 {
 	struct trap_kind *web = lookup_trap("web", false);
 	place_trap(c, grid, web->tidx, 0);
+}
+
+void square_add_pit(struct chunk *c, struct loc grid)
+{
+	struct trap_kind *pit = lookup_trap("pit", false);
+	place_trap(c, grid, pit->tidx, 0);
+}
+
+void square_add_spiked_pit(struct chunk *c, struct loc grid)
+{
+	struct trap_kind *spiked_pit = lookup_trap("spiked pit", false);
+	place_trap(c, grid, spiked_pit->tidx, 0);
+}
+
+
+void square_add_false_floor(struct chunk *c, struct loc grid)
+{
+	struct trap_kind *trap = lookup_trap("false floor", false);
+	place_trap(c, grid, trap->tidx, 0);
 }
 
 void square_add_stairs(struct chunk *c, struct loc grid, int depth) {

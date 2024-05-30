@@ -1,0 +1,1156 @@
+config.status:S["NCURSES_LIBS"]="-Wl,-Bsymbolic-functions -lncursesw -ltinfo"
+config.status:S["LIBS"]=" -Wl,-Bsymbolic-functions -lncursesw -ltinfo  -lSM -lICE  -lX11  -lm"
+mk/buildsys.mk:LIBS =  -Wl,-Bsymbolic-functions -lncursesw -ltinfo  -lSM -lICE  -lX11  -lm
+docs/combat.rst:Extra damage dice are added in two ways. Some weapons are especially deadly against certain enemies. In such cases, they do an extra die of damage. For example, if the axe above is an axe of orc-slaying and is being used against an orc, it will do 4d9 damage instead of 3d9. Elemental brands (such as fire brand or frost brand) are similar, doing an extra die of damage against enemies that do not resist the element and 2 extra dice against enemies that are explicitly vulnerable to it (such as fire damage against a frost demon). As always, damage by your enemies works the same way. For example if a Werewolf bites you with a 2d9 poison attack, you will take 3d9 damage if you do not resist poison. Elemental attacks are thus a bit more dangerous than they first appear in the monster recall window.
+docs/hacking/compiling.rst:	./configure --enable-win --build=i686-pc-linux-gnu --host=i586-mingw32msvc
+docs/hacking/compiling.rst:Mingw installs commands like 'i586-mingw32msvc-gcc'. The value of --host
+docs/hacking/compiling.rst:--enable-more-gcc-warnings, and --enable-skip-old-int-typedefs.
+docs/hacking/compiling.rst:Use the Cygwin setup.exe to install the mingw-gcc-core package and any
+docs/hacking/compiling.rst:	./configure --enable-win --host=i686-pc-mingw32
+docs/customize.rst:With the Mac-specific front end, you can use Apple's standard mechanisms to
+docs/customize.rst:When you leave the game, the current Mac-specific settings are saved and will
+.git/hooks/pre-rebase.sample:	topic=`git symbolic-ref HEAD` ||
+.git/hooks/pre-rebase.sample:	       /   /   c---c---c---c B         /
+Binary file .git/objects/1d/35ee1acc0f887cedb683968132ac0920ebb33f matches
+acinclude.m4:AC_ARG_WITH(sdl2-exec-prefix,[AS_HELP_STRING([--with-sdl2-exec-prefix=PFX], [set exec prefix where SDL2 is installed (optional)])],
+acinclude.m4:     sdl2_args="$sdl2_args --exec-prefix=$sdl2_exec_prefix"
+acinclude.m4:AC_ARG_WITH(sdl-exec-prefix,[AS_HELP_STRING([--with-sdl-exec-prefix=PFX], [set exec prefix where SDL is installed (optional)])],
+acinclude.m4:     sdl_args="$sdl_args --exec-prefix=$sdl_exec_prefix"
+acinclude.m4:dnl or --with-ncurses-exec-prefix
+acinclude.m4:AC_ARG_WITH(ncurses-exec-prefix,[AS_HELP_STRING([--with-ncurses-exec-prefix=PFX], [set exec prefix where ncurses is installed (optional)])],
+acinclude.m4:     ncurses_args="$ncurses_args --exec-prefix=$ncurses_exec_prefix"
+CMakeLists.txt:        IF(_DOC STREQUAL "_DOC-NOTFOUND")
+CMakeLists.txt:        IF(_DOC STREQUAL "_DOC-NOTFOUND")
+configure.ac:AC_ARG_ENABLE(more-gcc-warnings,
+configure.ac:	[AS_HELP_STRING([--enable-more-gcc-warnings], [enable more warnings if using GCC])],
+configure.ac:		[AC_MSG_ERROR([bad value ${enableval} for --enable-more-gcc-warnings])])],
+.github/workflows/windows.yaml:          sudo apt-get install gcc-mingw-w64 automake autoconf make
+.github/workflows/windows.yaml:          ./configure --enable-win --build=i686-pc-linux-gnu --host=i686-w64-mingw32 --enable-skip-old-int-typedefs
+.github/workflows/release.yaml:    SRC_ARCHIVE_ARTIFACT: release-src-archive
+.github/workflows/release.yaml:    MAC_ARCHIVE_ARTIFACT: release-mac-archive
+.github/workflows/release.yaml:          sudo apt-get install gcc-mingw-w64 automake autoconf git make zip
+.github/workflows/release.yaml:          env CFLAGS="-O2" ./configure --enable-release --enable-win --build=i686-pc-linux-gnu --host=i686-w64-mingw32 --enable-skip-old-int-typedefs
+configure:  -exec-prefix | --exec_prefix | --exec-prefix | --exec-prefi \
+configure:  | --exec-pref | --exec-pre | --exec-pr | --exec-p | --exec- \
+configure:  -exec-prefix=* | --exec_prefix=* | --exec-prefix=* | --exec-prefi=* \
+configure:  | --exec-pref=* | --exec-pre=* | --exec-pr=* | --exec-p=* | --exec-=* \
+configure:  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+configure:  --enable-more-gcc-warnings
+configure:  --with-ncurses-exec-prefix=PFX
+configure:  --with-sdl2-exec-prefix=PFX
+configure:  --with-sdl-exec-prefix=PFX
+configure:                http://gcc.gnu.org/ml/gcc-patches/2003-12/msg02303.html
+configure:{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for an ANSI C-conforming const" >&5
+configure:$as_echo_n "checking for an ANSI C-conforming const... " >&6; }
+configure:# Check whether --enable-more-gcc-warnings was given.
+configure:    as_fn_error $? "bad value ${enableval} for --enable-more-gcc-warnings" "$LINENO" 5 ;;
+configure:# Check whether --with-ncurses-exec-prefix was given.
+configure:     ncurses_args="$ncurses_args --exec-prefix=$ncurses_exec_prefix"
+configure:# Check whether --with-sdl2-exec-prefix was given.
+configure:     sdl2_args="$sdl2_args --exec-prefix=$sdl2_exec_prefix"
+configure:# Check whether --with-sdl-exec-prefix was given.
+configure:     sdl_args="$sdl_args --exec-prefix=$sdl_exec_prefix"
+autom4te.cache/output.0:  -exec-prefix | --exec_prefix | --exec-prefix | --exec-prefi \
+autom4te.cache/output.0:  | --exec-pref | --exec-pre | --exec-pr | --exec-p | --exec- \
+autom4te.cache/output.0:  -exec-prefix=* | --exec_prefix=* | --exec-prefix=* | --exec-prefi=* \
+autom4te.cache/output.0:  | --exec-pref=* | --exec-pre=* | --exec-pr=* | --exec-p=* | --exec-=* \
+autom4te.cache/output.0:  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+autom4te.cache/output.0:  --enable-more-gcc-warnings 
+autom4te.cache/output.0:  --with-ncurses-exec-prefix=PFX 
+autom4te.cache/output.0:  --with-sdl2-exec-prefix=PFX 
+autom4te.cache/output.0:  --with-sdl-exec-prefix=PFX 
+autom4te.cache/output.0:                http://gcc.gnu.org/ml/gcc-patches/2003-12/msg02303.html
+autom4te.cache/output.0:{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for an ANSI C-conforming const" >&5
+autom4te.cache/output.0:$as_echo_n "checking for an ANSI C-conforming const... " >&6; }
+autom4te.cache/output.0:@%:@ Check whether --enable-more-gcc-warnings was given.
+autom4te.cache/output.0:    as_fn_error $? "bad value ${enableval} for --enable-more-gcc-warnings" "$LINENO" 5 ;;
+autom4te.cache/output.0:@%:@ Check whether --with-ncurses-exec-prefix was given.
+autom4te.cache/output.0:     ncurses_args="$ncurses_args --exec-prefix=$ncurses_exec_prefix"
+autom4te.cache/output.0:@%:@ Check whether --with-sdl2-exec-prefix was given.
+autom4te.cache/output.0:     sdl2_args="$sdl2_args --exec-prefix=$sdl2_exec_prefix"
+autom4te.cache/output.0:@%:@ Check whether --with-sdl-exec-prefix was given.
+autom4te.cache/output.0:     sdl_args="$sdl_args --exec-prefix=$sdl_exec_prefix"
+autom4te.cache/requests:                        '/usr/share/aclocal-1.16/internal/ac-config-macro-dirs.m4',
+autom4te.cache/output.1:  -exec-prefix | --exec_prefix | --exec-prefix | --exec-prefi \
+autom4te.cache/output.1:  | --exec-pref | --exec-pre | --exec-pr | --exec-p | --exec- \
+autom4te.cache/output.1:  -exec-prefix=* | --exec_prefix=* | --exec-prefix=* | --exec-prefi=* \
+autom4te.cache/output.1:  | --exec-pref=* | --exec-pre=* | --exec-pr=* | --exec-p=* | --exec-=* \
+autom4te.cache/output.1:  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+autom4te.cache/output.1:  --enable-more-gcc-warnings 
+autom4te.cache/output.1:  --with-ncurses-exec-prefix=PFX 
+autom4te.cache/output.1:  --with-sdl2-exec-prefix=PFX 
+autom4te.cache/output.1:  --with-sdl-exec-prefix=PFX 
+autom4te.cache/output.1:                http://gcc.gnu.org/ml/gcc-patches/2003-12/msg02303.html
+autom4te.cache/output.1:{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for an ANSI C-conforming const" >&5
+autom4te.cache/output.1:$as_echo_n "checking for an ANSI C-conforming const... " >&6; }
+autom4te.cache/output.1:@%:@ Check whether --enable-more-gcc-warnings was given.
+autom4te.cache/output.1:    as_fn_error $? "bad value ${enableval} for --enable-more-gcc-warnings" "$LINENO" 5 ;;
+autom4te.cache/output.1:@%:@ Check whether --with-ncurses-exec-prefix was given.
+autom4te.cache/output.1:     ncurses_args="$ncurses_args --exec-prefix=$ncurses_exec_prefix"
+autom4te.cache/output.1:@%:@ Check whether --with-sdl2-exec-prefix was given.
+autom4te.cache/output.1:     sdl2_args="$sdl2_args --exec-prefix=$sdl2_exec_prefix"
+autom4te.cache/output.1:@%:@ Check whether --with-sdl-exec-prefix was given.
+autom4te.cache/output.1:     sdl_args="$sdl_args --exec-prefix=$sdl_exec_prefix"
+autom4te.cache/traces.0:AC_ARG_WITH(sdl2-exec-prefix,[AS_HELP_STRING([--with-sdl2-exec-prefix=PFX], [set exec prefix where SDL2 is installed (optional)])],
+autom4te.cache/traces.0:     sdl2_args="$sdl2_args --exec-prefix=$sdl2_exec_prefix"
+autom4te.cache/traces.0:AC_ARG_WITH(sdl-exec-prefix,[AS_HELP_STRING([--with-sdl-exec-prefix=PFX], [set exec prefix where SDL is installed (optional)])],
+autom4te.cache/traces.0:     sdl_args="$sdl_args --exec-prefix=$sdl_exec_prefix"
+autom4te.cache/traces.0:dnl or --with-ncurses-exec-prefix
+autom4te.cache/traces.0:AC_ARG_WITH(ncurses-exec-prefix,[AS_HELP_STRING([--with-ncurses-exec-prefix=PFX], [set exec prefix where ncurses is installed (optional)])],
+autom4te.cache/traces.0:     ncurses_args="$ncurses_args --exec-prefix=$ncurses_exec_prefix"
+lib/gamedata/tutorial.txt:# area-flag:c-upper-left:r-upper-left:c-lower-right:r-lower-right:flags
+lib/gamedata/tutorial.txt:# clear-area-flag:c-upper-left:r-upper-left:c-lower-right:r-lower-right:flags
+lib/gamedata/tutorial.txt:# area-flag:c-upper-left:r-upper-left:c-lower-right:r-lower-right:flags
+lib/gamedata/tutorial.txt:# from list-square-flags.h.  c-upper-left and r-upper-left are the horizontal
+lib/gamedata/tutorial.txt:# upper left corner of the area.  c-lower-right and r-lower-right are the
+lib/gamedata/tutorial.txt:# clear-area-flag:c-upper-left:r-upper-left:c-lower-right:r-lower-right:flags
+lib/gamedata/vault.txt:#D:#########          -      -       -      ---c           c--c         cP---            -  ##########
+lib/gamedata/vault.txt:#D:#########           -     -        -     ---c        ccP-  -c   PccPc--                -   ########
+lib/gamedata/vault.txt:#D:############         -     -        -    ---P    PccP---    -Pcc-----                  -     ######
+lib/gamedata/vault.txt:#D:##########            -     ----    -    ---c   c----        ---          &          --   #########
+lib/gamedata/vault.txt:#D:############     &    -         -   -    ---c  c-                                  --      ########
+lib/gamedata/vault.txt:#D:###############          ----      -  -  ---cc-   ---------------          ------      ############
+lib/gamedata/vault.txt:#D:############                 ---    -  - ---cc-  -               ----  ------     #################
+lib/gamedata/terrain.txt:name:Orthanc-stone
+lib/tiles/gervais/flvr-dvg.prf:# Zinc-Plated wand
+lib/tiles/old/flvr-xxx.prf:# Zinc-Plated wand
+lib/tiles/shockbolt/flvr-shb.prf:# Zinc-Plated wand
+lib/tiles/adam-bolt/flvr-new.prf:# Zinc-Plated wand
+lib/tiles/nomad/flvr-nmd.prf:# Zinc-Plated wand
+lib/icons/Makefile:# into the paths expected by https://freedesktop.org/software/appstream/docs/chap-Metadata.html#spec-component-location
+src/message.dep:message.o: message.c /usr/include/stdc-predef.h z-virt.h h-basic.h \
+src/message.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-prefs.dep:ui-prefs.o: ui-prefs.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-prefs.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-output.dep:ui-output.o: ui-output.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-output.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/effects.dep:effects.o: effects.c /usr/include/stdc-predef.h effects.h source.h \
+src/effects.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-make.dep:obj-make.o: obj-make.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-make.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-context.dep:ui-context.o: ui-context.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-context.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-skills.dep:player-skills.o: player-skills.c /usr/include/stdc-predef.h angband.h \
+src/player-skills.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/nds/dlmalloc.h:#include "dlmalloc-config.h"
+src/nds/dlmalloc.h:  Default header file for malloc-2.8.x, written by Doug Lea
+src/nds/dlmalloc.h:  employs the equivalent of a malloc-copy-free sequence.
+src/nds/dlmalloc.c:     ftp://gee.cs.oswego.edu/pub/misc/malloc-2.8.6.h
+src/nds/dlmalloc.c:  Security: static-safe; optionally more or less
+src/nds/dlmalloc.c:  general-purpose allocator for malloc-intensive programs.
+src/nds/dlmalloc.c:  addresses etc) rather than malloc-triggered checks, so will also
+src/nds/dlmalloc.c:  employs the equivalent of a malloc-copy-free sequence.
+src/nds/dlmalloc.c:      * tested on sparc, hp-700, dec-mips, rs6000
+src/player-util.dep:player-util.o: player-util.c /usr/include/stdc-predef.h angband.h \
+src/player-util.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-menu.dep:ui-menu.o: ui-menu.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-menu.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-dice.dep:z-dice.o: z-dice.c /usr/include/stdc-predef.h z-dice.h h-basic.h \
+src/z-dice.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-bitflag.dep:z-bitflag.o: z-bitflag.c /usr/include/stdc-predef.h z-bitflag.h h-basic.h \
+src/z-bitflag.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-player.dep:ui-player.o: ui-player.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-player.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-util.dep:z-util.o: z-util.c /usr/include/stdc-predef.h /usr/include/stdlib.h \
+src/z-util.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-group.c:	struct monster_group *group = c->monster_groups[mon->group_info.index];
+src/mon-group.c:			c->monster_groups[mon->group_info.index] = NULL;
+src/mon-group.c:		if (!(c->monster_groups[index])) return index;
+src/mon-group.c:	c->monster_groups[index] = group;
+src/mon-group.c:			c->monster_groups[index] = group;
+src/mon-group.c:	return index ? c->monster_groups[index] : NULL;
+src/mon-group.c:	struct monster_group *group = c->monster_groups[index];
+src/mon-group.c:	struct monster_group *group = c->monster_groups[index];
+src/mon-group.c:				grid.y = randint0(c->height);
+src/mon-group.c:				grid.x = randint0(c->width);
+src/mon-group.c:		if (c->monster_groups[i]) {
+src/mon-group.c:			struct monster_group *group = c->monster_groups[i];
+src/gen-room.dep:gen-room.o: gen-room.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/gen-room.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/songs.c:		description = alt_desc->desc;
+src/songs.c:			alt_desc = alt_desc->next;
+src/songs.c:			description = alt_desc->desc;
+src/cmd-spoil.dep:cmd-spoil.o: cmd-spoil.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cmd-spoil.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-blows.dep:mon-blows.o: mon-blows.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-blows.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-death.dep:ui-death.o: ui-death.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-death.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/gen-room.c:			if ((*t == 'W') && (c->depth > 12)) {
+src/gen-room.c:			if ((*t == '7') && (c->depth >= z_info->dun_depth - 1)) {
+src/gen-room.c:    if ((c->depth > 0) && (c->depth < z_info->dun_depth)) {
+src/gen-room.c:					pick_and_place_monster(c, grid, c->depth + 1, true, true,
+src/gen-room.c:					pick_and_place_monster(c, grid, c->depth + 2, true, true,
+src/gen-room.c:					pick_and_place_monster(c, grid, c->depth + 3, true, true,
+src/gen-room.c:					pick_and_place_monster(c, grid, c->depth + 4, true, true,
+src/gen-room.c:					place_object(c, grid, c->depth + randint1(4), false, false,
+src/gen-room.c:					place_object(c, grid, c->depth + randint1(4), true, false,
+src/gen-room.c:					int depth = c->depth ? c->depth + 4 : z_info->dun_depth;
+src/gen-room.c:						object_prep(obj, kind, c->depth, RANDOMISE);
+src/gen-room.c:						pick_and_place_monster(c, grid, c->depth + 1, true,
+src/gen-room.c:						place_object(c, grid, c->depth + 1, false, false,
+src/gen-room.c:					place_object(c, grid, c->depth, false, false,
+src/gen-room.c:											c->depth);
+src/gen-room.c:											c->depth + rand_range(1, 4));
+src/gen-room.c:										  c->depth + 1, true);
+src/gen-room.c:										  c->depth + rand_range(1, 4), false);
+src/gen-room.c:	struct vault *v = random_vault(c->depth, typ, forge);
+src/gen-room.c:	if ((y1 <= 3) || (x1 <= 3) || (y2 >= c->height - 3) ||(x2 >= c->width - 3)){
+src/gen-room.c:		c->vault_name = string_make(v->name);
+src/gen-room.c:	if ((c->depth < randint1(z_info->dun_depth - 1)) ||
+src/gen-room.c:		(c->depth < randint1(z_info->dun_depth - 1))) {
+src/gen-room.c:	if (y1 <= 3 || (x1 <= 3) || (y2 >= c->height - 3) || (x2 >= c->width - 3)) {
+src/gen-room.c:	if (c->depth <= randint1(z_info->dun_depth)) light = true;
+src/gen-room.c:	if ((y1v <= 3) || (x1h <= 3) || (y2v >= c->height - 3) ||
+src/gen-room.c:		(x2h >= c->width - 3)) {
+src/gen-room.c:				place_object(c, centre, c->depth, false, false, ORIGIN_SPECIAL,
+src/gen-room.c:	struct vault *v = random_vault(c->depth, "Throne room", false);
+src/gen-room.c:	centre = loc(c->width / 2, c->height / 2);
+src/gen-room.c:	c->vault_name = string_make(v->name);
+src/gen-room.c:	struct vault *v = random_vault(c->depth, "Surface of Isengard", false);
+src/gen-room.c:	centre = loc(c->width / 2, c->height / 2);
+src/gen-room.c:	c->vault_name = string_make(v->name);
+src/gen-room.c:	struct loc centre = loc(rand_range(5, c->width - 5),
+src/gen-room.c:							rand_range(5, c->height - 5));
+src/gen-room.c:		centre = loc(rand_range(5, c->width - 5), rand_range(5, c->height - 5));
+src/ui-keymap.dep:ui-keymap.o: ui-keymap.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-keymap.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cave-fire.dep:cave-fire.o: cave-fire.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cave-fire.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-calcs.dep:mon-calcs.o: mon-calcs.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-calcs.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/project-obj.dep:project-obj.o: project-obj.c /usr/include/stdc-predef.h angband.h \
+src/project-obj.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cmd-wizard.dep:cmd-wizard.o: cmd-wizard.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cmd-wizard.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-calcs.c:	int difficulty = flow_dist(c->player_noise, mon->grid) - mon->noise;
+src/game-event.dep:game-event.o: game-event.c /usr/include/stdc-predef.h \
+src/game-event.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/effect-handler-attack.dep: /usr/include/stdc-predef.h combat.h angband.h h-basic.h autoconf.h \
+src/effect-handler-attack.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/effect-handler-general.dep: /usr/include/stdc-predef.h cave.h z-type.h h-basic.h autoconf.h \
+src/effect-handler-general.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-rand.dep:z-rand.o: z-rand.c /usr/include/stdc-predef.h z-rand.h h-basic.h \
+src/z-rand.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/score.dep:score.o: score.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/score.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-knowledge.dep:obj-knowledge.o: obj-knowledge.c /usr/include/stdc-predef.h angband.h \
+src/obj-knowledge.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/grafmode.dep:grafmode.o: grafmode.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/grafmode.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-visuals.dep:ui-visuals.o: ui-visuals.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-visuals.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-help.dep:ui-help.o: ui-help.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-help.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-output.c:	if ((loc->col > key->mouse.x) || (loc->col + loc->width <= key->mouse.x))
+src/ui-output.c:	if ((loc->row > key->mouse.y) ||
+src/ui-output.c:		(loc->row + loc->page_rows <= key->mouse.y))
+src/wiz-stats.c:	double area = c->width * c->height;
+src/wiz-stats.c:	assert(c->width > 0 && c->height > 0);
+src/wiz-stats.c:	for (grid.y = 0; grid.y < c->height; ++grid.y) {
+src/wiz-stats.c:		for (grid.x = 0; grid.x < c->width; ++grid.x) {
+src/cave.dep:cave.o: cave.c /usr/include/stdc-predef.h angband.h h-basic.h autoconf.h \
+src/cave.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-score.dep:ui-score.o: ui-score.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-score.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/guid.dep:guid.o: guid.c /usr/include/stdc-predef.h guid.h
+src/z-set.dep:z-set.o: z-set.c /usr/include/stdc-predef.h z-set.h h-basic.h autoconf.h \
+src/z-set.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-smith.dep:ui-smith.o: ui-smith.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-smith.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-command.dep:ui-command.o: ui-command.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-command.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main-sdl2.dep:main-sdl2.o: main-sdl2.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/main-sdl2.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/project-feat.dep:project-feat.o: project-feat.c /usr/include/stdc-predef.h angband.h \
+src/project-feat.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-mon-list.dep:ui-mon-list.o: ui-mon-list.c /usr/include/stdc-predef.h mon-desc.h \
+src/ui-mon-list.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player.dep:player.o: player.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/player.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-info.dep:obj-info.o: obj-info.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-info.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-smith.dep:obj-smith.o: obj-smith.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-smith.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-mon-lore.dep:ui-mon-lore.o: ui-mon-lore.c /usr/include/stdc-predef.h angband.h \
+src/ui-mon-lore.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/game-world.dep:game-world.o: game-world.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/game-world.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-abilities.dep:player-abilities.o: player-abilities.c /usr/include/stdc-predef.h \
+src/player-abilities.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-term.dep:ui-term.o: ui-term.c /usr/include/stdc-predef.h buildid.h h-basic.h \
+src/ui-term.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-object.c:			strnfmt(tmp_val, sizeof(tmp_val), " %c-%c,", I2A(i1), I2A(i2));
+src/ui-object.c:			strnfmt(tmp_val, sizeof(tmp_val), " %c-%c,", I2A(e1), I2A(e2));
+src/ui-object.c:			strnfmt(tmp_val, sizeof(tmp_val), " %c-%c,", I2A(f1), I2A(f2));
+src/wiz-debug.dep:wiz-debug.o: wiz-debug.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/wiz-debug.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-lore.dep:mon-lore.o: mon-lore.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-lore.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-util.dep:mon-util.o: mon-util.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-util.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-list.dep:obj-list.o: obj-list.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-list.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main.dep:main.o: main.c /usr/include/stdc-predef.h angband.h h-basic.h autoconf.h \
+src/main.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/load.c:		assert(c->objects[obj->oidx] == NULL);
+src/load.c:		c->objects[obj->oidx] = obj;
+src/load.c:	rd_u16b(&c->obj_max);
+src/load.c:	c->objects = mem_realloc(c->objects,
+src/load.c:							 (c->obj_max + 1) * sizeof(struct object*));
+src/load.c:	for (i = 0; i <= c->obj_max; i++)
+src/load.c:		c->objects[i] = NULL;
+src/load.c:			pile_insert_end(&c->squares[obj->grid.y][obj->grid.x].obj, obj);
+src/load.c:		assert(c->objects[obj->oidx] == NULL);
+src/load.c:		c->objects[obj->oidx] = obj;
+src/obj-pile.c:	if (c && c->objects && obj->oidx && (obj == c->objects[obj->oidx]))
+src/obj-pile.c:		c->objects[obj->oidx] = NULL;
+src/obj-pile.c:	if (src->slays) {
+src/obj-pile.c:		memcpy(dest->slays, src->slays, z_info->slay_max * sizeof(bool));
+src/obj-pile.c:	if (src->brands) {
+src/obj-pile.c:		memcpy(dest->brands, src->brands, z_info->brand_max * sizeof(bool));
+src/obj-pile.c:	if (src->abilities) {
+src/obj-pile.c:		dest->abilities = copy_ability_list(src->abilities);
+src/obj-pile.c:	dest->note = src->note;
+src/obj-pile.c:		dest->pval = src->pval * amt / src->number;
+src/obj-pile.c: * This function should only be used when amt < src->number
+src/obj-pile.c:	assert(src->number > amt);
+src/obj-pile.c:	src->number -= amt;
+src/obj-pile.c:	if (src->note)
+src/obj-pile.c:		dest->note = src->note;
+src/obj-pile.c:	pile_insert(&c->squares[grid.y][grid.x].obj, drop);
+src/obj-pile.c:			best.x = MAX(0, MIN(best.x, c->width - 1));
+src/obj-pile.c:			best.y = MAX(0, MIN(best.y, c->height - 1));
+src/obj-pile.c:			best = loc(randint0(c->width), randint0(c->height));
+src/ui-signals.dep:ui-signals.o: ui-signals.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-signals.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cave.c:    FEAT_ORTHANC = lookup_feat("Orthanc-stone");
+src/cave.c:	flow->grids = mem_zalloc(c->height * sizeof(uint16_t*));
+src/cave.c:	for (y = 0; y < c->height; y++) {
+src/cave.c:		flow->grids[y] = mem_zalloc(c->width * sizeof(uint16_t));
+src/cave.c:	for (y = 0; y < c->height; y++) {
+src/cave.c:	c->height = height;
+src/cave.c:	c->width = width;
+src/cave.c:	c->feat_count = mem_zalloc((z_info->f_max + 1) * sizeof(int));
+src/cave.c:	c->squares = mem_zalloc(c->height * sizeof(struct square*));
+src/cave.c:	for (y = 0; y < c->height; y++) {
+src/cave.c:		c->squares[y] = mem_zalloc(c->width * sizeof(struct square));
+src/cave.c:		for (x = 0; x < c->width; x++) {
+src/cave.c:			c->squares[y][x].info = mem_zalloc(SQUARE_SIZE * sizeof(bitflag));
+src/cave.c:	flow_new(c, &c->player_noise);
+src/cave.c:	flow_new(c, &c->monster_noise);
+src/cave.c:	flow_new(c, &c->scent);
+src/cave.c:	c->objects = mem_zalloc(OBJECT_LIST_SIZE * sizeof(struct object*));
+src/cave.c:	c->obj_max = OBJECT_LIST_SIZE - 1;
+src/cave.c:	c->monsters = mem_zalloc(z_info->level_monster_max *sizeof(struct monster));
+src/cave.c:	c->mon_max = 1;
+src/cave.c:	c->mon_current = -1;
+src/cave.c:	c->monster_groups = mem_zalloc(z_info->level_monster_max *
+src/cave.c:	c->turn = turn;
+src/cave.c:	for (i = 1; i < c->obj_max; i++) {
+src/cave.c:		if (c->objects[i] && loc_is_zero(c->objects[i]->grid)) {
+src/cave.c:			object_delete(c, &c->objects[i]);
+src/cave.c:	for (y = 0; y < c->height; y++) {
+src/cave.c:		for (x = 0; x < c->width; x++) {
+src/cave.c:			mem_free(c->squares[y][x].info);
+src/cave.c:			if (c->squares[y][x].trap)
+src/cave.c:			if (c->squares[y][x].obj)
+src/cave.c:				object_pile_free(c, c->squares[y][x].obj);
+src/cave.c:		mem_free(c->squares[y]);
+src/cave.c:	mem_free(c->squares);
+src/cave.c:	flow_free(c, &c->player_noise);
+src/cave.c:	flow_free(c, &c->monster_noise);
+src/cave.c:	flow_free(c, &c->scent);
+src/cave.c:	mem_free(c->feat_count);
+src/cave.c:	mem_free(c->objects);
+src/cave.c:	mem_free(c->monsters);
+src/cave.c:	mem_free(c->monster_groups);
+src/cave.c:	if (c->name)
+src/cave.c:		string_free(c->name);
+src/cave.c:	if (c->vault_name)
+src/cave.c:		string_free(c->vault_name);
+src/cave.c:	for (i = 1; i < c->obj_max; i++)
+src/cave.c:		if (c->objects[i] == obj)
+src/cave.c:	for (i = 1; i < c->obj_max; i++) {
+src/cave.c:		if (c->objects[i] == NULL) {
+src/cave.c:			c->objects[i] = obj;
+src/cave.c:	newsize = (c->obj_max + OBJECT_LIST_INCR + 1) * sizeof(struct object*);
+src/cave.c:	c->objects = mem_realloc(c->objects, newsize);
+src/cave.c:	c->objects[c->obj_max] = obj;
+src/cave.c:	obj->oidx = c->obj_max;
+src/cave.c:	for (i = c->obj_max + 1; i <= c->obj_max + OBJECT_LIST_INCR; i++)
+src/cave.c:		c->objects[i] = NULL;
+src/cave.c:	c->obj_max += OBJECT_LIST_INCR;
+src/cave.c:	assert(c->objects[obj->oidx] == obj);
+src/cave.c:	c->objects[obj->oidx] = NULL;
+src/cave.c:	for (i = 0; i < c->obj_max; i++) {
+src/cave.c:		struct object *obj = c->objects[i];
+src/cave.c:	struct loc *feas = mem_alloc(MIN(c->width, (1 + 2 * MAX(0, d)))
+src/cave.c:			* (size_t) MIN(c->height, (1 + 2 * MAX(0, d)))
+src/cave.c:	return &c->monsters[idx];
+src/cave.c:	return c->mon_max;
+src/cave.c:	return c->mon_cnt;
+src/savefile.dep:savefile.o: savefile.c /usr/include/stdc-predef.h /usr/include/errno.h \
+src/savefile.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main-win.c: * and 6.0, Cygwin 1.0, Borland C++ 5.5 command line tools, and lcc-win32.
+src/cave-map.dep:cave-map.o: cave-map.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cave-map.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cmd-obj.dep:cmd-obj.o: cmd-obj.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cmd-obj.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-group.dep:mon-group.o: mon-group.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-group.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-attack.dep:mon-attack.o: mon-attack.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-attack.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-make.dep:mon-make.o: mon-make.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-make.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-birth.dep:player-birth.o: player-birth.c /usr/include/stdc-predef.h angband.h \
+src/player-birth.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-attack.dep:player-attack.o: player-attack.c /usr/include/stdc-predef.h angband.h \
+src/player-attack.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cave-map.c:	for (y = 1; y < c->height - 1; y++) {
+src/cave-map.c:		for (x = 1; x < c->width - 1; x++) {
+src/cave-map.c:	for (y = 1; y < c->height - 1; y++) {
+src/cave-map.c:		for (x = 1; x < c->width - 1; x++) {
+src/ui-target.c:			(int)c->player_noise.grids[auxst->grid.y][auxst->grid.x],
+src/ui-target.c:			(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
+src/ui-target.c:					(int)c->player_noise.grids[auxst->grid.y][auxst->grid.x],
+src/ui-target.c:					(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
+src/ui-target.c:				(int)c->player_noise.grids[auxst->grid.y][auxst->grid.x],
+src/ui-target.c:				(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
+src/ui-target.c:				(int)c->player_noise.grids[auxst->grid.y][auxst->grid.x],
+src/ui-target.c:				(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
+src/ui-target.c:					(int)c->player_noise.grids[auxst->grid.y][auxst->grid.x],
+src/ui-target.c:					(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
+src/ui-target.c:			(int)c->player_noise.grids[auxst->grid.y][auxst->grid.x],
+src/ui-target.c:			(int)c->scent.grids[auxst->grid.y][auxst->grid.x]);
+src/ui-tutorial.c:					rc = rc->next;
+src/ui-tutorial.c:					if (hc->race == rpick) {
+src/ui-tutorial.c:						if (hmin > hc->hidx) {
+src/ui-tutorial.c:							hmin = hc->hidx;
+src/ui-tutorial.c:					hc = hc->next;
+src/ui-tutorial.c:					if (hc->race == rpick
+src/ui-tutorial.c:							&& hmin > hc->hidx) {
+src/ui-tutorial.c:						hmin = hc->hidx;
+src/ui-tutorial.c:					if (streq(hc->short_name, a->v.archetype.house_name)) {
+src/ui-tutorial.c:						if (hc->race != rpick) {
+src/ui-tutorial.c:					hc = hc->next;
+src/doc/doxygen.conf:# first line (until the first dot) of a Javadoc-style comment as the brief
+src/doc/doxygen.conf:# description. If set to NO, the Javadoc-style will behave just like regular Qt-
+src/doc/doxygen.conf:# C-preprocessor directives found in the sources and include files.
+src/sound-core.dep:sound-core.o: sound-core.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/sound-core.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main-gcu.dep:main-gcu.o: main-gcu.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/main-gcu.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/parser.dep:parser.o: parser.c /usr/include/stdc-predef.h init.h h-basic.h autoconf.h \
+src/parser.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-spell.dep:mon-spell.o: mon-spell.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-spell.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/songs.dep:songs.o: songs.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/songs.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-birth.c:			if (streq(rc->name, nrace)) break;
+src/player-birth.c:			rc = rc->next;
+src/player-birth.c:			rc = rc->next;
+src/player-birth.c:			if (streq(hc->name, nhouse)) break;
+src/player-birth.c:			hc = hc->next;
+src/player-birth.c:			hc = hc->next;
+src/mon-timed.dep:mon-timed.o: mon-timed.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-timed.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-tutorial.dep:ui-tutorial.o: ui-tutorial.c /usr/include/stdc-predef.h cmd-core.h \
+src/ui-tutorial.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-menu.c:	int cursor = row - loc->row + top;
+src/ui-menu.c:	int col = loc->col;
+src/ui-menu.c:	int row = loc->row;
+src/ui-menu.c:	int rows_per_page = loc->page_rows;
+src/ui-menu.c:		Term_erase(col, row + i, loc->width);
+src/ui-menu.c:							loc->width);
+src/ui-menu.c:	int cursor = row - loc->row + top;
+src/ui-menu.c:	int col = loc->col;
+src/ui-menu.c:	int row = loc->row;
+src/ui-menu.c:	int rows_per_page = loc->page_rows;
+src/ui-menu.c:		Term_erase(col, row + i, loc->width);
+src/ui-menu.c:							loc->width);
+src/ui-menu.c:        int rows_per_page = loc->page_rows;
+src/ui-menu.c:	cursor = (row - loc->row) + rows_per_page * ((col - loc->col) / colw);
+src/ui-menu.c:	int col = loc->col;
+src/ui-menu.c:	int row = loc->row;
+src/ui-menu.c:	int rows_per_page = loc->page_rows;
+src/ui-menu.c:	int rows_per_page = loc->page_rows;
+src/ui-menu.c:				loc->width, COLOUR_WHITE, menu->title);
+src/ui-menu.c:		Term_putstr(loc->col, loc->row - 1, loc->width,
+src/ui-menu.c:		Term_putstr(menu->boundary.col, loc->row + loc->page_rows,
+src/ui-menu.c:				loc->width, COLOUR_WHITE, menu->prompt);
+src/ui-display.dep:ui-display.o: ui-display.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-display.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-event.dep:ui-event.o: ui-event.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-event.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/load.dep:load.o: load.c /usr/include/stdc-predef.h angband.h h-basic.h autoconf.h \
+src/load.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-form.dep:z-form.o: z-form.c /usr/include/stdc-predef.h z-form.h h-basic.h \
+src/z-form.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/gen-util.c:	struct loc bottom_right = loc(c->width - 1, c->height - 1);
+src/gen-util.c:	if (c->depth >= 4) {
+src/gen-util.c:	if (c->depth >= 2) {
+src/gen-util.c:	if (c->depth < z_info->dun_depth - 2) {
+src/gen-util.c:	if (!c->depth) {
+src/gen-util.c:	} else if (c->depth >= z_info->dun_depth) {
+src/gen-util.c:	object_prep(obj, kind, c->depth, RANDOMISE);
+src/gen-util.c:	new_obj->origin_depth = convert_depth_to_origin(c->depth);
+src/gen-util.c:		int power = (10 + c->depth + randint1(15)) / 5;
+src/gen-util.c:		int power = (c->depth + randint1(15)) / 5;
+src/gen-util.c:	int tmp = randint0(60 + c->depth);
+src/gen-util.c:	int effective_depth = c->depth;
+src/gen-util.c:	if (c->depth <= 2) {
+src/gen-util.c:	int *state = cave_find_init(loc(1, 1), loc(c->width - 2, c->height - 2));
+src/gen-util.c:	for (grid.y = 0; grid.y < c->height; grid.y++) {
+src/gen-util.c:		for (grid.x = 0; grid.x < c->width; grid.x++) {
+src/gen-util.c:		loc(c->width - 2, c->height - 2));
+src/gen-util.c:	for (y = 0; y < c->height; y++) {
+src/gen-util.c:		for (x = 0; x < c->width; x++) {
+src/gen-util.c:	for (y = 0; y < c->height; y++) {
+src/gen-util.c:		for (x = 0; x < c->width; x++) {
+src/gen-util.c: * first dimension being at least c->height elements and the second being at
+src/gen-util.c: * least c->width elements.  For a location (x,y) in the level, if dist[y][x]
+src/gen-util.c: * first dimension being at least c->height elements and the second being at
+src/gen-util.c: * least c->width elements.  For a location (x,y) in the level, if dist[y][x]
+src/gen-util.c:	for (y = 0; y < c->height; ++y) {
+src/gen-util.c:		for (x = 0; x < c->width; ++x) {
+src/obj-util.dep:obj-util.o: obj-util.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-util.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cave-square.dep:cave-square.o: cave-square.c /usr/include/stdc-predef.h angband.h \
+src/cave-square.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-chest.dep:obj-chest.o: obj-chest.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-chest.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cave-view.c:	for (y = 0; y < c->height; y++) {
+src/cave-view.c:		for (x = 0; x < c->width; x++) {
+src/cave-view.c:				c->squares[grid.y][grid.x].light +=
+src/cave-view.c:				c->squares[grid.y][grid.x].light -=
+src/cave-view.c:	bool sunlit = (c->depth == 0) && is_daytime();
+src/cave-view.c:	for (y = 0; y < c->height; y++) {
+src/cave-view.c:		for (x = 0; x < c->width; x++) {
+src/cave-view.c:				c->squares[y][x].light = 1;
+src/cave-view.c:				c->squares[y][x].light = 0;
+src/cave-view.c:			c->squares[mon->grid.y][mon->grid.x].light += 1;
+src/cave-view.c:	for (k = 1; k < c->obj_max; k++) {
+src/cave-view.c:		struct object *obj = c->objects[k];
+src/cave-view.c:	for (y = 0; y < c->height; y++)
+src/cave-view.c:		for (x = 0; x < c->width; x++)
+src/cave-view.c:	for (y = 0; y < c->height; y++)
+src/cave-view.c:		for (x = 0; x < c->width; x++)
+src/ui-knowledge.dep:ui-knowledge.o: ui-knowledge.c /usr/include/stdc-predef.h angband.h \
+src/ui-knowledge.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-util.c:					apply_magic(obj, c->depth, false, false, false);
+src/mon-util.c:			obj->origin_depth = convert_depth_to_origin(c->depth);
+src/mon-util.c:		obj->origin_depth = convert_depth_to_origin(c->depth);
+src/mon-util.c:		obj->origin_depth = convert_depth_to_origin(c->depth);
+src/obj-smith.c:	if (a_src->slays) {
+src/obj-smith.c:		memcpy(a_dst->slays, a_src->slays, z_info->slay_max * sizeof(bool));
+src/obj-smith.c:	if (a_src->brands) {
+src/obj-smith.c:		memcpy(a_dst->brands, a_src->brands, z_info->brand_max * sizeof(bool));
+src/obj-smith.c:	if (a_src->abilities) {
+src/obj-smith.c:		a_dst->abilities = copy_ability_list(a_src->abilities);
+src/mon-msg.dep:mon-msg.o: mon-msg.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-msg.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-init.dep:mon-init.o: mon-init.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-init.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-timed.dep:player-timed.o: player-timed.c /usr/include/stdc-predef.h angband.h \
+src/player-timed.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-type.dep:z-type.o: z-type.c /usr/include/stdc-predef.h z-rand.h h-basic.h \
+src/z-type.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/buildid.dep:buildid.o: buildid.c /usr/include/stdc-predef.h buildid.h version.h
+src/tutorial-init.dep:tutorial-init.o: tutorial-init.c /usr/include/stdc-predef.h cave.h \
+src/tutorial-init.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-expression.dep:z-expression.o: z-expression.c /usr/include/stdc-predef.h z-expression.h \
+src/z-expression.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cave-fire.c:				if (!loc_eq(c->project_path_ignore, grid)) {
+src/z-quark.dep:z-quark.o: z-quark.c /usr/include/stdc-predef.h z-util.h h-basic.h \
+src/z-quark.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-file.dep:z-file.o: z-file.c /usr/include/stdc-predef.h h-basic.h autoconf.h \
+src/z-file.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cocoa/Base.lproj/TileSetScaling.xib:                            <constraint firstItem="JdG-Ji-eL2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fHJ-fg-Iaq" secondAttribute="top" id="uSc-DW-GNQ"/>
+src/cocoa/Base.lproj/TileSetScaling.xib:                            <constraint firstItem="rKp-Nl-Aki" firstAttribute="firstBaseline" secondItem="fJ7-sK-RXh" secondAttribute="firstBaseline" id="nlH-rc-mZy"/>
+src/cocoa/Base.lproj/TileSetScaling.xib:                    <constraint firstItem="8jn-gu-jjI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AZI-KT-kzv" secondAttribute="trailing" constant="6" id="Tuj-AC-wfH"/>
+src/cocoa/Base.lproj/MainMenu.xib:                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+src/cocoa/Base.lproj/MainMenu.xib:                            <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+src/cocoa/Base.lproj/MainMenu.xib:                                    <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
+src/cocoa/Base.lproj/MainMenu.xib:                                    <action selector="saveGame:" target="Voe-Tx-rLC" id="CCC-g2-esZ"/>
+src/cocoa/Base.lproj/MainMenu.xib:                            <menuItem title="60 fps" tag="60" id="bVC-pz-1SN">
+src/cocoa/Base.lproj/MainMenu.xib:                                    <action selector="setRefreshRate:" target="Voe-Tx-rLC" id="7Zc-lQ-Vjb"/>
+src/cocoa/Base.lproj/MainMenu.xib:                                    <action selector="performZoom:" target="-1" id="DIl-cC-cCs"/>
+src/ui-history.dep:ui-history.o: ui-history.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-history.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-input.dep:ui-input.o: ui-input.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-input.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-desc.dep:mon-desc.o: mon-desc.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-desc.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-map.dep:ui-map.o: ui-map.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-map.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-make.c:	c->mon_cnt--;
+src/mon-make.c:		/* Compress "c->mon_max" */
+src/mon-make.c:		c->mon_max--;
+src/mon-make.c:					c->objects[obj->oidx] = NULL;
+src/mon-make.c:		if (c->monster_groups[i]) {
+src/mon-make.c:			monster_group_free(c, c->monster_groups[i]);
+src/mon-make.c:	c->mon_max = 1;
+src/mon-make.c:	c->mon_cnt = 0;
+src/mon-make.c:		c->mon_max++;
+src/mon-make.c:		c->mon_cnt++;
+src/mon-make.c:			c->mon_cnt++;
+src/mon-make.c:		c->mon_max++;
+src/mon-make.c:		c->mon_cnt++;
+src/mon-make.c:		if (rf_has(race->flags, RF_FORCE_DEPTH) && c->depth < race->level)
+src/mon-make.c:		if (race->level > c->depth) {
+src/mon-make.c:		int amount = (rand_range(6,7) + (c->depth - race->level)) / 2;
+src/mon-make.c:		if (randint1(4) <= c->depth - race->level + 2) amount++;
+src/mon-make.c:		grid = loc(randint0(c->width), randint0(c->height));
+src/ui-init.dep:ui-init.o: ui-init.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-init.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-dict.dep:z-dict.o: z-dict.c /usr/include/stdc-predef.h z-dict.h h-basic.h \
+src/z-dict.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cave-view.dep:cave-view.o: cave-view.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cave-view.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/option.dep:option.o: option.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/option.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/generate.dep:generate.o: generate.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/generate.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-tval.dep:obj-tval.o: obj-tval.c /usr/include/stdc-predef.h init.h h-basic.h \
+src/obj-tval.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/save.c: * Note that the cost and when fields of c->squares[y][x] are not saved
+src/save.c:	wr_string(c->name ? c->name : "Blank");
+src/save.c:	wr_u16b(c->height);
+src/save.c:	wr_u16b(c->width);
+src/save.c:	if (c->vault_name) {
+src/save.c:		wr_string(c->vault_name);
+src/save.c:	/* Run length encoding of c->squares[y][x].info */
+src/save.c:		for (y = 0; y < c->height; y++) {
+src/save.c:			for (x = 0; x < c->width; x++) {
+src/save.c:				/* Extract the important c->squares[y][x].info flags */
+src/save.c:	for (y = 0; y < c->height; y++) {
+src/save.c:		for (x = 0; x < c->width; x++) {
+src/save.c:	wr_u16b(c->obj_max);
+src/save.c:	for (y = 0; y < c->height; y++) {
+src/save.c:		for (x = 0; x < c->width; x++) {
+src/save.c:	for (y = 0; y < c->height; y++) {
+src/save.c:		for (x = 0; x < c->width; x++) {
+src/mon-move.dep:mon-move.o: mon-move.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-move.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/project-mon.dep:project-mon.o: project-mon.c /usr/include/stdc-predef.h angband.h \
+src/project-mon.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-target.dep:ui-target.o: ui-target.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-target.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cmd-cave.dep:cmd-cave.o: cmd-cave.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cmd-cave.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/effects-info.dep:effects-info.o: effects-info.c /usr/include/stdc-predef.h effects-info.h \
+src/effects-info.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/wiz-spoil.dep:wiz-spoil.o: wiz-spoil.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/wiz-spoil.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-obj-list.dep:ui-obj-list.o: ui-obj-list.c /usr/include/stdc-predef.h angband.h \
+src/ui-obj-list.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/project.dep:project.o: project.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/project.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/tutorial.dep:tutorial.o: tutorial.c /usr/include/stdc-predef.h cmd-core.h object.h \
+src/tutorial.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/datafile.dep:datafile.o: datafile.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/datafile.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-color.dep:z-color.o: z-color.c /usr/include/stdc-predef.h h-basic.h autoconf.h \
+src/z-color.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/gen-cave.c:	bool **access = mem_zalloc(c->height * sizeof(bool*));
+src/gen-cave.c:	for (grid.y = 0; grid.y < c->height; grid.y++) {
+src/gen-cave.c:		access[grid.y] = mem_zalloc(c->width  * sizeof(bool));
+src/gen-cave.c:	for (grid.y = 0; grid.y < c->height; grid.y++) {
+src/gen-cave.c:		for (grid.x = 0; grid.x < c->width; grid.x++) {
+src/gen-cave.c:	for (grid.y = 0; grid.y < c->height; grid.y++) {
+src/gen-cave.c:		for (grid.x = 0; grid.x < c->width; grid.x++) {
+src/gen-cave.c:	for (grid.y = 0; grid.y < c->height; grid.y++) {
+src/gen-cave.c:		for (grid.x = 0; grid.x < c->width; grid.x++) {
+src/gen-cave.c:	for (grid.y = 0; grid.y < c->height; grid.y++) {
+src/gen-cave.c:	struct loc grid = rand_loc(loc(c->width / 2, c->height / 2), 15, 10);
+src/gen-cave.c:        struct loc grid = loc(rand_range(10, c->width - 10),
+src/gen-cave.c:							  rand_range(10, c->height - 10));
+src/gen-cave.c:            if ((grid.y < 3) || (grid.y > c->height - 3) ||
+src/gen-cave.c:				(grid.x < 3) || (grid.x > c->width - 3))
+src/gen-cave.c:        for (grid.y = 1; grid.y < c->height - 1; grid.y++) {
+src/gen-cave.c:            for (grid.x = 1; grid.x < c->width - 1; grid.x++) {
+src/gen-cave.c:			for (grid.y = 0; grid.y < c->height; grid.y++) {
+src/gen-cave.c:				for (grid.x = 0; grid.x < c->width; grid.x++) {
+src/gen-cave.c:	for (grid1.y = 0; grid1.y < c->height; grid1.y++) {
+src/gen-cave.c:		for (grid1.x = 0; grid1.x < c->width; grid1.x++) {
+src/gen-cave.c:    int blocks = (c->height / z_info->block_hgt) * (c->width / z_info->block_wid);
+src/gen-cave.c:    if ((c->depth > 2) && (c->depth < z_info->dun_depth - 1) &&
+src/gen-cave.c:		percent_chance(c->depth + 30)) {
+src/gen-cave.c:	switch (c->height / z_info->block_hgt) {
+src/gen-cave.c:    width = c->width / z_info->block_wid;
+src/gen-cave.c:    width = c->width / z_info->block_wid;
+src/gen-cave.c:	c->depth = p->depth;
+src/gen-cave.c:	fill_rectangle(c, 0, 0, c->height - 1, c->width - 1, FEAT_GRANITE,
+src/gen-cave.c:	for (y = 0; y < c->height; y++) {
+src/gen-cave.c:		for (x = 0; x < c->width; x++) {
+src/gen-cave.c:		int hardness = randint1(c->depth + 5);
+src/gen-cave.c:			if (profile.level && (profile.level == c->depth)) break;
+src/gen-cave.c:	draw_rectangle(c, 0, 0, c->height - 1, c->width - 1, FEAT_PERM, SQUARE_NONE,
+src/gen-cave.c:	for (y = 0; y < c->height; y++) {
+src/gen-cave.c:		for (x = 0; x < c->width; x++) {
+src/gen-cave.c:	if ((c->depth >= 10) && one_in_(2)) {
+src/gen-cave.c:	alloc_object(c, SET_BOTH, TYP_RUBBLE, rubble_gen, c->depth,
+src/gen-cave.c:	if (c->depth == 1) {
+src/gen-cave.c:		alloc_object(c, SET_ROOM, TYP_OBJECT, obj_room_gen, c->depth,
+src/gen-cave.c:		(void) pick_and_place_distant_monster(c, p, true, c->depth);
+src/gen-cave.c:	c->depth = p->depth;
+src/gen-cave.c:	fill_rectangle(c, 0, 0, c->height - 1, c->width - 1, FEAT_GRANITE,
+src/gen-cave.c:	draw_rectangle(c, 0, 0, c->height - 1, c->width - 1, FEAT_PERM, SQUARE_NONE,
+src/gen-cave.c:	for (y = 0; y < c->height; y++) {
+src/gen-cave.c:		for (x = 0; x < c->width; x++) {
+src/gen-cave.c:	c->depth = p->depth;
+src/gen-cave.c:	fill_rectangle(c, 0, 0, c->height - 1, c->width - 1, FEAT_GRANITE,
+src/gen-cave.c:	draw_rectangle(c, 0, 0, c->height - 1, c->width - 1, FEAT_PERM, SQUARE_NONE,
+src/gen-cave.c:	for (x = 1; x < c->width - 1; x++) {
+src/gen-cave.c:		square_set_feat(c, loc(x, c->height - 1), FEAT_FLOOR);
+src/gen-cave.c:	for (y = 0; y < c->height; y++) {
+src/gen-cave.c:		for (x = 0; x < c->width; x++) {
+src/z-file.c: * See <http://c-faq.com/varargs/handoff.html>
+src/cmd-misc.dep:cmd-misc.o: cmd-misc.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cmd-misc.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/init.c:		c->next = oc;
+src/init.c:		c->idx = idx;
+src/init.c:	e->next = c->entries;
+src/init.c:	c->entries = e;
+src/init.c:	for (c = histories; c; c = c->next) {
+src/init.c:		e = c->entries;
+src/init.c:		c->entries = prev;
+src/init.c:		for (e = c->entries; e; e = e->next) {
+src/init.c:		next_c = c->next;
+src/init.c:		e = c->entries;
+src/tutorial.c:			obj->origin_depth = convert_depth_to_origin(c->depth);
+src/tutorial.c:	obj->origin_depth = convert_depth_to_origin(c->depth);
+src/tutorial.c:			obj->origin_depth = convert_depth_to_origin(c->depth);
+src/tutorial.c:	place_trap(c, grid, val->v.trap.kind->tidx, c->depth);
+src/ui-effect.dep:ui-effect.o: ui-effect.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-effect.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-pile.dep:obj-pile.o: obj-pile.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-pile.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/cmd-wizard.c:	if (c->player_noise.grids[grid.y][grid.x] == *((int*)closure)) {
+src/cmd-wizard.c:	if (c->scent.grids[grid.y][grid.x] == *((int*)closure)) {
+src/trap.dep:trap.o: trap.c /usr/include/stdc-predef.h angband.h h-basic.h autoconf.h \
+src/trap.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/tests/Makefile.inc:./player/calc-inventory.o: player/calc-inventory.c unit-test.h unit-test-types.h \
+src/tests/cave/scatter.c:	struct loc ctr = loc(c->width / 2, c->height / 2);
+src/tests/cave/scatter.c:	ctr = loc(c->width - 1, -1);
+src/tests/cave/scatter.c:	ctr = loc(c->width - 1, -1);
+src/tests/cave/scatter.c:	struct loc ctr = loc(c->width / 2, c->height / 2);
+src/tests/cave/scatter.c:	ctr = loc(c->width - 2, 1);
+src/tests/cave/scatter.c:	ctr = loc(1, c->height - 2);
+src/tests/cave/scatter.c:	ctr = loc(c->width - 2, c->height - 2);
+src/tests/cave/scatter.c:	ctr = loc(c->width - 1, 0);
+src/tests/cave/scatter.c:	require(grids[1].x == c->width - 2 && grids[1].y == 1);
+src/tests/cave/scatter.c:	require(grids[1].x == c->width - 2 && grids[1].y == 1);
+src/tests/cave/scatter.c:	require(grids[1].x == c->width - 2 && grids[1].y == 1);
+src/tests/cave/scatter.c:	require(grids[1].x == c->width - 2 && grids[1].y == 1);
+src/tests/cave/scatter.c:	ctr = loc(0, c->height - 1);
+src/tests/cave/scatter.c:	require(grids[1].x == 1 && grids[1].y == c->height - 2);
+src/tests/cave/scatter.c:	require(grids[1].x == 1 && grids[1].y == c->height - 2);
+src/tests/cave/scatter.c:	require(grids[1].x == 1 && grids[1].y == c->height - 2);
+src/tests/cave/scatter.c:	require(grids[1].x == 1 && grids[1].y == c->height - 2);
+src/tests/cave/scatter.c:	ctr = loc(c->width - 1, c->height - 1);
+src/tests/cave/scatter.c:	require(grids[1].x == c->width - 2 && grids[1].y == c->height - 2);
+src/tests/cave/scatter.c:	require(grids[1].x == c->width - 2 && grids[1].y == c->height - 2);
+src/tests/cave/scatter.c:	require(grids[1].x == c->width - 2 && grids[1].y == c->height - 2);
+src/tests/cave/scatter.c:	require(grids[1].x == c->width - 2 && grids[1].y == c->height - 2);
+src/tests/cave/scatter.c:	ctr = loc(-1, c->height);
+src/tests/cave/scatter.c:	struct loc ctr = loc(c->width / 2, c->height / 2);
+src/tests/cave/scatter.c:	struct loc ctr = loc(c->width / 2, c->height / 2);
+src/tests/cave/scatter.c:	for (i = 1; i < c->height - 1; ++i) {
+src/tests/cave/scatter.c:	struct loc ctr = loc(c->width / 2, c->height / 2);
+src/tests/cave/scatter.c:	struct loc ctr = loc(c->width / 2, c->height / 2);
+src/tests/cave/find.c:	for (grid.y = 0; grid.y < c->height; ++grid.y) {
+src/tests/cave/find.c:		for (grid.x = 0; grid.x < c->width; ++grid.x) {
+src/tests/cave/find.c:		target.x = targets[i].x + ((targets[i].x < 0) ? c->width : 0);
+src/tests/cave/find.c:		target.y = targets[i].y + ((targets[i].y < 0) ? c->height : 0);
+src/tests/cave/find.c:	target.x = 1 + randint0(c->width - 2);
+src/tests/cave/find.c:	target.x = 1 + randint0(c->width - 2);
+src/tests/cave/find.c:	target.y = c->height - 1;
+src/tests/cave/find.c:	target.x = 1 + randint0(c->width - 2);
+src/tests/cave/find.c:	target.y = 1 + randint0(c->height - 2);
+src/tests/cave/find.c:	target.y = 1 + randint0(c->height - 2);
+src/tests/cave/find.c:	target.x = c->width - 1;
+src/tests/cave/find.c:	target.y = 1 + randint0(c->height - 2);
+src/tests/cave/find.c:	ul.x = c->width - 1;
+src/tests/cave/find.c:	br.x = c->width + 5;
+src/tests/cave/find.c:	require(loc_eq(grid, loc(c->width - 1, 0)));
+src/tests/cave/find.c:	ul.y = c->height - 1;
+src/tests/cave/find.c:	br.y = c->height + 2;
+src/tests/cave/find.c:	require(loc_eq(grid, loc(0, c->height - 1)));
+src/tests/cave/find.c:	ul.x = c->width - 1;
+src/tests/cave/find.c:	ul.y = c->height - 1;
+src/tests/cave/find.c:	br.x = c->width + 2;
+src/tests/cave/find.c:	br.y = c->height + 3;
+src/tests/cave/find.c:	br.x = c->width - 1;
+src/tests/cave/find.c:	br.y = c->height - 1;
+src/tests/cave/find.c:	require(grid.x >= 0 && grid.x < c->width && grid.y >= 0 &&
+src/tests/cave/find.c:		grid.y < c->height);
+src/tests/cave/find.c:	require(grid.x >= 1 && grid.x < c->width - 1 && grid.y >= 1
+src/tests/cave/find.c:		&& grid.y < c->height - 1);
+src/tests/cave/find.c:	ul.x = c->width / 2;
+src/tests/cave/find.c:	ul.y = c->height / 2;
+src/tests/cave/find.c:	require(!find_nearby_grid(c, &grid, loc(c->width + 2, 1), 3, 1));
+src/tests/cave/find.c:	require(!find_nearby_grid(c, &grid, loc(-3, c->height + 4), 4, 2));
+src/tests/cave/find.c:	require(!find_nearby_grid(c, &grid, loc(c->width + 2, c->height + 1),
+src/tests/cave/find.c:	require(find_nearby_grid(c, &grid, loc(c->width / 2, -1), 2, 1));
+src/tests/cave/find.c:	require(grid.x >= c->width / 2 - 1 && grid.x <= c->width / 2 + 1
+src/tests/cave/find.c:	require(find_nearby_grid(c, &grid, loc(c->width / 2, c->height + 1),
+src/tests/cave/find.c:	require(grid.x >= c->width / 2 - 1 && grid.x <= c->width / 2 + 1
+src/tests/cave/find.c:		&& grid.y == c->height - 2);
+src/tests/cave/find.c:	require(find_nearby_grid(c, &grid, loc(-1, c->height / 2),
+src/tests/cave/find.c:	require(grid.x == 1 && grid.y >= c->height / 2 - 1
+src/tests/cave/find.c:		&& grid.y <= c->height / 2 + 1);
+src/tests/cave/find.c:	require(find_nearby_grid(c, &grid, loc(c->width + 2, c->height / 2),
+src/tests/cave/find.c:	require(grid.x == c->width - 2 && grid.y >= c->height / 2 - 1
+src/tests/cave/find.c:		&& grid.y <= c->height / 2 + 1);
+src/tests/cave/find.c:		loc(c->width - 2, c->height - 2));
+src/tests/cave/find.c:	for (grid.y = 1; grid.y < c->height - 1; ++grid.y) {
+src/tests/cave/find.c:		for (grid.x = 1; grid.x < c->width - 1; ++grid.x) {
+src/tests/cave/find.c:	for (grid.y = 1; grid.y < c->height - 1; ++grid.y) {
+src/tests/cave/find.c:		for (grid.x = 1; grid.x < c->width - 1; ++grid.x) {
+src/tests/parse/k-info.c:	eq(k->alloc->locale, 3);
+src/tests/parse/k-info.c:	eq(k->alloc->chance, 4);
+src/tests/parse/h-info.c:	e = c->entries;
+src/tests/parse/h-info.c:	eq(c->idx, 1);
+src/tests/player/calc-inventory.c:/* player/calc-inventory.c */
+src/tests/player/calc-inventory.c:const char *suite_name = "player/calc-inventory";
+src/tests/player/suite.mk:             player/calc-inventory \
+src/tests/effects/earthquake.c:	for (grid.y = 1; grid.y < c->height - 1; ++grid.y) {
+src/tests/effects/earthquake.c:		for (grid.x = 1; grid.x < c->width - 1; ++grid.x) {
+src/tests/effects/earthquake.c:	for (grid.y = 1; grid.y < c->height - 1; ++grid.y) {
+src/tests/effects/earthquake.c:		for (grid.x = 1; grid.x < c->width - 1; ++grid.x) {
+src/generate.c:	c->name = string_make(parser_getstr(p, "name"));
+src/generate.c:		if (streq(c->name, cave_builders[i].name))
+src/generate.c:	c->builder = cave_builders[i].builder;
+src/generate.c:	c->next = h;
+src/generate.c:	c->dun_rooms = parser_getint(p, "rooms");
+src/generate.c:	c->str.den = parser_getint(p, "den");
+src/generate.c:	c->str.rng = parser_getint(p, "rng");
+src/generate.c:	c->str.qua = parser_getint(p, "qua");
+src/generate.c:	c->alloc = parser_getint(p, "alloc");
+src/generate.c:	struct room_profile *r = c->room_profiles;
+src/generate.c:		c->room_profiles = mem_zalloc(sizeof(struct room_profile));
+src/generate.c:		r = c->room_profiles;
+src/generate.c:		c = c->next;
+src/generate.c:		n = c->next;
+src/generate.c:		if (c->room_profiles) {
+src/generate.c:			struct room_profile *r = c->room_profiles;
+src/generate.c:			c->n_room_profiles = 0;
+src/generate.c:				c->n_room_profiles++;
+src/generate.c:		if (c->room_profiles) {
+src/generate.c:			struct room_profile *r_temp, *r_old = c->room_profiles;
+src/generate.c:			r_new = mem_zalloc(c->n_room_profiles * sizeof(*r_new));
+src/generate.c:			for (i = 0; i < c->n_room_profiles; i++) {
+src/generate.c:			for (i = 0; i < c->n_room_profiles; i++)
+src/generate.c:			r_old = c->room_profiles;
+src/generate.c:		cave_profiles[num].n_room_profiles = c->n_room_profiles;
+src/player-timed.c:			while (change >= inc->max) {
+src/player-timed.c:				inc = inc->next;
+src/player-timed.c:			if (p->timed[idx] && inc->inc_msg) {
+src/player-timed.c:				msgt(effect->msgt, inc->inc_msg);
+src/player-timed.c:				msgt(effect->msgt, inc->msg);
+src/gen-cave.dep:gen-cave.o: gen-cave.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/gen-cave.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/combat.dep:combat.o: combat.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/combat.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/project-player.dep:project-player.o: project-player.c /usr/include/stdc-predef.h angband.h \
+src/project-player.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-summon.dep:mon-summon.o: mon-summon.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/mon-summon.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/target.dep:target.o: target.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/target.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-virt.dep:z-virt.o: z-virt.c /usr/include/stdc-predef.h z-virt.h h-basic.h \
+src/z-virt.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-history.dep:player-history.o: player-history.c /usr/include/stdc-predef.h angband.h \
+src/player-history.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/z-queue.dep:z-queue.o: z-queue.c /usr/include/stdc-predef.h /usr/include/stdlib.h \
+src/z-queue.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-list.dep:mon-list.o: mon-list.c /usr/include/stdc-predef.h game-world.h cave.h \
+src/mon-list.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-slays.dep:obj-slays.o: obj-slays.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-slays.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-properties.dep:obj-properties.o: obj-properties.c /usr/include/stdc-predef.h angband.h \
+src/obj-properties.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/win/vs2019/Angband.sln:		SolutionGuid = {551CC38C-EB92-4AD3-9F7F-08D9559B8EE8}
+src/win/vs2019/Angband.vcxproj.filters:      <UniqueIdentifier>{14f36840-4171-45cc-85c3-1c40b9dbb45f}</UniqueIdentifier>
+src/win/vs2019/Angband.vcxproj.filters:      <UniqueIdentifier>{baf73d3c-6656-4a0a-99a4-d046b7faf4e6}</UniqueIdentifier>
+src/win/vs2019/Angband.vcxproj.filters:      <UniqueIdentifier>{02d56a58-137c-46a6-9db2-766f73d55a12}</UniqueIdentifier>
+src/win/vs2019/Angband.vcxproj.filters:      <UniqueIdentifier>{73a57601-68d2-48dc-9767-99ebcc71296b}</UniqueIdentifier>
+src/win/include/png.h: * <http://www.w3.org/TR/2003/REC-PNG-20031110/
+src/win/include/libpng12/png.h: * <http://www.w3.org/TR/2003/REC-PNG-20031110/
+src/win/include/libpng12/pngconf.h:     /* work around 64-bit gcc compiler bugs in gcc-3.x */
+src/win/include/pngconf.h:     /* work around 64-bit gcc compiler bugs in gcc-3.x */
+src/win/include/zlib.h:     Update a running CRC-32 with the bytes buf[0..len-1] and return the
+src/win/include/zlib.h:   updated CRC-32. If buf is NULL, this function returns the required initial
+src/win/include/zlib.h:     Combine two CRC-32 check values into one.  For two sequences of bytes,
+src/win/include/zlib.h:   seq1 and seq2 with lengths len1 and len2, CRC-32 check values were
+src/win/include/zlib.h:   calculated for each, crc1 and crc2.  crc32_combine() returns the CRC-32
+src/win/readdib.c: * Needed for lcc-win32
+src/cave-square.c: * via c->squares[y][x].feat (preferably accessed via square(c, grid)).
+src/cave-square.c:	return grid.x >= 0 && grid.x < c->width &&
+src/cave-square.c:		grid.y >= 0 && grid.y < c->height;
+src/cave-square.c:	return grid.x > 0 && grid.x < c->width - 1 &&
+src/cave-square.c:		grid.y > 0 && grid.y < c->height - 1;
+src/cave-square.c:	return &c->squares[grid.y][grid.x];
+src/cave-square.c:	pile_excise(&c->squares[grid.y][grid.x].obj, obj);
+src/cave-square.c:	if (current_feat) c->feat_count[current_feat]--;
+src/cave-square.c:	if (feat) c->feat_count[feat]++;
+src/cave-square.c:	c->squares[grid.y][grid.x].feat = feat;
+src/cave-square.c:	c->squares[grid.y][grid.x].mon = midx;
+src/cave-square.c:	c->squares[grid.y][grid.x].obj = obj;
+src/cave-square.c:	c->squares[grid.y][grid.x].trap = trap;
+src/cave-square.c:	place_trap(c, grid, -1, c->depth);
+src/wiz-stats.dep:wiz-stats.o: wiz-stats.c /usr/include/stdc-predef.h /usr/include/math.h \
+src/wiz-stats.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-gear.dep:obj-gear.o: obj-gear.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-gear.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/trap.c:    if (c->depth == 0)
+src/ui-birth.dep:ui-birth.o: ui-birth.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-birth.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-path.dep:player-path.o: player-path.c /usr/include/stdc-predef.h angband.h \
+src/player-path.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main-sdl2.c:	if (src->w == dst->w) {
+src/main-sdl2.c:	} else if (src->w > dst->w) {
+src/main-sdl2.c:		src->x += (src->w - dst->w) / 2;
+src/main-sdl2.c:		src->w = dst->w;
+src/main-sdl2.c:		dst->x += (dst->w - src->w) / 2;
+src/main-sdl2.c:		dst->w = src->w;
+src/main-sdl2.c:	if (src->h == dst->h) {
+src/main-sdl2.c:	} else if (src->h > dst->h) {
+src/main-sdl2.c:		src->y += (src->h - dst->h) / 2;
+src/main-sdl2.c:		src->h = dst->h;
+src/main-sdl2.c:		dst->y += (dst->h - src->h) / 2;
+src/main-sdl2.c:		dst->h = src->h;
+src/z-textblock.dep:z-textblock.o: z-textblock.c /usr/include/stdc-predef.h z-color.h \
+src/z-textblock.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/game-world.c:	struct queue *queue = q_new(c->height * c->width);
+src/game-world.c:	for (y = 1; y < c->height - 1; y++) {
+src/game-world.c:		for (x = 1; x < c->width - 1; x++) {
+src/game-world.c:	q_push_int(queue, grid_to_i(next, c->width));
+src/game-world.c:			i_to_grid(q_pop_int(queue), c->width, &next);
+src/game-world.c:				q_push_int(queue, grid_to_i(next, c->width));
+src/game-world.c:				q_push_int(queue, grid_to_i(grid, c->width));
+src/game-world.c:	scent = c->scent.grids[grid.y][grid.x];
+src/game-world.c:	if (!c->scent.grids[grid.y][grid.x]) return -1;
+src/game-world.c:	age = scent - c->scent_age;
+src/game-world.c:		(void)pick_and_place_monster_on_stairs(c, player, true, c->depth,
+src/game-world.c:		(void)pick_and_place_monster_on_stairs(c, player, true, c->depth, true);
+src/init.dep:init.o: init.c /usr/include/stdc-predef.h angband.h h-basic.h autoconf.h \
+src/init.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-abilities.dep:ui-abilities.o: ui-abilities.c /usr/include/stdc-predef.h angband.h \
+src/ui-abilities.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-options.dep:ui-options.o: ui-options.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-options.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-spoil.dep:ui-spoil.o: ui-spoil.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-spoil.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/randname.dep:randname.o: randname.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/randname.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-game.dep:ui-game.o: ui-game.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-game.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main-cocoa.m:    return (c->form == TERM_CELL_TILE ||
+src/main-cocoa.m:	    (c->form == TERM_CELL_TILE_PADDING && c->v.pd.voff == 0)) ? 1 : 0;
+src/main-cocoa.m:    if ((c->form & (TERM_CELL_CHAR | TERM_CELL_CHAR_PADDING)) != 0) {
+src/main-cocoa.m:	return ((c->hoff_d > 1 || c->voff_d > 1) &&
+src/main-cocoa.m:		(c->hoff_d != c->hscl || c->voff_d != c->vscl)) ? 1 : 0;
+src/main-cocoa.m:    return ((c->form & (TERM_CELL_CHAR | TERM_CELL_CHAR_PADDING)) != 0 &&
+src/main-cocoa.m:    if (c->form == TERM_CELL_CHAR) {
+src/main-cocoa.m:	return get_background_color_index(c->v.ch.attr);
+src/main-cocoa.m:    return get_background_color_index((c - c->v.pd.hoff)->v.ch.attr);
+src/ui-object.dep:ui-object.o: ui-object.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-object.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/source.dep:source.o: source.c /usr/include/stdc-predef.h source.h z-type.h h-basic.h \
+src/source.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/message.c:		nextc = c->next;
+src/message.c:		if (mc->type == type)
+src/message.c:			mc->color = color;
+src/message.c:		if (! mc->next) {
+src/message.c:			mc->next = mem_zalloc(sizeof(msgcolor_t));
+src/message.c:			mc->next->type = type;
+src/message.c:			mc->next->color = color;
+src/message.c:		mc = mc->next;
+src/message.c:		while (mc && mc->type != type)
+src/message.c:			mc = mc->next;
+src/message.c:		if (mc && (mc->color != COLOUR_DARK))
+src/message.c:			color = mc->color;
+src/cmd-pickup.dep:cmd-pickup.o: cmd-pickup.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cmd-pickup.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-ignore.dep:obj-ignore.o: obj-ignore.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-ignore.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-options.c:	struct ego_item *ego = &e_info[desc->e_idx];
+src/ui-options.c:		if (desc->itype == i) break;
+src/ui-options.c:	prefix_size = (desc->short_name - long_name);
+src/save-charoutput.dep:save-charoutput.o: save-charoutput.c /usr/include/stdc-predef.h init.h \
+src/save-charoutput.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-combat.dep:ui-combat.o: ui-combat.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-combat.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/gen-util.dep:gen-util.o: gen-util.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/gen-util.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-map.c:	int cave_height = c->height;
+src/ui-map.c:	int cave_width = c->width;
+src/cmd-core.dep:cmd-core.o: cmd-core.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/cmd-core.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/obj-desc.dep:obj-desc.o: obj-desc.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-desc.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-songs.dep:ui-songs.o: ui-songs.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-songs.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/save.dep:save.o: save.c /usr/include/stdc-predef.h angband.h h-basic.h autoconf.h \
+src/save.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/game-input.dep:game-input.o: game-input.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/game-input.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main-x11.dep:main-x11.o: main-x11.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/main-x11.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/snd-sdl.dep:snd-sdl.o: snd-sdl.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/snd-sdl.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main-spoil.dep:main-spoil.o: main-spoil.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/main-spoil.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-wizard.dep:ui-wizard.o: ui-wizard.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-wizard.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/main-sdl.c:		int x = MIN(win->uRect.x, rc->x);
+src/main-sdl.c:		int y = MIN(win->uRect.y, rc->y);
+src/main-sdl.c:		int x2 = MAX(win->uRect.x + win->uRect.w, rc->x + rc->w);
+src/main-sdl.c:		int y2 = MAX(win->uRect.y + win->uRect.h, rc->y + rc->h);
+src/main-sdl.c:			ps = (Uint8 *)src->pixels + (sx * src->format->BytesPerPixel) +
+src/main-sdl.c:				(sy * src->pitch);
+src/main-sdl.c:			switch (src->format->BytesPerPixel)
+src/main-sdl.c:					if (*ps == src->format->colorkey) continue;
+src/main-sdl.c:					if (*ps16 == src->format->colorkey) continue;
+src/main-sdl.c:					if (*ps32 == src->format->colorkey) continue;
+src/Makefile.osx:OBJ_CFLAGS = -std=c99 -x objective-c -fobjc-arc
+src/Makefile.osx:# or http://stackoverflow.com/questions/5509885/creating-app-for-old-mac-from-new-mac-machine
+src/obj-init.dep:obj-init.o: obj-init.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/obj-init.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/Makefile.msys2.sdl2:	$(shell sdl2-config --static-libs) \
+src/Makefile.msys2.sdl2:	-lbrotlidec-static \
+src/player-calcs.dep:player-calcs.o: player-calcs.c /usr/include/stdc-predef.h angband.h \
+src/player-calcs.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/ui-skills.dep:ui-skills.o: ui-skills.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/ui-skills.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/mon-predicate.dep:mon-predicate.o: mon-predicate.c /usr/include/stdc-predef.h angband.h \
+src/mon-predicate.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/debug.dep:debug.o: debug.c /usr/include/stdc-predef.h angband.h h-basic.h \
+src/debug.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+src/player-quest.dep:player-quest.o: player-quest.c /usr/include/stdc-predef.h angband.h \
+src/player-quest.dep: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+config.log:Configured with: ../src/configure -v --with-pkgversion='Ubuntu 9.3.0-17ubuntu1~20.04' --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,gm2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-9 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-9-HskZEa/gcc-9-9.3.0/debian/tmp-nvptx/usr,hsa --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+config.log:configure:4210: checking for an ANSI C-conforming const
+config.log:configure:4837: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  -DHAVE_CONFIG_H -I.  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5041: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5041: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5041: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5191: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c -lX11  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5340: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo  -lX11 >&5
+config.log:configure:5438: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5535: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5584: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5633: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c  -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:configure:5716: cc -o conftest -g -O2 -W -Wall -Wextra -Wno-unused-parameter -pedantic -Wno-missing-field-initializers  -DHAVE_CONFIG_H -I. -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600  conftest.c -lICE   -Wl,-Bsymbolic-functions -lncursesw -ltinfo >&5
+config.log:LIBS=' -Wl,-Bsymbolic-functions -lncursesw -ltinfo  -lSM -lICE  -lX11  -lm'
+config.log:NCURSES_LIBS='-Wl,-Bsymbolic-functions -lncursesw -ltinfo'
+config.sub:	| alphapca5[67]-* | alpha64pca5[67]-* | arc-* \
+config.sub:	| m32c-* | m32r-* | m32rle-* \
+config.sub:	| powerpc-* | powerpc64-* | powerpc64le-* | powerpcle-* \
+config.sub:	| sparc-* | sparc64-* | sparc64b-* | sparc64v-* | sparc86x-* | sparclet-* \
+config.sub:		basic_machine=powerpc-ibm
+config.sub:		basic_machine=powerpc-unknown
+config.sub:	news-3600 | risc-news)
+config.sub:	op50n-* | op60c-*)
+config.sub:	openrisc | openrisc-*)
+config.sub:		basic_machine=powerpc-ibm
+config.sub:	parisc-*)
+config.sub:		basic_machine=sparc-tti
+config.sub:	ppc | ppcbe)	basic_machine=powerpc-unknown
+config.sub:	ppc-* | ppcbe-*)
+config.sub:		basic_machine=powerpc-`echo $basic_machine | sed 's/^[^-]*-//'`
+config.sub:	ppcle | powerpclittle | ppc-le | powerpc-little)
+config.sub:	rtpc | rtpc-*)
+config.sub:		basic_machine=sparc-sun
+config.sub:		basic_machine=sparc-sun
+config.sub:		basic_machine=sparc-sun
+config.sub:		basic_machine=sparc-sun
+config.sub:		basic_machine=sparc-sun
+config.sub:	mac | mpw | mac-mpw)
+config.sub:	pmac | pmac-mpw)
+config.sub:		basic_machine=powerpc-apple
+config.sub:	sparc-* | *-sun)
+config.guess:	echo powerpc-unknown-mirbsd${UNAME_RELEASE}
+config.guess:	echo ${UNAME_MACHINE}-dec-osf`echo ${UNAME_RELEASE} | sed -e 's/^[PVTX]//' | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz'`
+config.guess:	echo alpha-pc-interix
+config.guess:	echo alpha-dec-winnt3.5
+config.guess:	echo powerpc-ibm-os400
+config.guess:    Pyramid*:OSx*:*:* | MIS*:OSx*:*:* | MIS*:SMP_DC-OSx*:*:*)
+config.guess:	echo sparc-icl-nx6
+config.guess:	    sparc) echo sparc-icl-nx7; exit ;;
+config.guess:	echo sparc-hal-solaris2`echo ${UNAME_RELEASE}|sed -e 's/[^.]*//'`
+config.guess:	echo sparc-sun-solaris2`echo ${UNAME_RELEASE}|sed -e 's/[^.]*//'`
+config.guess:	echo i386-pc-auroraux${UNAME_RELEASE}
+config.guess:	echo ${SUN_ARCH}-pc-solaris2`echo ${UNAME_RELEASE}|sed -e 's/[^.]*//'`
+config.guess:	echo sparc-sun-solaris3`echo ${UNAME_RELEASE}|sed -e 's/[^.]*//'`
+config.guess:	echo sparc-sun-sunos`echo ${UNAME_RELEASE}|sed -e 's/-/_/'`
+config.guess:		echo sparc-sun-sunos${UNAME_RELEASE}
+config.guess:	echo sparc-auspex-sunos${UNAME_RELEASE}
+config.guess:	echo powerpc-apple-machten${UNAME_RELEASE}
+config.guess:	echo mips-dec-mach_bsd4.3
+config.guess:	echo mips-dec-ultrix${UNAME_RELEASE}
+config.guess:	echo vax-dec-ultrix${UNAME_RELEASE}
+config.guess:	echo powerpc-motorola-powermax
+config.guess:	echo powerpc-harris-powermax
+config.guess:	echo powerpc-harris-powermax
+config.guess:	echo powerpc-harris-powerunix
+config.guess:			puts("powerpc-ibm-aix3.2.5");
+config.guess:	echo "sparc-fujitsu-${FUJITSU_SYS}${FUJITSU_REL}"
+config.guess:	echo ${UNAME_MACHINE}-pc-bsdi${UNAME_RELEASE}
+config.guess:	echo sparc-unknown-bsdi${UNAME_RELEASE}
+config.guess:	echo ${UNAME_MACHINE}-pc-cygwin
+config.guess:	echo ${UNAME_MACHINE}-pc-mingw32
+config.guess:	echo ${UNAME_MACHINE}-pc-msys
+config.guess:	echo ${UNAME_MACHINE}-pc-pw32
+config.guess:		echo i586-pc-interix${UNAME_RELEASE}
+config.guess:	echo i${UNAME_MACHINE}-pc-mks
+config.guess:	echo x86_64-pc-mks
+config.guess:	echo i586-pc-interix
+config.guess:	echo ${UNAME_MACHINE}-pc-uwin
+config.guess:	echo ${UNAME_MACHINE}-pc-minix
+config.guess:	echo "${UNAME_MACHINE}-pc-linux-${LIBC}"
+config.guess:	echo sparc-unknown-linux-gnu
+config.guess:	echo powerpc-unknown-linux-gnu
+config.guess:	echo ${UNAME_MACHINE}-dec-linux-gnu
+config.guess:	echo ${UNAME_MACHINE}-pc-sysv4.2uw${UNAME_VERSION}
+config.guess:	echo ${UNAME_MACHINE}-pc-os2-emx
+config.guess:	echo ${UNAME_MACHINE}-pc-syllable
+config.guess:	echo ${UNAME_MACHINE}-pc-msdosdjgpp
+config.guess:		echo ${UNAME_MACHINE}-pc-sysv${UNAME_REL}
+config.guess:		echo ${UNAME_MACHINE}-pc-isc$UNAME_REL
+config.guess:		echo ${UNAME_MACHINE}-pc-sco$UNAME_REL
+config.guess:		echo ${UNAME_MACHINE}-pc-sysv32
+config.guess:	echo i586-pc-msdosdjgpp
+config.guess:	echo i386-pc-mach3
+config.guess:	echo sparc-unknown-lynxos${UNAME_RELEASE}
+config.guess:	echo powerpc-unknown-lynxos${UNAME_RELEASE}
+config.guess:		echo mips-nec-sysv${UNAME_RELEASE}
+config.guess:	echo powerpc-be-beos
+config.guess:	echo powerpc-apple-beos
+config.guess:	echo i586-pc-beos
+config.guess:	echo i586-pc-haiku
+config.guess:	echo sx4-nec-superux${UNAME_RELEASE}
+config.guess:	echo sx5-nec-superux${UNAME_RELEASE}
+config.guess:	echo sx6-nec-superux${UNAME_RELEASE}
+config.guess:	echo sx7-nec-superux${UNAME_RELEASE}
+config.guess:	echo sx8-nec-superux${UNAME_RELEASE}
+config.guess:	echo sx8r-nec-superux${UNAME_RELEASE}
+config.guess:	echo powerpc-apple-rhapsody${UNAME_RELEASE}
+config.guess:	echo i386-pc-qnx
+config.guess:	echo pdp10-dec-tops20
+config.guess:	    A*) echo alpha-dec-vms ; exit ;;
+config.guess:	    I*) echo ia64-dec-vms ; exit ;;
+config.guess:	    V*) echo vax-dec-vms ; exit ;;
+config.guess:	echo i386-pc-xenix
+config.guess:	echo ${UNAME_MACHINE}-pc-skyos`echo ${UNAME_RELEASE}` | sed -e 's/ .*$//'
+config.guess:	echo ${UNAME_MACHINE}-pc-rdos
+config.guess:	echo ${UNAME_MACHINE}-pc-aros
+config.guess:  printf ("i386-pc-bsd\n"); exit (0);
+config.guess:      printf ("vax-dec-bsd4.3\n"); exit (0);
+config.guess:      printf ("vax-dec-bsd4.3reno\n"); exit (0);
+config.guess:      printf ("vax-dec-bsd\n"); exit (0);
+config.guess:    printf ("vax-dec-bsd\n"); exit (0);
+config.guess:    printf ("vax-dec-ultrix\n"); exit (0);

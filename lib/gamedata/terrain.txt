@@ -266,14 +266,15 @@ run-msg:A spiked pit blocks your path.  Step into it?
 ## Everything below is just for the surface level, because we have a cool descripton in The Two Towers
 
 name:flagstones
-graphics:.:D
+graphics:-:D
 priority:5
 flags:LOS | PROJECT | PASSABLE | FLOOR | OBJECT | EASY | TRAP | TORCH
 desc:A path paved with stone-flags, dark and hard.  Can be walked across by anything, and can
 desc: hold traps or items.  Does not break line of sight.
 
 
-## TODO: be evil, making mud puddles of size 1 placed randomly in the dungeon, and a false floor trap that mimics mud. "Slippery slope," brother has great dreams.
+## TODO: be evil, making mud puddles of size 1 placed randomly in the dungeon, and a 
+## false floor trap that mimics mud. "Slippery slope," brother has great dreams.
 name:mud
 graphics:.:m
 priority:5

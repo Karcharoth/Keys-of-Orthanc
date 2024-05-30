@@ -369,7 +369,10 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 			if (*t == ' ') continue;
 
 			/* Lay down a floor */
-			square_set_feat(c, grid, FEAT_FLOOR);
+            /* Some vaults have.... a lot of mud */
+            if (roomf_has(v->flags, ROOMF_MUDDY) && one_in_(2)) {
+                    square_set_feat(c, grid, FEAT_MUD);
+            } else square_set_feat(c, grid, FEAT_FLOOR);
 
 			/* Debugging assertion */
 			assert(square_isempty(c, grid));
@@ -397,8 +400,13 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 			case '+': place_closed_door(c, grid); break;
 				/* Secret door */
 			case 's': place_secret_door(c, grid); break;
-				/* Trap */
+				/* Trap or nothing */
 			case '^': if (one_in_(2)) square_add_trap(c, grid); break;
+				/* False floor or pit or spiked pit or nothing */
+			case 'v': if (one_in_(4)) square_add_false_floor(c, grid);
+                        else if (one_in_(3)) square_add_pit(c, grid);
+                        else if (one_in_(2)) square_add_spiked_pit (c, grid); 
+                        break;
 				/* Forge */
 			case '0': place_forge(c, grid); break;
 				/* Chasm */
@@ -413,7 +421,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
                         else square_set_feat(c, grid, FEAT_COPPER_PILLAR);
                         break;
                 /* Chains */
-            case 'C': square_set_feat(c, grid, FEAT_CHAINS); break;
+            case 'c': square_set_feat(c, grid, FEAT_CHAINS); break;
                 /* Flagstones */
             case '-': square_set_feat(c, grid, FEAT_FLAGSTONES); break;
                 /* Gates of Isengard */
@@ -538,7 +546,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
                 
                 /* Random food */
                 case ',': {
-					place_object(c, grid, c->depth, false, false,
+					place_object(c, grid, 7, false, false,
 								 ORIGIN_VAULT, lookup_drop("food"));
 					break;
 				}
@@ -573,7 +581,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				}
 									
 				/* Vampire */
-				case 'v': {
+				case 'U': {
 					place_monster_by_letter(c, grid, 'v', true,
 											c->depth + rand_range(1, 4));
 					break;
@@ -585,8 +593,14 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 										  c->depth + 1, true);
 					break;
 				}
+                /* Wolf */
+				case 'C': {
+					place_monster_by_flag(c, grid, RF_WOLF, -1, true,
+										  c->depth + rand_range(1, 4), false);
+					break;
+				}
 
-					
+				/* */	
 				/* Saruman */
 				case 'V': {
 					place_new_monster_one(c, grid, lookup_monster("Saruman of Many Colours"),

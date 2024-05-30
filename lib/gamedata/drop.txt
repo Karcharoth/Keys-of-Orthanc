@@ -122,3 +122,6 @@ base:helm
 
 name:chest
 base:chest
+
+name:food
+base:food

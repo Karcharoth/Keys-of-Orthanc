@@ -226,6 +226,7 @@ extern int FEAT_NONE;
 
 /* Various */
 extern int FEAT_FLOOR;
+extern int FEAT_MUD;
 extern int FEAT_CLOSED;
 extern int FEAT_OPEN;
 extern int FEAT_BROKEN;
@@ -432,6 +433,9 @@ void square_set_trap(struct chunk *c, struct loc grid, struct trap *trap);
 void square_add_trap(struct chunk *c, struct loc grid);
 void square_add_glyph(struct chunk *c, struct loc grid, int type);
 void square_add_web(struct chunk *c, struct loc grid);
+void square_add_pit(struct chunk *c, struct loc grid);
+void square_add_spiked_pit(struct chunk *c, struct loc grid);
+void square_add_false_floor(struct chunk *c, struct loc grid);
 void square_add_stairs(struct chunk *c, struct loc grid, int depth);
 void square_add_door(struct chunk *c, struct loc grid, bool closed);
 

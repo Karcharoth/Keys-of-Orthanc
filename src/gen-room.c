@@ -558,6 +558,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 					place_new_monster_one(c, grid,
 									  lookup_monster("Freca, the Scarred"),
 									  true, true, info, ORIGIN_DROP_VAULT);
+                    break;
                 }
 
                 /* Sar, gateguard 2 */
@@ -565,6 +566,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 					place_new_monster_one(c, grid,
 									  lookup_monster("Sar, the Weary"),
 									  false, true, info, ORIGIN_DROP_VAULT);
+                    break;
                 }
 				case '&': {
 					place_monster_by_letter(c, grid, '&', true,
@@ -595,12 +597,30 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 										  c->depth + 1, true);
 					break;
 				}
+
                 /* Wolf */
 				case 'C': {
 					place_monster_by_flag(c, grid, RF_WOLF, -1, true,
 										  c->depth + rand_range(1, 4), false);
 					break;
 				}
+
+                /* Dunlending Warrior */
+				case 'd': {
+					place_new_monster_one(c, grid, lookup_monster("Dunlending warrior"),
+										  true, true, info,
+										  ORIGIN_DROP_VAULT);
+					break;
+				}
+
+                /* Dunlending Archer */
+				case 'A': {
+					place_new_monster_one(c, grid, lookup_monster("Dunlending archer"),
+										  true, true, info,
+										  ORIGIN_DROP_VAULT);
+					break;
+				}
+
 
 				/* */	
 				/* Saruman */

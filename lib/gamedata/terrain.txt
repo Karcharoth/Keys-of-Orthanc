@@ -313,7 +313,7 @@ desc: sight.
 name:marble pillar
 graphics:#:w
 priority:20
-flags:WALL | NO_SCENT | NO_FLOW | TORCH | ROCK | GRANITE
+flags:WALL | NO_SCENT | NO_FLOW | TORCH | ROCK | GRANITE | INTERESTING
 info:0:3:0
 confused-msg:bashes into a pillar
 dig-msg:You shatter the marble pillar.
@@ -342,7 +342,7 @@ desc: creators of Orthanc made these.
 name:Door of Orthanc
 graphics:+:D
 priority:20
-flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH
+flags: ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH | DOOR_ANY | DOOR_CLOSED
 confused-msg:bashes into a door
 desc:You can dig through most walls but these are impenetrable.  The ancient
 desc: creators of Orthanc made these.

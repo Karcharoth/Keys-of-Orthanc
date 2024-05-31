@@ -1091,28 +1091,38 @@ static void get_obj_num_prep(struct drop *drop)
 
 		/* Check the restriction, if any */
 		if (drop) {
-			bool done = false;
 			struct poss_item *item;
 			if (drop->poss) {
+
+				/*
+				 * Unless determined otherwise, this object is
+				 * not included.
+				 */
+				entry->prob2 = 0;
+
 				item = drop->poss;
 				while (item) {
 					if ((int) item->kidx == entry->index) {
-						done = true;
 						/* Accept this object */
 						entry->prob2 = entry->prob1;
-					} else {entry->prob2 = 0;}
-					if (done) break;
+						break;
+					}
 					item = item->next;
 				}
 			} else if (drop->imposs) {
+
+				/*
+				 * Unless determined otherwise, this object is
+				 * included.
+				 */
+				entry->prob2 = entry->prob1;
 				item = drop->imposs;
 				while (item) {
 					if ((int) item->kidx == entry->index) {
-						done = true;
 						/* Do not use this object */
 						entry->prob2 = 0;
+                        break;
 					}
-					if (done) break;
 					item = item->next;
 				}
 			} else {

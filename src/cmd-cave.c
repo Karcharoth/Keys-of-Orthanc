@@ -622,6 +622,7 @@ void do_cmd_exchange(struct command *cmd)
 	struct loc grid;
 	struct monster *mon;
 	char m_name[80];
+	char m_pronoun[80];
 
 	if (!player_active_ability(player, "Exchange Places")) {
 		msg("You need the ability 'exchange places' to use this command.");
@@ -718,6 +719,8 @@ void do_cmd_exchange(struct command *cmd)
     stamina_hit(player, 2);
 	/* Recalculate the monster name (in case confusion changed the move) */
 	monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT);
+    /* Calculate pronoun for the first time */
+	monster_desc(m_pronoun, sizeof(m_pronoun), mon, MDESC_PRO_VIS | MDESC_CAPITAL);
 
 	/* Message */
 	msg("You exchange places with %s.", m_name);
@@ -725,7 +728,7 @@ void do_cmd_exchange(struct command *cmd)
 	/* Attack of opportunity */
 	if ((mon->alertness >= ALERTNESS_ALERT) && !mon->m_timed[MON_TMD_CONF] &&
 		!rf_has(mon->race->flags, RF_MINDLESS)) {
-		msg("It attacks you as you slip past.");
+		msg("%s attacks you as you slip past.", m_pronoun);
 		make_attack_normal(mon, player);
 	}
 

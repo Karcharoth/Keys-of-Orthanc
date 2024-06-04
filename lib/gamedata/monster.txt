@@ -900,7 +900,7 @@ stealth:0
 will:8
 prot:5:2d4
 blow:HIT:BATTER:4:4d7
-flags:ESCORT | DROP_100 | DROP_GREAT
+flags:ESCORT | DROP_100 | DROP_GREAT | UNIQUE
 drop-artifact:Gorol
 desc:Chief of the orcish craftsmen, Gorol holds a hammer
 desc: forged by Saruman himself in a brawny grip, and his

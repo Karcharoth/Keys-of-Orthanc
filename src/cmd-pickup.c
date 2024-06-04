@@ -396,6 +396,8 @@ void do_cmd_burglary(struct command *cmd)
 	struct loc grid;
 	struct monster *mon;
 	char m_name[80];
+	char m_pronoun_capitalized[80];
+	char m_pronoun_possessive[80];
     int p_stealth;
     int rob_difficulty;
     struct object *obj;
@@ -446,6 +448,12 @@ void do_cmd_burglary(struct command *cmd)
 
 	/* Recalculate the monster name (in case confusion changed the move) */
 	monster_desc(m_name, sizeof(m_name), mon, MDESC_DEFAULT);
+    /* Calculate pronouns for the first time */
+	monster_desc(m_pronoun_capitalized, sizeof(m_pronoun_capitalized), 
+                 mon, MDESC_PRO_VIS | MDESC_CAPITAL);
+	monster_desc(m_pronoun_possessive, sizeof(m_pronoun_possessive), 
+                 mon, MDESC_PRO_VIS | MDESC_POSS);
+
 
     /* Calculate the player's stealth */
     p_stealth = player->state.skill_use[SKILL_STEALTH];
@@ -507,7 +515,7 @@ void do_cmd_burglary(struct command *cmd)
 	/* Attack of opportunity */
 	if ((mon->alertness >= ALERTNESS_ALERT) && !mon->m_timed[MON_TMD_CONF] &&
 		!rf_has(mon->race->flags, RF_MINDLESS)) {
-		msg("It attacks you as you rifle through its belongings.");
+		msg("%s attacks you as you rifle through %s belongings.", m_pronoun_capitalized, m_pronoun_possessive);
 		make_attack_normal(mon, player);
 	}
 

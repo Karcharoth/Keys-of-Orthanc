@@ -573,6 +573,26 @@ flags:DROP_100 | DROP_GOOD | BASH_DOOR | UNLOCK_DOOR
 desc:While Mauhur is not one of Saruman's vaunted
 desc: Uruk-hai, he has achieved a high position beneath Ugluk.
 
+name:Misshapen horror
+base:horror
+depth:5
+rarity:10
+color:s
+speed:2
+health:10d4
+sleep:15
+percept:7
+stealth:8
+will:5
+prot:6:1d4
+blow:CLAW:WOUND:7:2d7
+blow:BITE:POISON:5:3d5
+flags:FRIEND | COWARD_AI | DROP_33 | BASH_DOOR
+flags:ORC | MAN | OPEN_DOOR
+desc:Saruman failed many, many times to blend Orcs and Men.
+desc: Some few of his experiments escaped, and live out a feral existence
+desc: in the corners of Isengard.
+
 
 ##### 6 #####
 

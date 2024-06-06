@@ -50,7 +50,7 @@ alt-name:Lothlorien
 short-name:Lorien
 race:High Elf
 stats:0:0:0:1
-skills:0:0:0:0:1:0:0:0
+skills:0:0:0:1:0:0:0:0
 desc:Lorien is one of the last kingdoms of the High-Elves,
 desc: spoken of in whispers by Men. The power of Galadriel
 desc: preserves the Golden Wood as a memory of Elder Days, and

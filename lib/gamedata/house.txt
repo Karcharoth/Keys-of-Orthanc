@@ -41,7 +41,7 @@ stats:0:1:0:0
 skills:0:0:0:0:0:0:1:0
 desc:Merely to be in the Valley of Rivendell is a cure for
 desc: weariness, fear and sadness. It is guarded by the power
-desc: of Elrond Half-Elven, and the smiths of Rivendell are renowned
+desc: of Elrond Half-Elven, and the smiths of Imladris are renowned
 desc: in song.
 
 
@@ -114,7 +114,7 @@ short-name:Erebor
 race:Dwarf
 stats:0:0:0:1
 skills:0:0:0:0:0:0:1:0
-desc:The works of the Dwarves of the Erebor are many and beautiful, both magical
+desc:The works of the Dwarves of Erebor are many and beautiful, both magical
 desc: and mundane. They have recently reclaimed their home from a great dragon,
 desc: and begun to create wonderful things as of old.
 

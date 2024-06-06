@@ -635,6 +635,50 @@ flags:FRIEND | RAND_25 | WOLF | AGGRESSIVE | BASH_DOOR
 flags:REGENERATE
 desc:Bred to be a superior warg, it is unceasingly hungry.
 
+# Only add either Narl or Hobgoblin, once I decide which.
+# Index 55
+name:Hobgoblin
+base:goblin
+depth:5
+rarity:50
+color:u
+speed:2
+health:10d4
+sleep:12
+percept:8
+stealth:7
+will:5
+prot:5:2d4
+blow:HIT:BATTER:6:2d8
+flags:FRIEND | COWARD_AI | CRUEL_BLOW | RES_COLD | TAKE_ITEM
+flags:NO_SLOW | DROP_GOOD | DROP_1D2
+ranged-freq:15
+spells:ARROW1
+desc:What is a hobgoblin from the Grey Mountains doing in Isengard?
+drop:bow:Shortbow:12:1d1
+drop:arrow:Arrow:37:2d8
+
+# Index 56
+name:Narl the Hobgoblin
+base:goblin
+depth:5
+rarity:70
+color:u
+speed:2
+health:15d4
+sleep:12
+percept:9
+stealth:8
+will:5
+prot:6:2d4
+blow:HIT:BATTER:6:3d8
+flags:COWARD_AI | CRUEL_BLOW | RES_COLD | TAKE_ITEM | UNIQUE
+flags:NO_SLOW | DROP_GREAT | DROP_1D2
+ranged-freq:15
+spells:ARROW1
+desc:What is a hobgoblin from the Grey Mountains doing in Isengard?
+drop:bow:Shortbow:12:1d1
+drop:arrow:Arrow:37:2d8
 
 ##### 6 #####
 
@@ -740,8 +784,6 @@ message-vis:SHRIEK:{name} shrieks in a dreadful rasp.
 message-invis:SHRIEK:A hideous sound echoes nearby.
 desc:Saruman, envying the mounts of the Nine,
 desc: tried to create their equal. He failed, but this horror is dreadful still.
-
-
 
 # Index 66
 name:Acidthorn

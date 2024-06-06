@@ -531,6 +531,28 @@ drop:bow:Shortbow:8:1d1
 desc:He is one of Saruman's slaves from the mountains.
 desc: He carries a small dagger and bow.
 
+# Index 45
+name:Unending horror
+base:horror
+depth:4
+rarity:15
+color:M
+speed:2
+health:3d4
+sleep:13
+percept:7
+stealth:3
+will:0
+prot:5
+blow:BITE:SLOW:5:1d5
+blow:STING:ACID:4:1d4
+flags:MULTIPLY | REGENERATE | RAND_50 | MINDLESS
+flags:FLYING | PASS_DOOR | SHORT_SIGHTED
+desc:It seems to be a combination of the worst features
+desc: of a slug, a spider, a cockroach, and a centipede.
+desc: Perhaps this is why Isengard seems so clear of other
+desc: insects? Oh, dear, there's another.
+
 ##### 5 #####
 
 

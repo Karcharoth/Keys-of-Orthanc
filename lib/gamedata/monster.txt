@@ -1452,7 +1452,7 @@ name:Rot
 base:horror
 depth:10
 rarity:70
-color:m
+color:u
 speed:1
 health:30d4
 sleep:20

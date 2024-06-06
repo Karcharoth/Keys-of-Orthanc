@@ -1422,6 +1422,32 @@ desc: deserted his sworn allies on the day
 desc: of battle, buried in ignominy.
 drop:sword:Sword:100:1d1
 
+name:Rot
+base:horror
+depth:10
+rarity:70
+color:m
+speed:1
+health:30d4
+sleep:20
+percept:10
+stealth:2
+will:11
+prot:0:4d4
+blow:CRUSH:BATTER:10:4d8
+blow:TOUCH:LOSE_ALL:8
+flags: UNDEAD | MINDLESS | KNOCK_BACK | UNIQUE | REGENERATE
+flags: RES_CRIT | BASH_DOOR | KILL_ITEM | RES_COLD
+flags: RES_POIS | HURT_FIRE
+ranged-freq:20
+spells:TENTACLE
+message-vis:TENTACLE:{name} lashes out with a whip of bones.
+desc:So many lives go into a burial pit.
+desc: So much power goes to waste.
+desc: Saruman thought he destroyed this failed experiment,
+desc: but a single eye and a lone femur were unburned.
+desc: And so Rot scavenged, and so Rot regrew.
+
 ##### 20 #####
 
 # Saruman is a very special monster (thus the QUESTOR flag).

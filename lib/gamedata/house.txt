@@ -88,7 +88,7 @@ desc: the Elves sail along the Straight Road into Valinor.
 desc: Cirdan the Shipbuilder rules Mithlond in the west of Middle-Earth.
 
 
-name:Dwarves of the Blue Mountains
+name:Blue Mountain Dwarves
 alt-name:the Blue Mountains
 short-name:Blue Mountains
 race:Dwarf
@@ -98,7 +98,7 @@ desc:Once the Blue Mountains held the greatest Dwarven cities in the world,
 desc: Nogrod and Belegost. Now the mines of the Blue Mountains are
 desc: a home of exile, founded after the destruction of Erebor.
 
-name:Dwarves of the Iron Hills
+name:Iron Hill Dwarves
 alt-name:the Iron Hills
 short-name:Iron Hills
 race:Dwarf
@@ -108,13 +108,13 @@ desc:The Iron Hills, one of the great bastions of the Dwarves, lies in
 desc: the far East. Their grim warriors are famed for martial prowess and 
 desc: strength, often carrying great two-handed mattocks to battle.
 
-name:Dwarves of Erebor
+name:Lonely Mountain Dwarves
 alt-name:the Lonely Mountain
 short-name:Erebor
 race:Dwarf
 stats:0:0:0:1
 skills:0:0:0:0:0:0:1:0
-desc:The works of the Dwarves of the Lonely Mountain are many and beautiful, both magical
+desc:The works of the Dwarves of the Erebor are many and beautiful, both magical
 desc: and mundane. They have recently reclaimed their home from a great dragon,
 desc: and begun to create wonderful things as of old.
 

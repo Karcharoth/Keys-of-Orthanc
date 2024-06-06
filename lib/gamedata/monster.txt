@@ -1052,7 +1052,7 @@ stealth:0
 will:8
 prot:10:3d4
 blow:BITE:FIRE:13:2d7
-flags:RES_FIRE | MINDLESS | RAND_25 | RAND_50 | UNIQUE
+flags:RES_FIRE | RAND_25 | RAND_50 | UNIQUE | HURT_COLD
 flags:FLYING | AGGRESSIVE | ATTR_FLICKER
 ranged-freq:35
 spell-power:6

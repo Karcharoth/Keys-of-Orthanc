@@ -608,21 +608,6 @@ alloc:3:2
 alloc:13:2
 
 
-# Modelled on Earendil's bow
-
-# Index 112
-name:& Dragon-horn Bow~
-graphics:}:M
-type:bow
-depth:15
-weight:20
-cost:500
-attack:0:1d9
-defence:0:0d0
-alloc:15:8
-flags:NO_SMITHING
-
-
 ##### Arrows #####
 
 # Index 116

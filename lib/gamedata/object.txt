@@ -702,15 +702,15 @@ flags:IGNORE_FIRE
 name:& Wooden Torch~
 graphics:~:u
 type:light
-pval:1
+pval:2
 depth:3
 weight:20
 cost:2
 attack:0:0d0
 defence:0:0d0
 alloc:3:1
-flags:NO_SMITHING | EASY_KNOW | BURNS_OUT
-desc:You can equip it as a light source with a radius of 1 square. It may
+flags:EASY_KNOW | BURNS_OUT
+desc:You can equip it as a light source with a radius of 2 squares. It may
 desc: also be used to fuel another torch, up to a maximum of 3,000 turns of
 desc: light. 
 
@@ -719,7 +719,7 @@ desc: light.
 name:& Brass Lantern~
 graphics:~:U
 type:light
-pval:2
+pval:3
 depth:5
 weight:30
 cost:35
@@ -729,7 +729,7 @@ alloc:5:2
 alloc:9:1
 alloc:13:1
 flags:TAKES_FUEL
-desc:You can equip it as a light source with a radius of 2 squares.
+desc:You can equip it as a light source with a radius of 3 squares.
 desc: It may also be used to fuel another lantern, up to a maximum of
 desc: 7,000 turns of light.
 

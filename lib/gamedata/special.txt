@@ -1139,6 +1139,7 @@ max-evasion:0
 prot-dice:0
 prot-sides:0
 max-pval:0
+item:light:Wooden Torch
 item:light:Brass Lantern
 flags:LIGHT
 
@@ -1156,6 +1157,7 @@ max-evasion:0
 prot-dice:0
 prot-sides:0
 max-pval:0
+item:light:Wooden Torch
 item:light:Brass Lantern
 flags:DARKNESS | CURSED
 

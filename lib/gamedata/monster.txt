@@ -573,6 +573,7 @@ flags:DROP_100 | DROP_GOOD | BASH_DOOR | UNLOCK_DOOR
 desc:While Mauhur is not one of Saruman's vaunted
 desc: Uruk-hai, he has achieved a high position beneath Ugluk.
 
+# Index 53
 name:Misshapen horror
 base:horror
 depth:5
@@ -592,6 +593,41 @@ flags:ORC | MAN | OPEN_DOOR
 desc:Saruman failed many, many times to blend Orcs and Men.
 desc: Some few of his experiments escaped, and live out a feral existence
 desc: in the corners of Isengard.
+
+# Index 54
+name:Ravenous horror
+base:horror
+depth:5
+rarity:10
+color:r
+speed:3
+health:6d4
+sleep:13
+percept:7
+stealth:1
+will:2
+prot:7
+blow:BITE:WOUND:6:2d6
+blow:STING:HALLU:4:1d9
+flags:FRIEND | RAND_25 | WOLF | AGGRESSIVE | BASH_DOOR
+flags:REGENERATE
+desc:Bred to be a superior warg, it is unceasingly hungry.
+# Index 62
+name:Warg
+base:wolf
+depth:6
+rarity:2
+color:s
+speed:3
+health:8d4
+sleep:20
+percept:6
+stealth:5
+will:5
+prot:7:1d4
+blow:BITE:WOUND:6:2d5
+flags:FRIENDS | RAND_25 | SMART
+desc:A large and fierce wolf with eyes full of cunning.
 
 
 ##### 6 #####

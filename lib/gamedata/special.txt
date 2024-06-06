@@ -1075,19 +1075,18 @@ max-pval:0
 type:gloves
 ability:Evasion:Parry
 
-# Sabotage doesn't exist yet
-#name:of Trickery
-#alloc:3:4 to 0
-#cost:2000
-#max-attack:0
-#dam-dice:0
-#dam-sides:0
-#max-evasion:0
-#prot-dice:0
-#prot-sides:0
-#max-pval:0
-#item:gloves:Set of Gloves
-#ability:Stealth:Sabotage
+name:of Trickery
+alloc:3:4 to 0
+cost:2000
+max-attack:0
+dam-dice:0
+dam-sides:0
+max-evasion:0
+prot-dice:0
+prot-sides:0
+max-pval:0
+item:gloves:Set of Gloves
+ability:Stealth:Sabotage
 
 
 name:of Strength

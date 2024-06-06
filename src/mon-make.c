@@ -240,17 +240,17 @@ struct monster_race *get_mon_num(int level, bool special, bool allow_non_smart,
 
 		/* Various additional modifications when not created in a vault */
 		if (!vault) {
-			/* If on the run from Morgoth, then levels 17--23 used for all
+			/* If on the run from Morgoth, then levels 8--12 used for all
 			 * forced smart monsters and half of others */
 			if (player->on_the_run && (one_in_(2) || !allow_non_smart)) {
 				pursuing_monster = true;
-				generation_level = rand_range(17, 23);
+				generation_level = rand_range(8, 12);
 			}
 
-			/* The surface generates monsters as levels 17--23 */
+			/* The surface generates monsters as levels 8--12 */
 			if (level == 0) {
 				pursuing_monster = true;
-				generation_level = rand_range(17, 23);
+				generation_level = rand_range(8, 12);
 			}
 
 			/* Most of the time use a small distribution */

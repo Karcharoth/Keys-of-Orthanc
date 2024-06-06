@@ -568,9 +568,11 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 									  false, true, info, ORIGIN_DROP_VAULT);
                     break;
                 }
+                
+                /* Thorn - currently broken*/
 				case '&': {
 					place_monster_by_letter(c, grid, '&', true,
-											c->depth);
+											c->depth + rand_range(1, 4));
 					break;
 				}
 

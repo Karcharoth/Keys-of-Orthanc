@@ -268,7 +268,7 @@ run-msg:A spiked pit blocks your path.  Step into it?
 name:flagstones
 graphics:-:D
 priority:5
-flags:LOS | PROJECT | PASSABLE | FLOOR | OBJECT | EASY | TRAP | TORCH
+flags:LOS | PROJECT | PASSABLE | FLOOR | OBJECT | EASY | TORCH
 desc:A path paved with stone-flags, dark and hard.  Can be walked across by anything, and can
 desc: hold traps or items.  Does not break line of sight.
 

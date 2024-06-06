@@ -96,26 +96,7 @@ flags:NEVER_MOVE | MINDLESS | HURT_FIRE
 flags:NO_FEAR | RES_POIS | NO_CONF | NO_SLEEP | NO_CRIT
 desc:Thorn
 
-# - I   (insects)
-#     - very quick
-#     - very erratic
-#     - territorial
-#     - can't open doors
-#     - very high evasion/melee
-#     - special damage types
-#     - 0 prot, 2d4 health
-#
-name:insect
-glyph:I
-pain:4
-pursuit:6
-warning:5
-flags:FLYING | RAND_25 | RAND_50 | FRIENDS | TERRITORIAL
-desc:Insect
-
 # - H   (horrors)
-#     - immune to fear
-#     - cause fear
 #     - nasty attacks
 #     - quite variable
 #

@@ -50,7 +50,7 @@ int monster_entry_chance(struct chunk *c, struct monster *mon, struct loc grid,
 						 bool *bash);
 int adj_mon_count(struct loc grid);
 void tell_allies(struct monster *mon, int flag);
-bool multiply_monster(const struct monster *mon);
+bool multiply_monster(struct monster *mon);
 void process_monsters(int minimum_energy);
 void reset_monsters(void);
 void restore_monsters(void);

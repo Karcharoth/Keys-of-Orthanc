@@ -3153,7 +3153,7 @@ static void monster_turn_hit_by_melee(struct monster *mon)
  *
  * Returns true if the monster successfully reproduced.
  */
-bool multiply_monster(const struct monster *mon)
+bool multiply_monster(struct monster *mon)
 {
 	struct loc grid;
 	struct monster_group_info info = { 0, 0 };
@@ -3161,8 +3161,11 @@ bool multiply_monster(const struct monster *mon)
 	/* Pick an empty location. */
 	if (scatter_ext(cave, &grid, 1, mon->grid, 1, true,	square_isempty) > 0) {
 		/* Create a new monster (awake, no groups) */
-		return place_new_monster(cave, grid, mon->race, false, false,
-								 info, ORIGIN_DROP_BREED);
+        if (place_new_monster(cave, grid, mon->race, false, false,
+								 info, ORIGIN_DROP_BREED)) {
+			add_monster_message(mon, MON_MSG_SPAWN, true);
+		    return true;
+        }
 	}
 
 	/* Fail */

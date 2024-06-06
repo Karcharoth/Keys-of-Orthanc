@@ -634,22 +634,6 @@ blow:STING:HALLU:4:1d9
 flags:FRIEND | RAND_25 | WOLF | AGGRESSIVE | BASH_DOOR
 flags:REGENERATE
 desc:Bred to be a superior warg, it is unceasingly hungry.
-# Index 62
-name:Warg
-base:wolf
-depth:6
-rarity:2
-color:s
-speed:3
-health:8d4
-sleep:20
-percept:6
-stealth:5
-will:5
-prot:7:1d4
-blow:BITE:WOUND:6:2d5
-flags:FRIENDS | RAND_25 | SMART
-desc:A large and fierce wolf with eyes full of cunning.
 
 
 ##### 6 #####

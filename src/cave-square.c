@@ -320,6 +320,16 @@ bool square_isdoor(struct chunk *c, struct loc grid)
 }
 
 /**
+ * True if the square is the Door of Orthanc
+ */
+bool square_isorthancdoor(struct chunk *c, struct loc grid)
+{
+    int feat = square(c, grid)->feat;
+    return tf_has(f_info[feat].flags, TF_DOOR_ANY) &&
+        tf_has(f_info[feat].flags, TF_PERMANENT);
+}
+
+/**
  * True if the square is a wall.
  *
  * This includes closed doors and any type of blocking rock, including rubble.

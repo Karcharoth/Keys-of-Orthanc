@@ -414,7 +414,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
                 /* Orthanc stone */
             case 'O': square_set_feat(c, grid, FEAT_ORTHANC); break;
                 /* Orthanc's door */
-            case 'D': square_set_feat(c, grid, FEAT_ORTHANC_DOOR); break;
+            case 'D': square_set_feat(c, grid, FEAT_ORTHANCDOOR); break;
                 /* Random pillar */
             case 'P': if(one_in_(3)) square_set_feat(c, grid, FEAT_IRON_PILLAR);
                         else if (one_in_(2)) square_set_feat(c, grid, FEAT_MARBLE_PILLAR);

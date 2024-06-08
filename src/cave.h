@@ -256,13 +256,14 @@ extern int FEAT_FORGE_UNIQUE;
 
 /* Custom top-level stuff */
 extern int FEAT_ORTHANC;
-extern int FEAT_ORTHANC_DOOR;
+extern int FEAT_ORTHANCDOOR;
 extern int FEAT_CHAINS;
 extern int FEAT_IRON_PILLAR;
 extern int FEAT_MARBLE_PILLAR;
 extern int FEAT_COPPER_PILLAR;
 extern int FEAT_FLAGSTONES;
 extern int FEAT_GATES_ISENGARD;
+extern int FEAT_OPEN_ORTHANCDOOR;
 
 
 
@@ -337,6 +338,7 @@ bool square_isopendoor(struct chunk *c, struct loc grid);
 bool square_iscloseddoor(struct chunk *c, struct loc grid);
 bool square_isbrokendoor(struct chunk *c, struct loc grid);
 bool square_isdoor(struct chunk *c, struct loc grid);
+bool square_isorthancdoor(struct chunk *c, struct loc grid);
 bool square_iswall(struct chunk *c, struct loc grid);
 bool square_isstairs(struct chunk *c, struct loc grid);
 bool square_isupstairs(struct chunk *c, struct loc grid);

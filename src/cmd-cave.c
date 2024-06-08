@@ -336,12 +336,100 @@ static bool do_cmd_open_test(struct loc grid)
 	}
 
 	/* Must be a closed door */
-	if (!square_iscloseddoor(cave, grid) && !square_issecretdoor(cave, grid)) {
+	if (!square_iscloseddoor(cave, grid) && !square_issecretdoor(cave, grid)
+        && !square_isorthancdoor(cave, grid)) {
 		msgt(MSG_NOTHING_TO_OPEN, "You see nothing there to open.");
 		return false;
 	}
 
 	return (true);
+}
+
+/**
+ * Determine if a given grid is the door of Orthanc
+ */
+static bool do_cmd_orthancdoor_test(struct loc grid)
+{
+
+	/* Require the door */
+	if (!square_isorthancdoor(cave, grid)) {
+		/* Message */
+		msg("That is not the door of Orthanc!");
+
+		/* Nope */
+		return false;
+	}
+
+	/* Okay */
+	return true;
+}
+
+/**
+ * Open the Door of Orthanc if using the Keys.
+ *
+ * If not using the Keys, tell the player to use the Keys.
+ */
+static bool do_cmd_open_orthancdoor_aux(struct loc grid)
+{
+	bool more = false;
+    /* Two weapon fighting paranoia! Check both arms. */
+	int weapon_slot = slot_by_name(player, "weapon");
+	int arm_slot = slot_by_name(player, "arm");
+	struct object *current_weapon = slot_object(player, weapon_slot);
+	struct object *current_arm = slot_object(player, arm_slot);
+    bool using_keys = false;
+
+	/* Verify legality of door */
+	if (!do_cmd_orthancdoor_test(grid)) return false;
+
+    /* Check if we have the Keys in (either) hand */
+    /* This looks criminally bulky, but I'm not sure there's actually
+        a way to pare it down. */
+    if (current_weapon) {
+        if (current_weapon->artifact) {
+            if (streq(current_weapon->artifact->name, "of Orthanc")) {
+                using_keys = true;
+            }
+        }
+    }
+    if (current_arm) {
+        if (current_arm->artifact) {
+            if (streq(current_arm->artifact->name, "of Orthanc")) {
+                using_keys = true;
+            }
+        }
+    }
+    /* Abort! Abort! Refund action, too. */
+    if (!using_keys) {
+        msg("You are not wielding the Keys, so you cannot open the door.");
+        /* If confused, it wastes your action as usual, otherwise refund */
+        if (!player->timed[TMD_CONFUSED]) {
+
+            /* Reset the action type */
+            player->previous_action[0] = ACTION_NOTHING;
+
+            /* Don't take a turn */
+            player->upkeep->energy_use = 0;
+
+        }
+        return false;
+    }
+
+    /* Spend 1 stamina*/
+    stamina_hit(player, 1);    
+
+	/* Message */
+	msg("The Key fits smoothly into the lock.");
+    msgt(MSG_OPENDOOR, "The door opens silently into Orthanc.");
+    
+    /* Open the door. */
+    square_set_feat(cave, grid, FEAT_OPEN_ORTHANCDOOR);
+
+	/* Update the visuals */
+	player->upkeep->update |= (PU_UPDATE_VIEW | PU_MONSTERS);
+
+	/* Result */
+	return more;
 }
 
 
@@ -401,6 +489,8 @@ static bool do_cmd_open_aux(struct loc grid)
 			/* We may keep trying */
 			more = true;
 		}
+    } else if (square_isorthancdoor(cave, grid)) {
+        do_cmd_open_orthancdoor_aux(grid);
 	} else {
 		/* Closed door */
 		square_open_door(cave, grid);
@@ -1281,6 +1371,9 @@ static bool do_cmd_bash_test(struct loc grid)
 	return true;
 }
 
+
+
+
 /**
  * Perform the basic "bash" command
  *
@@ -1358,6 +1451,7 @@ static bool do_cmd_bash_aux(struct loc grid)
 	/* Result */
 	return more;
 }
+
 
 
 /**
@@ -1481,6 +1575,9 @@ static void do_cmd_alter_aux(int dir)
 	} else if (square_iscloseddoor(cave, grid)) {
 		/* Bash closed doors */
 		more = do_cmd_bash_aux(grid);
+    } else if (square_isorthancdoor(cave, grid)) {
+        /* Open Orthanc's door */
+        more = do_cmd_open_orthancdoor_aux(grid);
 	} else if (square_isdisarmabletrap(cave, grid)) {
 		/* Disarm traps */
 		more = do_cmd_disarm_aux(grid);
@@ -1681,13 +1778,14 @@ void move_player(int dir, bool disarm)
 	bool trap = square_isdisarmabletrap(cave, grid);
 	bool door = square_iscloseddoor(cave, grid) &&
 		!square_issecretdoor(cave, grid);
+    bool orthancdoor = square_isorthancdoor(cave, grid);
 	bool confused = player->timed[TMD_CONFUSED] > 0;
 
 	/* Many things can happen on movement */
 	if (mon && monster_is_visible(mon)) {
 		/* Attack visible monsters */
 		py_attack(player, grid, ATT_MAIN);
-	} else if (((trap && disarm) || door) && square_isknown(cave, grid)) {
+	} else if (((trap && disarm) || door || orthancdoor) && square_isknown(cave, grid)) {
 		/* Auto-repeat if not already repeating */
 		if (cmd_get_nrepeats() == 0)
 			cmd_set_repeat(99);
@@ -1965,7 +2063,8 @@ static bool do_cmd_walk_test(struct loc grid)
 
 			/* Store the action type */
 			player->previous_action[0] = ACTION_MISC;
-		} else if (square_iscloseddoor(cave, grid)) {
+		} else if (square_iscloseddoor(cave, grid) || 
+                    square_isorthancdoor(cave, grid)) {
 			/* Door */
 			return true;
 		} else {

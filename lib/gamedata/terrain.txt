@@ -332,7 +332,7 @@ desc:Strong chains binding together the pillars of Isengard.
 desc:  Can be walked across by anything.  Does not break line of sight.
 
 name:Orthanc-stone
-graphics:#:D
+graphics:#:d
 priority:20
 flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH
 confused-msg:bashes into a wall
@@ -342,10 +342,21 @@ desc: creators of Orthanc made these.
 name:Door of Orthanc
 graphics:+:D
 priority:20
-flags: ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH | DOOR_ANY | DOOR_CLOSED
+flags: PERMANENT | NO_SCENT | NO_FLOW | TORCH | DOOR_ANY | INTERESTING
 confused-msg:bashes into a door
-desc:You can dig through most walls but these are impenetrable.  The ancient
-desc: creators of Orthanc made these.
+walk-msg:The Door of Orthanc bars your way. 
+run-msg:The Door of Orthanc bars your way.
+look-prefix:the
+desc:The final door, past which lie the stairs of Orthanc itself! To open it,
+desc: wield the Keys of Orthanc and use the 'interact' command (which is '/'
+desc: by default).
+
+name:Open Door of Orthanc
+graphics:':D
+priority:20
+flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
+look-prefix:the
+desc:The final door, past which lie the stairs of Orthanc itself!
 
 name:Gates of Isengard
 graphics:+:s

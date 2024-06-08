@@ -747,7 +747,7 @@ void do_cmd_exchange(struct command *cmd)
 		/* No monster, or invisible */
 		msg("You cannot see a monster there to exchange places with.");
 		return;
-	} else if (square_iswall(cave, grid)) {
+	} else if (square_isrock(cave, grid)) {
 		/* Wall */
 		msg("You cannot enter the wall.");
 		return;

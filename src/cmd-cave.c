@@ -336,8 +336,7 @@ static bool do_cmd_open_test(struct loc grid)
 	}
 
 	/* Must be a closed door */
-	if (!square_iscloseddoor(cave, grid) && !square_issecretdoor(cave, grid)
-        && !square_isorthancdoor(cave, grid)) {
+	if (!square_iscloseddoor(cave, grid) || square_issecretdoor(cave, grid)) {
 		msgt(MSG_NOTHING_TO_OPEN, "You see nothing there to open.");
 		return false;
 	}
@@ -481,7 +480,10 @@ void do_cmd_open(struct command *cmd)
 		struct loc grid1;
 		int n_closed_doors, n_locked_chests;
 
-		n_closed_doors = count_feats(&grid1, square_iscloseddoor, false);
+		/* square_iscloseddoor() also includes secret doors. */
+		n_closed_doors = count_feats(&grid1, square_iscloseddoor, false)
+			- count_feats(&grid1, square_issecretdoor, false);
+		assert(n_closed_doors >= 0);
 		n_locked_chests = count_chests(&grid1, CHEST_OPENABLE);
 
 		if (n_closed_doors + n_locked_chests == 1) {
@@ -745,6 +747,13 @@ void do_cmd_exchange(struct command *cmd)
 		/* No monster, or invisible */
 		msg("You cannot see a monster there to exchange places with.");
 		return;
+<<<<<<< HEAD
+=======
+	} else if (square_isrubble(cave, grid)) {
+		/* Rubble */
+		msg("You cannot enter the rubble.");
+		return;
+>>>>>>> 464eed68f... Restructure some tests using iscloseddoor, iswall, and isdisarmabletrap
 	} else if (square_isrock(cave, grid)) {
 		/* Wall */
 		msg("You cannot enter the wall.");
@@ -752,10 +761,6 @@ void do_cmd_exchange(struct command *cmd)
 	} else if (square_iscloseddoor(cave, grid)) {
 		/* Closed door */
 		msg("You cannot enter the closed door.");
-		return;
-	} else if (square_isrubble(cave, grid)) {
-		/* Rubble */
-		msg("You cannot enter the rubble.");
 		return;
 	} else {
 		if (rf_has(mon->race->flags, RF_NEVER_MOVE) ||
@@ -790,7 +795,7 @@ void do_cmd_exchange(struct command *cmd)
 		/* Rubble */
 		msg("There is a pile of rubble in the way.");
 		return;
-	} else if (square_iswall(cave, grid)) {
+	} else if (square_isrock(cave, grid)) {
 		/* Wall */
 		msg("There is a wall in the way.");
 		return;
@@ -1133,12 +1138,8 @@ static bool do_cmd_disarm_test(struct loc grid)
 		return false;
 	}
 
-	/* Look for a closed, unlocked door to lock */
-	if (square_iscloseddoor(cave, grid) && !square_islockeddoor(cave, grid))
-		return true;
-
-	/* Look for a trap */
-	if (!square_isdisarmabletrap(cave, grid)) {
+	/* Look for a trap or glyph of warding */
+	if (!square_isdisarmabletrap(cave, grid) && !square_iswarded(cave, grid)) {
 		msg("You see nothing there to disarm.");
 		return false;
 	}
@@ -1284,12 +1285,13 @@ void do_cmd_disarm(struct command *cmd)
 	err = cmd_get_arg_direction(cmd, "direction", &dir);
 	if (err || dir == DIR_UNKNOWN) {
 		struct loc grid1;
-		int n_traps, n_chests;
+		int n_traps, n_wards, n_chests;
 
 		n_traps = count_feats(&grid1, square_isdisarmabletrap, true);
+		n_wards = count_feats(&grid1, square_iswarded, true);
 		n_chests = count_chests(&grid1, CHEST_TRAPPED);
 
-		if (n_traps + n_chests == 1) {
+		if (n_traps + n_wards + n_chests == 1) {
 			dir = motion_dir(player->grid, grid1);
 			cmd_set_arg_direction(cmd, "direction", dir);
 		} else if (cmd_get_direction(cmd, "direction", &dir, true)) {
@@ -1573,7 +1575,11 @@ static void do_cmd_alter_aux(int dir)
 	} else if (square_iscloseddoor(cave, grid)) {
 		/* Bash closed doors */
 		more = do_cmd_bash_aux(grid);
+<<<<<<< HEAD
     } else if (square_isdisarmabletrap(cave, grid)) {
+=======
+	} else if (square_isdisarmabletrap(cave, grid) || square_iswarded(cave, grid)) {
+>>>>>>> 464eed68f... Restructure some tests using iscloseddoor, iswall, and isdisarmabletrap
 		/* Disarm traps */
 		more = do_cmd_disarm_aux(grid);
 	} else if (o_chest_trapped) {
@@ -1726,10 +1732,10 @@ void do_cmd_leap(struct command *cmd)
 	if (!square_ispassable(cave, end)) {
 		if (square_isrubble(cave, end)) {
 			msgt(MSG_HITWALL, "You slam into a wall of rubble.");
-		} else if (square_iscloseddoor(cave, end)) {
-			msgt(MSG_HITWALL, "You slam into a door.");
-		} else {
+		} else if (square_isrock(cave, end)) {
 			msgt(MSG_HITWALL, "You slam into a wall.");
+		} else {
+			msgt(MSG_HITWALL, "You slam into a door.");
 		}
     } else if (mon) {
 		/* Monsters end the leap */
@@ -2058,16 +2064,23 @@ static bool do_cmd_walk_test(struct loc grid)
 
 			/* Store the action type */
 			player->previous_action[0] = ACTION_MISC;
+<<<<<<< HEAD
 		} else if (square_iscloseddoor(cave, grid) || 
                     square_isorthancdoor(cave, grid)) {
 			/* Door */
 			return true;
 		} else {
+=======
+		} else if (square_isrock(cave, grid)) {
+>>>>>>> 464eed68f... Restructure some tests using iscloseddoor, iswall, and isdisarmabletrap
 			/* Wall */
 			msgt(MSG_HITWALL, "There is a wall in the way!");
 
 			/* Store the action type */
 			player->previous_action[0] = ACTION_MISC;
+		} else {
+			/* Door */
+			return true;
 		}
 
 		/* Cancel repeat */

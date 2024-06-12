@@ -70,6 +70,8 @@ desc: hold traps or items.  Does not break line of sight.
 
 name:closed door
 graphics:+:U
+open:open door
+broken:broken door
 priority:17
 flags:DOOR_ANY | DOOR_CLOSED | INTERESTING
 confused-msg:bangs into a door
@@ -83,6 +85,7 @@ desc: valuable time by locking them.
 
 name:open door
 graphics:':U
+close:closed door
 priority:15
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | CLOSABLE | EASY
 look-in-preposition:in
@@ -93,6 +96,7 @@ desc: through as long as it stays open.
 
 name:broken door
 graphics:.:U
+mend:closed door
 priority:15
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
 look-in-preposition:in
@@ -341,6 +345,8 @@ desc: creators of Orthanc made these.
 
 name:Door of Orthanc
 graphics:+:D
+open:Open Door of Orthanc
+key:Keys
 priority:20
 flags: PERMANENT | NO_SCENT | NO_FLOW | TORCH | DOOR_ANY | INTERESTING
 confused-msg:bashes into a door
@@ -353,6 +359,8 @@ desc: by default).
 
 name:Open Door of Orthanc
 graphics:':D
+close:Door of Orthanc
+key:Keys
 priority:20
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
 look-prefix:the

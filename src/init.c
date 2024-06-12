@@ -921,6 +921,56 @@ static enum parser_error parse_feat_look_in_preposition(struct parser *p) {
 	return PARSE_ERROR_NONE;
 }
 
+static enum parser_error parse_feat_open(struct parser *p) {
+	const char *open_feat = parser_getstr(p, "feat");
+	struct feature *f = parser_priv(p);
+
+	if (!f)
+		return PARSE_ERROR_MISSING_RECORD_HEADER;
+	f->open = string_make(open_feat);
+	return PARSE_ERROR_NONE;
+}
+
+static enum parser_error parse_feat_close(struct parser *p) {
+	const char *close_feat = parser_getstr(p, "feat");
+	struct feature *f = parser_priv(p);
+
+	if (!f)
+		return PARSE_ERROR_MISSING_RECORD_HEADER;
+	f->close = string_make(close_feat);
+	return PARSE_ERROR_NONE;
+}
+
+static enum parser_error parse_feat_broken(struct parser *p) {
+	const char *broken_feat = parser_getstr(p, "feat");
+	struct feature *f = parser_priv(p);
+
+	if (!f)
+		return PARSE_ERROR_MISSING_RECORD_HEADER;
+	f->broken = string_make(broken_feat);
+	return PARSE_ERROR_NONE;
+}
+
+static enum parser_error parse_feat_mend(struct parser *p) {
+	const char *mend_feat = parser_getstr(p, "feat");
+	struct feature *f = parser_priv(p);
+
+	if (!f)
+		return PARSE_ERROR_MISSING_RECORD_HEADER;
+	f->mend = string_make(mend_feat);
+	return PARSE_ERROR_NONE;
+}
+
+static enum parser_error parse_feat_key(struct parser *p) {
+	const char *key_name = parser_getstr(p, "object");
+	struct feature *f = parser_priv(p);
+
+	if (!f)
+		return PARSE_ERROR_MISSING_RECORD_HEADER;
+	f->key = string_make(key_name);
+	return PARSE_ERROR_NONE;
+}
+
 struct parser *init_parse_feat(void) {
 	struct parser *p = parser_new();
 	parser_setpriv(p, NULL);
@@ -941,6 +991,12 @@ struct parser *init_parse_feat(void) {
 	parser_reg(p, "confused-msg str text", parse_feat_confused_msg);
 	parser_reg(p, "look-prefix str text", parse_feat_look_prefix);
 	parser_reg(p, "look-in-preposition str text", parse_feat_look_in_preposition);
+    parser_reg(p, "open str feat", parse_feat_open);
+    parser_reg(p, "close str feat", parse_feat_close);
+    parser_reg(p, "broken str feat", parse_feat_broken);
+    parser_reg(p, "mend str feat", parse_feat_mend);
+    parser_reg(p, "key str object", parse_feat_key);
+
 	return p;
 }
 
@@ -995,6 +1051,11 @@ static errr finish_parse_feat(struct parser *p) {
 static void cleanup_feat(void) {
 	int idx;
 	for (idx = 0; idx < z_info->f_max; idx++) {
+		string_free(f_info[idx].key);
+		string_free(f_info[idx].mend);
+		string_free(f_info[idx].broken);
+		string_free(f_info[idx].close);
+		string_free(f_info[idx].open);
 		string_free(f_info[idx].look_in_preposition);
 		string_free(f_info[idx].look_prefix);
 		string_free(f_info[idx].confused_msg);

@@ -318,12 +318,14 @@ static void project_feature_handler_LOCK_DOOR(project_feature_handler_context_t 
 	/* Check power */
 	if (power <= 0) return;
 
-	/* Require a known door */
+	/* Require a door that is not hidden */
 	if (!square_isdoor(cave, grid) || square_issecretdoor(cave, grid)) return;
 
 	/* Close the door */
 	if (square_isopendoor(cave, grid) || square_isbrokendoor(cave, grid)) {
-		square_close_door(cave, grid);
+        /* Is it normal, or broken? Close it either way. */
+		if (square_isopendoor(cave, grid)) square_close_door(cave, grid);
+		else square_mend_door(cave, grid);
 		context->obvious = true;
 		if (square_isseen(cave, grid)) {
 			msg("The door slams shut.");

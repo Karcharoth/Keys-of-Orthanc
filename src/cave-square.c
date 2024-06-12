@@ -325,8 +325,8 @@ bool square_isdoor(struct chunk *c, struct loc grid)
 bool square_isorthancdoor(struct chunk *c, struct loc grid)
 {
     int feat = square(c, grid)->feat;
-    return tf_has(f_info[feat].flags, TF_DOOR_ANY) &&
-        tf_has(f_info[feat].flags, TF_PERMANENT);
+    /* A mini-hack - assumes exactly 1 key door for now*/
+    return f_info[feat].key;
 }
 
 /**
@@ -1192,19 +1192,36 @@ void square_add_door(struct chunk *c, struct loc grid, bool closed) {
 
 void square_open_door(struct chunk *c, struct loc grid)
 {
+    int open = lookup_feat(f_info[square(c, grid)->feat].open);
+    assert(open);
+
 	square_remove_all_traps(c, grid);
-	square_set_feat(c, grid, FEAT_OPEN);
+	square_set_feat(c, grid, open);
 }
 
 void square_close_door(struct chunk *c, struct loc grid)
 {
-	square_set_feat(c, grid, FEAT_CLOSED);
+    int close = lookup_feat(f_info[square(c, grid)->feat].close);
+    assert(close);
+
+    square_set_feat(c, grid, close);
+}
+
+void square_mend_door(struct chunk *c, struct loc grid)
+{
+    int mend = lookup_feat(f_info[square(c, grid)->feat].mend);
+    assert(mend);
+    
+    square_set_feat(c, grid, mend);
 }
 
 void square_smash_door(struct chunk *c, struct loc grid)
 {
+    int broken = lookup_feat(f_info[square(c, grid)->feat].broken);
+    assert(broken);
+
 	square_remove_all_traps(c, grid);
-	square_set_feat(c, grid, FEAT_BROKEN);
+	square_set_feat(c, grid, broken);
 }
 
 void square_unlock_door(struct chunk *c, struct loc grid) {

@@ -118,6 +118,13 @@ struct feature {
 	struct feature *next;
 
 	char *mimic;		/**< Name of feature to mimic */
+    char *close; /* What does it turn into when closed (if any)? */
+    char *open; /* What does it turn into when opened (if any)? */
+    char *broken; /* What does it turn into when bashed (if any)? */
+    char *mend; /* What does it turn into when mended (if any)? */
+
+    char *key; /* If it needs a key to unlock, what is the key's name? */
+
 	uint8_t priority;	/**< Display priority */
 
 	uint8_t forge_bonus;/**< What bonus does this get as a forge? */
@@ -139,6 +146,7 @@ struct feature {
 	char *confused_msg; /**< Message on confused monster move into feature */
 	char *look_prefix; /**< Prefix for name in look result */
 	char *look_in_preposition; /**< Preposition in look result when on the terrain */
+
 };
 
 extern struct feature *f_info;
@@ -444,6 +452,7 @@ void square_add_door(struct chunk *c, struct loc grid, bool closed);
 /* Feature modifiers */
 void square_open_door(struct chunk *c, struct loc grid);
 void square_close_door(struct chunk *c, struct loc grid);
+void square_mend_door(struct chunk *c, struct loc grid);
 void square_smash_door(struct chunk *c, struct loc grid);
 void square_unlock_door(struct chunk *c, struct loc grid);
 void square_destroy_door(struct chunk *c, struct loc grid);

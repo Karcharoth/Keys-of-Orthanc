@@ -1411,13 +1411,13 @@ static bool do_cmd_bash_aux(struct loc grid)
 			/* Message */
 			msgt(MSG_OPENDOOR, "The door crashes open!");
 		}
-
+        
 		if (one_in_(2)) {
 			/* Break down the door */
-			square_set_feat(cave, grid, FEAT_BROKEN);
+			square_smash_door(cave, grid);
 		} else {
 			/* Open the door */
-			square_set_feat(cave, grid, FEAT_OPEN);
+			square_open_door(cave, grid);
 		}
 
 		/* Move the player onto the door square */

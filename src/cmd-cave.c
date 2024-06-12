@@ -345,24 +345,6 @@ static bool do_cmd_open_test(struct loc grid)
 	return (true);
 }
 
-/**
- * Determine if a given grid is the door of Orthanc
- */
-static bool do_cmd_orthancdoor_test(struct loc grid)
-{
-
-	/* Require the door */
-	if (!square_isorthancdoor(cave, grid)) {
-		/* Message */
-		msg("That is not the door of Orthanc!");
-
-		/* Nope */
-		return false;
-	}
-
-	/* Okay */
-	return true;
-}
 
 /**
  * Open the Door of Orthanc if using the Keys.
@@ -378,9 +360,6 @@ static bool do_cmd_open_orthancdoor_aux(struct loc grid)
 	struct object *current_weapon = slot_object(player, weapon_slot);
 	struct object *current_arm = slot_object(player, arm_slot);
     bool using_keys = false;
-
-	/* Verify legality of door */
-	if (!do_cmd_orthancdoor_test(grid)) return false;
 
     /* Check if we have the Keys in (either) hand */
     /* This looks criminally bulky, but I'm not sure there's actually
@@ -452,7 +431,53 @@ static bool do_cmd_open_aux(struct loc grid)
 	if (square_isjammeddoor(cave, grid)) {
 		/* Stuck */
 		msg("The door appears to be stuck.");
-	} else if (square_islockeddoor(cave, grid)) {
+	} else if (f_info[square(cave, grid)->feat].key) {
+        /* If this door takes keys to open:*/
+        /* Two weapon fighting paranoia! Check both arms. */
+	    int weapon_slot = slot_by_name(player, "weapon");
+	    int arm_slot = slot_by_name(player, "arm");
+	    struct object *current_weapon = slot_object(player, weapon_slot);
+	    struct object *current_arm = slot_object(player, arm_slot);
+        bool correct_key = false;
+
+        /* Check if we have the requisite keys in (either) hand */
+        /* This looks criminally bulky, but I'm not sure there's actually
+            a way to pare it down. */
+        if (current_weapon) {
+            if (current_weapon->artifact) {
+                if (streq(current_weapon->kind->name, 
+                    f_info[square(cave, grid)->feat].key)) {
+                    correct_key = true;
+                }
+            }
+        }
+        if (current_arm) {
+            if (current_arm->artifact) {
+                if (streq(current_arm->kind->name, 
+                    f_info[square(cave, grid)->feat].key)) {
+                    correct_key = true;
+                }
+            }
+        }
+        /* Abort! Abort! Refund action, too. */
+        if (!correct_key) {
+            msg("You are not wielding the right key.");
+            /* If confused, it wastes your action as usual, otherwise refund */
+            if (!player->timed[TMD_CONFUSED]) {
+
+                /* Reset the action type */
+                player->previous_action[0] = ACTION_NOTHING;
+
+                /* Don't take a turn */
+                player->upkeep->energy_use = 0;
+
+            }
+            return false;
+        } 
+
+        square_open_door(cave, grid);
+    
+    } else if (square_islockeddoor(cave, grid)) {
 		/* Get the score in favour (=perception) */
 		score = player->state.skill_use[SKILL_PERCEPTION];
 
@@ -489,9 +514,8 @@ static bool do_cmd_open_aux(struct loc grid)
 			/* We may keep trying */
 			more = true;
 		}
-    } else if (square_isorthancdoor(cave, grid)) {
-        do_cmd_open_orthancdoor_aux(grid);
-	} else {
+
+    } else {
 		/* Closed door */
 		square_open_door(cave, grid);
 		player->upkeep->update |= (PU_UPDATE_VIEW | PU_MONSTERS);

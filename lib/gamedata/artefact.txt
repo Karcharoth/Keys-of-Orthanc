@@ -723,7 +723,7 @@ desc: devilish cunning and ingenuity.
 
 # Index 178
 name:of Orthanc
-base-object:keys:Great Keyring
+base-object:key:Great Keyring
 depth:20
 rarity:1
 weight:40

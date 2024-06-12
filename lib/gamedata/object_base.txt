@@ -253,7 +253,7 @@ smithability:Stealth:Assassination
 smithability:Stealth:Cruel Blow
 smithability:Stealth:Opportunist
 
-name:key:Keys~
+name:key:Key~
 graphics:dark gray
 break:5
 # max-stack:1

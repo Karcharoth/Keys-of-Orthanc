@@ -497,7 +497,7 @@ desc: rubble or quartz.
 # Index ???
 name:& Great Keyring~
 graphics:~:D
-type:keys
+type:key
 depth:10
 weight:40
 cost:0

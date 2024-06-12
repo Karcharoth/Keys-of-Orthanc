@@ -346,7 +346,7 @@ desc: creators of Orthanc made these.
 name:Door of Orthanc
 graphics:+:D
 open:Open Door of Orthanc
-key:Keys
+key:Great Keyring
 priority:20
 flags: PERMANENT | NO_SCENT | NO_FLOW | TORCH | DOOR_ANY | INTERESTING
 confused-msg:bashes into a door

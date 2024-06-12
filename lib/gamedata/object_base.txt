@@ -253,6 +253,13 @@ smithability:Stealth:Assassination
 smithability:Stealth:Cruel Blow
 smithability:Stealth:Opportunist
 
+name:key:Keys~
+graphics:dark gray
+break:5
+# max-stack:1
+smith-attack:1:4
+flags:HATES_ACID
+flags:SHOW_DICE
 
 
 name:boots:Boot~

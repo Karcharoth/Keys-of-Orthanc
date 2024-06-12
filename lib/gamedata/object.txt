@@ -351,25 +351,6 @@ alloc:10:2
 flags:HAND_AND_A_HALF
 
 
-# Index 55
-name:& Keys~
-graphics:~:D
-type:sword
-depth:10
-weight:40
-cost:0
-attack:-3:1d1
-defence:0:0d0
-flags:NO_SMITHING | NO_RANDOM | INSTA_ART
-
-
-
-
-
-
-
-
-
 ##### Axes & Polearms #####
 
 # Index 71
@@ -511,7 +492,18 @@ flags:DIG_2 | TWO_HANDED
 desc:It can be equipped as a weapon and (usually) allows you to dig through
 desc: rubble or quartz.
 
+##### Keys #####
 
+# Index ???
+name:& Great Keyring~
+graphics:~:D
+type:keys
+depth:10
+weight:40
+cost:0
+attack:-3:1d1
+defence:0:0d0
+flags:NO_SMITHING | NO_RANDOM | INSTA_ART
 
 ##### Helms #####
 

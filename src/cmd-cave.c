@@ -346,70 +346,6 @@ static bool do_cmd_open_test(struct loc grid)
 }
 
 
-/**
- * Open the Door of Orthanc if using the Keys.
- *
- * If not using the Keys, tell the player to use the Keys.
- */
-static bool do_cmd_open_orthancdoor_aux(struct loc grid)
-{
-	bool more = false;
-    /* Two weapon fighting paranoia! Check both arms. */
-	int weapon_slot = slot_by_name(player, "weapon");
-	int arm_slot = slot_by_name(player, "arm");
-	struct object *current_weapon = slot_object(player, weapon_slot);
-	struct object *current_arm = slot_object(player, arm_slot);
-    bool using_keys = false;
-
-    /* Check if we have the Keys in (either) hand */
-    /* This looks criminally bulky, but I'm not sure there's actually
-        a way to pare it down. */
-    if (current_weapon) {
-        if (current_weapon->artifact) {
-            if (streq(current_weapon->artifact->name, "of Orthanc")) {
-                using_keys = true;
-            }
-        }
-    }
-    if (current_arm) {
-        if (current_arm->artifact) {
-            if (streq(current_arm->artifact->name, "of Orthanc")) {
-                using_keys = true;
-            }
-        }
-    }
-    /* Abort! Abort! Refund action, too. */
-    if (!using_keys) {
-        msg("You are not wielding the Keys, so you cannot open the door.");
-        /* If confused, it wastes your action as usual, otherwise refund */
-        if (!player->timed[TMD_CONFUSED]) {
-
-            /* Reset the action type */
-            player->previous_action[0] = ACTION_NOTHING;
-
-            /* Don't take a turn */
-            player->upkeep->energy_use = 0;
-
-        }
-        return false;
-    }
-
-    /* Spend 1 stamina*/
-    stamina_hit(player, 1);    
-
-	/* Message */
-	msg("The Key fits smoothly into the lock.");
-    msgt(MSG_OPENDOOR, "The door opens silently into Orthanc.");
-    
-    /* Open the door. */
-    square_set_feat(cave, grid, FEAT_OPEN_ORTHANCDOOR);
-
-	/* Update the visuals */
-	player->upkeep->update |= (PU_UPDATE_VIEW | PU_MONSTERS);
-
-	/* Result */
-	return more;
-}
 
 
 /**
@@ -444,19 +380,15 @@ static bool do_cmd_open_aux(struct loc grid)
         /* This looks criminally bulky, but I'm not sure there's actually
             a way to pare it down. */
         if (current_weapon) {
-            if (current_weapon->artifact) {
-                if (streq(current_weapon->kind->name, 
+            if (streq(current_weapon->kind->name, 
                     f_info[square(cave, grid)->feat].key)) {
                     correct_key = true;
-                }
             }
         }
         if (current_arm) {
-            if (current_arm->artifact) {
-                if (streq(current_arm->kind->name, 
+            if (streq(current_arm->kind->name, 
                     f_info[square(cave, grid)->feat].key)) {
                     correct_key = true;
-                }
             }
         }
         /* Abort! Abort! Refund action, too. */
@@ -655,7 +587,49 @@ static bool do_cmd_close_aux(struct loc grid)
 	/* Broken door */
 	if (square_isbrokendoor(cave, grid)) {
 		msg("The door appears to be broken.");
-	} else {
+	} else if (f_info[square(cave, grid)->feat].key) {
+        /* If this door takes keys to open:*/
+        /* Two weapon fighting paranoia! Check both arms. */
+	    int weapon_slot = slot_by_name(player, "weapon");
+	    int arm_slot = slot_by_name(player, "arm");
+	    struct object *current_weapon = slot_object(player, weapon_slot);
+	    struct object *current_arm = slot_object(player, arm_slot);
+        bool correct_key = false;
+
+        /* Check if we have the requisite keys in (either) hand */
+        /* This looks criminally bulky, but I'm not sure there's actually
+            a way to pare it down. */
+        if (current_weapon) {
+            if (streq(current_weapon->kind->name, 
+                    f_info[square(cave, grid)->feat].key)) {
+                    correct_key = true;
+            }
+        }
+        if (current_arm) {
+            if (streq(current_arm->kind->name, 
+                    f_info[square(cave, grid)->feat].key)) {
+                    correct_key = true;
+            }
+        }
+        /* Abort! Abort! Refund action, too. */
+        if (!correct_key) {
+            msg("You are not wielding the right key.");
+            /* If confused, it wastes your action as usual, otherwise refund */
+            if (!player->timed[TMD_CONFUSED]) {
+
+                /* Reset the action type */
+                player->previous_action[0] = ACTION_NOTHING;
+
+                /* Don't take a turn */
+                player->upkeep->energy_use = 0;
+
+            }
+            return false;
+        } 
+
+        square_close_door(cave, grid);
+    
+    } else {
 		/* Close door */
 		square_close_door(cave, grid);
 		player->upkeep->update |= (PU_UPDATE_VIEW | PU_MONSTERS);
@@ -1599,10 +1573,7 @@ static void do_cmd_alter_aux(int dir)
 	} else if (square_iscloseddoor(cave, grid)) {
 		/* Bash closed doors */
 		more = do_cmd_bash_aux(grid);
-    } else if (square_isorthancdoor(cave, grid)) {
-        /* Open Orthanc's door */
-        more = do_cmd_open_orthancdoor_aux(grid);
-	} else if (square_isdisarmabletrap(cave, grid)) {
+    } else if (square_isdisarmabletrap(cave, grid)) {
 		/* Disarm traps */
 		more = do_cmd_disarm_aux(grid);
 	} else if (o_chest_trapped) {

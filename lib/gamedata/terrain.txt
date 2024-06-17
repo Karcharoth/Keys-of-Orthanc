@@ -346,7 +346,9 @@ desc: creators of Orthanc made these.
 name:Door of Orthanc
 graphics:+:D
 open:Open Door of Orthanc
-key:Great Keyring
+## It looks ugly, but the & and ~ are required because that's the
+## object kind's actual name.
+key:& Great Keyring~
 priority:20
 flags: PERMANENT | NO_SCENT | NO_FLOW | TORCH | DOOR_ANY | INTERESTING
 confused-msg:bashes into a door
@@ -362,7 +364,7 @@ graphics:':D
 close:Door of Orthanc
 key:Keys
 priority:20
-flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
+flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY | CLOSABLE
 look-prefix:the
 desc:The final door, past which lie the stairs of Orthanc itself!
 

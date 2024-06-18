@@ -456,8 +456,6 @@ static size_t obj_desc_inscrip(const struct object *obj, char *buf,
 
 	/* Use special inscription, if any */
 	if (!object_flavor_is_aware(obj)) {
-		if (tval_can_have_charges(obj) && (obj->pval == 0))
-			u[n++] = "empty";
 		if (object_flavor_was_tried(obj))
 			u[n++] = "tried";
 	}

@@ -73,7 +73,7 @@ graphics:+:U
 open:open door
 broken:broken door
 priority:17
-flags:DOOR_ANY | DOOR_CLOSED | INTERESTING
+flags:DOOR_ANY | INTERESTING
 confused-msg:bangs into a door
 desc:Doors may be locked; getting through them may not be easy.  Your
 desc: disarming skill makes all the difference to your ability to handle locks,
@@ -156,9 +156,11 @@ die-msg:falling off a precipice
 name:secret door
 graphics:#:z
 mimic:granite wall
+open:open door
+broken:broken door
 priority:10
 info:0:3:0
-flags:ROCK | DOOR_ANY | DOOR_CLOSED | GRANITE | TORCH
+flags:ROCK | DOOR_ANY | GRANITE | TORCH
 confused-msg:bashes into a wall
 dig-msg:You uncover a secret door.
 fail-msg:You are unable to break the granite with your {name}.
@@ -362,7 +364,7 @@ desc: by default).
 name:Open Door of Orthanc
 graphics:':D
 close:Door of Orthanc
-key:Keys
+key:& Great Keyring~
 priority:20
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
 look-prefix:the

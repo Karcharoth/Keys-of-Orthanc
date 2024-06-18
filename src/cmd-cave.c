@@ -592,18 +592,21 @@ static bool do_cmd_close_aux(struct loc grid)
 	} else if (f_info[square(cave, grid)->feat].key) {
         /* If this door takes keys to open:*/
         /* Two weapon fighting paranoia! Check both arms. */
+        printf("1\n");
 	    int weapon_slot = slot_by_name(player, "weapon");
 	    int arm_slot = slot_by_name(player, "arm");
 	    struct object *current_weapon = slot_object(player, weapon_slot);
 	    struct object *current_arm = slot_object(player, arm_slot);
         bool correct_key = false;
-
+        printf("2\n");
         /* Check if we have the requisite keys in (either) hand */
         /* This looks criminally bulky, but I'm not sure there's actually
             a way to pare it down. */
         if (current_weapon) {
+        printf("3\n");
             if (streq(current_weapon->kind->name, 
                     f_info[square(cave, grid)->feat].key)) {
+        printf("4\n");
                     correct_key = true;
             }
         }
@@ -615,10 +618,11 @@ static bool do_cmd_close_aux(struct loc grid)
         }
         /* Abort! Abort! Refund action, too. */
         if (!correct_key) {
+        printf("5\n");
             msg("You are not wielding the right key.");
             /* If confused, it wastes your action as usual, otherwise refund */
             if (!player->timed[TMD_CONFUSED]) {
-
+        printf("6\n");
                 /* Reset the action type */
                 player->previous_action[0] = ACTION_NOTHING;
 
@@ -626,11 +630,12 @@ static bool do_cmd_close_aux(struct loc grid)
                 player->upkeep->energy_use = 0;
 
             }
+        printf("7\n");
             return false;
         } 
-
+        printf("8\n");
         square_close_door(cave, grid);
-    
+            printf("9\n");
     } else {
 		/* Close door */
 		square_close_door(cave, grid);

@@ -288,7 +288,17 @@ bool square_issecretdoor(struct chunk *c, struct loc grid)
  */
 bool square_isopendoor(struct chunk *c, struct loc grid)
 {
-    return (f_info[square(c, grid)->feat].close);
+	int feat = square(c, grid)->feat;
+    return f_info[feat].close;
+}
+
+/**
+ * True if the square is a door that can be bashed.
+ */
+bool square_isbashabledoor(struct chunk *c, struct loc grid) 
+{
+	int feat = square(c, grid)->feat;
+    return f_info[feat].broken;
 }
 
 /**
@@ -297,14 +307,14 @@ bool square_isopendoor(struct chunk *c, struct loc grid)
 bool square_iscloseddoor(struct chunk *c, struct loc grid)
 {
 	int feat = square(c, grid)->feat;
-	return (f_info[feat].open);
+	return f_info[feat].open;
 }
 
 bool square_isbrokendoor(struct chunk *c, struct loc grid)
 {
 	int feat = square(c, grid)->feat;
-    return (tf_has(f_info[feat].flags, TF_DOOR_ANY) &&
-			f_info[feat].mend);
+    return tf_has(f_info[feat].flags, TF_DOOR_ANY) &&
+			f_info[feat].mend;
 }
 
 /**
@@ -316,16 +326,6 @@ bool square_isdoor(struct chunk *c, struct loc grid)
 {
 	int feat = square(c, grid)->feat;
 	return tf_has(f_info[feat].flags, TF_DOOR_ANY);
-}
-
-/**
- * True if the square is the Door of Orthanc
- */
-bool square_isorthancdoor(struct chunk *c, struct loc grid)
-{
-    int feat = square(c, grid)->feat;
-    /* A mini-hack - assumes exactly 1 key door for now*/
-    return f_info[feat].key;
 }
 
 /**

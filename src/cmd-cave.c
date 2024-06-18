@@ -1351,8 +1351,17 @@ static bool do_cmd_bash_test(struct loc grid)
 		return false;
 	}
 
+    /* Require it to be bashable */
+    if (square_isdoor(cave, grid) && !square_issecretdoor(cave, grid)
+        && !square_isbashabledoor(cave, grid)) {
+		/* Message */
+		msg("That door cannot be bashed.");
+
+		/* Nope */
+		return false;        
+    }
 	/* Require a door */
-	if (!square_iscloseddoor(cave, grid) || square_issecretdoor(cave, grid)) {
+	if (!square_isdoor(cave, grid) || square_issecretdoor(cave, grid)) {
 		/* Message */
 		msg("You see no door there to bash.");
 
@@ -1768,14 +1777,13 @@ void move_player(int dir, bool disarm)
 	bool trap = square_isdisarmabletrap(cave, grid);
 	bool door = square_iscloseddoor(cave, grid) &&
 		!square_issecretdoor(cave, grid);
-    bool orthancdoor = square_isorthancdoor(cave, grid);
 	bool confused = player->timed[TMD_CONFUSED] > 0;
 
 	/* Many things can happen on movement */
 	if (mon && monster_is_visible(mon)) {
 		/* Attack visible monsters */
 		py_attack(player, grid, ATT_MAIN);
-	} else if (((trap && disarm) || door || orthancdoor) && square_isknown(cave, grid)) {
+	} else if (((trap && disarm) || door) && square_isknown(cave, grid)) {
 		/* Auto-repeat if not already repeating */
 		if (cmd_get_nrepeats() == 0)
 			cmd_set_repeat(99);

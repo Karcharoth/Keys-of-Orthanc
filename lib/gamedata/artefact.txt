@@ -733,7 +733,8 @@ defence:0:0d0:0
 flags:INDESTRUCTIBLE | NO_RANDOM
 desc:The keyring holding access to Orthanc itself, this black
 desc: loop of metal bears two great keys. To open the door of Orthanc,
-desc: wield it and use (/).
+desc: wield it and use the 'open' command (which is 'o'
+desc: by default).
 
 
 ## The Ring of Saruman

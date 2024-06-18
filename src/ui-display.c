@@ -2520,7 +2520,7 @@ static void see_floor_items(game_event_type type, game_event_data *data,
 		/* Special explanation the first time you step over the crown */
 		if (obj->artifact && streq(obj->artifact->name, "of Orthanc") &&
 			!player->crown_hint) {
-			msg("To open the door of Orthanc, wield it and use (/).");
+			msg("To open the door of Orthanc, wield it and use the 'open' command (which is 'o' by default).");
 			player->crown_hint = true;
 		}
 	} else {

@@ -358,7 +358,7 @@ walk-msg:The Door of Orthanc bars your way.
 run-msg:The Door of Orthanc bars your way.
 look-prefix:the
 desc:The final door, past which lie the stairs of Orthanc itself! To open it,
-desc: wield the Keys of Orthanc and use the 'interact' command (which is '/'
+desc: wield the Keys of Orthanc and use the 'open' command (which is 'o'
 desc: by default).
 
 name:Open Door of Orthanc
@@ -368,7 +368,9 @@ key:& Great Keyring~
 priority:20
 flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
 look-prefix:the
-desc:The final door, past which lie the stairs of Orthanc itself!
+desc:The final door, past which lie the stairs of Orthanc itself! To close it,
+desc: wield the Keys of Orthanc and use the 'close' command (which is 'c'
+desc: by default).
 
 name:Gates of Isengard
 graphics:+:s

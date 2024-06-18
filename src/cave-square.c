@@ -288,7 +288,7 @@ bool square_issecretdoor(struct chunk *c, struct loc grid)
  */
 bool square_isopendoor(struct chunk *c, struct loc grid)
 {
-    return (tf_has(f_info[square(c, grid)->feat].flags, TF_CLOSABLE));
+    return (f_info[square(c, grid)->feat].close);
 }
 
 /**
@@ -297,15 +297,14 @@ bool square_isopendoor(struct chunk *c, struct loc grid)
 bool square_iscloseddoor(struct chunk *c, struct loc grid)
 {
 	int feat = square(c, grid)->feat;
-	return tf_has(f_info[feat].flags, TF_DOOR_CLOSED);
+	return (f_info[square(c, grid)->feat].open);
 }
 
 bool square_isbrokendoor(struct chunk *c, struct loc grid)
 {
 	int feat = square(c, grid)->feat;
     return (tf_has(f_info[feat].flags, TF_DOOR_ANY) &&
-			tf_has(f_info[feat].flags, TF_PASSABLE) &&
-			!tf_has(f_info[feat].flags, TF_CLOSABLE));
+			f_info[square(c, grid)->feat].mend);
 }
 
 /**

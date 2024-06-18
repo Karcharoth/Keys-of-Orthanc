@@ -747,13 +747,10 @@ void do_cmd_exchange(struct command *cmd)
 		/* No monster, or invisible */
 		msg("You cannot see a monster there to exchange places with.");
 		return;
-<<<<<<< HEAD
-=======
 	} else if (square_isrubble(cave, grid)) {
 		/* Rubble */
 		msg("You cannot enter the rubble.");
 		return;
->>>>>>> 464eed68f... Restructure some tests using iscloseddoor, iswall, and isdisarmabletrap
 	} else if (square_isrock(cave, grid)) {
 		/* Wall */
 		msg("You cannot enter the wall.");
@@ -1575,11 +1572,7 @@ static void do_cmd_alter_aux(int dir)
 	} else if (square_iscloseddoor(cave, grid)) {
 		/* Bash closed doors */
 		more = do_cmd_bash_aux(grid);
-<<<<<<< HEAD
-    } else if (square_isdisarmabletrap(cave, grid)) {
-=======
 	} else if (square_isdisarmabletrap(cave, grid) || square_iswarded(cave, grid)) {
->>>>>>> 464eed68f... Restructure some tests using iscloseddoor, iswall, and isdisarmabletrap
 		/* Disarm traps */
 		more = do_cmd_disarm_aux(grid);
 	} else if (o_chest_trapped) {
@@ -2064,15 +2057,7 @@ static bool do_cmd_walk_test(struct loc grid)
 
 			/* Store the action type */
 			player->previous_action[0] = ACTION_MISC;
-<<<<<<< HEAD
-		} else if (square_iscloseddoor(cave, grid) || 
-                    square_isorthancdoor(cave, grid)) {
-			/* Door */
-			return true;
-		} else {
-=======
 		} else if (square_isrock(cave, grid)) {
->>>>>>> 464eed68f... Restructure some tests using iscloseddoor, iswall, and isdisarmabletrap
 			/* Wall */
 			msgt(MSG_HITWALL, "There is a wall in the way!");
 

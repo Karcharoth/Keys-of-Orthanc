@@ -87,7 +87,7 @@ name:open door
 graphics:':U
 close:closed door
 priority:15
-flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | CLOSABLE | EASY
+flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
 look-in-preposition:in
 desc:A door that is already open.  Player, monster, spell and missile can pass
 desc: through as long as it stays open.
@@ -364,7 +364,7 @@ graphics:':D
 close:Door of Orthanc
 key:Keys
 priority:20
-flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY | CLOSABLE
+flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
 look-prefix:the
 desc:The final door, past which lie the stairs of Orthanc itself!
 

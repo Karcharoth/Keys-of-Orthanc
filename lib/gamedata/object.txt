@@ -1813,7 +1813,7 @@ dice:100
 msg:It tastes numbing.
 desc: A favorite brew of the orcs.
 
-name:& Sip of Sour Whiskey
+name:& Sip~ of Sour Whiskey
 graphics:,:m
 type:food
 depth:5

@@ -610,7 +610,7 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
 									msg("The force of your blow damages his belt, and the Keys swing precariously.");
 									p->saruman_hits++;
 								} else if (player->saruman_hits == 1) {
-									drop_the_keys(mon, "You strike the keys off his belt, and they falls to the ground nearby.", false);
+									drop_the_keys(mon, "You strike the Keys off his belt, and they fall to the ground nearby.", false);
 									p->saruman_hits++;
 								}
 							}
@@ -1393,7 +1393,7 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 									msg("The force of your %s damages his belt, and the Keys swing precariously.", archery ? "shot" : "blow");
 									p->saruman_hits++;
 								} else if (player->saruman_hits == 1) {
-									drop_the_keys(mon, "You strike the keys off his belt, and they falls to the ground nearby.", false);
+									drop_the_keys(mon, "You strike the Keys off his belt, and they fall to the ground nearby.", false);
 									p->saruman_hits++;
 								}
 							}

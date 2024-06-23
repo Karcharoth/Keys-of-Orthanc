@@ -484,7 +484,7 @@ void do_cmd_burglary(struct command *cmd)
     /* We made it! */
     mon->times_robbed++;
     /* Now for the actual roll... */
-    if (skill_check(source_player(), p_stealth, rob_difficulty, source_monster(mon->midx))) {
+    if (skill_check(source_player(), p_stealth, rob_difficulty, source_monster(mon->midx)) > 0) {
         /* Steal Saruman's Keys! And make some noise...*/
         if(mon->race == lookup_monster("Saruman of Many Colours") && !is_artifact_created(keys)) {
             drop_the_keys(mon, "You pilfer the keys from Saruman's belt, and they clank of their own accord.", true);

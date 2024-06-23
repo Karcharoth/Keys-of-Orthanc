@@ -1585,48 +1585,47 @@ static void search_square(struct player *p, struct loc grid, int dist,
 	    monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
         if (player_active_ability(p, "Eye for Treasure") && !mon->eyed_for_treasure) {
             /* Picky: see the monster and the ground: */
-                if (square_isseen(cave, grid) && monster_is_visible(mon)) {
-                    /* All conditions fulfilled - check for treasure! */
+            if (square_isseen(cave, grid) && monster_is_visible(mon)) {
+                /* All conditions fulfilled - check for treasure! */
 
-                    /* Determine the base score */
-                    score = p->state.skill_use[SKILL_PERCEPTION];
+                /* Determine the base score */
+                score = p->state.skill_use[SKILL_PERCEPTION];
 
-		            /* If using the search command give a score bonus */
-		            if (searching) score += 5;
-            
-                    /* Add bane bonus */
-                    score += player_bane_bonus(player, mon);
+	            /* If using the search command give a score bonus */
+	            if (searching) score += 5;
+           
+                /* Add bane bonus */
+                score += player_bane_bonus(player, mon);
 
-                    /* Determine the base difficulty */
-                    difficulty = monster_skill(mon, SKILL_STEALTH);
+                /* Determine the base difficulty */
+                difficulty = monster_skill(mon, SKILL_STEALTH);
 
-		            /* Penalise distance */
-		            if (dist < 1) {
-			            /* No bonus for searching on your own square */
-		                difficulty += 0;
-		            }
-                    else {
-		                difficulty += 5 * (dist - 1);
-                    }
-                
-                    if (p->timed[TMD_CONFUSED]) {
-			            /* Confused */
-			            difficulty += 5;
-		            }
-
-		            /* Sometimes, notice things */
-		            if (skill_check(source_player(), score, difficulty, source_monster(mon->midx)) > 0){
-
-                        /* To turn eyed_for_treasure on, it doesn't actually need to have treasure */
-                        mon->eyed_for_treasure = true;
-                        /* However, we don't tell the player anything unless it does have treasure */
-                        if (mon->total_loot>0) {  
-                            msg("You see %s hiding treasure.", m_name);
-				            disturb(p, false);
-                        }
-                    }
-                    
+                /* Penalise distance */
+	            if (dist < 1) {
+		            /* No bonus for searching on your own square */
+	                difficulty += 0;
+	            }
+                else {
+	                difficulty += 5 * (dist - 1);
                 }
+                
+                if (p->timed[TMD_CONFUSED]) {
+    	            /* Confused */
+		            difficulty += 5;
+	            }
+
+	            /* Sometimes, notice things */
+	            if (skill_check(source_player(), score, difficulty, source_monster(mon->midx)) > 0)
+                {
+                    /* To turn eyed_for_treasure on, it doesn't actually need to have treasure */
+                    mon->eyed_for_treasure = true;
+                    /* However, we don't tell the player anything unless it does have treasure */
+                    if (mon->total_loot>0) {  
+                        msg("You see %s hiding treasure.", m_name);
+    		            disturb(p, false);
+                    }
+                }
+            }
         }
     }
 }

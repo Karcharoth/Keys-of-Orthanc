@@ -36,6 +36,7 @@
  * - number of monsters;
  * - monster name (truncated, if needed to fit the line);
  * - whether or not the monster is alert (and how many if in a group);
+ * - whether or not the monster has treasure (and how many if in a group);
  * - monster distance from the player (aligned to the right side of the list).
  * By passing in a NULL textblock, the maximum line width of the section can be
  * found.
@@ -97,12 +98,14 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 
 	for (index = 0; index < total && line_count < lines_to_display; index++) {
 		char alert[20] = { '\0' };
+		char treasure[20] = { '\0' };
 		char location[20] = { '\0' };
 		int line_attr;
 		size_t full_width;
 		size_t name_width;
 		uint16_t count_in_section = 0;
 		uint16_t alert_in_section = 0;
+		uint16_t treasure_in_section = 0;
 
 		line_buffer[0] = '\0';
 
@@ -125,6 +128,7 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 		full_width = max_width - 2 - utf8_strlen(location) - 1;
 
 		alert_in_section = list->entries[index].alert[section];
+		treasure_in_section = list->entries[index].treasure[section];
 		count_in_section = list->entries[index].count[section];
 
 		if (alert_in_section > 0 && count_in_section > 1)
@@ -132,13 +136,19 @@ static void monster_list_format_section(const monster_list_t *list, textblock *t
 		else if (alert_in_section == 1 && count_in_section == 1)
 			strnfmt(alert, sizeof(alert), " (alert)");
 
+		if (treasure_in_section > 0 && count_in_section > 1)
+			strnfmt(treasure, sizeof(treasure), " (%d treasure)", treasure_in_section);
+		else if (treasure_in_section == 1 && count_in_section == 1)
+			strnfmt(treasure, sizeof(treasure), " (treasure)");
+
 		/* Clip the monster name to fit, and append the sleep tag. */
-		name_width = MIN(full_width - utf8_strlen(alert), sizeof(line_buffer));
+		name_width = MIN(full_width - utf8_strlen(alert) - utf8_strlen(treasure), sizeof(line_buffer));
 		get_mon_name(line_buffer, sizeof(line_buffer),
 					 list->entries[index].race,
 					 list->entries[index].count[section]);
 		utf8_clipto(line_buffer, name_width);
 		my_strcat(line_buffer, alert, sizeof(line_buffer));
+		my_strcat(line_buffer, treasure, sizeof(line_buffer));
 
 		/* Calculate the width of the line for dynamic sizing; use a fixed max
 		 * width for location and monster char. */

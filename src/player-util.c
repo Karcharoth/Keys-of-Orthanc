@@ -1578,13 +1578,13 @@ static void search_square(struct player *p, struct loc grid, int dist,
 			}
 		}
 	}
-    /* If there's a monster with loot and we have the skill... */
+    /* If there's a monster and we have the skill... */
     if (square_monster(cave, grid)) {
 
         mon = square_monster(cave, grid);
 	    monster_desc(m_name, sizeof(m_name), mon, MDESC_TARG);
         if (player_active_ability(p, "Eye for Treasure") && !mon->eyed_for_treasure) {
-            if (mon->total_loot>0) {  /* Picky: see the monster and the ground: */
+            /* Picky: see the monster and the ground: */
                 if (square_isseen(cave, grid) && monster_is_visible(mon)) {
                     /* All conditions fulfilled - check for treasure! */
 
@@ -1616,13 +1616,17 @@ static void search_square(struct player *p, struct loc grid, int dist,
 
 		            /* Sometimes, notice things */
 		            if (skill_check(source_player(), score, difficulty, source_monster(mon->midx)) > 0){
+
+                        /* To turn eyed_for_treasure on, it doesn't actually need to have treasure */
                         mon->eyed_for_treasure = true;
-                        msg("You see %s hiding treasure.", m_name);
-				        disturb(p, false);
+                        /* However, we don't tell the player anything unless it does have treasure */
+                        if (mon->total_loot>0) {  
+                            msg("You see %s hiding treasure.", m_name);
+				            disturb(p, false);
+                        }
                     }
                     
                 }
-            }
         }
     }
 }

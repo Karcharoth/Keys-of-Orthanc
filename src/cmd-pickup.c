@@ -510,6 +510,12 @@ void do_cmd_burglary(struct command *cmd)
         } else {
             msg("You don't find any treasure on %s.", m_name);
         }
+
+        /* No matter what, notice if it has anything more. */
+        mon->eyed_for_treasure = true;
+        if (mon->total_loot) {
+            msg("You notice %s has some more treasure.", m_name);
+        }
     } else {
         msg("You don't find any treasure on %s.", m_name);
     }

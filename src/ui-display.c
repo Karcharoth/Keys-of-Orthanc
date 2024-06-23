@@ -402,6 +402,8 @@ static int prt_health_aux(int row, int col)
 	char buf[20];
 	int len = 0;
 	uint8_t attr = COLOUR_L_DARK;
+    bool treasure_line = 0;
+	const struct artifact *keys = lookup_artifact_name("of Orthanc");
 
 	/* Not tracking */
 	if (!mon) {
@@ -420,6 +422,8 @@ static int prt_health_aux(int row, int col)
 		Term_putstr(col, row, 12, attr, "  --------  ");
 		/* Erase the morale bar */
 		Term_erase(col, row + 1, 12);
+		/* Erase the treasure bar */
+		Term_erase(col, row + 2, 12);
 		return 12;
 	}
 
@@ -488,6 +492,32 @@ static int prt_health_aux(int row, int col)
 
 	Term_putstr(col, row + 1, 12, COLOUR_DARK, "            ");
 	Term_putstr(col + (13 - len) / 2, row + 1, MIN(len, 12), attr, buf);
+
+
+	/* Show the treasure/robbed bar */
+	Term_erase(col, row + 2, 12);
+    if (mon->race == lookup_monster("Saruman of Many Colours") && !is_artifact_created(keys)) {
+		my_strcpy(buf, "Keys", sizeof(buf));
+		attr = COLOUR_PURPLE;
+		len = strlen(buf);
+        treasure_line = 1;
+	} else if (mon->eyed_for_treasure && mon->total_loot) {
+		my_strcpy(buf, "Treasure", sizeof(buf));
+		attr = COLOUR_YELLOW;
+		len = strlen(buf);
+        treasure_line = 1;
+    } else if (mon->times_robbed && !mon->total_loot && mon->eyed_for_treasure) {
+		my_strcpy(buf, "Robbed", sizeof(buf));
+		attr = COLOUR_RED;
+		len = strlen(buf);
+        treasure_line = 1;
+    }
+    
+    if (treasure_line) {
+    	Term_putstr(col, row + 2, 12, COLOUR_DARK, "            ");
+	    Term_putstr(col + (13 - len) / 2, row + 2, MIN(len, 12), attr, buf);
+    }
+
 
 	return 12;
 }

@@ -194,6 +194,9 @@ void monster_list_collect(monster_list_t *list)
 		if (mon->alertness >= ALERTNESS_ALERT)
 			entry->alert[field]++;
 
+		if (mon->eyed_for_treasure && mon->total_loot)
+			entry->treasure[field]++;
+
 		/* Store the location offset from the player; this is only used for
 		 * monster counts of 1 */
 		entry->dx[field] = mon->grid.x - player->grid.x;

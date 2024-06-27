@@ -255,9 +255,9 @@ void player_pickup_item(struct player *p, struct object *obj, bool menu)
 
 	/* We're given an object - pick it up */
 	if (obj) {
+		mem_free(floor_list);
         if (inven_carry_num(p, obj)) {
 		    player_pickup_aux(p, obj, 0, domsg);
-		    mem_free(floor_list);
 		    return;
         }
 	}

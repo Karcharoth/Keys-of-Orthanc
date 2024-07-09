@@ -104,11 +104,17 @@ static void do_cmd_go_up_aux(void)
 	int change = square_isshaft(cave, player->grid) ? -2 : -1;
 
 	/* Verify stairs */
-	if (!square_isupstairs(cave, player->grid)) {
+	if (!square_isupstairs(cave, player->grid) && !square_isvictory(cave, player->grid)) {
 		msg("You see no up staircase here.");
 		return;
 	}
 
+    /* If it's the door of orthanc, win: */
+    if (square_isvictory(cave, player->grid)) {
+        do_cmd_escape();
+        return;
+    }    
+    
 	/* Special handling for the tutorial */
 	if (in_tutorial()) {
 		player->upkeep->energy_use = z_info->move_energy;

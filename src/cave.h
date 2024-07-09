@@ -352,6 +352,7 @@ bool square_isstairs(struct chunk *c, struct loc grid);
 bool square_isupstairs(struct chunk *c, struct loc grid);
 bool square_isdownstairs(struct chunk *c, struct loc grid);
 bool square_isshaft(struct chunk *c, struct loc grid);
+bool square_isvictory(struct chunk *c, struct loc grid);
 bool square_isforge(struct chunk *c, struct loc grid);
 bool square_isplayer(struct chunk *c, struct loc grid);
 bool square_isoccupied(struct chunk *c, struct loc grid);

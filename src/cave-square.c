@@ -377,6 +377,15 @@ bool square_isshaft(struct chunk *c, struct loc grid)
 }
 
 /**
+ * True is square is the Open Door of Orthanc
+ */
+bool square_isvictory(struct chunk *c, struct loc grid)
+{
+	int feat = square(c, grid)->feat;
+	return tf_has(f_info[feat].flags, TF_VICTORY);
+}
+
+/**
  * True if the square is a forge.
  */
 bool square_isforge(struct chunk *c, struct loc grid)

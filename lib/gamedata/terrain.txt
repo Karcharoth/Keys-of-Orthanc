@@ -362,11 +362,11 @@ desc: wield the Keys of Orthanc and use the 'open' command (which is 'o'
 desc: by default).
 
 name:Open Door of Orthanc
-graphics:':D
+graphics:<:D
 close:Door of Orthanc
 key:& Great Keyring~
 priority:20
-flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | EASY
+flags:LOS | PROJECT | PASSABLE | DOOR_ANY | INTERESTING | VICTORY | EASY
 look-prefix:the
 desc:The final door, past which lie the stairs of Orthanc itself! To close it,
 desc: wield the Keys of Orthanc and use the 'close' command (which is 'c'

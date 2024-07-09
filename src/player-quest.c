@@ -102,10 +102,9 @@ int keys_possessed(struct player *p)
 	struct object *obj;
 
 	for (obj = p->gear; obj; obj = obj->next) {
-		if (obj->artifact && streq(obj->artifact->name, "of Orthanc")) {
-			keys += obj->pval;
+		if (streq(obj->kind->name, "& Great Keyring~")) {
+			keys += 1;
 		}
 	}
-
 	return keys;
 }

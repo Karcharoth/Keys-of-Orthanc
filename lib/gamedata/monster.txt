@@ -305,6 +305,28 @@ desc:He is one of Saruman's slaves from the mountains.
 desc: The miserable creature tries to stay away from you and
 desc: attract attention. He has a crude knife.
 
+# Index 14
+name:Chittering horror
+base:horror
+depth:1
+rarity:20
+color:U
+speed:3
+health:1d4
+sleep:12
+percept:7
+stealth:5
+will:0
+prot:8
+blow:BITE:WOUND:7:1d2
+blow:CRAWL:POISON:4:2d4
+flags:TERRITORIAL | COWARD_AI | FRIEND | INVISIBLE
+flags: EXCHANGE | NO_FEAR | PASS_DOOR
+desc:Little beasts abound in the cracks of Isengard - or at least,
+desc: they did until Saruman made something that could beat them.
+desc: It is swift, still and silent as the night...
+desc: but it is very, very small.
+
 
 ##### 2 #####
 # Index 21

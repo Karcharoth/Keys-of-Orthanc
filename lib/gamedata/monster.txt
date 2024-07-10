@@ -324,7 +324,7 @@ flags:TERRITORIAL | COWARD_AI | FRIEND | INVISIBLE
 flags: EXCHANGE | NO_FEAR | PASS_DOOR
 desc:Little beasts abound in the cracks of Isengard - or at least,
 desc: they did until Saruman made something that could beat them.
-desc: It is swift, still and silent as the night...
+desc: It is swift and silent as the night...
 desc: but it is very, very small.
 
 

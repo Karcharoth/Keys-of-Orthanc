@@ -677,7 +677,7 @@ void update_mon(struct monster *mon, struct chunk *c, bool full)
 			if (square_isseen(c, mon->grid)) {
 				/* Handle invisibility */
 				if (monster_is_invisible(mon)) {
-					int difficulty = monster_skill(mon, SKILL_WILL) +
+					int difficulty = monster_skill(mon, SKILL_STEALTH) +
 						(2 * distance(player->grid, mon->grid)) -
 						10 * player->state.flags[OF_SEE_INVIS];
 

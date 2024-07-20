@@ -237,7 +237,7 @@ static void do_cmd_go_down_aux(void)
 
 	/* Do not descend from the Gates */
 	if (player->depth == 0) {
-		msg("You have made it to the very gates of Angband and can once more taste the freshness on the air.");
+		msg("You have made it to the very surface of Isengard and can once more taste the freshness on the air.");
 		msg("You will not re-enter that fell pit.");
 		return;
 	}

@@ -323,16 +323,12 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 	const char *t;
 	bool flip_v = false;
 	bool flip_h = false;
-
+    printf("E\n");
 	assert(c);
-
+    printf("F\n");
 	/* Check that the vault doesn't contain invalid things for its depth */
 	for (t = data, y = 0; y < v->hgt; y++) {	
 		for (x = 0; x < v->wid; x++, t++) {
-			/* Barrow wights can't be deeper than level 12 */
-			if ((*t == 'W') && (c->depth > 12)) {
-				return false;
-			}
 
             /* Chasms can't occur at 950 ft */
 			if ((*t == '7') && (c->depth >= z_info->dun_depth - 1)) {
@@ -340,7 +336,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 			}
 		}
 	}
-
+    printf("G\n");
     /* Reflections */
     if ((c->depth > 0) && (c->depth < z_info->dun_depth)) {
         /* Reflect it vertically half the time */
@@ -348,14 +344,14 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 		/* Reflect it horizontally half the time */
         if (one_in_(2)) flip_h = true;
     }
-
+    printf("H\n");
 	/* Place dungeon features and objects */
 	for (t = data, y = 0; y < v->hgt && *t; y++) {
 		int ay = flip_v ? v->hgt - 1 - y : y;
 		for (x = 0; x < v->wid && *t; x++, t++) {
 			int ax = flip_h ? v->wid - 1 - x : x;
 			struct loc grid;
-
+    printf("I\n");
 			/* Extract the location, flipping diagonally if requested */
             if (flip) {
                 grid.x = centre.x - (v->hgt / 2) + ay;
@@ -367,7 +363,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 
 			/* Skip non-grids */
 			if (*t == ' ') continue;
-
+    printf("J\n");
 			/* Lay down a floor */
             /* Some vaults have.... a lot of mud */
             if (roomf_has(v->flags, ROOMF_MUDDY) && one_in_(2)) {
@@ -380,7 +376,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 			/* Part of a vault */
 			sqinfo_on(square(c, grid)->info, SQUARE_ROOM);
 			sqinfo_on(square(c, grid)->info, SQUARE_VAULT);
-
+    printf("K\n");
 			/* Analyze the grid */
 			switch (*t) {
 				/* Outer outside granite wall */
@@ -431,7 +427,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 		}
 	}
 
-
+    printf("L\n");
 	/* Place regular dungeon monsters and objects */
 	for (t = data, y = 0; y < v->hgt && *t; y++) {
 		int ay = flip_v ? v->hgt - 1 - y : y;
@@ -568,30 +564,61 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 									  false, true, info, ORIGIN_DROP_VAULT);
                     break;
                 }
+
+                /* Orc Warg-Rider */
+                case 'w': {
+					place_new_monster_one(c, grid,
+									  lookup_monster("Orc warg-rider"),
+									  false, true, info, ORIGIN_DROP_VAULT);
+                    break;
+                }
+
                 
-                /* Thorn - currently broken*/
+                /* Thorn, any kind */
 				case '&': {
 					place_monster_by_letter(c, grid, '&', true,
 											c->depth + rand_range(1, 4));
 					break;
 				}
 
-
-
-				/* young fire drake */
-				case 'Y': {
+                /* Chittering Horror */
+                case 'Z': {
 					place_new_monster_one(c, grid,
-									  lookup_monster("Helm Hammerhand"),
+									  lookup_monster("Chittering Horror"),
 									  true, false, info, ORIGIN_DROP_VAULT);
 					break;
-				}
+                }                    
 									
-				/* Vampire */
-				case 'U': {
-					place_monster_by_letter(c, grid, 'v', true,
+				/* Orc */
+				case 'o': {
+					place_monster_by_letter(c, grid, 'o', true,
+					                        c->depth + rand_range(1, 4));
+					break;
+				}
+
+				/* Goblin */
+				case 'g': {
+					place_monster_by_letter(c, grid, 'g', true,
 											c->depth + rand_range(1, 4));
 					break;
 				}
+
+				/* Siege weapon */
+				case 'W': {
+					if (one_in_(3)) {
+                        place_new_monster_one(c, grid, lookup_monster("Battering ram"),
+										      true, true, info, ORIGIN_DROP_VAULT);
+					} else if (one_in_(2)) {
+                        place_new_monster_one(c, grid, lookup_monster("Siege tower"),
+										      true, true, info, ORIGIN_DROP_VAULT);
+					} else {
+                        place_new_monster_one(c, grid, lookup_monster("Catapult"),
+										      true, true, info, ORIGIN_DROP_VAULT);
+                    }
+
+					break;
+				}
+
 
                 /* Archer */
 				case 'a': {
@@ -599,6 +626,88 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 										  c->depth + 1, true);
 					break;
 				}
+
+                /* Orc Smith, or Gorol the Smith */
+				case 'M': {
+					if (one_in_(11)) {
+                        place_new_monster_one(c, grid,
+									        lookup_monster("Gorol, the Smith"),
+									        true, true, info, ORIGIN_DROP_VAULT);
+                    }
+
+                    else {	place_new_monster_one(c, grid,
+									  lookup_monster("Orc smith"),
+									  true, true, info, ORIGIN_DROP_VAULT);
+                    }
+					break;
+				}
+
+                /* Hardcoded random man, independent of depth - for surface level. */
+				case '@': {
+					if (one_in_(100)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Sar, the Weary"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(100)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Freca, the Scarred"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(100)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Ugluk, Uruk-Leader"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(50)) {
+                        place_new_monster_one(c, grid,
+									        lookup_monster("Appledore"),
+									        true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(50)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Grima Wormtongue"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(30)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Dunlending chieftain"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(30)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Dunlending sorcerer"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(30)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Uruk-hai captain"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+
+                    } else if (one_in_(20)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Half-orc spy"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(20)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Dunlending slayer"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(20)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Uruk-hai champion"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+
+                    } else if (one_in_(5)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Uruk-hai warrior"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else if (one_in_(3)) {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Dunlending archer"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    } else {
+                        place_new_monster_one(c, grid,
+									          lookup_monster("Dunlending warrior"),
+									          true, true, info, ORIGIN_DROP_VAULT);
+                    }
+
+					break;
+				}
+
+
 
                 /* Wolf */
 				case 'C': {
@@ -636,14 +745,14 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 
 		}
 	}
-
+    printf("M\n");
 	for (t = data, y = 0; y < v->hgt && *t; y++) {
 		int ay = flip_v ? v->hgt - 1 - y : y;
 		for (x = 0; x < v->wid && *t; x++, t++) {
 			int ax = flip_h ? v->wid - 1 - x : x;
 			struct loc grid;
 			int mult;
-
+    printf("N\n");
 			/* Extract the location, flipping diagonally if requested */
             if (flip) {
                 grid.x = centre.x - (v->hgt / 2) + ay;
@@ -682,7 +791,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
             }
         }
     }
-
+    printf("O\n");
 	return true;
 }
 
@@ -1029,6 +1138,7 @@ bool build_greater_vault(struct chunk *c, struct loc centre)
  */
 bool build_throne(struct chunk *c, struct loc centre)
 {
+    printf("A\n");
 	int y1, x1, y2, x2;
 	struct vault *v = random_vault(c->depth, "Throne room", false);
 	if (v == NULL) {
@@ -1041,16 +1151,16 @@ bool build_throne(struct chunk *c, struct loc centre)
 	x1 = centre.x - (v->wid / 2);
 	y2 = y1 + v->hgt - 1;
 	x2 = x1 + v->wid - 1;
-
+    printf("B\n");
 	/* Build the vault */
 	if (!build_vault(c, centre, v, false)) {
 		return false;
 	}
-
+    printf("C\n");
 	/* Memorise and mark */
 	generate_mark(c, y1, x1, y2, x2, SQUARE_G_VAULT);
 	c->vault_name = string_make(v->name);
-
+    printf("D\n");
 	return true;
 }
 

@@ -1253,7 +1253,7 @@ desc: warrior who broke his oath.
 ##### 9 #####
 
 # Index 91
-name:Siege Tower
+name:Siege tower
 base:building
 depth:9
 rarity:15

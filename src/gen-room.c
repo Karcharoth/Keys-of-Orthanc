@@ -323,9 +323,9 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 	const char *t;
 	bool flip_v = false;
 	bool flip_h = false;
-    printf("E\n");
+
 	assert(c);
-    printf("F\n");
+
 	/* Check that the vault doesn't contain invalid things for its depth */
 	for (t = data, y = 0; y < v->hgt; y++) {	
 		for (x = 0; x < v->wid; x++, t++) {
@@ -336,7 +336,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 			}
 		}
 	}
-    printf("G\n");
+
     /* Reflections */
     if ((c->depth > 0) && (c->depth < z_info->dun_depth)) {
         /* Reflect it vertically half the time */
@@ -344,14 +344,14 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 		/* Reflect it horizontally half the time */
         if (one_in_(2)) flip_h = true;
     }
-    printf("H\n");
+
 	/* Place dungeon features and objects */
 	for (t = data, y = 0; y < v->hgt && *t; y++) {
 		int ay = flip_v ? v->hgt - 1 - y : y;
 		for (x = 0; x < v->wid && *t; x++, t++) {
 			int ax = flip_h ? v->wid - 1 - x : x;
 			struct loc grid;
-    printf("I\n");
+
 			/* Extract the location, flipping diagonally if requested */
             if (flip) {
                 grid.x = centre.x - (v->hgt / 2) + ay;
@@ -363,21 +363,20 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 
 			/* Skip non-grids */
 			if (*t == ' ') continue;
-    printf("J\n");
+
 			/* Lay down a floor */
             /* Some vaults have.... a lot of mud */
             if (roomf_has(v->flags, ROOMF_MUDDY) && one_in_(2)) {
-    printf("X\n");
                     square_set_feat(c, grid, FEAT_MUD);
-            } else {    printf("Y\n"); square_set_feat(c, grid, FEAT_FLOOR);     printf("E\n");}
-    printf("Z\n");
+            } else square_set_feat(c, grid, FEAT_FLOOR);
+
 			/* Debugging assertion */
 			assert(square_isempty(c, grid));
 
 			/* Part of a vault */
 			sqinfo_on(square(c, grid)->info, SQUARE_ROOM);
 			sqinfo_on(square(c, grid)->info, SQUARE_VAULT);
-    printf("K\n");
+
 			/* Analyze the grid */
 			switch (*t) {
 				/* Outer outside granite wall */
@@ -428,16 +427,16 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 		}
 	}
 
-    printf("L\n");
+
 	/* Place regular dungeon monsters and objects */
 	for (t = data, y = 0; y < v->hgt && *t; y++) {
-    printf("M\n");
+
 		int ay = flip_v ? v->hgt - 1 - y : y;
 		for (x = 0; x < v->wid && *t; x++, t++) {
 			int ax = flip_h ? v->wid - 1 - x : x;
 			struct loc grid;
 			struct monster_group_info info = { 0, 0 };
-    printf("N\n");
+
 			/* Extract the location, flipping diagonally if requested */
             if (flip) {
                 grid.x = centre.x - (v->hgt / 2) + ay;
@@ -446,11 +445,10 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				grid.x = centre.x - (v->wid / 2) + ax;
 				grid.y = centre.y - (v->hgt / 2) + ay;
 			}
-    printf("O\n");
+
 			/* Hack -- skip "non-grids" */
 			if (*t == ' ') continue;
-    printf("X\n");
-    printf("sym is %s\n", t);
+
 			/* Analyze the symbol */
 			switch (*t)
 			{
@@ -761,19 +759,18 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 										  ORIGIN_DROP_VAULT);
 					break;
 				}
-    printf("P\n");
 			}
 
 		}
 	}
-    printf("Q\n");
+
 	for (t = data, y = 0; y < v->hgt && *t; y++) {
 		int ay = flip_v ? v->hgt - 1 - y : y;
 		for (x = 0; x < v->wid && *t; x++, t++) {
 			int ax = flip_h ? v->wid - 1 - x : x;
 			struct loc grid;
 			int mult;
-    printf("N\n");
+
 			/* Extract the location, flipping diagonally if requested */
             if (flip) {
                 grid.x = centre.x - (v->hgt / 2) + ay;
@@ -812,7 +809,7 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
             }
         }
     }
-    printf("O\n");
+
 	return true;
 }
 
@@ -1159,7 +1156,7 @@ bool build_greater_vault(struct chunk *c, struct loc centre)
  */
 bool build_throne(struct chunk *c, struct loc centre)
 {
-    printf("A\n");
+
 	int y1, x1, y2, x2;
 	struct vault *v = random_vault(c->depth, "Throne room", false);
 	if (v == NULL) {
@@ -1172,16 +1169,16 @@ bool build_throne(struct chunk *c, struct loc centre)
 	x1 = centre.x - (v->wid / 2);
 	y2 = y1 + v->hgt - 1;
 	x2 = x1 + v->wid - 1;
-    printf("B\n");
+
 	/* Build the vault */
 	if (!build_vault(c, centre, v, false)) {
 		return false;
 	}
-    printf("C\n");
+
 	/* Memorise and mark */
 	generate_mark(c, y1, x1, y2, x2, SQUARE_G_VAULT);
 	c->vault_name = string_make(v->name);
-    printf("D\n");
+
 	return true;
 }
 

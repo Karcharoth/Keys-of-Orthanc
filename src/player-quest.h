@@ -22,6 +22,8 @@
 /* Functions */
 void drop_the_keys(struct monster *mon, const char *message, bool burglary);
 int keys_possessed(struct player *p);
-
+void break_truce(struct player *p, bool obvious);
+void check_truce(struct player *p);
+void wake_all_monsters(struct player *p);
 
 #endif /* QUEST_H */

@@ -108,3 +108,121 @@ int keys_possessed(struct player *p)
 	}
 	return keys;
 }
+
+
+/**
+ * Break the truce in Saruman's throne room
+ */
+void break_truce(struct player *p, bool obvious)
+{
+	int i;
+	struct monster *mon = NULL;
+	char m_name[80];
+
+	if (p->truce) {
+		/* Scan all other monsters */
+		for (i = cave_monster_max(cave) - 1; i >= 1; i--) {
+			/* Access the monster */
+			mon = cave_monster(cave, i);
+
+			/* Ignore dead monsters */
+			if (!mon->race) continue;
+
+			/* Ignore monsters out of line of sight */
+			if (!los(cave, mon->grid, p->grid)) continue;
+
+			/* Ignore unalert monsters */
+			if (mon->alertness < ALERTNESS_ALERT) continue;
+
+			/* Get the monster name (using 'something' for hidden creatures) */
+			monster_desc(m_name, sizeof(m_name), mon, MDESC_STANDARD);
+
+			p->truce = false;
+		}
+
+		if (obvious) p->truce = false;
+
+		if (!p->truce) {
+			if (!obvious) {
+				msg("%s lets out a cry! The tension is broken.", m_name);
+
+				/* Make a lot of noise */
+				cave->monster_noise.centre = mon->grid;
+				update_flow(cave, &cave->monster_noise, NULL);
+				monsters_hear(false, false, -10);
+			} else {
+				msg("The tension is broken.");
+			}
+
+			/* Scan all other monsters */
+			for (i = cave_monster_max(cave) - 1; i >= 1; i--) {
+				/* Access the monster */
+				mon = cave_monster(cave, i);
+
+				/* Ignore dead monsters */
+				if (!mon->race) continue;
+
+				/* Mark minimum desired range for recalculation */
+				mon->min_range = 0;
+			}
+		}
+	}
+}
+
+/**
+ * Check whether to break the truce in Saruman's throne room
+ */
+void check_truce(struct player *p)
+{
+	int d;
+
+	/* Check around the character */
+	for (d = 0; d < 8; d++) {
+		struct loc grid = loc_sum(p->grid, ddgrid_ddd[d]);
+		struct monster *mon = square_monster(cave, grid);
+
+		if (mon && (mon->race == lookup_monster("Saruman of Many Colours"))
+			&& (mon->alertness >= ALERTNESS_ALERT)) {
+            if (streq(p->race->name, "High Elf") || streq(p->race->name, "Grey Elf")) {
+			    msg("With a voice of injured pride, Saruman of Many Colours speaks:");
+			    msg("'You dare invade my stronghold? The Elder Days are gone, lone hero.'");
+            } else if (streq(p->race->name, "Dwarf")) {
+			    msg("With a voice of tired frustration, Saruman of Many Colours speaks:");
+			    msg("'You dare invade my stronghold? Your kind only know two languages, and it's too late for gold. Guards!'");
+            } else if (streq(p->race->name, "Hobbit")) {
+			    msg("With a voice of condescending mirth, Saruman of Many Colours speaks:");
+			    msg("'You dare invade my stronghold? Halfling, you should have stayed to guard your little Shire.'");
+            } else if (streq(p->race->name, "Man")) {
+			    msg("With a voice of ageless hubris, Saruman of Many Colours speaks:");
+			    msg("'You dare invade my stronghold? I am Man's brightest hope, and you will not bow. Die, then.'");
+            } else {
+                msg("With a voice of boiling perplexity, Saruman of Many Colours speaks:"); 
+                msg("'Player's race does not have a message for this situation; please report this bug.");
+            }
+			/* Break the truce (always) */
+			break_truce(p, true);
+			return;
+		}
+	}
+}
+
+/**
+ * Wake up all monsters, and speed up "los" monsters.
+ */
+void wake_all_monsters(struct player *p)
+{
+	int i;
+
+	/* Aggravate everyone */
+	for (i = 1; i < cave_monster_max(cave); i++) {
+		struct monster *mon = cave_monster(cave, i);
+		/* Paranoia -- Skip dead monsters */
+		if (!mon->race) continue;
+
+		/* Alert it */
+		set_alertness(mon, MAX(mon->alertness, ALERTNESS_VERY_ALERT));
+
+		/* Possibly update the monster health bar*/
+		if (p->upkeep->health_who == mon) p->upkeep->redraw |= (PR_HEALTH);
+	}
+}

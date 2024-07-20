@@ -585,6 +585,11 @@ static void pre_process_player(void)
 		player->upkeep->redraw |= (PR_STATE);
 	}
 
+	/* Saruman will announce a challenge if adjacent */
+	if (player->truce && (player->depth == z_info->dun_depth)) {
+		check_truce(player);
+	}
+
 	/* List all challenge options at the start of the game */
 	if (player->turn == 1) {
 		options_list_challenge();

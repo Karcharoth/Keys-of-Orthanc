@@ -1067,6 +1067,9 @@ static bool do_cmd_tunnel_aux(struct loc grid)
 		}
 	}
 
+	/* Break the truce if creatures see */
+	break_truce(player, false);
+
     /* Provoke attacks of opportunity from adjacent monsters */
     attacks_of_opportunity(player, loc(0, 0));
 

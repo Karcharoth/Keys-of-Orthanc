@@ -665,6 +665,8 @@ void py_attack_real(struct player *p, struct loc grid, int attack_type)
 		if (knocked) break;
 	}
 
+	/* Break the truce if creatures see */
+	break_truce(p, false);
 }
 
 
@@ -1452,6 +1454,9 @@ static void ranged_helper(struct player *p,	struct object *obj, int dir,
 			msg("The arrow leaves behind a trail of light!");
 			msg("You recognize your %s to be %s", o_short_name, o_full_name);
 		}
+
+		/* Break the truce if creatures see */
+		break_truce(p, false);
 
 		/* Get the missile */
 		if (object_is_carried(p, obj)) {

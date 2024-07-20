@@ -178,7 +178,7 @@ static void do_cmd_go_up_aux(void)
 		/* Flee Morgoth's throne room */
 		if (player->depth == z_info->dun_depth) {
 			if (!player->saruman_slain) {
-				msg("As you climb the stair, a great cry of rage and anguish comes from below.");
+				msg("As you climb the stair, a great cry of rage comes from below.");
 				msg("Make quick your escape: it shall be hard-won.");
 			}
 

@@ -933,7 +933,7 @@ void on_new_level(void)
 	if ((player->depth == z_info->dun_depth) && player->truce) {
 		msg("There is a strange tension in the air.");
 		if (player->state.skill_use[SKILL_PERCEPTION] >= 15) {
-			msg("You feel that Morgoth's servants are reluctant to attack before he delivers judgment.");	
+			msg("You feel that Saruman's servants are reluctant to attack before he delivers judgment.");	
 		}
 	}
 }

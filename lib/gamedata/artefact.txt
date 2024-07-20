@@ -157,6 +157,21 @@ values:SMITHING[1] | WILL[2]
 desc:The treasures of Moria are all but lost to the world,
 desc: but this one still gleams brightly in Isengard's tunnels.
 
+## The Ring of Ancalime
+## 3rd age
+
+name:of Ancalime
+base-object:ring:Ring
+depth:20
+rarity:1
+weight:1
+cost:500000
+flags:NO_RANDOM | LIGHT | CURSED | PROT_CONF | FREE_ACT
+values:WILL[3] | CON[-1] | GRA[1]
+ability:Will:Channeling
+desc:One of of Saruman's greatest works, this ring belonged to
+desc: Ancalime. It confers an unflinching clarity and strength of mind.
+
 #################################################################
 # Here is the list of 'Normal' artefacts. 
 # They can be Armour or Weapons.

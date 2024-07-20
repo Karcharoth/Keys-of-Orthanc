@@ -1227,8 +1227,8 @@ struct chunk *throne_gen(struct player *p)
 	/* Set the 'truce' in action */
 	p->truce = true;
 
-	/* Restrict to single-screen size */
-	c = cave_new(3 * z_info->block_hgt, 3 * z_info->block_wid);
+	/* Restrict to medium size */
+	c = cave_new(4 * z_info->block_hgt, 3 * z_info->block_wid);
 	c->depth = p->depth;
 
 	/* Fill cave area with basic granite */

@@ -1475,6 +1475,32 @@ desc: Saruman thought he destroyed this failed experiment,
 desc: but a single eye and a lone femur were unburned.
 desc: And so Rot scavenged, and so Rot regrew.
 
+##### 15 #####
+# Index 151
+name:Ancalime, First Lieutenant
+base:person
+depth:15
+rarity:1
+color:Y
+speed:2
+health:12d4
+sleep:15
+percept:8
+stealth:5
+will:10
+prot:8:2d4
+blow:HIT:WOUND:10:1d8
+blow:TOUCH:LOSE_GRA:8
+flags:UNIQUE | FEMALE | SPECIAL_GEN
+flags:OPEN_DOOR | UNLOCK_DOOR | RANGED_AI
+flags:DROP_GREAT | DROP_1D2
+flags:SMART
+ranged-freq:50
+spells:CONF | SUMMON
+desc:The foremost of Saruman's lieutenants, this proud Numenorean's
+desc: voice enthralls as surely as Saruman's. A ring shines on her finger.
+drop-artifact:Ancalime
+
 ##### 20 #####
 
 # Saruman is a very special monster (thus the QUESTOR flag).

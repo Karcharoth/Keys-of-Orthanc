@@ -367,9 +367,10 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 			/* Lay down a floor */
             /* Some vaults have.... a lot of mud */
             if (roomf_has(v->flags, ROOMF_MUDDY) && one_in_(2)) {
+    printf("X\n");
                     square_set_feat(c, grid, FEAT_MUD);
-            } else square_set_feat(c, grid, FEAT_FLOOR);
-
+            } else {    printf("Y\n"); square_set_feat(c, grid, FEAT_FLOOR);     printf("E\n");}
+    printf("Z\n");
 			/* Debugging assertion */
 			assert(square_isempty(c, grid));
 
@@ -430,12 +431,13 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
     printf("L\n");
 	/* Place regular dungeon monsters and objects */
 	for (t = data, y = 0; y < v->hgt && *t; y++) {
+    printf("M\n");
 		int ay = flip_v ? v->hgt - 1 - y : y;
 		for (x = 0; x < v->wid && *t; x++, t++) {
 			int ax = flip_h ? v->wid - 1 - x : x;
 			struct loc grid;
 			struct monster_group_info info = { 0, 0 };
-
+    printf("N\n");
 			/* Extract the location, flipping diagonally if requested */
             if (flip) {
                 grid.x = centre.x - (v->hgt / 2) + ay;
@@ -444,10 +446,11 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				grid.x = centre.x - (v->wid / 2) + ax;
 				grid.y = centre.y - (v->hgt / 2) + ay;
 			}
-
+    printf("O\n");
 			/* Hack -- skip "non-grids" */
 			if (*t == ' ') continue;
-
+    printf("X\n");
+    printf("sym is %s\n", t);
 			/* Analyze the symbol */
 			switch (*t)
 			{
@@ -597,9 +600,10 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				}
 
 				/* Goblin */
+                /* Entirely independent of depth - for cooks in the kitchens and the like */
 				case 'g': {
 					place_monster_by_letter(c, grid, 'g', true,
-											c->depth + rand_range(1, 4));
+											rand_range(1, 4));
 					break;
 				}
 
@@ -733,7 +737,23 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 				}
 
 
-				/* */	
+
+				/* Dunlending Slayer */	
+				case 'T': {
+					place_new_monster_one(c, grid, lookup_monster("Dunlending slayer"),
+										  true, true, info,
+										  ORIGIN_DROP_VAULT);
+					break;
+				}
+
+				/* Ancalime */	
+				case 'L': {
+					place_new_monster_one(c, grid, lookup_monster("Ancalime, First Lieutenant"),
+										  true, true, info,
+										  ORIGIN_DROP_VAULT);
+					break;
+				}
+
 				/* Saruman */
 				case 'V': {
 					place_new_monster_one(c, grid, lookup_monster("Saruman of Many Colours"),
@@ -741,11 +761,12 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 										  ORIGIN_DROP_VAULT);
 					break;
 				}
+    printf("P\n");
 			}
 
 		}
 	}
-    printf("M\n");
+    printf("Q\n");
 	for (t = data, y = 0; y < v->hgt && *t; y++) {
 		int ay = flip_v ? v->hgt - 1 - y : y;
 		for (x = 0; x < v->wid && *t; x++, t++) {

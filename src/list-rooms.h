@@ -15,6 +15,6 @@ ROOM("crossed room",		0,		0,		crossed)
 ROOM("Interesting room",	22,		33,		interesting)
 ROOM("Lesser vault",		22,		33,		lesser_vault)
 ROOM("Greater vault",		44,		66,		greater_vault)
-ROOM("Throne room",			30,		35,		throne)
+ROOM("Throne room",			45,		45,		throne)
 ROOM("Surface of Isengard",	77,	    99,	gates)
 

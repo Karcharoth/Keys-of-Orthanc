@@ -81,6 +81,7 @@ int energy_per_move(struct player *p);
 void player_regen_hp(struct player *p);
 void player_regen_stamina(struct player *p);
 void convert_mana_to_hp(struct player *p, int32_t sp);
+void stamina_hit(struct player *p, int dam)
 void player_digest(struct player *p);
 void player_update_light(struct player *p);
 struct object *player_best_digger(struct player *p, bool forbid_stack);

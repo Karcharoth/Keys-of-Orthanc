@@ -1164,7 +1164,7 @@ static bool do_cmd_disarm_aux(struct loc grid)
     struct trap *trap = square(cave, grid)->trap;
 	bool more = false;
     bool sabotage = false;
-    int sabotage_success;
+    /* int sabotage_success; */
 
 	/* Verify legality */
 	if (!do_cmd_disarm_test(grid)) return (false);

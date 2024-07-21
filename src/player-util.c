@@ -25,6 +25,7 @@
 #include "game-world.h"
 #include "generate.h"
 #include "init.h"
+#include "mon-calcs.h"
 #include "mon-desc.h"
 #include "mon-lore.h"
 #include "mon-move.h"
@@ -1501,8 +1502,8 @@ static void search_square(struct player *p, struct loc grid, int dist,
 
 	/* If there is anything to notice... */
 	/* Give up if the square is unseen and not adjacent */
-	if (obj || square_issecrettrap(cave, grid) || square_issecretdoor(cave, grid)
-    && ((dist > 1) && !square_isseen(cave, grid))) {
+	if ((obj || square_issecrettrap(cave, grid) || square_issecretdoor(cave, grid))
+        && !((dist > 1) && !square_isseen(cave, grid))) {
 
 		/* Determine the base score */
 		score = p->state.skill_use[SKILL_PERCEPTION];

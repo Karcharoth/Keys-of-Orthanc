@@ -287,6 +287,7 @@ static void monster_ranged_attack(project_player_handler_context_t *context,
 
 					/* Remember that the monster can do this */
 					if (monster_is_visible(mon)) {
+                        rf_on(lore->flags, RF_CRIPPLING);
 					}
 					msg("The shot tears into your thigh!");
 					/* Slow the player */

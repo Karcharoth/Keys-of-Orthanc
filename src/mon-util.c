@@ -879,7 +879,6 @@ int mon_create_drop(struct chunk *c, struct monster *mon,
  */
 struct object *mon_create_burgled_loot(struct chunk *c, struct monster *mon, bool stats)
 {
-	struct monster_drop *drop;
 	bool great, good;
 	bool visible;
     int count = 0;

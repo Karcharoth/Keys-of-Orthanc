@@ -18,6 +18,7 @@
  */
 
 #include "angband.h"
+#include "combat.h"
 #include "cmd-core.h"
 #include "game-event.h"
 #include "game-input.h"

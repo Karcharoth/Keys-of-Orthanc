@@ -262,8 +262,8 @@ void player_pickup_item(struct player *p, struct object *obj, bool menu)
 		mem_free(floor_list);
         if (inven_carry_num(p, obj)) {
 		    player_pickup_aux(p, obj, 0, domsg);
-		    return;
         }
+		return;
 	}
 
 	/* Tally objects that can be at least partially picked up.*/

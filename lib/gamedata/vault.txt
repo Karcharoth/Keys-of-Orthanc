@@ -3006,3 +3006,25 @@ D:############################,,,,,######....dF.################################
 D:#######################################GGGGGGG#####################################################
 ##exit area should have: big metal gate guarded by Dunlendings, with little side passages. Not the actual exit. Metal pillars (special wall type) for no reason. Big circle of black orthanc stone at the center. Path that Gandalf took to go into Orthanc, from the gate. Chasms everywhere. Traps everywhere. Stairs everywhere - fountaining enemies of course. And Saruman at the other side of the level? It should work even if he's dead, just not placing him. Thus I need to create: traps, smoke, mud, two gateguard dunlendings with escorts (so that killing them makes the real ascent easier)  - tanglethorns; actual doors in the northern mountainside leading to troop houses.
 ## TODO: Thorns, lots of random dunlendings, traps and chasms and pits everywhere.
+
+
+# Orthanc's top:
+#    ;
+# OO...OO
+# O;...;O
+# ......@
+#;...>...;
+# .....V.
+# O....;O
+# OO...OO
+#    ;
+
+
+# Just past the gates:
+# #@..@..
+# #+++--+
+# .----+-
+# .--@+--
+# .------
+# &------
+# &------

@@ -942,45 +942,195 @@ void mini_screenshot(game_event_type type, game_event_data *data, void *user)
 				}
 			}
 		}
-	} else {
+	} else if (!player->saruman_slain) {
+        /* If Saruman lives but the player won... */
 		for (y = -3; y <= 3; y++) {
 			for (x = -3; x <= 3; x++) {
-				/* Grass */
-				mini_screenshot_char[y + 3][x + 3] = '.';
-				mini_screenshot_attr[y + 3][x + 3] = COLOUR_L_GREEN;
+				/* Sky */
+				mini_screenshot_char[y + 3][x + 3] = '~';
+				if(one_in_(2)) mini_screenshot_attr[y + 3][x + 3] = COLOUR_L_DARK;
+				else mini_screenshot_attr[y + 3][x + 3] = COLOUR_DARK;
 			}
 		}
 
-		/* River */
-		mini_screenshot_char[0][1] = '~';
-		mini_screenshot_attr[0][1] = COLOUR_BLUE;
-		mini_screenshot_char[0][2] = '~';
-		mini_screenshot_attr[0][2] = COLOUR_BLUE;
-		mini_screenshot_char[1][2] = '~';
-		mini_screenshot_attr[1][2] = COLOUR_L_BLUE;
-		mini_screenshot_char[1][3] = '~';
-		mini_screenshot_attr[1][3] = COLOUR_BLUE;
-		mini_screenshot_char[1][4] = '~';
-		mini_screenshot_attr[1][4] = COLOUR_L_BLUE;
-		mini_screenshot_char[2][4] = '~';
-		mini_screenshot_attr[2][4] = COLOUR_BLUE;
-		mini_screenshot_char[2][5] = '~';
-		mini_screenshot_attr[2][5] = COLOUR_BLUE;
-		mini_screenshot_char[3][5] = '~';
-		mini_screenshot_attr[3][5] = COLOUR_L_BLUE;
-		mini_screenshot_char[3][6] = '~';
-		mini_screenshot_attr[3][6] = COLOUR_BLUE;
+		/* Pinnacles */
+		mini_screenshot_char[0][0] = '#';
+		mini_screenshot_attr[0][0] = COLOUR_L_DARK;
+		mini_screenshot_char[0][1] = '#';
+		mini_screenshot_attr[0][1] = COLOUR_L_DARK;
+		mini_screenshot_char[1][1] = '#';
+		mini_screenshot_attr[1][1] = COLOUR_L_DARK;
+		mini_screenshot_char[5][1] = '#';
+		mini_screenshot_attr[5][1] = COLOUR_L_DARK;
+		mini_screenshot_char[6][1] = '#';
+		mini_screenshot_attr[6][1] = COLOUR_L_DARK;
+		mini_screenshot_char[6][0] = '#';
+		mini_screenshot_attr[6][0] = COLOUR_L_DARK;
 
-		/* Trees */
-		mini_screenshot_char[4][1] = '+';
-		mini_screenshot_attr[4][1] = COLOUR_GREEN;
-		mini_screenshot_char[6][4] = '+';
-		mini_screenshot_attr[6][4] = COLOUR_GREEN;
+		/* Floors */
+		mini_screenshot_char[2][0] = '.';
+		mini_screenshot_attr[2][0] = COLOUR_L_DARK;
+		mini_screenshot_char[3][0] = '.';
+		mini_screenshot_attr[3][0] = COLOUR_L_DARK;
+		mini_screenshot_char[3][1] = '.';
+		mini_screenshot_attr[3][1] = COLOUR_L_DARK;
+		mini_screenshot_char[4][1] = '.';
+		mini_screenshot_attr[4][1] = COLOUR_L_DARK;
+		
+		/* Player */
+		mini_screenshot_char[2][1] = '@';
+		mini_screenshot_attr[2][1] = COLOUR_WHITE;
+
+		/* Saruman */
+		mini_screenshot_char[4][0] = '@';
+		mini_screenshot_attr[4][0] = randint1(BASIC_COLORS - 1);
+
+        /* Runes that canonically exist at the top of Orthanc */
+		mini_screenshot_char[3][2] = ';';
+		mini_screenshot_attr[3][2] = COLOUR_L_WHITE;
+		mini_screenshot_char[1][0] = ';';
+		mini_screenshot_attr[1][0] = COLOUR_L_WHITE;
+		mini_screenshot_char[5][0] = ';';
+		mini_screenshot_attr[5][0] = COLOUR_L_WHITE;
+
+
+        /* The really important part */
+		mini_screenshot_char[2][6] = '@';
+		mini_screenshot_attr[2][6] = COLOUR_SLATE;
+		mini_screenshot_char[3][6] = 'B';
+		mini_screenshot_attr[3][6] = COLOUR_YELLOW;
+
+	} else {
+        /* If Saruman's dead and the player won, the tower cutscene doesn't work */
+        /* So show a boring one escaping Isengard's gates */
+		for (y = -3; y <= 3; y++) {
+			for (x = -3; x <= 3; x++) {
+				/* Flagstones */
+				mini_screenshot_char[y + 3][x + 3] = '-';
+				mini_screenshot_attr[y + 3][x + 3] = COLOUR_SLATE;
+			}
+		}
+
+		/* Walls */
+		mini_screenshot_char[0][0] = '#';
+		mini_screenshot_attr[0][0] = COLOUR_L_WHITE;
+		mini_screenshot_char[1][0] = '#';
+		mini_screenshot_attr[1][0] = COLOUR_L_WHITE;
+
+        /* Floors/Dunlendings, 1/6 chance of dunlending*/
+        int i = randint0(6);
+        if (i==0) {
+		    mini_screenshot_char[0][1] = '@';
+		    mini_screenshot_attr[0][1] = COLOUR_L_WHITE;
+        } else {
+		    mini_screenshot_char[0][1] = '.';
+		    mini_screenshot_attr[0][1] = COLOUR_L_WHITE;
+        }
+        i = randint0(6);
+        if (i==0) {
+		    mini_screenshot_char[0][2] = '@';
+		    mini_screenshot_attr[0][2] = COLOUR_L_WHITE;
+        } else {
+		    mini_screenshot_char[0][2] = '.';
+		    mini_screenshot_attr[0][2] = COLOUR_L_WHITE;
+        }
+        i = randint0(6);
+        if (i==0) {
+		    mini_screenshot_char[0][3] = '@';
+		    mini_screenshot_attr[0][3] = COLOUR_L_WHITE;
+        } else {
+		    mini_screenshot_char[0][3] = '.';
+		    mini_screenshot_attr[0][3] = COLOUR_L_WHITE;
+        }
+
+        i = randint0(6);
+        if (i==0) {
+		    mini_screenshot_char[0][4] = '@';
+		    mini_screenshot_attr[0][4] = COLOUR_L_WHITE;
+        } else {
+		    mini_screenshot_char[0][4] = '.';
+		    mini_screenshot_attr[0][4] = COLOUR_L_WHITE;
+        }
+
+        i = randint0(6);
+        if (i==0) {
+		    mini_screenshot_char[0][5] = '@';
+		    mini_screenshot_attr[0][5] = COLOUR_L_WHITE;
+        } else {
+		    mini_screenshot_char[0][5] = '.';
+		    mini_screenshot_attr[0][5] = COLOUR_L_WHITE;
+        }
+
+        i = randint0(6);
+        if (i==0) {
+		    mini_screenshot_char[0][6] = '@';
+		    mini_screenshot_attr[0][6] = COLOUR_L_WHITE;
+        } else {
+		    mini_screenshot_char[0][6] = '.';
+		    mini_screenshot_attr[0][6] = COLOUR_L_WHITE;
+        }
+
+
+        
+
+
+        /* Mud/Thorns - 1/5 chance of thorns, except the top square
+*/
+	    mini_screenshot_char[2][0] = '.';
+	    mini_screenshot_attr[2][0] = COLOUR_MUD;
+        i = randint0(5);
+        if (i==0) {
+		    mini_screenshot_char[3][0] = '&';
+		    mini_screenshot_attr[3][0] = COLOUR_SLATE;
+        } else {
+		    mini_screenshot_char[3][0] = '.';
+		    mini_screenshot_attr[3][0] = COLOUR_MUD;
+        }
+        i = randint0(5);
+        if (i==0) {
+		    mini_screenshot_char[4][0] = '&';
+		    mini_screenshot_attr[4][0] = COLOUR_SLATE;
+        } else {
+		    mini_screenshot_char[4][0] = '.';
+		    mini_screenshot_attr[4][0] = COLOUR_MUD;
+        }
+        i = randint0(5);
+        if (i==0) {
+		    mini_screenshot_char[5][0] = '&';
+		    mini_screenshot_attr[5][0] = COLOUR_SLATE;
+        } else {
+		    mini_screenshot_char[5][0] = '.';
+		    mini_screenshot_attr[5][0] = COLOUR_MUD;
+        }
+        i = randint0(5);
+        if (i==0) {
+		    mini_screenshot_char[6][0] = '&';
+		    mini_screenshot_attr[6][0] = COLOUR_SLATE;
+        } else {
+		    mini_screenshot_char[6][0] = '.';
+		    mini_screenshot_attr[6][0] = COLOUR_MUD;
+        }
+
+        /* Gates */
+		mini_screenshot_char[1][1] = '+';
+		mini_screenshot_attr[1][1] = COLOUR_SLATE;
+		mini_screenshot_char[1][2] = '+';
+		mini_screenshot_attr[1][2] = COLOUR_SLATE;
+		mini_screenshot_char[1][3] = '+';
+		mini_screenshot_attr[1][3] = COLOUR_SLATE;
+		mini_screenshot_char[1][6] = '+';
+		mini_screenshot_attr[1][6] = COLOUR_SLATE;
+		mini_screenshot_char[2][5] = '+';
+		mini_screenshot_attr[2][5] = COLOUR_SLATE;
+		mini_screenshot_char[3][4] = '+';
+		mini_screenshot_attr[3][4] = COLOUR_SLATE;
+
+
 		
 		/* Player */
 		mini_screenshot_char[3][3] = '@';
 		mini_screenshot_attr[3][3] = COLOUR_WHITE;
-	}
+    }
 }
 
 void prt_mini_screenshot(int col, int row)

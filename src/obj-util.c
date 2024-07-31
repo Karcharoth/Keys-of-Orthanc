@@ -112,7 +112,7 @@ static void flavor_assign_random(uint8_t tval)
  * For the most part, flavors are assigned randomly each game.
  *
  * Initialize descriptions for the "colored" objects, including:
- * Rings, Staffs, Herbs, Potions, Scrolls.
+ * Rings, Staffs, Potions, Scrolls.
  *
  * Scroll titles are always between 6 and 14 letters long.  This is
  * ensured because every title is composed of whole words, where every
@@ -154,7 +154,6 @@ void flavor_init(void)
 
 	flavor_assign_random(TV_RING);
 	flavor_assign_random(TV_STAFF);
-	flavor_assign_random(TV_HERB);
 	flavor_assign_random(TV_POTION);
 
 	/* Hack -- Use the "complex" RNG */

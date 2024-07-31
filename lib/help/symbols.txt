@@ -42,7 +42,7 @@ Objects
 
 !  A potion (or flask)           /  A pole-arm
 ?  A horn                        |  An edged weapon
-,  A herb (or food)              \  A hafted weapon
+,  A piece of food               \  A hafted weapon
 ~  Lights, Metal, Chests, etc    }  A bow
 _  A staff                       {  An arrow
 =  A ring                        (  Soft armour

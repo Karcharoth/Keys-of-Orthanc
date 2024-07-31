@@ -104,7 +104,6 @@ static const grouper group_item[] =
 
 	{ TV_POTION,	"Potions" },
 	{ TV_FOOD,		"Food" },
-	{ TV_HERB,		"Herbs" },
 
 	{ TV_CHEST,		"Chests" },
 

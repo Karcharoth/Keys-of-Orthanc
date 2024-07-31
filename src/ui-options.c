@@ -1634,7 +1634,6 @@ static tval_desc sval_dependent[] =
 	{ TV_POTION,		"Potions" },
 	{ TV_RING,			"Rings" },
 	{ TV_FOOD,			"Food" },
-	{ TV_HERB,			"Herbs" },
 	{ TV_LIGHT,			"Lights" },
 	{ TV_FLASK,			"Flasks of oil" },
 };

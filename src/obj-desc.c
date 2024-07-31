@@ -135,8 +135,6 @@ static const char *obj_desc_get_basename(const struct object *obj, bool aware,
 		case TV_POTION:
 			return (show_flavor ? "& # Potion~" : "& Potion~");
 
-		case TV_HERB:
-			return (show_flavor ? "& # Herb~" : "& Herb~");
 	}
 
 	return "(nothing)";

@@ -490,16 +490,3 @@ graphics:light umber
 break:5
 # max-stack:10
 flags:EASY_KNOW
-
-name:herb:Herb~
-graphics:light umber
-break:5
-# max-stack:10
-flags:EASY_KNOW
-
-name:easter:Easter Egg~
-graphics:umber
-break:5
-# max-stack:10
-flags:EASY_KNOW
-

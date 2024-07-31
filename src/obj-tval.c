@@ -46,16 +46,6 @@ bool tval_is_food_k(const struct object_kind *kind)
 	return kind->tval == TV_FOOD;
 }
 
-bool tval_is_herb(const struct object *obj)
-{
-	return obj->tval == TV_HERB;
-}
-
-bool tval_is_herb_k(const struct object_kind *kind)
-{
-	return kind->tval == TV_HERB;
-}
-
 bool tval_is_light(const struct object *obj)
 {
 	return obj->tval == TV_LIGHT;
@@ -93,8 +83,7 @@ bool tval_is_digger(const struct object *obj)
 
 bool tval_can_have_nourishment(const struct object *obj)
 {
-	return obj->tval == TV_FOOD || obj->tval == TV_POTION ||
-			obj->tval == TV_HERB;
+	return obj->tval == TV_FOOD || obj->tval == TV_POTION;
 }
 /* probably vestigial*/
 bool tval_can_have_charges(const struct object *obj)
@@ -184,7 +173,6 @@ bool tval_is_useable(const struct object *obj)
 		case TV_STAFF:
 		case TV_POTION:
 		case TV_FOOD:
-		case TV_HERB:
 			return true;
 		default:
 			return false;
@@ -305,7 +293,6 @@ bool tval_is_edible(const struct object *obj)
 {
 	switch (obj->tval) {
 		case TV_FOOD:
-		case TV_HERB:
 			return true;
 		default:
 			return false;
@@ -318,7 +305,6 @@ bool tval_can_have_flavor_k(const struct object_kind *kind)
 		case TV_RING:
 		case TV_STAFF:
 		case TV_POTION:
-		case TV_HERB:
 			return true;
 		default:
 			return false;

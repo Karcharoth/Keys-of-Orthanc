@@ -452,8 +452,14 @@ void monster_swap(struct loc grid1, struct loc grid2)
 		}
 	}
     /* Deal with sabotaged traps*/
-    if ((m1 > 0) && square_ismonstertrap(cave, grid2)) monster_hit_sabotage (m1, grid2);
-    if ((m2 > 0) && square_ismonstertrap(cave, grid1)) monster_hit_sabotage (m2, grid1);
+    if ((m1 > 0) && square_ismonstertrap(cave, grid2)) {
+        mon = cave_monster(cave, m1);
+        monster_hit_sabotage (mon, grid2);
+    }
+    if ((m2 > 0) && square_ismonstertrap(cave, grid1)) {
+        mon = cave_monster(cave, m2);
+        monster_hit_sabotage (mon, grid1);
+    }
     
 	/* Deal with falling down chasms */
     if (m1 > 0) monster_fall_in_chasm(grid2);

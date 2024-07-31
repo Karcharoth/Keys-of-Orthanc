@@ -66,11 +66,11 @@ static int test_prefs(void *state) {
 #endif
 static int test_defaults(void *state) {
 	size_t i;
-	struct monster_base *mb = lookup_monster_base("giant");
+	struct monster_base *mb = lookup_monster_base("person");
 	int tval = tval_find_idx("sword");
 
 	/* Monster bases */
-	eq(process_pref_file_command("monster-base:giant:3:3"), 0);
+	eq(process_pref_file_command("monster-base:person:3:3"), 0);
 
 	for (i = 0; i < z_info->r_max; i++) {
 		struct monster_race *race = &r_info[i];

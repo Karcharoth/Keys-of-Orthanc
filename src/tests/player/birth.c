@@ -27,10 +27,9 @@ int teardown_tests(void *state) {
 
 static int test_generate0(void *state) {
 	struct player *p = state;
-	player_generate(p, &test_race, &test_house, &test_sex, false);
+	player_generate(p, &test_race, &test_house, false);
 	ptreq(p->race, &test_race);
 	ptreq(p->house, &test_house);
-	ptreq(p->sex, &test_sex);
 	ok;
 }
 

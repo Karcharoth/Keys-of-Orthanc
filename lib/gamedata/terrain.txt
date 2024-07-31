@@ -338,7 +338,7 @@ desc:Strong chains binding together the pillars of Isengard.
 desc:  Can be walked across by anything.  Does not break line of sight.
 
 name:Orthanc-stone
-graphics:#:d
+graphics:#:D
 priority:20
 flags:WALL | ROCK | PERMANENT | NO_SCENT | NO_FLOW | TORCH
 confused-msg:bashes into a wall

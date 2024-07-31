@@ -389,7 +389,7 @@ static int test_inven_wield_floor_single_filled(void *state) {
 
 	require(empty_gear(player));
 	require(empty_floor(cave, player));
-	obj1 = setup_object(TV_AMULET, 1, 1);
+	obj1 = setup_object(TV_BOOTS, 1, 1);
 	require(obj1 != NULL);
 	gear_insert_end(player, obj1);
 	require(object_is_carried(player, obj1));
@@ -398,7 +398,7 @@ static int test_inven_wield_floor_single_filled(void *state) {
 	inven_wield(obj1, slot);
 	old_weight = player->upkeep->total_weight;
 	old_slots = pack_slots_used(player);
-	obj2 = setup_object(TV_AMULET, 2, 1);
+	obj2 = setup_object(TV_BOOTS, 2, 1);
 	require(obj2 != NULL);
 	note = false;
 	require(floor_carry(cave, player->grid, obj2, &note));

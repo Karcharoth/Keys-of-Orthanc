@@ -35,7 +35,7 @@ int setup_tests(void **state) {
 	create_needed_dirs();
 #endif
 	/* Set up the player so there's a target available for the effects. */
-	if (!player_make_simple(NULL, NULL, NULL, "Tester")) {
+	if (!player_make_simple(NULL, NULL, "Tester")) {
 		cleanup_angband();
 		return 1;
 	}

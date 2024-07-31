@@ -215,7 +215,6 @@ static int test_calc_inventory_only_pack(void *state) {
 	struct simple_test_case only_pack_case = {
 		{
 			{ TV_FOOD, 2, 4, true, false },
-			{ TV_HORN, 2, 2, true, false },
 			{ TV_POTION, 4, 5, true, false },
 			{ TV_LIGHT, 1, 6, true, false },
 			{ TV_DIGGING, 1, 1, true, false },
@@ -231,7 +230,6 @@ static int test_calc_inventory_only_pack(void *state) {
 			{ TV_FOOD, 2, 4 },
 			{ TV_FLASK, 1, 1 },
 			{ TV_POTION, 4, 5 },
-			{ TV_HORN, 2, 2 },
 			{ TV_STAFF, 3, 1 },
 			{ TV_LIGHT, 1, 6 },
 			{ TV_DIGGING, 1, 1 },

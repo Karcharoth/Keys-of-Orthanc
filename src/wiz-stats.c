@@ -687,8 +687,6 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 #endif			
 			break;
 		}
-			break;
-		}
 
 		/* staves */
 		case TV_STAFF:{

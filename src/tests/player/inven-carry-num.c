@@ -49,7 +49,7 @@ int setup_tests(void **state) {
 	z_info->pack_size = 5;
 
 	/* Set up the player. */
-	if (!player_make_simple(NULL, NULL, NULL, "Tester")) {
+	if (!player_make_simple(NULL, NULL, "Tester")) {
 		cleanup_angband();
 		return 1;
 	}

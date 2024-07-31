@@ -32,7 +32,7 @@ int setup_tests(void **state)
 	ts->slays = mem_zalloc(z_info->slay_max * sizeof(*ts->slays));
 	ts->brands = mem_zalloc(z_info->brand_max * sizeof(*ts->brands));
 	/* Set up the player. */
-	if (!player_make_simple(NULL, NULL, NULL, "Tester")) {
+	if (!player_make_simple(NULL, NULL, "Tester")) {
 		mem_free(ts->brands);
 		mem_free(ts->slays);
 		mem_free(ts);

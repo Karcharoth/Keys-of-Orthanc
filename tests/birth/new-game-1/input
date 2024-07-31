@@ -3,7 +3,6 @@ key d
 key d
 key c
 key c
-key a
 key enter
 key enter
 key enter
@@ -12,5 +11,4 @@ key enter
 # Character birthed.
 player-race?
 player-house?
-player-sex?
 quit

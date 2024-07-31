@@ -468,10 +468,8 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 	/* check for some stuff that we will use regardless of type */
 	/* originally this was armor, but I decided to generalize it */
 
-	/* has free action (hack: don't include Inertia)*/
-	if (of_has(obj->flags, OF_FREE_ACT) && 
-		!((obj->tval == TV_AMULET) &&
-		  (!strstr(obj->kind->name, "Inertia")))) {
+	/* has free action */
+	if (of_has(obj->flags, OF_FREE_ACT)) {
 
 			/* add the stats */
 			add_stats(ST_FA_EQUIPMENT, vault, mon, number);

@@ -718,6 +718,13 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 					break;
 				}
 
+                /* Flier */
+				case 'b': {
+					place_monster_by_flag(c, grid, RF_FLYING, -1, true,
+										  c->depth + rand_range(1, 4), false);
+					break;
+				}
+
                 /* Dunlending Warrior */
 				case 'd': {
 					place_new_monster_one(c, grid, lookup_monster("Dunlending warrior"),

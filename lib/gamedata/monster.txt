@@ -399,7 +399,7 @@ percept:2
 stealth:2
 will:1
 prot:3:1d4
-blow:HIT:HURT:0:4d4
+blow:HIT:HURT:1:4d4
 flags:DROP_100
 drop:hafted:Hammer:15:1d1
 desc:He is one of Saruman's lesser servants.

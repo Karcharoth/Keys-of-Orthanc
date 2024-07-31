@@ -50,12 +50,6 @@ static struct object_base TEST_DATA flask_base = {
 	.break_perc = 100,
 };
 
-static struct object_base TEST_DATA horn_base = {
-	.name = "Test Horn~",
-	.tval = TV_HORN,
-	.next = NULL,
-};
-
 static struct artifact TEST_DATA test_artifact_sword = {
 	.name = "Test Artifact",
 	.text = "A test artifact.",

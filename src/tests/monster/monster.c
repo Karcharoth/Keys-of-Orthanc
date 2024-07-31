@@ -26,19 +26,19 @@ int teardown_tests(void *state) {
 static int test_match_monster_bases(void *state) {
 	struct monster_base *base;
 
-	/* Scruffy little dog */
+	/* The third monster - Orc */
 	base = (&r_info[3])->base;
 	require(match_monster_bases(base, "orc", NULL));
 	require(match_monster_bases(base, "zephyr hound", "orc", NULL));
 	require(!match_monster_bases(base, "angel", NULL));
 	require(!match_monster_bases(base, "lich", "vampire", "wraith", NULL));
 
-	/* Morgoth */
-	base = (lookup_monster("Morgoth, Lord of Darkness"))->base;
+	/* Saruman */
+	base = (lookup_monster("Saruman of Many Colours"))->base;
 	require(!match_monster_bases(base, "canine", NULL));
 	require(!match_monster_bases(base, "lich", "vampire", "wraith", NULL));
-	require(match_monster_bases(base, "person", "Morgoth", NULL));
-	require(match_monster_bases(base, "Morgoth", NULL));
+	require(match_monster_bases(base, "person", "horror", NULL));
+	require(match_monster_bases(base, "person", NULL));
 
 	ok;
 }

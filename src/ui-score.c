@@ -217,7 +217,7 @@ void display_single_score(const struct high_score *score, int row, int place,
 		c_put_str(COLOUR_L_DARK, "         ~", row + 5, 0);
 	}
 	if (score->saruman_slain[0] == 't') {
-		c_put_str(COLOUR_WHITE, "         @", row + 4, 0);
+		c_put_str(randint1(BASIC_COLORS - 1), "         @", row + 4, 0);
 	}
 }
 

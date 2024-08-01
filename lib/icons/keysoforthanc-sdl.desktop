@@ -6,4 +6,3 @@ Exec=keysoforthanc -msdl
 TryExec=keysoforthanc
 Icon=keysoforthanc
 Categories=Game;RolePlaying;
-Name[en_US]=keysoforthanc-sdl.desktop

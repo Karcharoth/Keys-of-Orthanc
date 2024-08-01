@@ -6,4 +6,3 @@ Exec=keysoforthanc -mx11
 TryExec=keysoforthanc
 Icon=keysoforthanc
 Categories=Game;RolePlaying;
-Name[en_US]=keysoforthanc-x11.desktop

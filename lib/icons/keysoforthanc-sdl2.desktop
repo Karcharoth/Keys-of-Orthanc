@@ -6,4 +6,3 @@ Exec=sh -c "if [ \\$XDG_SESSION_TYPE == \"wayland\" ]; then env SDL_VIDEODRIVER=
 TryExec=keysoforthanc
 Icon=keysoforthanc
 Categories=Game;RolePlaying;
-Name[en_US]=keysoforthanc-sdl2.desktop

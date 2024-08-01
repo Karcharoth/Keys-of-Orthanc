@@ -21,9 +21,9 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="Keys of Orthanc" id="1Xt-HY-uBw">
+                <menuItem title="KeysofOrthanc" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Keys of Orthanc" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="KeysofOrthanc" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
                             <menuItem title="About Keys of Orthanc" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>

@@ -5,7 +5,7 @@
 # across a range of different makefiles, to cut down on maintenance.
 #
 
-NAME = Keys of Orthanc
+NAME = KeysofOrthanc
 VERSION = 1.0.0
 COPYRIGHT = (c) 1995-2024 Angband contributors
 PROGNAME = keysoforthanc

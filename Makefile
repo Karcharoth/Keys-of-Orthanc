@@ -11,7 +11,7 @@ REPOCLEAN = aclocal.m4 autom4te.cache configure src/autoconf.h.in version
 tests:
 	$(MAKE) -C src tests
 
-TAG = narsil-`cd scripts && ./version.sh`
+TAG = keysoforthanc-`cd scripts && ./version.sh`
 OUT = $(TAG).tar.gz
 
 all: manual-optional

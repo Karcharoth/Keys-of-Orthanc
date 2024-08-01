@@ -13,16 +13,16 @@ PACKAGE = icons
 install-extra:
 	@if test x"${NOINSTALL}" != xyes ; then \
 		if test x"${ENABLESDL2}" = xyes ; then \
-			desktop_file=narsil-sdl2.desktop ; \
+			desktop_file=keysoforthanc-sdl2.desktop ; \
                 elif test x"${ENABLESDL}" = xyes ; then \
-			desktop_file=narsil-sdl.desktop ; \
+			desktop_file=keysoforthanc-sdl.desktop ; \
 		elif test x"${ENABLEX11}" = xyes ; then \
-			desktop_file=narsil-x11.desktop ; \
+			desktop_file=keysoforthanc-x11.desktop ; \
 		else \
 			desktop_file=none ; \
 		fi ; \
 		if test x"$$desktop_file" != xnone ; then \
-			i=narsil.metainfo.xml ; \
+			i=keysoforthanc.metainfo.xml ; \
 			i_d="${DESTDIR}${datadir}/metainfo/$$i" ; \
 			${INSTALL_STATUS}; \
 			if ${MKDIR_P} "$$(dirname $$i_d)" && ${INSTALL} -m 644 "$$i" "$$i_d" ; then \
@@ -31,7 +31,7 @@ install-extra:
 				${INSTALL_FAILED}; \
 			fi ; \
 			i="$$desktop_file" ; \
-			i_d="${DESTDIR}${datadir}/applications/narsil.desktop" ; \
+			i_d="${DESTDIR}${datadir}/applications/keysoforthanc.desktop" ; \
 			${INSTALL_STATUS}; \
 			if ${MKDIR_P} "$$(dirname $$i_d)" && ${INSTALL} -m 644 "$$i" "$$i_d" ; then \
 				${INSTALL_OK}; \
@@ -40,7 +40,7 @@ install-extra:
 			fi ; \
 			for res in 16 32 128 256 512 ; do \
 				i=att-"$$res".png ; \
-				i_d="${DESTDIR}${datadir}"/icons/hicolor/"$$res"x"$$res"/apps/narsil.png ; \
+				i_d="${DESTDIR}${datadir}"/icons/hicolor/"$$res"x"$$res"/apps/keysoforthanc.png ; \
 				${INSTALL_STATUS}; \
 				if ${MKDIR_P} "$$(dirname $$i_d)" && ${INSTALL} -m 644 "$$i" "$$i_d" ; then \
 					${INSTALL_OK}; \

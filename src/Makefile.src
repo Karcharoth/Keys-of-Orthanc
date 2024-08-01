@@ -5,10 +5,10 @@
 # across a range of different makefiles, to cut down on maintenance.
 #
 
-NAME = NarSil
-VERSION = 1.3.0
-COPYRIGHT = (c) 1995-2023 Angband contributors
-PROGNAME = narsil
+NAME = Keys of Orthanc
+VERSION = 1.0.0
+COPYRIGHT = (c) 1995-2024 Angband contributors
+PROGNAME = keysoforthanc
 
 HEADERS = \
 	angband.h \

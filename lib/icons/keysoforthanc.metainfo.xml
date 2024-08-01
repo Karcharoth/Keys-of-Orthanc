@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>narsil</id>
-  <launchable type="desktop-id">narsil.desktop</launchable>
-  <name>Narsil</name>
+  <id>keysoforthanc</id>
+  <launchable type="desktop-id">keysoforthanc.desktop</launchable>
+  <name>Keys of Orthanc</name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0</project_license>
-  <summary>NarSil is a free, single-player dungeon exploration game.</summary>
+  <summary>Keys of Orthanc is a free, single-player dungeon exploration game.</summary>
   <description>
     <p>
-      A roguelike game where you explore a very deep 
-      dungeon, kill monsters, try to equip yourself with 
+      A roguelike game where you explore a deep 
+      dungeon, defeat monsters, try to equip yourself with 
       the best weapons and armor you can find, and finally 
-      face Morgoth - "The Dark Enemy".
+      try to steal the Keys of Saruman of Many Colours.
     </p>
   </description>
   <url type="help">https://narsil.readthedocs.io/en/latest/</url>

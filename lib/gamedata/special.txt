@@ -293,9 +293,6 @@ max-pval:0
 item:soft armor:Robe
 values:RES_POIS[1]
 
-# Placeholder for now; 
-# will give Alchemy later.
-
 name:of Sorcery
 alloc:5:5 to 0
 cost:2000

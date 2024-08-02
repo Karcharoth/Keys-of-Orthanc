@@ -96,6 +96,7 @@
 # Forged and Enchanted artifacts should be past 250'
 # And First/Second Age artifacts should be deep, around 400'
 #
+# Organized by origin:
 # Dunland
 #  * Talachdol - shield, curse breaking, strength, -grace
 #  * Wulf - cloak, controlled retreat, protection, will, sustain str, aggravate
@@ -128,6 +129,17 @@
 # Mordor
 # Other
 #  * Bladorthin - spear, will
+#
+# We want perhaps 2 more Dunland, 1 more Rohan, 2 more Goblin, 5 more Isengard, 3 more Orthanc, 2 more Mordor artifacts?
+# Mordor artifact ideas:
+# Some kind of weapon won in a duel from one of Sauron's higher-up orcs
+# A bragging rights item - Sauron showing off that he made a higher smithing difficulty item than Saruman could
+# Something a Nazgul dropped?
+# Morgul-blade? What would that even do?
+# Something to make reshaping your domain Sauron or Morgoth style easier?
+# Something to make winning the hearts of men easier?
+# Some kind of token that implies Saruman will be Sauron's vassal in the New Age?
+
 
 
 #################################################################
@@ -159,6 +171,7 @@ desc: but this one still gleams brightly in Isengard's tunnels.
 
 ## The Ring of Ancalime
 ## 3rd age
+## Original to Keys of Orthanc
 
 name:of Ancalime
 base-object:ring:Ring
@@ -710,7 +723,6 @@ desc: most trusted Uruk-hai captain.
 ## Original to Keys of Orthanc
 ## Named after a past goblin alchemist, a century or two ago
 ## Qualinarn?
-## TODO: add alchemy and uncomment that line
 
 name:of Kwalinorn
 base-object:gloves:Set of Gloves

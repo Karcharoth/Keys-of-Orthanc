@@ -2,7 +2,7 @@
 
 Keys of Orthanc is a variant of NarSil, itself a mostly-faithful rewrite of Sil 1.3.0 using modern Angband code. It aims to be a smaller but more colorful version of Sil, only going down to level 10 instead of Sil's level 20, but filled with explosions, alchemists, siege weapons, secret lairs and a harrowing climb up Orthanc. It should be more challenging than making it to 500' in normal Sil, but not as challenging as making it to 1000' in normal Sil.
 
-It is very, very incomplete.
+It is very, very incomplete; trust nothing in the help files or docs. To figure out what commands do what, try the enter key.
 
 # Contributing:
 I welcome contribution! As much because it's incredibly invigorating to see someone else work on the same thing as because it saves me work and sometimes has pieces I hadn't thought of! 

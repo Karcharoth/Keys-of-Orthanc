@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(KeysofOrthanc, 1.0.0, nckmccnnll@gmail.com)
+AC_INIT(KeysofOrthanc, 1.0.0, moppetlabs@gmail.com)
 AC_CONFIG_SRCDIR(src)
 AC_CONFIG_MACRO_DIR([m4])
 

@@ -510,10 +510,10 @@ bool build_vault(struct chunk *c, struct loc centre, struct vault *v, bool flip)
 						int sval;
 						struct object_kind *kind;
 
-						if (one_in_(3)) {
-							sval = lookup_sval(TV_USELESS, "Human Skeleton");
-						} else {
+						if (one_in_(10)) {
 							sval = lookup_sval(TV_USELESS, "Elf Skeleton");
+						} else {
+							sval = lookup_sval(TV_USELESS, "Human Skeleton");
 						}
 						kind = lookup_kind(TV_USELESS, sval);
 

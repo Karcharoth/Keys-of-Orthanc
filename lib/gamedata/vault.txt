@@ -51,8 +51,16 @@
 #     + - visible door
 #     s - secret door
 #     ^ - trap (50% chance -- use sparingly as there is already a TRAPS flag)
+#     v - randomly, false floor, pit, spiked pit, or nothing
 #     0 - forge
 #     7 - chasm
+#     O - Orthanc-stone
+#     D - Door of Orthanc (surface)
+#     P - random pillar (surface)
+#     c - chains (surface)
+#     - - flagstones
+#     G - Gates of Isengard (surface)
+#
 #     1 - monster +1 level
 #     2 - monster +2 levels
 #     3 - monster +3 levels
@@ -62,29 +70,25 @@
 #     ~ - a chest with +4 levels
 #     S - an elf skeleton
 #     ? - a monster +1 level and/or an item +1 level
-#     @ - easterling spy
-#     H - silent watcher
-#     o - orc champion
-#     O - orc captain
-#     f - cat warrior
-#     F - cat assassin
-#     t - cave troll
-#     T - troll guard
-#     W - barrow wight
+#     , - random food
+#     F - Freca (surface)
+#     J - Sar (surface)
+#     w - orc warg-rider
+#     & - thorn
+#     Z - chittering horror
+#     o - orc
+#     g - goblin (independent of depth)
+#     W - siege weapon
 #     a - archer +1 level (any monster that shoots arrows)
-#     b - flier +1 level (any monster that flies)
-#     c - wolf +1d4 levels
-#     v - vampire +1d4 levels
-#     r - raukar +1d4 levels
-#     M - spider +1d4 levels
-#     d - dragon +4 levels
-#     A - Aldor
-#     R - Gothmog
-#     U - Ungoliant
-#     D - Glaurung
-#     G - Gorthaur
-#     V - Morgoth
-#     C - Carcharoth
+#     M - orc smith or Gorol
+#     @ - random man, independent of depth
+#     C - wolf +1d4 levels
+#     b - flier +1d4 levels (any monster that flies)
+#     d - dunlending warrior
+#     A - dunlending archer
+#     T - dunlending slayer
+#     L - Ancalime
+#     V - Saruman
 #
 
 # Future Vault Thoughts
@@ -850,7 +854,7 @@ D:  ###   ###
 D:  #S#   #?#  
 D:  #+##$##+#  
 D:###.......###
-D:#@+.#####.+.#
+D:#2+.#####.+.#
 D:###.+?#S+.###
 D:#.+.#####.+S#
 D:###.+3#?+.###
@@ -869,7 +873,7 @@ rarity:20
 D: ###$### 
 D: #2#.#S# 
 D:###;.;###
-D:#3;.H.;a#
+D:#3;.#.;a#
 D:###;.;###
 D: #"#.#2# 
 D: ###$### 
@@ -881,11 +885,11 @@ type:Interesting room
 depth:4
 rarity:12
 D:####$$####
-D:#cc#..#cc#
-D:#c.+..+.c#
+D:#CC#..#CC#
+D:#C.+..+.C#
 D:####..####
-D:#c.+..+.c#
-D:#cc#..#cc#
+D:#C.+..+.C#
+D:#CC#..#CC#
 D:####$$####
 
 
@@ -1508,120 +1512,6 @@ D:#####$#####
 
 
 
-####### Dragons
-
-
-# Index 220
-name:Dragon Lair 1
-type:Interesting room
-depth:12
-rarity:5
-D: #####
-D:##*.*#
-D:#*..*#
-D:#.d.##
-D:#.*## 
-D:#.##  
-D:#S.## 
-D:##..# 
-D: #$$# 
-
-
-# Index 221
-name:Dragon Lair 2
-type:Interesting room
-depth:13
-rarity:5
-flags:NO_ROTATION
-D:$$$$$$#####
-D:$.....#..*#
-D:$.....+.d.#
-D:$.....#.."#
-D:$$$$$$#####
-
-
-####### Barrows
-
-
-# Index 230
-name:Barrow 1
-type:Interesting room
-depth:8
-rarity:5
-D: $$$$$$$ 
-D:$$.....$$
-D:$..###..$
-D:$.##.##.$
-D:$.+.W*#.$
-D:$.##.##.$
-D:$..###..$
-D:$$.....$$
-D: $$$$$$$ 
-
-
-# Index 231
-name:Barrow 2
-type:Interesting room
-depth:9
-rarity:5
-D: ##$## 
-D: #...# 
-D: #...# 
-D:###.###
-D:#W.~.W#
-D:###.###
-D: #...# 
-D: #...# 
-D: ##$## 
-
-
-# Index 232
-name:Barrow 3
-type:Interesting room
-depth:9
-rarity:5
-D:#######
-D:#*#"#*#
-D:#W#W#W#
-D:#.....#
-D:##...##
-D:##+#+##
-D:$.....$
-D:$.....$
-D:$.....$
-D:$$$$$$$
-
-
-# Index 233
-name:Barrow 4
-type:Interesting room
-depth:10
-rarity:5
-D:  ##$##  
-D: ##...## 
-D:##W...W##
-D:#.......#
-D:$...~...$
-D:#.......#
-D:##W...W##
-D: ##...## 
-D:  ##$##  
-
-
-# Index 234
-name:Barrow chasm
-type:Interesting room
-depth:10
-rarity:5
-D:  #$$$#  
-D: ##...## 
-D:##..W..##
-D:$...*...$
-D:#7777777#
-D:$...*...$
-D:##..W..##
-D: ##...## 
-D:  #$$$#  
 
 
 
@@ -1661,17 +1551,6 @@ D:  $......$
 D:  $$$$$$$$  
 
 
-# Index 247
-name:Hidden lair
-type:Interesting room
-depth:11
-rarity:20
-D:$$$$#####
-D:$...#d..#
-D:$...#...#
-D:$...##7##
-D:$.....7# 
-D:$$$$#### 
 
 
 # Index 250
@@ -1771,25 +1650,6 @@ D: $.777777...$
 D: $.b.7...aa.$ 
 D: $$$$#$$$$$$$ 
 
-
-# Index 261
-name:Dragon Island
-type:Interesting room
-depth:11
-rarity:10
-flags:LIGHT
-D: $$$$$$$$$$$    
-D:##.........##   
-D:#:7777777777#   
-D:$.7777#77777##  
-D:$.77#####.777## 
-D:$.77#"....77777#
-D:$.77#d.##.777## 
-D:$.77####.7777#  
-D:$..777777777##  
-D:$$....7777..$   
-D: $$.........$   
-D:  $$$$$$$$$$$   
 
 
 # Index 265
@@ -2047,7 +1907,7 @@ D:$....+.#*...$
 D:$.33.#.#.12.$
 D:$"..##.##...$
 D:$####...###+$
-D:$.....H.....$
+D:$.....#.....$
 D:$+###...####$
 D:$...##.##..*$
 D:$..2.#.#.31.$
@@ -2065,7 +1925,7 @@ D:$....+...?$
 D:$....%..2.$
 D:$31%%%%%..$
 D:$..%***%..$
-D:$+%%*H*%%+$
+D:$+%%*#*%%+$
 D:$..%***%..$
 D:$.?%%%%%..$
 D:$..2.%..?.$
@@ -2543,74 +2403,6 @@ D:  %%%$$$$$$%%$$$%~.%
 D:                %%%%           
 
 
-# Index 370
-name:Crypt
-type:Lesser vault
-depth:9
-rarity:4
-D:    ###########    
-D:    #..W.W.W..#    
-D:$$$$#.#.#.#.#.#####
-D:$...#.........#...#
-D:$.?.+..*.".".W+.3~#
-D:$...#.........#...#
-D:$$$$#.#.#.#.#.#####
-D:    #..W.W.W..#    
-D:    ###########    
-
-
-# Index 380
-name:Draconic Cave 1
-type:Lesser vault
-depth:10
-rarity:5
-D:#####$$$$$$
-D:#"d.#.....$
-D:#*..##.?..$
-D:###..#....$
-D:$.##......$
-D:$.....##+##
-D:$?:...#2..$
-D:$.....#...$
-D:$$$$$$#$$$$
-
-
-# Index 381
-name:Draconic Cave 2
-type:Lesser vault
-depth:12
-rarity:5
-D:#$$$#######$$#
-D:$...##.."##..$
-D:$.2.#*.d..#?.$
-D:#+###....*#..$
-D:#.####..###..$
-D:$.####..###..$
-D:$..##....##+##
-D:$.....:#.#...$
-D:$..:..#....?.$
-D:$...........##
-D:$$$$$$$$$$$$##
-
-
-# Index 382
-name:Dragons' Run
-type:Lesser vault
-depth:14
-rarity:10
-D:$$$$$$$$$$$$$$$$$
-D:$...+.......+...$
-D:$...#########.?.$
-D:$...#.......#...$
-D:$..S#.#.#.#.#...$
-D:$...+.#d*"#.+.S.$
-D:$.?.+.#"*d#.+...$
-D:$...#.#.#.#.#S..$
-D:$.S.#.......#...$
-D:$...#########...$
-D:$...+.......+...$
-D:$$$$$$$$$$$$$$$$$
-
 
 # Index 390
 name:Bracket Islands
@@ -2929,24 +2721,3 @@ D:#######################################GGGGGGG################################
 #D:############################,,,,,+dd,d#.dddA.d#####################################################
 #D:############################,,,,,######....dF.#####################################################
 #D:#######################################GGGGGGG#####################################################
-
-# Orthanc's top:
-#    ;
-# OO...OO
-# O;...;O
-# ......@
-#;...>...;
-# .....V.
-# O....;O
-# OO...OO
-#    ;
-
-
-# Just past the gates:
-# #@..@..
-# #+++--+
-# .----+-
-# .--@+--
-# .------
-# &------
-# &------

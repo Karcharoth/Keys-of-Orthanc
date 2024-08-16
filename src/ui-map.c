@@ -942,8 +942,8 @@ void mini_screenshot(game_event_type type, game_event_data *data, void *user)
 				}
 			}
 		}
-	} else if (!player->saruman_slain) {
-        /* If Saruman lives but the player won... */
+	} else if (!player->saruman_slain && square_isvictory(cave, player->grid)) {
+        /* If Saruman lives but the player won by Orthanc's door... */
 		for (y = -3; y <= 3; y++) {
 			for (x = -3; x <= 3; x++) {
 				/* Sky */
@@ -1003,6 +1003,7 @@ void mini_screenshot(game_event_type type, game_event_data *data, void *user)
 	} else {
         /* If Saruman's dead and the player won, the tower cutscene doesn't work */
         /* So show a boring one escaping Isengard's gates */
+        /* Also show this if the player escaped by digging through Isengard's walls.*/
 		for (y = -3; y <= 3; y++) {
 			for (x = -3; x <= 3; x++) {
 				/* Flagstones */

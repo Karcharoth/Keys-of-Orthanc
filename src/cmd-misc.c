@@ -90,17 +90,14 @@ void do_cmd_escape(void)
 	/* Add notes to the history */
 	strnfmt(buf, sizeof(buf), "You escaped the pits of Isengard on %s.", long_day);
 	history_add(player, buf, HIST_ESCAPE);
-	switch (keys_possessed(player)) {
+	switch (square_isvictory(cave, player->grid)) {
 		case 0:	{
-			history_add(player, "You returned empty handed.", HIST_ESCAPE);
+			history_add(player, "You returned unsuccessful", HIST_ESCAPE);
 			break;
 		}
 		case 1:	{
-			history_add(player, "You brought back the Keys of Orthanc!", HIST_ESCAPE);
+			history_add(player, "You freed Gandalf the Grey!", HIST_ESCAPE);
 			break;
-		}
-		default: {
-			history_add(player, "You brought back so many Keys that people should be suspicious!", HIST_ESCAPE);
 		}
 	}
 

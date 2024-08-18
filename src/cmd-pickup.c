@@ -164,6 +164,8 @@ static void player_pickup_aux(struct player *p, struct object *obj,
 							  int auto_max, bool domsg)
 {
 	int max = inven_carry_num(p, obj);
+	/* Remember if this is auto-pickup. */
+	bool autopick = (obj->notice & OBJ_NOTICE_PICKUP);
 
 	/* Confirm at least some of the object can be picked up */
 	if (max == 0)
@@ -197,7 +199,7 @@ static void player_pickup_aux(struct player *p, struct object *obj,
 	}
 
 	/* If it's auto-pickup of thrown/fired things we're done */
-	if (obj->notice & OBJ_NOTICE_PICKUP) return;
+	if (autopick) return;
 
 	/* Store the action type */
 	p->previous_action[0] = ACTION_MISC;

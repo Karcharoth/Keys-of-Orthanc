@@ -313,7 +313,7 @@ static void melee_effect_timed(melee_effect_handler_context_t *context,
 	if (context->damage && !context->net_dam) return;
 
 	/* Handle status */
-	if (player_inc_timed(context->p, type, amount, true, true)) {
+	if (player_inc_timed(context->p, type, amount, true, true, true)) {
 		context->obvious = true;
 	} else if (save_msg != NULL) {
 		msg("%s", save_msg);
@@ -481,7 +481,8 @@ static void melee_effect_handler_HUNGER(melee_effect_handler_context_t *context)
 			}
 
 			/* Reduce food counter, but not too much. */
-			player_dec_timed(context->p, TMD_FOOD, amount, false);
+			player_dec_timed(context->p, TMD_FOOD, amount, false,
+				true);
 		}
 	}
 }
@@ -498,7 +499,8 @@ static void melee_effect_handler_POISON(melee_effect_handler_context_t *context)
 	if (!context->damage) return;
 	
 	/* Take "poison" effect */
-	if (player_inc_timed(context->p, TMD_POISONED, context->damage, true, true))
+	if (player_inc_timed(context->p, TMD_POISONED, context->damage, true,
+			true, true))
 		context->obvious = true;
 }
 

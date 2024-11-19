@@ -41,7 +41,6 @@ install-extra:
 			for res in 16 32 128 256 512 ; do \
 				i=luthien-"$$res".png ; \
 				i_d="${DESTDIR}${datadir}"/icons/hicolor/"$$res"x"$$res"/apps/keysoforthanc.png ; \
-
 				${INSTALL_STATUS}; \
 				if ${MKDIR_P} "$$(dirname $$i_d)" && ${INSTALL} -m 644 "$$i" "$$i_d" ; then \
 					${INSTALL_OK}; \

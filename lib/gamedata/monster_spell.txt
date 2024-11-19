@@ -353,7 +353,7 @@ desire:1
 disturb:1
 use-past-range:100
 effect:SUMMON:ANY:0:1
-dice:1d4
+dice:1d2
 lore:call monsters
 message-vis:{name} calls {pronoun} legions to {pronoun} aid!
 message-invis:{name} calls on Isengard's warriors!

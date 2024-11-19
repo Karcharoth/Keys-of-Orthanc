@@ -1487,7 +1487,7 @@ health:12d4
 sleep:15
 percept:8
 stealth:5
-will:10
+will:8
 prot:8:2d4
 blow:HIT:WOUND:10:1d8
 blow:TOUCH:LOSE_GRA:8
@@ -1495,8 +1495,8 @@ flags:UNIQUE | FEMALE | SPECIAL_GEN
 flags:OPEN_DOOR | UNLOCK_DOOR | RANGED_AI
 flags:DROP_GREAT | DROP_1D2
 flags:SMART
-ranged-freq:50
-spells:CONF | SUMMON
+ranged-freq:33
+spells:HOLD | SUMMON
 desc:The foremost of Saruman's lieutenants, this proud Numenorean's
 desc: voice enthralls as surely as Saruman's. A ring shines on her finger.
 drop-artifact:Ancalime
@@ -1517,14 +1517,14 @@ light:4
 sleep:10
 percept:10
 stealth:0
-will:15
-prot:14:4d4
+will:10
+prot:10:3d4
 blow:HIT:SLOW:15:2d12
 flags:UNIQUE | QUESTOR | MALE | ATTR_MULTI
 flags:OPEN_DOOR | UNLOCK_DOOR | RANGED_AI
 flags:DROP_3D2 | DROP_GREAT
 flags:SMART | REGENERATE
-ranged-freq:75
+ranged-freq:50
 spells:HOLD | CONF | SUMMON
 desc:'And here you will stay, Gandalf the Grey, and rest from journeys.
 desc: For I am Saruman the Wise, Saruman Ring-Maker, Saruman of Many Colours!'

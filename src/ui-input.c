@@ -1557,14 +1557,10 @@ static bool textui_get_aim_dir(int *dp, int range)
 				/* Set to closest target */
 				if (target_set_closest(TARGET_KILL, NULL)) {
 					dir = DIR_TARGET;
-<<<<<<< HEAD
-			} else if (ke.key.code == '5' || ke.key.code == 'f' ||
-=======
 				} else {
 					need_beep = true;
 				}
-			} else if (ke.key.code == 't' || ke.key.code == '5' ||
->>>>>>> 8ae30ab79... Don't beep when escape is pressed while '*' targeting from textui_get_aim_dir(). Addresses the concern raised by fruviad here, http://angband.oook.cz/forum/showthread.php?t=11264 .
+			} else if (ke.key.code == '5' || ke.key.code == 'f' ||
 					   ke.key.code == '0' || ke.key.code == '.') {
 				if (target_okay(range)) {
 					dir = DIR_TARGET;
